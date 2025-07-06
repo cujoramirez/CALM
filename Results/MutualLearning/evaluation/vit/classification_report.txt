@@ -1,0 +1,26 @@
+Model: vit
+Test Accuracy: 96.33%
+F1 Score (macro): 96.34%
+Precision (macro): 96.35%
+Recall (macro): 96.33%
+Expected Calibration Error: 0.0119
+Maximum Calibration Error: 0.3105
+Average Calibration Error: 0.0728
+Root Mean Square Calibration Error: 0.1091
+
+              precision    recall  f1-score   support
+
+    airplane      0.968     0.975     0.972      1000
+  automobile      0.972     0.977     0.975      1000
+        bird      0.956     0.958     0.957      1000
+         cat      0.909     0.941     0.925      1000
+        deer      0.959     0.962     0.961      1000
+         dog      0.948     0.925     0.936      1000
+        frog      0.986     0.977     0.981      1000
+       horse      0.982     0.978     0.980      1000
+        ship      0.985     0.969     0.977      1000
+       truck      0.970     0.971     0.971      1000
+
+    accuracy                          0.963     10000
+   macro avg      0.964     0.963     0.963     10000
+weighted avg      0.964     0.963     0.963     10000

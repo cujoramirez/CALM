@@ -1,0 +1,44 @@
+Test Accuracy: 95.23%
+Average Cross-Entropy Loss: 0.1610
+Macro F1-Score: 0.952
+Weighted F1-Score: 0.952
+
+              precision    recall  f1-score   support
+
+    airplane      0.940     0.979     0.959      1000
+  automobile      0.964     0.977     0.970      1000
+        bird      0.961     0.927     0.944      1000
+         cat      0.876     0.927     0.901      1000
+        deer      0.975     0.945     0.960      1000
+         dog      0.933     0.903     0.918      1000
+        frog      0.963     0.981     0.972      1000
+       horse      0.971     0.976     0.974      1000
+        ship      0.977     0.946     0.961      1000
+       truck      0.970     0.962     0.966      1000
+
+    accuracy                          0.952     10000
+   macro avg      0.953     0.952     0.952     10000
+weighted avg      0.953     0.952     0.952     10000
+ROC AUC (Micro Avg): 0.998
+ROC AUC (Macro Avg): 0.998
+ROC AUC Class airplane: 0.999
+ROC AUC Class automobile: 0.998
+ROC AUC Class bird: 0.998
+ROC AUC Class cat: 0.995
+ROC AUC Class deer: 0.999
+ROC AUC Class dog: 0.997
+ROC AUC Class frog: 0.999
+ROC AUC Class horse: 1.000
+ROC AUC Class ship: 0.999
+ROC AUC Class truck: 0.999
+Average Precision (Micro Avg): 0.990
+Average Precision Class airplane: 0.993
+Average Precision Class automobile: 0.992
+Average Precision Class bird: 0.989
+Average Precision Class cat: 0.969
+Average Precision Class deer: 0.993
+Average Precision Class dog: 0.977
+Average Precision Class frog: 0.996
+Average Precision Class horse: 0.997
+Average Precision Class ship: 0.992
+Average Precision Class truck: 0.990

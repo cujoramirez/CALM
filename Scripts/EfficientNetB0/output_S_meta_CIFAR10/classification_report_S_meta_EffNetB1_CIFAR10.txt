@@ -1,0 +1,48 @@
+Model: S_meta_EffNetB1_CIFAR10
+Test Accuracy: 83.39%
+Avg CE Loss: 0.9315
+Macro F1: 0.837
+Weighted F1: 0.837
+Expected Calibration Error (ECE): 0.3908
+
+              precision    recall  f1-score   support
+
+    airplane      0.983     0.876     0.926      1000
+  automobile      0.989     0.353     0.520      1000
+        bird      0.983     0.869     0.923      1000
+         cat      0.959     0.925     0.941      1000
+        deer      0.978     0.902     0.939      1000
+         dog      0.859     0.969     0.911      1000
+        frog      0.987     0.984     0.985      1000
+       horse      0.987     0.975     0.981      1000
+        ship      0.422     0.996     0.593      1000
+       truck      0.963     0.490     0.649      1000
+
+    accuracy                          0.834     10000
+   macro avg      0.911     0.834     0.837     10000
+weighted avg      0.911     0.834     0.837     10000
+
+ROC AUC (Micro Avg): 0.983
+ROC AUC (Macro Avg): 0.991
+ROC AUC Class airplane: 0.993
+ROC AUC Class automobile: 0.996
+ROC AUC Class bird: 0.989
+ROC AUC Class cat: 0.987
+ROC AUC Class deer: 0.996
+ROC AUC Class dog: 0.980
+ROC AUC Class frog: 0.998
+ROC AUC Class horse: 0.998
+ROC AUC Class ship: 0.993
+ROC AUC Class truck: 0.983
+
+Avg Precision (Micro Avg): 0.858
+Avg Precision Class airplane: 0.979
+Avg Precision Class automobile: 0.984
+Avg Precision Class bird: 0.964
+Avg Precision Class cat: 0.954
+Avg Precision Class deer: 0.970
+Avg Precision Class dog: 0.794
+Avg Precision Class frog: 0.994
+Avg Precision Class horse: 0.993
+Avg Precision Class ship: 0.895
+Avg Precision Class truck: 0.818

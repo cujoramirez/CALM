@@ -1,0 +1,26 @@
+Model: mobilenet
+Test Accuracy: 97.14%
+F1 Score (macro): 97.14%
+Precision (macro): 97.15%
+Recall (macro): 97.14%
+Expected Calibration Error: 0.0501
+Maximum Calibration Error: 0.1052
+Average Calibration Error: 0.0609
+Root Mean Square Calibration Error: 0.0658
+
+              precision    recall  f1-score   support
+
+    airplane      0.982     0.973     0.977      1000
+  automobile      0.974     0.987     0.981      1000
+        bird      0.968     0.969     0.969      1000
+         cat      0.939     0.942     0.941      1000
+        deer      0.971     0.982     0.977      1000
+         dog      0.949     0.951     0.950      1000
+        frog      0.987     0.981     0.984      1000
+       horse      0.987     0.974     0.980      1000
+        ship      0.974     0.985     0.980      1000
+       truck      0.983     0.970     0.976      1000
+
+    accuracy                          0.971     10000
+   macro avg      0.971     0.971     0.971     10000
+weighted avg      0.971     0.971     0.971     10000

@@ -1,0 +1,26 @@
+Model: ensemble
+Test Accuracy: 97.43%
+F1 Score (macro): 97.43%
+Precision (macro): 97.43%
+Recall (macro): 97.43%
+Expected Calibration Error: 0.3016
+Maximum Calibration Error: 0.4681
+Average Calibration Error: 0.3274
+Root Mean Squared Cal. Error: 0.3162
+
+              precision    recall  f1-score   support
+
+    airplane      0.967     0.987     0.977      1000
+  automobile      0.972     0.988     0.980      1000
+        bird      0.982     0.968     0.975      1000
+         cat      0.949     0.941     0.945      1000
+        deer      0.976     0.978     0.977      1000
+         dog      0.955     0.950     0.952      1000
+        frog      0.979     0.996     0.988      1000
+       horse      0.989     0.984     0.986      1000
+        ship      0.989     0.977     0.983      1000
+       truck      0.986     0.974     0.980      1000
+
+    accuracy                          0.974     10000
+   macro avg      0.974     0.974     0.974     10000
+weighted avg      0.974     0.974     0.974     10000

@@ -1,0 +1,20 @@
+Prediction Overlap Analysis
+===========================
+Overall agreement rate: 95.78%
+
+Both models correct: 94.23%
+Both models wrong: 2.08%
+Only Ensemble Distillation correct: 1.86%
+Only Mutual Learning correct: 1.83%
+
+Per-class agreement rates:
+  airplane: 96.00%
+  automobile: 97.80%
+  bird: 93.90%
+  cat: 93.00%
+  deer: 95.70%
+  dog: 93.50%
+  frog: 95.90%
+  horse: 97.60%
+  ship: 96.90%
+  truck: 97.50%

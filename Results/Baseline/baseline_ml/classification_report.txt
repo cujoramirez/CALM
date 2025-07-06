@@ -1,0 +1,26 @@
+Model: baseline_ml
+Test Accuracy: 96.06%
+F1 Score (macro): 96.07%
+Precision (macro): 96.10%
+Recall (macro): 96.06%
+Expected Calibration Error: 0.0235
+Maximum Calibration Error: 0.7075
+Average Calibration Error: 0.2593
+Root Mean Squared Cal. Error: 0.0647
+
+              precision    recall  f1-score   support
+
+    airplane      0.955     0.968     0.961      1000
+  automobile      0.976     0.971     0.973      1000
+        bird      0.977     0.949     0.963      1000
+         cat      0.895     0.935     0.914      1000
+        deer      0.970     0.972     0.971      1000
+         dog      0.948     0.924     0.936      1000
+        frog      0.983     0.969     0.976      1000
+       horse      0.979     0.973     0.976      1000
+        ship      0.972     0.973     0.973      1000
+       truck      0.956     0.972     0.964      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000

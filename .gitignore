@@ -1,0 +1,7 @@
+# Ignore STL-10 dataset due to GitHub file size limits
+Dataset/stl10_binary/
+"Dataset/" 
+"Scripts/CIFAR100/" 
+Dataset/
+Scripts/CIFAR100/
+*.tar.gz

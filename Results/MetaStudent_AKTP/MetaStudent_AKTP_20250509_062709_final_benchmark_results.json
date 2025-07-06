@@ -1,0 +1,13 @@
+{
+    "Baseline (S_b)": "Loading/Adaptation Failed",
+    "Distilled (S_d)": "Loading/Adaptation Failed",
+    "Mutual (S_m)": "Loading/Adaptation Failed",
+    "MetaStudent (S_meta)": {
+        "loss": 1.2223721933364868,
+        "accuracy": 84.88,
+        "f1_score": 0.8482960959866511,
+        "precision": 0.8523672348350124,
+        "recall": 0.8488,
+        "ece": 0.4320061206817627
+    }
+}

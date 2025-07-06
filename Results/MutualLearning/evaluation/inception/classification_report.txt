@@ -1,0 +1,26 @@
+Model: inception
+Test Accuracy: 95.49%
+F1 Score (macro): 95.53%
+Precision (macro): 95.66%
+Recall (macro): 95.49%
+Expected Calibration Error: 0.0721
+Maximum Calibration Error: 0.2474
+Average Calibration Error: 0.0932
+Root Mean Square Calibration Error: 0.1086
+
+              precision    recall  f1-score   support
+
+    airplane      0.977     0.956     0.966      1000
+  automobile      0.968     0.972     0.970      1000
+        bird      0.950     0.954     0.952      1000
+         cat      0.849     0.953     0.898      1000
+        deer      0.955     0.965     0.960      1000
+         dog      0.934     0.927     0.930      1000
+        frog      0.994     0.950     0.971      1000
+       horse      0.991     0.958     0.974      1000
+        ship      0.977     0.962     0.969      1000
+       truck      0.973     0.952     0.963      1000
+
+    accuracy                          0.955     10000
+   macro avg      0.957     0.955     0.955     10000
+weighted avg      0.957     0.955     0.955     10000

@@ -1,0 +1,252 @@
+2025-03-21 05:28:43,607 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250321_052843.py
+2025-03-21 05:28:43,610 [INFO] - Random seed set to 42
+2025-03-21 05:28:43,880 [INFO] - GPU cache cleared: 1369.46MB → 1369.46MB (freed 0.00MB)
+2025-03-21 05:28:43,897 [INFO] - Random seed set to 42
+2025-03-21 05:28:43,897 [INFO] - Using zero padding with pad_size=96 pixels on each side
+2025-03-21 05:28:45,754 [INFO] - Training samples: 45000
+2025-03-21 05:28:45,754 [INFO] - Validation samples: 5000
+2025-03-21 05:28:45,754 [INFO] - Test samples: 10000
+2025-03-21 05:28:45,754 [INFO] - Loading pretrained ViT-B16 model...
+2025-03-21 05:28:46,879 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-03-21 05:28:46,880 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-03-21 05:28:47,167 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250321_052847_config.json
+2025-03-21 05:28:47,168 [INFO] - Batch size: 64 with gradient accumulation steps: 2
+2025-03-21 05:28:47,168 [INFO] - Effective batch size: 128
+2025-03-21 05:28:47,168 [INFO] - GPU Memory: Current=1697.73MB, Peak=5957.66MB, Reserved=1882.00MB
+2025-03-21 05:28:47,168 [INFO] - Starting training...
+2025-03-21 05:28:47,168 [INFO] - Epoch 1/50
+2025-03-21 05:28:47,350 [INFO] - GPU cache cleared: 1697.73MB → 1697.73MB (freed 0.00MB)
+2025-03-21 05:36:25,959 [INFO] - Using device: cuda
+2025-03-21 05:36:25,968 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-03-21 05:36:25,970 [INFO] - GPU Memory: 6.00 GB
+2025-03-21 05:36:25,970 [INFO] - CUDA Version: 12.4
+2025-03-21 05:36:25,970 [INFO] - cuDNN benchmark mode enabled
+2025-03-21 05:36:25,975 [INFO] - CPU: 16 cores available
+2025-03-21 05:36:25,977 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-03-21 05:36:25,977 [INFO] - RTX 3060 detected - using optimized settings
+2025-03-21 05:36:25,977 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-03-21 05:36:25,977 [INFO] - PyTorch version: 2.5.1
+2025-03-21 05:36:25,977 [INFO] - Torchvision version: 0.20.1
+2025-03-21 05:36:25,977 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 4,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": false,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-03-21 05:36:25,977 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250321_053625.py
+2025-03-21 05:36:25,986 [INFO] - Random seed set to 42
+2025-03-21 05:36:26,119 [INFO] - GPU cache cleared: 0.00MB → 0.00MB (freed 0.00MB)
+2025-03-21 05:36:26,127 [INFO] - Random seed set to 42
+2025-03-21 05:36:26,127 [INFO] - Using resize from 32x32 to 224x224
+2025-03-21 05:36:27,697 [INFO] - Training samples: 45000
+2025-03-21 05:36:27,697 [INFO] - Validation samples: 5000
+2025-03-21 05:36:27,697 [INFO] - Test samples: 10000
+2025-03-21 05:36:27,697 [INFO] - Loading pretrained ViT-B16 model...
+2025-03-21 05:36:28,621 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-03-21 05:36:28,621 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-03-21 05:36:28,787 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250321_053628_config.json
+2025-03-21 05:36:28,787 [INFO] - Batch size: 64 with gradient accumulation steps: 2
+2025-03-21 05:36:28,789 [INFO] - Effective batch size: 128
+2025-03-21 05:36:28,789 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-03-21 05:36:28,791 [INFO] - Starting training...
+2025-03-21 05:36:28,791 [INFO] - Epoch 1/50
+2025-03-21 05:36:28,947 [INFO] - GPU cache cleared: 327.33MB → 327.33MB (freed 0.00MB)
+2025-03-21 06:05:11,944 [INFO] - GPU cache cleared: 1329.74MB → 1329.74MB (freed 0.00MB)
+2025-03-21 06:05:40,439 [INFO] - Train Loss: 0.4335, Train Acc: 85.36%
+2025-03-21 06:05:40,439 [INFO] - Val Loss: 0.3207, Val Acc: 89.04%, Val F1: 0.8891, Val ECE: 0.0051
+2025-03-21 06:05:40,440 [INFO] - Epoch time: 1751.65s
+2025-03-21 06:05:40,585 [INFO] - GPU cache cleared: 1329.74MB → 1329.74MB (freed 0.00MB)
+2025-03-21 06:05:42,649 [INFO] - Best model saved with Val Loss: 0.3207
+2025-03-21 06:05:42,649 [INFO] - GPU Memory: Current=1329.74MB, Peak=5957.66MB, Reserved=1808.00MB
+2025-03-21 06:05:42,650 [INFO] - Epoch 2/50
+2025-03-21 06:05:42,786 [INFO] - GPU cache cleared: 1329.74MB → 1329.74MB (freed 0.00MB)
+2025-03-21 06:23:05,693 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 06:23:18,929 [INFO] - Train Loss: 0.2560, Train Acc: 91.31%
+2025-03-21 06:23:18,929 [INFO] - Val Loss: 0.2612, Val Acc: 91.38%, Val F1: 0.9135, Val ECE: 0.0086
+2025-03-21 06:23:18,930 [INFO] - Epoch time: 1056.28s
+2025-03-21 06:23:19,071 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 06:23:21,591 [INFO] - Best model saved with Val Loss: 0.2612
+2025-03-21 06:23:21,591 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 06:23:21,591 [INFO] - Epoch 3/50
+2025-03-21 06:23:21,731 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 06:49:40,343 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 06:49:52,689 [INFO] - Train Loss: 0.2071, Train Acc: 92.98%
+2025-03-21 06:49:52,689 [INFO] - Val Loss: 0.2789, Val Acc: 90.40%, Val F1: 0.9008, Val ECE: 0.0323
+2025-03-21 06:49:52,690 [INFO] - Epoch time: 1591.10s
+2025-03-21 06:49:52,853 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 06:49:53,935 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 06:49:53,936 [INFO] - Epoch 4/50
+2025-03-21 06:49:54,084 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 07:04:44,863 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:04:57,900 [INFO] - Train Loss: 0.1786, Train Acc: 93.98%
+2025-03-21 07:04:57,901 [INFO] - Val Loss: 0.2139, Val Acc: 92.74%, Val F1: 0.9271, Val ECE: 0.0182
+2025-03-21 07:04:57,901 [INFO] - Epoch time: 903.96s
+2025-03-21 07:04:58,051 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:05:00,323 [INFO] - Best model saved with Val Loss: 0.2139
+2025-03-21 07:05:00,323 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 07:05:00,323 [INFO] - Epoch 5/50
+2025-03-21 07:05:00,465 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:21:45,119 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:21:56,755 [INFO] - Train Loss: 0.1563, Train Acc: 94.57%
+2025-03-21 07:21:56,756 [INFO] - Val Loss: 0.1930, Val Acc: 93.38%, Val F1: 0.9337, Val ECE: 0.0187
+2025-03-21 07:21:56,756 [INFO] - Epoch time: 1016.43s
+2025-03-21 07:21:56,906 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:21:59,122 [INFO] - Best model saved with Val Loss: 0.1930
+2025-03-21 07:21:59,122 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 07:21:59,122 [INFO] - Epoch 6/50
+2025-03-21 07:21:59,281 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:37:29,072 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 07:37:43,655 [INFO] - Train Loss: 0.1328, Train Acc: 95.41%
+2025-03-21 07:37:43,655 [INFO] - Val Loss: 0.2073, Val Acc: 93.42%, Val F1: 0.9340, Val ECE: 0.0215
+2025-03-21 07:37:43,658 [INFO] - Epoch time: 944.53s
+2025-03-21 07:37:43,820 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 07:37:44,880 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 07:37:44,880 [INFO] - Epoch 7/50
+2025-03-21 07:37:45,012 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 07:53:44,953 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:53:56,639 [INFO] - Train Loss: 0.1194, Train Acc: 95.94%
+2025-03-21 07:53:56,640 [INFO] - Val Loss: 0.2619, Val Acc: 91.76%, Val F1: 0.9178, Val ECE: 0.0345
+2025-03-21 07:53:56,640 [INFO] - Epoch time: 971.76s
+2025-03-21 07:53:56,800 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:53:57,861 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 07:53:57,861 [INFO] - Epoch 8/50
+2025-03-21 07:53:58,021 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:07:40,968 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:07:54,673 [INFO] - Train Loss: 0.1082, Train Acc: 96.34%
+2025-03-21 08:07:54,675 [INFO] - Val Loss: 0.2664, Val Acc: 91.94%, Val F1: 0.9187, Val ECE: 0.0380
+2025-03-21 08:07:54,675 [INFO] - Epoch time: 836.81s
+2025-03-21 08:07:54,832 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:07:55,884 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 08:07:55,885 [INFO] - Epoch 9/50
+2025-03-21 08:07:56,023 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:21:42,883 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:21:54,704 [INFO] - Train Loss: 0.0908, Train Acc: 96.99%
+2025-03-21 08:21:54,704 [INFO] - Val Loss: 0.1908, Val Acc: 94.02%, Val F1: 0.9399, Val ECE: 0.0259
+2025-03-21 08:21:54,705 [INFO] - Epoch time: 838.82s
+2025-03-21 08:21:54,872 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:21:56,968 [INFO] - Best model saved with Val Loss: 0.1908
+2025-03-21 08:21:56,970 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 08:21:56,970 [INFO] - Epoch 10/50
+2025-03-21 08:21:57,109 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:34:18,801 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:34:32,033 [INFO] - Train Loss: 0.0810, Train Acc: 97.26%
+2025-03-21 08:34:32,033 [INFO] - Val Loss: 0.2304, Val Acc: 92.98%, Val F1: 0.9291, Val ECE: 0.0341
+2025-03-21 08:34:32,034 [INFO] - Epoch time: 755.06s
+2025-03-21 08:34:32,188 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:34:33,521 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1642.00MB
+2025-03-21 08:34:33,521 [INFO] - Epoch 11/50
+2025-03-21 08:34:33,664 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:50:56,632 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:51:08,294 [INFO] - Train Loss: 0.0759, Train Acc: 97.47%
+2025-03-21 08:51:08,295 [INFO] - Val Loss: 0.1924, Val Acc: 93.90%, Val F1: 0.9380, Val ECE: 0.0304
+2025-03-21 08:51:08,295 [INFO] - Epoch time: 994.77s
+2025-03-21 08:51:08,467 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:51:09,513 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 08:51:09,513 [INFO] - Epoch 12/50
+2025-03-21 08:51:09,652 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 09:03:56,204 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:04:10,668 [INFO] - Train Loss: 0.0654, Train Acc: 97.77%
+2025-03-21 09:04:10,668 [INFO] - Val Loss: 0.2219, Val Acc: 93.44%, Val F1: 0.9342, Val ECE: 0.0316
+2025-03-21 09:04:10,669 [INFO] - Epoch time: 781.16s
+2025-03-21 09:04:10,851 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:04:12,109 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 09:04:12,109 [INFO] - Epoch 13/50
+2025-03-21 09:04:12,249 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:26:58,482 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 09:27:10,676 [INFO] - Train Loss: 0.0631, Train Acc: 97.90%
+2025-03-21 09:27:10,677 [INFO] - Val Loss: 0.2032, Val Acc: 93.80%, Val F1: 0.9379, Val ECE: 0.0305
+2025-03-21 09:27:10,677 [INFO] - Epoch time: 1378.57s
+2025-03-21 09:27:10,847 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 09:27:11,847 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1642.00MB
+2025-03-21 09:27:11,848 [INFO] - Epoch 14/50
+2025-03-21 09:27:11,987 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 09:48:07,615 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:48:21,038 [INFO] - Train Loss: 0.0547, Train Acc: 98.15%
+2025-03-21 09:48:21,038 [INFO] - Val Loss: 0.2320, Val Acc: 93.38%, Val F1: 0.9338, Val ECE: 0.0334
+2025-03-21 09:48:21,038 [INFO] - Epoch time: 1269.19s
+2025-03-21 09:48:21,184 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:48:22,224 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1642.00MB
+2025-03-21 09:48:22,226 [INFO] - Epoch 15/50
+2025-03-21 09:48:22,364 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:08:35,844 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 10:08:47,341 [INFO] - Train Loss: 0.0470, Train Acc: 98.50%
+2025-03-21 10:08:47,341 [INFO] - Val Loss: 0.2091, Val Acc: 94.38%, Val F1: 0.9435, Val ECE: 0.0329
+2025-03-21 10:08:47,348 [INFO] - Epoch time: 1225.12s
+2025-03-21 10:08:47,503 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 10:08:48,496 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 10:08:48,496 [INFO] - Epoch 16/50
+2025-03-21 10:08:48,642 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 10:31:12,929 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:31:25,325 [INFO] - Train Loss: 0.0450, Train Acc: 98.50%
+2025-03-21 10:31:25,325 [INFO] - Val Loss: 0.2041, Val Acc: 94.42%, Val F1: 0.9440, Val ECE: 0.0314
+2025-03-21 10:31:25,327 [INFO] - Epoch time: 1356.83s
+2025-03-21 10:31:25,484 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:31:26,499 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 10:31:26,505 [INFO] - Epoch 17/50
+2025-03-21 10:31:26,642 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:55:42,408 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:55:53,947 [INFO] - Train Loss: 0.0371, Train Acc: 98.74%
+2025-03-21 10:55:53,949 [INFO] - Val Loss: 0.2136, Val Acc: 94.34%, Val F1: 0.9430, Val ECE: 0.0311
+2025-03-21 10:55:53,949 [INFO] - Epoch time: 1467.44s
+2025-03-21 10:55:54,105 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:55:55,146 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 10:55:55,146 [INFO] - Epoch 18/50
+2025-03-21 10:55:55,286 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 11:11:15,370 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:11:29,080 [INFO] - Train Loss: 0.0364, Train Acc: 98.81%
+2025-03-21 11:11:29,082 [INFO] - Val Loss: 0.2079, Val Acc: 94.26%, Val F1: 0.9421, Val ECE: 0.0346
+2025-03-21 11:11:29,083 [INFO] - Epoch time: 933.93s
+2025-03-21 11:11:29,228 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:11:30,241 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 11:11:30,244 [INFO] - Epoch 19/50
+2025-03-21 11:11:30,377 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:30:26,551 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:30:39,515 [INFO] - Train Loss: 0.0337, Train Acc: 98.86%
+2025-03-21 11:30:39,516 [INFO] - Val Loss: 0.1972, Val Acc: 94.58%, Val F1: 0.9453, Val ECE: 0.0273
+2025-03-21 11:30:39,516 [INFO] - Epoch time: 1149.27s
+2025-03-21 11:30:39,674 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:30:40,697 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 11:30:40,697 [INFO] - Early stopping after 19 epochs
+2025-03-21 11:30:40,697 [INFO] - Loading best model for final evaluation...
+2025-03-21 11:30:41,825 [INFO] - GPU cache cleared: 2317.25MB → 2317.25MB (freed 0.00MB)
+2025-03-21 11:31:20,052 [INFO] - Test Metrics: {'loss': 0.19578017924384328, 'accuracy': 93.89, 'f1_score': 0.939046874810345, 'precision': 0.9398775426939313, 'recall': 0.9389000000000001, 'ece': 0.026867039501667023}
+2025-03-21 11:31:20,055 [INFO] - GPU Memory: Current=2317.25MB, Peak=5957.66MB, Reserved=2788.00MB
+2025-03-21 11:31:20,056 [INFO] - Training completed!
+2025-03-21 11:31:24,586 [INFO] - Plot saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250321_113123_training_plot.png
+2025-03-21 11:31:25,162 [INFO] - GPU cache cleared: 676.00MB → 676.00MB (freed 0.00MB)
+2025-03-21 11:31:25,173 [INFO] - Using resize from 32x32 to 224x224
+2025-03-21 11:31:26,769 [INFO] - Training samples: 45000
+2025-03-21 11:31:26,776 [INFO] - Validation samples: 5000
+2025-03-21 11:31:26,776 [INFO] - Test samples: 10000
+2025-03-21 11:32:03,701 [INFO] - Calibration curve saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250321_113123_calibration_curve.png
+2025-03-21 11:32:04,283 [INFO] - Script completed successfully

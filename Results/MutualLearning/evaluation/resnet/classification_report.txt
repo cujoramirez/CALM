@@ -1,0 +1,26 @@
+Model: resnet
+Test Accuracy: 92.18%
+F1 Score (macro): 92.15%
+Precision (macro): 92.15%
+Recall (macro): 92.18%
+Expected Calibration Error: 0.0040
+Maximum Calibration Error: 0.0974
+Average Calibration Error: 0.0244
+Root Mean Square Calibration Error: 0.0376
+
+              precision    recall  f1-score   support
+
+    airplane      0.916     0.940     0.928      1000
+  automobile      0.955     0.949     0.952      1000
+        bird      0.909     0.905     0.907      1000
+         cat      0.880     0.811     0.844      1000
+        deer      0.927     0.930     0.929      1000
+         dog      0.876     0.884     0.880      1000
+        frog      0.957     0.946     0.952      1000
+       horse      0.937     0.953     0.945      1000
+        ship      0.926     0.957     0.941      1000
+       truck      0.932     0.943     0.937      1000
+
+    accuracy                          0.922     10000
+   macro avg      0.922     0.922     0.921     10000
+weighted avg      0.922     0.922     0.921     10000

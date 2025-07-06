@@ -1,0 +1,64 @@
+2025-05-09 18:13:38,382 [INFO] - Using device: cuda
+2025-05-09 18:13:38,387 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-09 18:13:38,387 [INFO] - GPU Memory: 6.00 GB
+2025-05-09 18:13:38,387 [INFO] - CUDA Version: 11.8
+2025-05-09 18:13:38,387 [INFO] - cuDNN benchmark mode enabled
+2025-05-09 18:13:38,387 [INFO] - CPU: 16 cores available
+2025-05-09 18:13:38,387 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-09 18:13:38,387 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-09 18:13:38,387 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-09 18:13:38,387 [INFO] - PyTorch version: 2.5.1
+2025-05-09 18:13:38,387 [INFO] - Torchvision version: 0.20.1
+2025-05-09 18:13:38,387 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "EfficientNetB1_recal",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": false,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 128,
+    "gradient_accumulation_steps": 1,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 64,
+    "efficientnet_input_size": 224,
+    "num_workers": 0,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": false,
+    "epochs": 13,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EfficientNetB1\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\EfficientNetB1",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EfficientNetB1\\exports"
+}
+2025-05-09 18:13:38,387 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\efficientnet_b1_teacher_20250509_181338.py
+2025-05-09 18:13:38,387 [INFO] - Random seed set to 42
+2025-05-09 18:13:38,493 [INFO] - GPU cache cleared: 0.00MB → 0.00MB (freed 0.00MB)
+2025-05-09 18:13:38,509 [INFO] - Random seed set to 42
+2025-05-09 18:13:38,509 [INFO] - Using resize from 64x64 to 224x224
+2025-05-09 18:13:40,168 [INFO] - Training samples: 45000
+2025-05-09 18:13:40,168 [INFO] - Validation samples: 5000
+2025-05-09 18:13:40,168 [INFO] - Test samples: 10000
+2025-05-09 18:13:40,168 [INFO] - Loading pretrained EfficientNetB1 model...
+2025-05-09 18:13:40,377 [INFO] - Model created: EfficientNetB1 adapted for CIFAR-10 with 10 classes
+2025-05-09 18:13:40,522 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\EfficientNetB1\EfficientNetB1_recal_20250509_181340_config.json
+2025-05-09 18:13:40,522 [INFO] - Batch size: 128 with gradient accumulation steps: 1
+2025-05-09 18:13:40,522 [INFO] - Effective batch size: 128
+2025-05-09 18:13:40,522 [INFO] - GPU Memory: Current=25.24MB, Peak=25.24MB, Reserved=40.00MB
+2025-05-09 18:13:40,522 [INFO] - Starting training...
+2025-05-09 18:13:40,522 [INFO] - Epoch 1/13
+2025-05-09 18:13:40,654 [INFO] - GPU cache cleared: 25.24MB → 25.24MB (freed 0.00MB)

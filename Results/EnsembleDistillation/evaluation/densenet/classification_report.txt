@@ -1,0 +1,26 @@
+Model: densenet
+Test Accuracy: 96.76%
+F1 Score (macro): 96.76%
+Precision (macro): 96.78%
+Recall (macro): 96.76%
+Expected Calibration Error: 0.0189
+Maximum Calibration Error: 0.3801
+Average Calibration Error: 0.1733
+Root Mean Squared Cal. Error: 0.0549
+
+              precision    recall  f1-score   support
+
+    airplane      0.977     0.970     0.973      1000
+  automobile      0.972     0.989     0.980      1000
+        bird      0.974     0.955     0.965      1000
+         cat      0.937     0.928     0.933      1000
+        deer      0.940     0.987     0.963      1000
+         dog      0.935     0.940     0.938      1000
+        frog      0.988     0.986     0.987      1000
+       horse      0.993     0.969     0.981      1000
+        ship      0.981     0.983     0.982      1000
+       truck      0.981     0.969     0.975      1000
+
+    accuracy                          0.968     10000
+   macro avg      0.968     0.968     0.968     10000
+weighted avg      0.968     0.968     0.968     10000

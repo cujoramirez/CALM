@@ -1,0 +1,989 @@
+2025-04-20 13:05:29,639 [INFO] - Using device: cuda
+2025-04-20 13:05:29,642 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-04-20 13:05:29,645 [INFO] - Available memory: 6.44 GB
+2025-04-20 13:05:29,656 [INFO] - Starting baseline evaluation...
+2025-04-20 13:05:29,656 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-04-20 13:05:30,013 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:05:30,015 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-04-20 13:05:30,191 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:05:30,423 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:05:30,425 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:05:30,426 [INFO] - Preparing test dataset...
+2025-04-20 13:05:31,005 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:05:31,006 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:05:31,007 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-04-20 13:05:31,008 [INFO] - Running inference...
+2025-04-20 13:05:31,148 [INFO] - GPU cache cleared: 31.15MB → 31.15MB (freed 0.00MB)
+2025-04-20 13:05:47,373 [ERROR] - An error occurred during evaluation: autocast.__init__() missing 1 required positional argument: 'device_type'
+2025-04-20 13:16:20,648 [INFO] - Using device: cuda
+2025-04-20 13:16:20,649 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-04-20 13:16:20,650 [INFO] - Available memory: 6.44 GB
+2025-04-20 13:16:20,658 [INFO] - Starting baseline evaluation...
+2025-04-20 13:16:20,659 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-04-20 13:16:21,005 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:16:21,006 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-04-20 13:16:21,194 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:16:21,194 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:16:21,194 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:16:21,194 [INFO] - Preparing test dataset...
+2025-04-20 13:16:21,729 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:16:21,729 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:16:21,745 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-04-20 13:16:21,745 [INFO] - Running inference...
+2025-04-20 13:16:21,880 [INFO] - GPU cache cleared: 31.15MB → 31.15MB (freed 0.00MB)
+2025-04-20 13:16:43,539 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:16:43,539 [INFO] - Analyzing baseline_ed model performance...
+2025-04-20 13:16:43,542 [INFO] - [baseline_ed] Test Accuracy: 96.09%
+2025-04-20 13:16:43,553 [INFO] - [baseline_ed] F1 Score (macro): 96.10%
+2025-04-20 13:16:43,554 [INFO] - [baseline_ed] Precision (macro): 96.11%
+2025-04-20 13:16:43,555 [INFO] - [baseline_ed] Recall (macro): 96.09%
+2025-04-20 13:16:43,559 [INFO] - [baseline_ed] Expected Calibration Error (ECE): 0.0218
+2025-04-20 13:16:43,559 [INFO] - [baseline_ed] Maximum Calibration Error (MCE): 0.2598
+2025-04-20 13:16:43,560 [INFO] - [baseline_ed] Average Calibration Error (ACE): 0.1491
+2025-04-20 13:16:43,561 [INFO] - [baseline_ed] Root Mean Squared Cal. Error (RMSCE): 0.0591
+2025-04-20 13:16:44,411 [INFO] - 
+[baseline_ed] Classification Report:
+2025-04-20 13:16:44,411 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.970     0.970     0.970      1000
+  automobile      0.967     0.982     0.975      1000
+        bird      0.961     0.949     0.955      1000
+         cat      0.904     0.937     0.920      1000
+        deer      0.968     0.956     0.962      1000
+         dog      0.935     0.930     0.932      1000
+        frog      0.984     0.968     0.976      1000
+       horse      0.980     0.974     0.977      1000
+        ship      0.972     0.979     0.976      1000
+       truck      0.970     0.964     0.967      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-04-20 13:16:45,528 [INFO] - [baseline_ed] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed
+2025-04-20 13:16:45,529 [INFO] - Generating prediction visualizations for baseline_ed...
+2025-04-20 13:16:45,827 [ERROR] - An error occurred during evaluation: a bytes-like object is required, not 'Image'
+2025-04-20 13:19:15,539 [INFO] - Using device: cuda
+2025-04-20 13:19:15,540 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-04-20 13:19:15,540 [INFO] - Available memory: 6.44 GB
+2025-04-20 13:19:15,545 [INFO] - Starting baseline evaluation...
+2025-04-20 13:19:15,545 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-04-20 13:19:15,857 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:19:15,858 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-04-20 13:19:16,072 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:19:16,082 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:19:16,083 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:19:16,083 [INFO] - Preparing test dataset...
+2025-04-20 13:19:16,621 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:19:16,621 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:19:16,621 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-04-20 13:19:16,621 [INFO] - Running inference...
+2025-04-20 13:19:16,817 [INFO] - GPU cache cleared: 39.27MB → 39.27MB (freed 0.00MB)
+2025-04-20 13:19:39,022 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:19:39,022 [INFO] - Analyzing baseline_ed model performance...
+2025-04-20 13:19:39,022 [INFO] - [baseline_ed] Test Accuracy: 96.09%
+2025-04-20 13:19:39,032 [INFO] - [baseline_ed] F1 Score (macro): 96.10%
+2025-04-20 13:19:39,032 [INFO] - [baseline_ed] Precision (macro): 96.11%
+2025-04-20 13:19:39,032 [INFO] - [baseline_ed] Recall (macro): 96.09%
+2025-04-20 13:19:39,043 [INFO] - [baseline_ed] Expected Calibration Error (ECE): 0.0218
+2025-04-20 13:19:39,043 [INFO] - [baseline_ed] Maximum Calibration Error (MCE): 0.2598
+2025-04-20 13:19:39,043 [INFO] - [baseline_ed] Average Calibration Error (ACE): 0.1491
+2025-04-20 13:19:39,043 [INFO] - [baseline_ed] Root Mean Squared Cal. Error (RMSCE): 0.0591
+2025-04-20 13:19:39,831 [INFO] - 
+[baseline_ed] Classification Report:
+2025-04-20 13:19:39,831 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.970     0.970     0.970      1000
+  automobile      0.967     0.982     0.975      1000
+        bird      0.961     0.949     0.955      1000
+         cat      0.904     0.937     0.920      1000
+        deer      0.968     0.956     0.962      1000
+         dog      0.935     0.930     0.932      1000
+        frog      0.984     0.968     0.976      1000
+       horse      0.980     0.974     0.977      1000
+        ship      0.972     0.979     0.976      1000
+       truck      0.970     0.964     0.967      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-04-20 13:19:40,920 [INFO] - [baseline_ed] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed
+2025-04-20 13:19:40,920 [INFO] - Generating prediction visualizations for baseline_ed...
+2025-04-20 13:19:41,264 [ERROR] - An error occurred during evaluation: autocast.__init__() missing 1 required positional argument: 'device_type'
+2025-04-20 13:24:31,233 [INFO] - Using device: cuda
+2025-04-20 13:24:31,233 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-04-20 13:24:31,234 [INFO] - Available memory: 6.44 GB
+2025-04-20 13:24:31,242 [INFO] - Starting baseline evaluation...
+2025-04-20 13:24:31,243 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-04-20 13:24:31,575 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:24:31,575 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-04-20 13:24:31,820 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:24:31,834 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:24:31,834 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:24:31,834 [INFO] - Preparing test dataset...
+2025-04-20 13:24:32,392 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:24:32,393 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:24:32,393 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-04-20 13:24:32,394 [INFO] - Running inference...
+2025-04-20 13:24:32,561 [INFO] - GPU cache cleared: 39.27MB → 39.27MB (freed 0.00MB)
+2025-04-20 13:24:53,137 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:24:53,137 [INFO] - Analyzing baseline_ed model performance...
+2025-04-20 13:24:53,137 [INFO] - [baseline_ed] Test Accuracy: 96.09%
+2025-04-20 13:24:53,152 [INFO] - [baseline_ed] F1 Score (macro): 96.10%
+2025-04-20 13:24:53,153 [INFO] - [baseline_ed] Precision (macro): 96.11%
+2025-04-20 13:24:53,154 [INFO] - [baseline_ed] Recall (macro): 96.09%
+2025-04-20 13:24:53,156 [INFO] - [baseline_ed] Expected Calibration Error (ECE): 0.0218
+2025-04-20 13:24:53,158 [INFO] - [baseline_ed] Maximum Calibration Error (MCE): 0.2598
+2025-04-20 13:24:53,158 [INFO] - [baseline_ed] Average Calibration Error (ACE): 0.1491
+2025-04-20 13:24:53,159 [INFO] - [baseline_ed] Root Mean Squared Cal. Error (RMSCE): 0.0591
+2025-04-20 13:24:53,908 [INFO] - 
+[baseline_ed] Classification Report:
+2025-04-20 13:24:53,915 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.970     0.970     0.970      1000
+  automobile      0.967     0.982     0.975      1000
+        bird      0.961     0.949     0.955      1000
+         cat      0.904     0.937     0.920      1000
+        deer      0.968     0.956     0.962      1000
+         dog      0.935     0.930     0.932      1000
+        frog      0.984     0.968     0.976      1000
+       horse      0.980     0.974     0.977      1000
+        ship      0.972     0.979     0.976      1000
+       truck      0.970     0.964     0.967      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-04-20 13:24:54,956 [INFO] - [baseline_ed] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed
+2025-04-20 13:24:54,956 [INFO] - Generating prediction visualizations for baseline_ed...
+2025-04-20 13:24:56,803 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/prediction_examples.png
+2025-04-20 13:24:56,804 [INFO] - Evaluating Mutual Learning baseline model...
+2025-04-20 13:24:56,805 [INFO] - Running inference...
+2025-04-20 13:24:56,981 [INFO] - GPU cache cleared: 39.27MB → 39.27MB (freed 0.00MB)
+2025-04-20 13:25:18,353 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:25:18,353 [INFO] - Analyzing baseline_ml model performance...
+2025-04-20 13:25:18,353 [INFO] - [baseline_ml] Test Accuracy: 96.06%
+2025-04-20 13:25:18,363 [INFO] - [baseline_ml] F1 Score (macro): 96.07%
+2025-04-20 13:25:18,363 [INFO] - [baseline_ml] Precision (macro): 96.10%
+2025-04-20 13:25:18,363 [INFO] - [baseline_ml] Recall (macro): 96.06%
+2025-04-20 13:25:18,363 [INFO] - [baseline_ml] Expected Calibration Error (ECE): 0.0235
+2025-04-20 13:25:18,363 [INFO] - [baseline_ml] Maximum Calibration Error (MCE): 0.7075
+2025-04-20 13:25:18,373 [INFO] - [baseline_ml] Average Calibration Error (ACE): 0.2593
+2025-04-20 13:25:18,373 [INFO] - [baseline_ml] Root Mean Squared Cal. Error (RMSCE): 0.0647
+2025-04-20 13:25:19,146 [INFO] - 
+[baseline_ml] Classification Report:
+2025-04-20 13:25:19,156 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.955     0.968     0.961      1000
+  automobile      0.976     0.971     0.973      1000
+        bird      0.977     0.949     0.963      1000
+         cat      0.895     0.935     0.914      1000
+        deer      0.970     0.972     0.971      1000
+         dog      0.948     0.924     0.936      1000
+        frog      0.983     0.969     0.976      1000
+       horse      0.979     0.973     0.976      1000
+        ship      0.972     0.973     0.973      1000
+       truck      0.956     0.972     0.964      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-04-20 13:25:20,231 [INFO] - [baseline_ml] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml
+2025-04-20 13:25:20,231 [INFO] - Generating prediction visualizations for baseline_ml...
+2025-04-20 13:25:22,088 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/prediction_examples.png
+2025-04-20 13:25:22,088 [INFO] - Generating model comparison visualizations...
+2025-04-20 13:25:24,247 [INFO] - Generating combined calibration curve comparison...
+2025-04-20 13:25:24,260 [INFO] - Preparing test dataset...
+2025-04-20 13:25:24,833 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:25:24,833 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:25:24,833 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-04-20 13:25:25,014 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:25:25,016 [INFO] - Running inference...
+2025-04-20 13:25:25,241 [INFO] - GPU cache cleared: 54.85MB → 54.85MB (freed 0.00MB)
+2025-04-20 13:25:46,157 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:25:46,173 [INFO] - Preparing test dataset...
+2025-04-20 13:25:46,745 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:25:46,745 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:25:46,745 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-04-20 13:25:46,908 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:25:46,910 [INFO] - Running inference...
+2025-04-20 13:25:47,124 [INFO] - GPU cache cleared: 54.85MB → 54.85MB (freed 0.00MB)
+2025-04-20 13:26:08,171 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:26:09,027 [INFO] - Calibration curve comparison saved successfully
+2025-04-20 13:26:09,031 [INFO] - Model comparison visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline
+2025-04-20 13:26:09,032 [INFO] - ==================================================
+2025-04-20 13:26:09,033 [INFO] - Baseline models evaluation completed successfully!
+2025-04-20 13:26:09,033 [INFO] - All results saved to 'C:\Users\Gading\Downloads\Research\Results\Baseline' directory
+2025-04-20 13:26:09,034 [INFO] - ==================================================
+2025-04-20 13:48:30,241 [INFO] - Using device: cuda
+2025-04-20 13:48:30,241 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-04-20 13:48:30,241 [INFO] - Available memory: 6.44 GB
+2025-04-20 13:48:30,248 [INFO] - Starting baseline evaluation...
+2025-04-20 13:48:30,248 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-04-20 13:48:30,592 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:48:30,592 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-04-20 13:48:30,856 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:48:30,862 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:48:30,862 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:48:30,862 [INFO] - Preparing test dataset...
+2025-04-20 13:48:31,452 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:48:31,452 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:48:31,452 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-04-20 13:48:31,452 [INFO] - Running inference...
+2025-04-20 13:48:31,772 [INFO] - GPU cache cleared: 39.27MB → 39.27MB (freed 0.00MB)
+2025-04-20 13:48:52,236 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:48:52,236 [INFO] - Analyzing baseline_ed model performance...
+2025-04-20 13:48:52,236 [INFO] - [baseline_ed] Test Accuracy: 96.09%
+2025-04-20 13:48:52,243 [INFO] - [baseline_ed] F1 Score (macro): 96.10%
+2025-04-20 13:48:52,243 [INFO] - [baseline_ed] Precision (macro): 96.11%
+2025-04-20 13:48:52,243 [INFO] - [baseline_ed] Recall (macro): 96.09%
+2025-04-20 13:48:52,251 [INFO] - [baseline_ed] Expected Calibration Error (ECE): 0.0218
+2025-04-20 13:48:52,251 [INFO] - [baseline_ed] Maximum Calibration Error (MCE): 0.2598
+2025-04-20 13:48:52,252 [INFO] - [baseline_ed] Average Calibration Error (ACE): 0.1491
+2025-04-20 13:48:52,253 [INFO] - [baseline_ed] Root Mean Squared Cal. Error (RMSCE): 0.0591
+2025-04-20 13:48:52,998 [INFO] - 
+[baseline_ed] Classification Report:
+2025-04-20 13:48:52,998 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.970     0.970     0.970      1000
+  automobile      0.967     0.982     0.975      1000
+        bird      0.961     0.949     0.955      1000
+         cat      0.904     0.937     0.920      1000
+        deer      0.968     0.956     0.962      1000
+         dog      0.935     0.930     0.932      1000
+        frog      0.984     0.968     0.976      1000
+       horse      0.980     0.974     0.977      1000
+        ship      0.972     0.979     0.976      1000
+       truck      0.970     0.964     0.967      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-04-20 13:48:54,035 [INFO] - [baseline_ed] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed
+2025-04-20 13:48:54,035 [INFO] - Generating prediction visualizations for baseline_ed...
+2025-04-20 13:48:55,711 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/prediction_examples.png
+2025-04-20 13:48:55,712 [INFO] - Generating GradCAM visualizations for baseline_ed...
+2025-04-20 13:48:55,743 [INFO] - Generating GradCAM for class 'airplane'
+2025-04-20 13:48:56,306 [ERROR] - An error occurred during evaluation: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.
+2025-04-20 13:51:14,013 [INFO] - Using device: cuda
+2025-04-20 13:51:14,013 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-04-20 13:51:14,013 [INFO] - Available memory: 6.44 GB
+2025-04-20 13:51:14,017 [INFO] - Starting baseline evaluation...
+2025-04-20 13:51:14,029 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-04-20 13:51:14,542 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:51:14,542 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-04-20 13:51:14,764 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:51:14,764 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:51:14,764 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-04-20 13:51:14,764 [INFO] - Preparing test dataset...
+2025-04-20 13:51:15,309 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:51:15,309 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:51:15,309 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-04-20 13:51:15,309 [INFO] - Running inference...
+2025-04-20 13:51:15,470 [INFO] - GPU cache cleared: 78.82MB → 78.82MB (freed 0.00MB)
+2025-04-20 13:51:36,294 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:51:36,295 [INFO] - Analyzing baseline_ed model performance...
+2025-04-20 13:51:36,296 [INFO] - [baseline_ed] Test Accuracy: 96.09%
+2025-04-20 13:51:36,304 [INFO] - [baseline_ed] F1 Score (macro): 96.10%
+2025-04-20 13:51:36,304 [INFO] - [baseline_ed] Precision (macro): 96.11%
+2025-04-20 13:51:36,304 [INFO] - [baseline_ed] Recall (macro): 96.09%
+2025-04-20 13:51:36,308 [INFO] - [baseline_ed] Expected Calibration Error (ECE): 0.0218
+2025-04-20 13:51:36,309 [INFO] - [baseline_ed] Maximum Calibration Error (MCE): 0.2598
+2025-04-20 13:51:36,309 [INFO] - [baseline_ed] Average Calibration Error (ACE): 0.1491
+2025-04-20 13:51:36,310 [INFO] - [baseline_ed] Root Mean Squared Cal. Error (RMSCE): 0.0591
+2025-04-20 13:51:37,094 [INFO] - 
+[baseline_ed] Classification Report:
+2025-04-20 13:51:37,095 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.970     0.970     0.970      1000
+  automobile      0.967     0.982     0.975      1000
+        bird      0.961     0.949     0.955      1000
+         cat      0.904     0.937     0.920      1000
+        deer      0.968     0.956     0.962      1000
+         dog      0.935     0.930     0.932      1000
+        frog      0.984     0.968     0.976      1000
+       horse      0.980     0.974     0.977      1000
+        ship      0.972     0.979     0.976      1000
+       truck      0.970     0.964     0.967      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-04-20 13:51:38,172 [INFO] - [baseline_ed] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed
+2025-04-20 13:51:38,172 [INFO] - Generating prediction visualizations for baseline_ed...
+2025-04-20 13:51:39,900 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/prediction_examples.png
+2025-04-20 13:51:39,901 [INFO] - Generating GradCAM visualizations for baseline_ed...
+2025-04-20 13:51:39,930 [INFO] - Generating GradCAM for class 'airplane'
+2025-04-20 13:51:40,297 [INFO] - Generating GradCAM for class 'automobile'
+2025-04-20 13:51:40,640 [INFO] - Generating GradCAM for class 'bird'
+2025-04-20 13:51:41,013 [INFO] - Generating GradCAM for class 'cat'
+2025-04-20 13:51:41,390 [INFO] - Generating GradCAM for class 'deer'
+2025-04-20 13:51:41,747 [INFO] - Generating GradCAM for class 'dog'
+2025-04-20 13:51:42,103 [INFO] - Generating GradCAM for class 'frog'
+2025-04-20 13:51:42,480 [INFO] - Generating GradCAM for class 'horse'
+2025-04-20 13:51:42,850 [INFO] - Generating GradCAM for class 'ship'
+2025-04-20 13:51:43,202 [INFO] - Generating GradCAM for class 'truck'
+2025-04-20 13:51:46,118 [INFO] - GradCAM visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/gradcam_visualization.png
+2025-04-20 13:51:46,118 [INFO] - Evaluating Mutual Learning baseline model...
+2025-04-20 13:51:46,118 [INFO] - Running inference...
+2025-04-20 13:51:46,319 [INFO] - GPU cache cleared: 94.67MB → 94.67MB (freed 0.00MB)
+2025-04-20 13:52:07,030 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:52:07,031 [INFO] - Analyzing baseline_ml model performance...
+2025-04-20 13:52:07,033 [INFO] - [baseline_ml] Test Accuracy: 96.06%
+2025-04-20 13:52:07,041 [INFO] - [baseline_ml] F1 Score (macro): 96.07%
+2025-04-20 13:52:07,042 [INFO] - [baseline_ml] Precision (macro): 96.10%
+2025-04-20 13:52:07,043 [INFO] - [baseline_ml] Recall (macro): 96.06%
+2025-04-20 13:52:07,046 [INFO] - [baseline_ml] Expected Calibration Error (ECE): 0.0235
+2025-04-20 13:52:07,046 [INFO] - [baseline_ml] Maximum Calibration Error (MCE): 0.7075
+2025-04-20 13:52:07,047 [INFO] - [baseline_ml] Average Calibration Error (ACE): 0.2593
+2025-04-20 13:52:07,047 [INFO] - [baseline_ml] Root Mean Squared Cal. Error (RMSCE): 0.0647
+2025-04-20 13:52:07,796 [INFO] - 
+[baseline_ml] Classification Report:
+2025-04-20 13:52:07,800 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.955     0.968     0.961      1000
+  automobile      0.976     0.971     0.973      1000
+        bird      0.977     0.949     0.963      1000
+         cat      0.895     0.935     0.914      1000
+        deer      0.970     0.972     0.971      1000
+         dog      0.948     0.924     0.936      1000
+        frog      0.983     0.969     0.976      1000
+       horse      0.979     0.973     0.976      1000
+        ship      0.972     0.973     0.973      1000
+       truck      0.956     0.972     0.964      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-04-20 13:52:08,879 [INFO] - [baseline_ml] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml
+2025-04-20 13:52:08,881 [INFO] - Generating prediction visualizations for baseline_ml...
+2025-04-20 13:52:10,713 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/prediction_examples.png
+2025-04-20 13:52:10,713 [INFO] - Generating GradCAM visualizations for baseline_ml...
+2025-04-20 13:52:10,745 [INFO] - Generating GradCAM for class 'airplane'
+2025-04-20 13:52:11,094 [INFO] - Generating GradCAM for class 'automobile'
+2025-04-20 13:52:11,428 [INFO] - Generating GradCAM for class 'bird'
+2025-04-20 13:52:11,796 [INFO] - Generating GradCAM for class 'cat'
+2025-04-20 13:52:12,157 [INFO] - Generating GradCAM for class 'deer'
+2025-04-20 13:52:12,544 [INFO] - Generating GradCAM for class 'dog'
+2025-04-20 13:52:12,907 [INFO] - Generating GradCAM for class 'frog'
+2025-04-20 13:52:13,282 [INFO] - Generating GradCAM for class 'horse'
+2025-04-20 13:52:13,657 [INFO] - Generating GradCAM for class 'ship'
+2025-04-20 13:52:14,037 [INFO] - Generating GradCAM for class 'truck'
+2025-04-20 13:52:16,852 [INFO] - GradCAM visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/gradcam_visualization.png
+2025-04-20 13:52:16,859 [INFO] - Generating model comparison visualizations...
+2025-04-20 13:52:18,907 [INFO] - Generating combined calibration curve comparison...
+2025-04-20 13:52:18,914 [INFO] - Preparing test dataset...
+2025-04-20 13:52:19,457 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:52:19,457 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:52:19,457 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-04-20 13:52:19,721 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:52:19,723 [INFO] - Running inference...
+2025-04-20 13:52:20,012 [INFO] - GPU cache cleared: 126.09MB → 126.09MB (freed 0.00MB)
+2025-04-20 13:52:41,086 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:52:41,091 [INFO] - Preparing test dataset...
+2025-04-20 13:52:41,677 [INFO] - Test dataset loaded with 10000 samples
+2025-04-20 13:52:41,677 [INFO] - Creating DataLoader with batch size 64...
+2025-04-20 13:52:41,677 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-04-20 13:52:41,837 [INFO] - Model loaded successfully and set to evaluation mode
+2025-04-20 13:52:41,837 [INFO] - Running inference...
+2025-04-20 13:52:42,098 [INFO] - GPU cache cleared: 126.80MB → 126.80MB (freed 0.00MB)
+2025-04-20 13:53:03,172 [INFO] - Inference complete on 10000 samples
+2025-04-20 13:53:03,781 [INFO] - Calibration curve comparison saved successfully
+2025-04-20 13:53:03,781 [INFO] - Model comparison visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline
+2025-04-20 13:53:03,781 [INFO] - Generating confidence distribution visualization...
+2025-04-20 13:53:04,555 [INFO] - Confidence distribution visualization saved to C:\Users\Gading\Downloads\Research\Results\Baseline/confidence_distribution.png
+2025-04-20 13:53:04,555 [INFO] - Generating detailed calibration visualization...
+2025-04-20 13:53:05,216 [INFO] - Detailed calibration visualization saved to C:\Users\Gading\Downloads\Research\Results\Baseline/calibration_detailed.png
+2025-04-20 13:53:05,216 [INFO] - Analyzing prediction overlap between models...
+2025-04-20 13:53:05,767 [INFO] - Prediction overlap analysis saved to C:\Users\Gading\Downloads\Research\Results\Baseline/prediction_overlap.png
+2025-04-20 13:53:05,777 [INFO] - Analyzing misclassifications...
+2025-04-20 13:53:08,406 [INFO] - Misclassification analysis saved to C:\Users\Gading\Downloads\Research\Results\Baseline/common_misclassifications.png
+2025-04-20 13:53:08,416 [INFO] - ==================================================
+2025-04-20 13:53:08,416 [INFO] - Baseline models evaluation completed successfully!
+2025-04-20 13:53:08,416 [INFO] - All results saved to 'C:\Users\Gading\Downloads\Research\Results\Baseline' directory
+2025-04-20 13:53:08,416 [INFO] - ==================================================
+2025-05-10 04:44:51,467 [INFO] - Using device: cuda
+2025-05-10 04:44:51,471 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:44:51,472 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:44:51,476 [INFO] - Starting baseline evaluation...
+2025-05-10 04:44:51,477 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-05-10 04:44:51,767 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:44:51,768 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 04:44:51,956 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:44:52,104 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-05-10 04:44:52,106 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-05-10 04:44:52,107 [INFO] - Preparing test dataset...
+2025-05-10 04:44:52,652 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 04:44:52,652 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 04:44:52,654 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-05-10 04:44:52,654 [INFO] - Running inference...
+2025-05-10 04:44:58,222 [INFO] - Using device: cuda
+2025-05-10 04:44:58,226 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:44:58,227 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:46:26,329 [INFO] - Using device: cuda
+2025-05-10 04:46:26,333 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:46:26,333 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:46:26,337 [INFO] - Starting baseline evaluation...
+2025-05-10 04:46:26,337 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-05-10 04:46:26,578 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:46:26,579 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 04:46:26,762 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:46:26,835 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-05-10 04:46:26,837 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-05-10 04:46:26,838 [INFO] - Preparing test dataset...
+2025-05-10 04:46:27,375 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 04:46:27,375 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 04:46:27,377 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-05-10 04:46:27,377 [INFO] - Running inference...
+2025-05-10 04:46:27,502 [INFO] - GPU cache cleared: 31.15MB -> 31.15MB (freed 0.00MB)
+2025-05-10 04:46:32,895 [INFO] - Using device: cuda
+2025-05-10 04:46:32,898 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:46:32,899 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:46:38,280 [INFO] - Using device: cuda
+2025-05-10 04:46:38,283 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:46:38,284 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:46:43,702 [INFO] - Using device: cuda
+2025-05-10 04:46:43,705 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:46:43,705 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:46:49,070 [INFO] - Using device: cuda
+2025-05-10 04:46:49,073 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:46:49,074 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:46:58,035 [INFO] - Inference complete on 10000 samples
+2025-05-10 04:46:58,035 [INFO] - Analyzing baseline_ed model performance...
+2025-05-10 04:46:58,037 [INFO] - [baseline_ed] Test Accuracy: 96.09%
+2025-05-10 04:46:58,057 [INFO] - [baseline_ed] F1 Score (macro): 96.10%
+2025-05-10 04:46:58,059 [INFO] - [baseline_ed] Precision (macro): 96.11%
+2025-05-10 04:46:58,059 [INFO] - [baseline_ed] Recall (macro): 96.09%
+2025-05-10 04:46:58,062 [INFO] - [baseline_ed] Expected Calibration Error (ECE): 0.0218
+2025-05-10 04:46:58,063 [INFO] - [baseline_ed] Maximum Calibration Error (MCE): 0.2598
+2025-05-10 04:46:58,063 [INFO] - [baseline_ed] Average Calibration Error (ACE): 0.1491
+2025-05-10 04:46:58,063 [INFO] - [baseline_ed] Root Mean Squared Cal. Error (RMSCE): 0.0591
+2025-05-10 04:46:59,037 [INFO] - 
+[baseline_ed] Classification Report:
+2025-05-10 04:46:59,038 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.970     0.970     0.970      1000
+  automobile      0.967     0.982     0.975      1000
+        bird      0.961     0.949     0.955      1000
+         cat      0.904     0.937     0.920      1000
+        deer      0.968     0.956     0.962      1000
+         dog      0.935     0.930     0.932      1000
+        frog      0.984     0.968     0.976      1000
+       horse      0.980     0.974     0.977      1000
+        ship      0.972     0.979     0.976      1000
+       truck      0.970     0.964     0.967      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-05-10 04:46:59,923 [INFO] - [baseline_ed] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed
+2025-05-10 04:46:59,923 [INFO] - Generating prediction visualizations for baseline_ed...
+2025-05-10 04:47:01,506 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/prediction_examples.png
+2025-05-10 04:47:01,507 [INFO] - Generating GradCAM visualizations for baseline_ed...
+2025-05-10 04:47:01,551 [INFO] - Generating GradCAM for class 'airplane'
+2025-05-10 04:47:02,333 [INFO] - Generating GradCAM for class 'automobile'
+2025-05-10 04:47:02,665 [INFO] - Generating GradCAM for class 'bird'
+2025-05-10 04:47:03,303 [INFO] - Generating GradCAM for class 'cat'
+2025-05-10 04:47:03,641 [INFO] - Generating GradCAM for class 'deer'
+2025-05-10 04:47:03,972 [INFO] - Generating GradCAM for class 'dog'
+2025-05-10 04:47:04,305 [INFO] - Generating GradCAM for class 'frog'
+2025-05-10 04:47:04,664 [INFO] - Generating GradCAM for class 'horse'
+2025-05-10 04:47:05,018 [INFO] - Generating GradCAM for class 'ship'
+2025-05-10 04:47:05,377 [INFO] - Generating GradCAM for class 'truck'
+2025-05-10 04:47:07,744 [INFO] - GradCAM visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/gradcam_visualization.png
+2025-05-10 04:47:07,745 [INFO] - Evaluating Mutual Learning baseline model...
+2025-05-10 04:47:07,746 [INFO] - Running inference...
+2025-05-10 04:47:07,919 [INFO] - GPU cache cleared: 63.25MB -> 63.25MB (freed 0.00MB)
+2025-05-10 04:47:24,221 [INFO] - Using device: cuda
+2025-05-10 04:47:24,224 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:47:24,224 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:47:29,584 [INFO] - Using device: cuda
+2025-05-10 04:47:29,587 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:47:29,587 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:47:34,953 [INFO] - Using device: cuda
+2025-05-10 04:47:34,956 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:47:34,957 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:47:40,322 [INFO] - Using device: cuda
+2025-05-10 04:47:40,438 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:47:40,440 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:47:47,713 [INFO] - Inference complete on 10000 samples
+2025-05-10 04:47:47,713 [INFO] - Analyzing baseline_ml model performance...
+2025-05-10 04:47:47,714 [INFO] - [baseline_ml] Test Accuracy: 96.06%
+2025-05-10 04:47:47,721 [INFO] - [baseline_ml] F1 Score (macro): 96.07%
+2025-05-10 04:47:47,721 [INFO] - [baseline_ml] Precision (macro): 96.10%
+2025-05-10 04:47:47,721 [INFO] - [baseline_ml] Recall (macro): 96.06%
+2025-05-10 04:47:47,723 [INFO] - [baseline_ml] Expected Calibration Error (ECE): 0.0235
+2025-05-10 04:47:47,723 [INFO] - [baseline_ml] Maximum Calibration Error (MCE): 0.7075
+2025-05-10 04:47:47,724 [INFO] - [baseline_ml] Average Calibration Error (ACE): 0.2593
+2025-05-10 04:47:47,724 [INFO] - [baseline_ml] Root Mean Squared Cal. Error (RMSCE): 0.0647
+2025-05-10 04:47:48,341 [INFO] - 
+[baseline_ml] Classification Report:
+2025-05-10 04:47:48,342 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.955     0.968     0.961      1000
+  automobile      0.976     0.971     0.973      1000
+        bird      0.977     0.949     0.963      1000
+         cat      0.895     0.935     0.914      1000
+        deer      0.970     0.972     0.971      1000
+         dog      0.948     0.924     0.936      1000
+        frog      0.983     0.969     0.976      1000
+       horse      0.979     0.973     0.976      1000
+        ship      0.972     0.973     0.973      1000
+       truck      0.956     0.972     0.964      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-05-10 04:47:49,262 [INFO] - [baseline_ml] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml
+2025-05-10 04:47:49,263 [INFO] - Generating prediction visualizations for baseline_ml...
+2025-05-10 04:47:50,831 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/prediction_examples.png
+2025-05-10 04:47:50,832 [INFO] - Generating GradCAM visualizations for baseline_ml...
+2025-05-10 04:47:50,863 [INFO] - Generating GradCAM for class 'airplane'
+2025-05-10 04:47:51,207 [INFO] - Generating GradCAM for class 'automobile'
+2025-05-10 04:47:51,547 [INFO] - Generating GradCAM for class 'bird'
+2025-05-10 04:47:51,891 [INFO] - Generating GradCAM for class 'cat'
+2025-05-10 04:47:52,228 [INFO] - Generating GradCAM for class 'deer'
+2025-05-10 04:47:52,573 [INFO] - Generating GradCAM for class 'dog'
+2025-05-10 04:47:52,915 [INFO] - Generating GradCAM for class 'frog'
+2025-05-10 04:47:53,257 [INFO] - Generating GradCAM for class 'horse'
+2025-05-10 04:47:53,613 [INFO] - Generating GradCAM for class 'ship'
+2025-05-10 04:47:54,141 [INFO] - Generating GradCAM for class 'truck'
+2025-05-10 04:47:56,457 [INFO] - GradCAM visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/gradcam_visualization.png
+2025-05-10 04:47:56,459 [INFO] - Generating model comparison visualizations...
+2025-05-10 04:47:58,163 [INFO] - Generating combined calibration curve comparison...
+2025-05-10 04:47:58,178 [INFO] - Preparing test dataset...
+2025-05-10 04:47:58,678 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 04:47:58,679 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 04:47:58,680 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-05-10 04:47:58,912 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:47:58,913 [INFO] - Running inference...
+2025-05-10 04:47:59,082 [INFO] - GPU cache cleared: 94.67MB -> 94.67MB (freed 0.00MB)
+2025-05-10 04:48:04,893 [INFO] - Using device: cuda
+2025-05-10 04:48:04,897 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:48:04,897 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:48:10,186 [INFO] - Using device: cuda
+2025-05-10 04:48:10,189 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:48:10,189 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:48:15,517 [INFO] - Using device: cuda
+2025-05-10 04:48:15,520 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:48:15,520 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:48:20,904 [INFO] - Using device: cuda
+2025-05-10 04:48:20,907 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:48:20,909 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:48:27,146 [INFO] - Inference complete on 10000 samples
+2025-05-10 04:48:27,151 [INFO] - Preparing test dataset...
+2025-05-10 04:48:27,669 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 04:48:27,669 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 04:48:27,672 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 04:48:27,841 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:48:27,843 [INFO] - Running inference...
+2025-05-10 04:48:27,986 [INFO] - GPU cache cleared: 94.79MB -> 94.79MB (freed 0.00MB)
+2025-05-10 04:48:33,363 [INFO] - Using device: cuda
+2025-05-10 04:48:33,366 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:48:33,366 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:48:38,789 [INFO] - Using device: cuda
+2025-05-10 04:48:38,792 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:48:38,792 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:48:44,125 [INFO] - Using device: cuda
+2025-05-10 04:48:44,128 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:48:44,129 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:48:49,489 [INFO] - Using device: cuda
+2025-05-10 04:48:49,492 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:48:49,492 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:48:55,683 [INFO] - Inference complete on 10000 samples
+2025-05-10 04:48:56,374 [INFO] - Calibration curve comparison saved successfully
+2025-05-10 04:48:56,378 [INFO] - Model comparison visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline
+2025-05-10 04:48:56,378 [INFO] - Generating confidence distribution visualization...
+2025-05-10 04:48:57,046 [INFO] - Confidence distribution visualization saved to C:\Users\Gading\Downloads\Research\Results\Baseline/confidence_distribution.png
+2025-05-10 04:48:57,048 [INFO] - Generating detailed calibration visualization...
+2025-05-10 04:48:57,607 [INFO] - Detailed calibration visualization saved to C:\Users\Gading\Downloads\Research\Results\Baseline/calibration_detailed.png
+2025-05-10 04:48:57,608 [INFO] - Analyzing prediction overlap between models...
+2025-05-10 04:48:58,051 [INFO] - Prediction overlap analysis saved to C:\Users\Gading\Downloads\Research\Results\Baseline/prediction_overlap.png
+2025-05-10 04:48:58,052 [INFO] - Analyzing misclassifications...
+2025-05-10 04:49:00,135 [INFO] - Misclassification analysis saved to C:\Users\Gading\Downloads\Research\Results\Baseline/common_misclassifications.png
+2025-05-10 04:49:00,136 [INFO] - ==================================================
+2025-05-10 04:49:00,137 [INFO] - Baseline models evaluation completed successfully!
+2025-05-10 04:49:00,137 [INFO] - All results saved to 'C:\Users\Gading\Downloads\Research\Results\Baseline' directory
+2025-05-10 04:49:00,137 [INFO] - ==================================================
+2025-05-10 04:51:31,874 [INFO] - Using device: cuda
+2025-05-10 04:51:31,878 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:51:31,878 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:51:31,881 [INFO] - Starting baseline evaluation...
+2025-05-10 04:51:31,882 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-05-10 04:51:32,142 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:51:32,143 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 04:51:32,284 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:51:32,452 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-05-10 04:51:32,454 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-05-10 04:51:32,455 [INFO] - Preparing test dataset...
+2025-05-10 04:51:32,958 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 04:51:32,958 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 04:51:32,960 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-05-10 04:51:32,960 [INFO] - Running inference...
+2025-05-10 04:51:33,085 [INFO] - GPU cache cleared: 31.15MB -> 31.15MB (freed 0.00MB)
+2025-05-10 04:51:38,445 [INFO] - Using device: cuda
+2025-05-10 04:51:38,448 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:51:38,448 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:51:43,801 [INFO] - Using device: cuda
+2025-05-10 04:51:43,805 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:51:43,805 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:51:49,149 [INFO] - Using device: cuda
+2025-05-10 04:51:49,152 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:51:49,153 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:51:54,453 [INFO] - Using device: cuda
+2025-05-10 04:51:54,456 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:51:54,456 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:52:01,112 [INFO] - Inference complete on 10000 samples
+2025-05-10 04:52:01,113 [INFO] - Analyzing baseline_ed model performance...
+2025-05-10 04:52:01,113 [INFO] - [baseline_ed] Test Accuracy: 96.09%
+2025-05-10 04:52:01,121 [INFO] - [baseline_ed] F1 Score (macro): 96.10%
+2025-05-10 04:52:01,121 [INFO] - [baseline_ed] Precision (macro): 96.11%
+2025-05-10 04:52:01,122 [INFO] - [baseline_ed] Recall (macro): 96.09%
+2025-05-10 04:52:01,124 [INFO] - [baseline_ed] Expected Calibration Error (ECE): 0.0218
+2025-05-10 04:52:01,124 [INFO] - [baseline_ed] Maximum Calibration Error (MCE): 0.2598
+2025-05-10 04:52:01,124 [INFO] - [baseline_ed] Average Calibration Error (ACE): 0.1491
+2025-05-10 04:52:01,124 [INFO] - [baseline_ed] Root Mean Squared Cal. Error (RMSCE): 0.0591
+2025-05-10 04:52:01,859 [INFO] - 
+[baseline_ed] Classification Report:
+2025-05-10 04:52:01,860 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.970     0.970     0.970      1000
+  automobile      0.967     0.982     0.975      1000
+        bird      0.961     0.949     0.955      1000
+         cat      0.904     0.937     0.920      1000
+        deer      0.968     0.956     0.962      1000
+         dog      0.935     0.930     0.932      1000
+        frog      0.984     0.968     0.976      1000
+       horse      0.980     0.974     0.977      1000
+        ship      0.972     0.979     0.976      1000
+       truck      0.970     0.964     0.967      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-05-10 04:52:02,714 [INFO] - [baseline_ed] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed
+2025-05-10 04:52:02,714 [INFO] - Generating prediction visualizations for baseline_ed...
+2025-05-10 04:52:04,185 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/prediction_examples.png
+2025-05-10 04:52:04,186 [INFO] - Generating GradCAM visualizations for baseline_ed...
+2025-05-10 04:52:04,220 [INFO] - Generating GradCAM for class 'airplane'
+2025-05-10 04:52:04,674 [INFO] - Generating GradCAM for class 'automobile'
+2025-05-10 04:52:05,001 [INFO] - Generating GradCAM for class 'bird'
+2025-05-10 04:52:05,503 [INFO] - Generating GradCAM for class 'cat'
+2025-05-10 04:52:05,860 [INFO] - Generating GradCAM for class 'deer'
+2025-05-10 04:52:06,209 [INFO] - Generating GradCAM for class 'dog'
+2025-05-10 04:52:06,563 [INFO] - Generating GradCAM for class 'frog'
+2025-05-10 04:52:06,924 [INFO] - Generating GradCAM for class 'horse'
+2025-05-10 04:52:07,279 [INFO] - Generating GradCAM for class 'ship'
+2025-05-10 04:52:07,636 [INFO] - Generating GradCAM for class 'truck'
+2025-05-10 04:52:13,001 [INFO] - GradCAM visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/gradcam_visualization.png
+2025-05-10 04:52:13,003 [INFO] - Evaluating Mutual Learning baseline model...
+2025-05-10 04:52:13,004 [INFO] - Running inference...
+2025-05-10 04:52:13,179 [INFO] - GPU cache cleared: 63.25MB -> 63.25MB (freed 0.00MB)
+2025-05-10 04:52:18,517 [INFO] - Using device: cuda
+2025-05-10 04:52:18,520 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:52:18,521 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:52:23,828 [INFO] - Using device: cuda
+2025-05-10 04:52:23,831 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:52:23,832 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:52:29,085 [INFO] - Using device: cuda
+2025-05-10 04:52:29,089 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:52:29,089 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:52:34,414 [INFO] - Using device: cuda
+2025-05-10 04:52:34,418 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:52:34,419 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:52:40,601 [INFO] - Inference complete on 10000 samples
+2025-05-10 04:52:40,601 [INFO] - Analyzing baseline_ml model performance...
+2025-05-10 04:52:40,602 [INFO] - [baseline_ml] Test Accuracy: 96.06%
+2025-05-10 04:52:40,608 [INFO] - [baseline_ml] F1 Score (macro): 96.07%
+2025-05-10 04:52:40,609 [INFO] - [baseline_ml] Precision (macro): 96.10%
+2025-05-10 04:52:40,609 [INFO] - [baseline_ml] Recall (macro): 96.06%
+2025-05-10 04:52:40,611 [INFO] - [baseline_ml] Expected Calibration Error (ECE): 0.0235
+2025-05-10 04:52:40,611 [INFO] - [baseline_ml] Maximum Calibration Error (MCE): 0.7075
+2025-05-10 04:52:40,611 [INFO] - [baseline_ml] Average Calibration Error (ACE): 0.2593
+2025-05-10 04:52:40,611 [INFO] - [baseline_ml] Root Mean Squared Cal. Error (RMSCE): 0.0647
+2025-05-10 04:52:41,243 [INFO] - 
+[baseline_ml] Classification Report:
+2025-05-10 04:52:41,244 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.955     0.968     0.961      1000
+  automobile      0.976     0.971     0.973      1000
+        bird      0.977     0.949     0.963      1000
+         cat      0.895     0.935     0.914      1000
+        deer      0.970     0.972     0.971      1000
+         dog      0.948     0.924     0.936      1000
+        frog      0.983     0.969     0.976      1000
+       horse      0.979     0.973     0.976      1000
+        ship      0.972     0.973     0.973      1000
+       truck      0.956     0.972     0.964      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-05-10 04:52:42,112 [INFO] - [baseline_ml] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml
+2025-05-10 04:52:42,113 [INFO] - Generating prediction visualizations for baseline_ml...
+2025-05-10 04:52:43,695 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/prediction_examples.png
+2025-05-10 04:52:43,695 [INFO] - Generating GradCAM visualizations for baseline_ml...
+2025-05-10 04:52:43,729 [INFO] - Generating GradCAM for class 'airplane'
+2025-05-10 04:52:44,064 [INFO] - Generating GradCAM for class 'automobile'
+2025-05-10 04:52:44,383 [INFO] - Generating GradCAM for class 'bird'
+2025-05-10 04:52:44,723 [INFO] - Generating GradCAM for class 'cat'
+2025-05-10 04:52:45,078 [INFO] - Generating GradCAM for class 'deer'
+2025-05-10 04:52:45,431 [INFO] - Generating GradCAM for class 'dog'
+2025-05-10 04:52:45,780 [INFO] - Generating GradCAM for class 'frog'
+2025-05-10 04:52:46,137 [INFO] - Generating GradCAM for class 'horse'
+2025-05-10 04:52:46,486 [INFO] - Generating GradCAM for class 'ship'
+2025-05-10 04:52:47,021 [INFO] - Generating GradCAM for class 'truck'
+2025-05-10 04:52:52,108 [INFO] - GradCAM visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/gradcam_visualization.png
+2025-05-10 04:52:52,110 [INFO] - Generating model comparison visualizations...
+2025-05-10 04:52:53,875 [INFO] - Generating combined calibration curve comparison...
+2025-05-10 04:52:53,889 [INFO] - Preparing test dataset...
+2025-05-10 04:52:54,390 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 04:52:54,390 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 04:52:54,391 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-05-10 04:52:54,592 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:52:54,593 [INFO] - Running inference...
+2025-05-10 04:52:54,777 [INFO] - GPU cache cleared: 94.67MB -> 94.67MB (freed 0.00MB)
+2025-05-10 04:53:00,067 [INFO] - Using device: cuda
+2025-05-10 04:53:00,070 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:53:00,071 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:53:05,403 [INFO] - Using device: cuda
+2025-05-10 04:53:05,406 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:53:05,406 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:53:10,699 [INFO] - Using device: cuda
+2025-05-10 04:53:10,703 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:53:10,703 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:53:15,980 [INFO] - Using device: cuda
+2025-05-10 04:53:15,983 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:53:15,983 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:53:22,157 [INFO] - Inference complete on 10000 samples
+2025-05-10 04:53:22,161 [INFO] - Preparing test dataset...
+2025-05-10 04:53:22,676 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 04:53:22,676 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 04:53:22,678 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 04:53:22,820 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 04:53:22,822 [INFO] - Running inference...
+2025-05-10 04:53:22,970 [INFO] - GPU cache cleared: 94.79MB -> 94.79MB (freed 0.00MB)
+2025-05-10 04:53:28,324 [INFO] - Using device: cuda
+2025-05-10 04:53:28,328 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:53:28,328 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:53:33,654 [INFO] - Using device: cuda
+2025-05-10 04:53:33,657 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:53:33,657 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:53:39,057 [INFO] - Using device: cuda
+2025-05-10 04:53:39,060 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:53:39,061 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:53:44,386 [INFO] - Using device: cuda
+2025-05-10 04:53:44,390 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 04:53:44,390 [INFO] - Available memory: 6.44 GB
+2025-05-10 04:53:50,582 [INFO] - Inference complete on 10000 samples
+2025-05-10 04:53:51,079 [INFO] - Calibration curve comparison saved successfully
+2025-05-10 04:53:51,083 [INFO] - Model comparison visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline
+2025-05-10 04:53:51,083 [INFO] - Generating confidence distribution visualization...
+2025-05-10 04:53:51,753 [INFO] - Confidence distribution visualization saved to C:\Users\Gading\Downloads\Research\Results\Baseline/confidence_distribution.png
+2025-05-10 04:53:51,755 [INFO] - Generating detailed calibration visualization...
+2025-05-10 04:53:52,332 [INFO] - Detailed calibration visualization saved to C:\Users\Gading\Downloads\Research\Results\Baseline/calibration_detailed.png
+2025-05-10 04:53:52,332 [INFO] - Analyzing prediction overlap between models...
+2025-05-10 04:53:52,787 [INFO] - Prediction overlap analysis saved to C:\Users\Gading\Downloads\Research\Results\Baseline/prediction_overlap.png
+2025-05-10 04:53:52,787 [INFO] - Analyzing misclassifications...
+2025-05-10 04:53:54,924 [INFO] - Misclassification analysis saved to C:\Users\Gading\Downloads\Research\Results\Baseline/common_misclassifications.png
+2025-05-10 04:53:54,924 [INFO] - ==================================================
+2025-05-10 04:53:54,926 [INFO] - Baseline models evaluation completed successfully!
+2025-05-10 04:53:54,926 [INFO] - All results saved to 'C:\Users\Gading\Downloads\Research\Results\Baseline' directory
+2025-05-10 04:53:54,926 [INFO] - ==================================================
+2025-05-10 05:00:23,353 [INFO] - Using device: cuda
+2025-05-10 05:00:23,358 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:00:23,358 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:00:23,361 [INFO] - Starting baseline evaluation...
+2025-05-10 05:00:23,361 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-05-10 05:00:23,595 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 05:00:23,595 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 05:00:23,734 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 05:00:23,802 [INFO] - Ensemble Distillation Baseline Metadata: {'baseline_type': 'ensemble_distillation', 'with_warmup': False, 'test_metrics': {'loss': 0.18705307144173391, 'accuracy': 96.09, 'f1_score': 0.9609655751744507, 'precision': 0.9611344699520588, 'recall': 0.9609, 'ece': 0.021773903426527977, 'per_class_accuracy': [97.0, 98.2, 94.9, 93.7, 95.6, 93.0, 96.8, 97.4, 97.9, 96.4]}, 'ece': tensor(0.1435, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': False, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 50, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-05-10 05:00:23,804 [INFO] - Mutual Learning Baseline Metadata: {'baseline_type': 'mutual_learning', 'with_warmup': True, 'test_metrics': {'loss': 0.2008631713451094, 'accuracy': 96.06, 'f1_score': 0.9606898227930444, 'precision': 0.9609758525464003, 'recall': 0.9606, 'ece': 0.023542599388957024, 'per_class_accuracy': [96.8, 97.1, 94.9, 93.5, 97.2, 92.4, 96.9, 97.3, 97.3, 97.2]}, 'ece': tensor(0.1628, device='cuda:0'), 'config': {'seed': 42, 'model_name': 'baseline_student', 'dataset': 'CIFAR-10', 'use_amp': True, 'prefetch_factor': 2, 'pin_memory': True, 'persistent_workers': True, 'batch_size': 64, 'gradient_accumulation_steps': 1, 'input_size': 32, 'model_input_size': 224, 'num_workers': 4, 'val_split': 0.1, 'dataset_path': 'C:\\Users\\Gading\\Downloads\\Research\\Dataset', 'clear_cache_every_n_epochs': 1, 'pretrained': True, 'num_classes': 10, 'include_warmup_phase': True, 'warmup_epochs': 5, 'main_epochs': 50, 'total_epochs': 55, 'lr': 0.001, 'weight_decay': 0.0001, 'early_stop_patience': 10, 'checkpoint_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\checkpoints', 'results_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Results\\Baseline', 'export_dir': 'C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports'}}
+2025-05-10 05:00:23,805 [INFO] - Preparing test dataset...
+2025-05-10 05:00:24,306 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 05:00:24,307 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 05:00:24,309 [INFO] - Evaluating Ensemble Distillation baseline model...
+2025-05-10 05:00:24,309 [INFO] - Running inference...
+2025-05-10 05:00:24,433 [INFO] - GPU cache cleared: 31.15MB -> 31.15MB (freed 0.00MB)
+2025-05-10 05:00:29,783 [INFO] - Using device: cuda
+2025-05-10 05:00:29,787 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:00:29,787 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:00:35,104 [INFO] - Using device: cuda
+2025-05-10 05:00:35,107 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:00:35,108 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:00:40,437 [INFO] - Using device: cuda
+2025-05-10 05:00:40,439 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:00:40,440 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:00:45,759 [INFO] - Using device: cuda
+2025-05-10 05:00:45,762 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:00:45,763 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:00:52,313 [INFO] - Inference complete on 10000 samples
+2025-05-10 05:00:52,313 [INFO] - Analyzing baseline_ed model performance...
+2025-05-10 05:00:52,314 [INFO] - [baseline_ed] Test Accuracy: 96.09%
+2025-05-10 05:00:52,321 [INFO] - [baseline_ed] F1 Score (macro): 96.10%
+2025-05-10 05:00:52,322 [INFO] - [baseline_ed] Precision (macro): 96.11%
+2025-05-10 05:00:52,323 [INFO] - [baseline_ed] Recall (macro): 96.09%
+2025-05-10 05:00:52,325 [INFO] - [baseline_ed] Expected Calibration Error (ECE): 0.0218
+2025-05-10 05:00:52,325 [INFO] - [baseline_ed] Maximum Calibration Error (MCE): 0.2598
+2025-05-10 05:00:52,325 [INFO] - [baseline_ed] Average Calibration Error (ACE): 0.1491
+2025-05-10 05:00:52,326 [INFO] - [baseline_ed] Root Mean Squared Cal. Error (RMSCE): 0.0591
+2025-05-10 05:00:53,031 [INFO] - 
+[baseline_ed] Classification Report:
+2025-05-10 05:00:53,032 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.970     0.970     0.970      1000
+  automobile      0.967     0.982     0.975      1000
+        bird      0.961     0.949     0.955      1000
+         cat      0.904     0.937     0.920      1000
+        deer      0.968     0.956     0.962      1000
+         dog      0.935     0.930     0.932      1000
+        frog      0.984     0.968     0.976      1000
+       horse      0.980     0.974     0.977      1000
+        ship      0.972     0.979     0.976      1000
+       truck      0.970     0.964     0.967      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-05-10 05:00:53,895 [INFO] - [baseline_ed] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed
+2025-05-10 05:00:53,896 [INFO] - Generating prediction visualizations for baseline_ed...
+2025-05-10 05:00:55,516 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/prediction_examples.png
+2025-05-10 05:00:55,516 [INFO] - Generating GradCAM visualizations for baseline_ed...
+2025-05-10 05:00:55,549 [INFO] - Generating GradCAM for class 'airplane'
+2025-05-10 05:00:56,002 [INFO] - Generating GradCAM for class 'automobile'
+2025-05-10 05:00:56,347 [INFO] - Generating GradCAM for class 'bird'
+2025-05-10 05:00:56,866 [INFO] - Generating GradCAM for class 'cat'
+2025-05-10 05:00:57,222 [INFO] - Generating GradCAM for class 'deer'
+2025-05-10 05:00:57,580 [INFO] - Generating GradCAM for class 'dog'
+2025-05-10 05:00:57,934 [INFO] - Generating GradCAM for class 'frog'
+2025-05-10 05:00:58,287 [INFO] - Generating GradCAM for class 'horse'
+2025-05-10 05:00:58,645 [INFO] - Generating GradCAM for class 'ship'
+2025-05-10 05:00:58,999 [INFO] - Generating GradCAM for class 'truck'
+2025-05-10 05:01:01,398 [INFO] - GradCAM visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ed/gradcam_visualization.png
+2025-05-10 05:01:01,399 [INFO] - Evaluating Mutual Learning baseline model...
+2025-05-10 05:01:01,400 [INFO] - Running inference...
+2025-05-10 05:01:01,553 [INFO] - GPU cache cleared: 63.25MB -> 63.25MB (freed 0.00MB)
+2025-05-10 05:01:06,886 [INFO] - Using device: cuda
+2025-05-10 05:01:06,889 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:01:06,889 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:01:12,210 [INFO] - Using device: cuda
+2025-05-10 05:01:12,213 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:01:12,214 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:01:17,563 [INFO] - Using device: cuda
+2025-05-10 05:01:17,566 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:01:17,566 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:01:22,880 [INFO] - Using device: cuda
+2025-05-10 05:01:22,884 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:01:22,884 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:01:29,217 [INFO] - Inference complete on 10000 samples
+2025-05-10 05:01:29,218 [INFO] - Analyzing baseline_ml model performance...
+2025-05-10 05:01:29,218 [INFO] - [baseline_ml] Test Accuracy: 96.06%
+2025-05-10 05:01:29,226 [INFO] - [baseline_ml] F1 Score (macro): 96.07%
+2025-05-10 05:01:29,226 [INFO] - [baseline_ml] Precision (macro): 96.10%
+2025-05-10 05:01:29,226 [INFO] - [baseline_ml] Recall (macro): 96.06%
+2025-05-10 05:01:29,229 [INFO] - [baseline_ml] Expected Calibration Error (ECE): 0.0235
+2025-05-10 05:01:29,230 [INFO] - [baseline_ml] Maximum Calibration Error (MCE): 0.7075
+2025-05-10 05:01:29,231 [INFO] - [baseline_ml] Average Calibration Error (ACE): 0.2593
+2025-05-10 05:01:29,231 [INFO] - [baseline_ml] Root Mean Squared Cal. Error (RMSCE): 0.0647
+2025-05-10 05:01:29,830 [INFO] - 
+[baseline_ml] Classification Report:
+2025-05-10 05:01:29,832 [INFO] -               precision    recall  f1-score   support
+
+    airplane      0.955     0.968     0.961      1000
+  automobile      0.976     0.971     0.973      1000
+        bird      0.977     0.949     0.963      1000
+         cat      0.895     0.935     0.914      1000
+        deer      0.970     0.972     0.971      1000
+         dog      0.948     0.924     0.936      1000
+        frog      0.983     0.969     0.976      1000
+       horse      0.979     0.973     0.976      1000
+        ship      0.972     0.973     0.973      1000
+       truck      0.956     0.972     0.964      1000
+
+    accuracy                          0.961     10000
+   macro avg      0.961     0.961     0.961     10000
+weighted avg      0.961     0.961     0.961     10000
+
+2025-05-10 05:01:30,699 [INFO] - [baseline_ml] Evaluation results saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml
+2025-05-10 05:01:30,699 [INFO] - Generating prediction visualizations for baseline_ml...
+2025-05-10 05:01:32,173 [INFO] - Prediction visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/prediction_examples.png
+2025-05-10 05:01:32,174 [INFO] - Generating GradCAM visualizations for baseline_ml...
+2025-05-10 05:01:32,208 [INFO] - Generating GradCAM for class 'airplane'
+2025-05-10 05:01:32,527 [INFO] - Generating GradCAM for class 'automobile'
+2025-05-10 05:01:32,847 [INFO] - Generating GradCAM for class 'bird'
+2025-05-10 05:01:33,183 [INFO] - Generating GradCAM for class 'cat'
+2025-05-10 05:01:33,512 [INFO] - Generating GradCAM for class 'deer'
+2025-05-10 05:01:33,844 [INFO] - Generating GradCAM for class 'dog'
+2025-05-10 05:01:34,176 [INFO] - Generating GradCAM for class 'frog'
+2025-05-10 05:01:34,510 [INFO] - Generating GradCAM for class 'horse'
+2025-05-10 05:01:34,848 [INFO] - Generating GradCAM for class 'ship'
+2025-05-10 05:01:35,189 [INFO] - Generating GradCAM for class 'truck'
+2025-05-10 05:01:37,772 [INFO] - GradCAM visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline\baseline_ml/gradcam_visualization.png
+2025-05-10 05:01:37,774 [INFO] - Generating model comparison visualizations...
+2025-05-10 05:01:39,447 [INFO] - Generating combined calibration curve comparison...
+2025-05-10 05:01:39,461 [INFO] - Preparing test dataset...
+2025-05-10 05:01:39,967 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 05:01:39,967 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 05:01:39,968 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\ensemble_distillation\20250419_185329\baseline_student_ensemble_distillation.pth
+2025-05-10 05:01:40,162 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 05:01:40,163 [INFO] - Running inference...
+2025-05-10 05:01:40,327 [INFO] - GPU cache cleared: 94.67MB -> 94.67MB (freed 0.00MB)
+2025-05-10 05:01:45,772 [INFO] - Using device: cuda
+2025-05-10 05:01:45,775 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:01:45,776 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:01:51,560 [INFO] - Using device: cuda
+2025-05-10 05:01:51,564 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:01:51,564 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:01:57,467 [INFO] - Using device: cuda
+2025-05-10 05:01:57,471 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:01:57,471 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:02:03,054 [INFO] - Using device: cuda
+2025-05-10 05:02:03,059 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:02:03,059 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:02:09,609 [INFO] - Inference complete on 10000 samples
+2025-05-10 05:02:09,613 [INFO] - Preparing test dataset...
+2025-05-10 05:02:10,187 [INFO] - Test dataset loaded with 10000 samples
+2025-05-10 05:02:10,187 [INFO] - Creating DataLoader with batch size 64...
+2025-05-10 05:02:10,190 [INFO] - Loading model from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 05:02:10,403 [INFO] - Model loaded successfully and set to evaluation mode
+2025-05-10 05:02:10,405 [INFO] - Running inference...
+2025-05-10 05:02:10,561 [INFO] - GPU cache cleared: 94.79MB -> 94.79MB (freed 0.00MB)
+2025-05-10 05:02:16,090 [INFO] - Using device: cuda
+2025-05-10 05:02:16,093 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:02:16,094 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:02:21,435 [INFO] - Using device: cuda
+2025-05-10 05:02:21,439 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:02:21,439 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:02:26,783 [INFO] - Using device: cuda
+2025-05-10 05:02:26,786 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:02:26,787 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:02:32,088 [INFO] - Using device: cuda
+2025-05-10 05:02:32,091 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-10 05:02:32,092 [INFO] - Available memory: 6.44 GB
+2025-05-10 05:02:38,435 [INFO] - Inference complete on 10000 samples
+2025-05-10 05:02:39,094 [INFO] - Calibration curve comparison saved successfully
+2025-05-10 05:02:39,097 [INFO] - Model comparison visualizations saved to C:\Users\Gading\Downloads\Research\Results\Baseline
+2025-05-10 05:02:39,097 [INFO] - Generating confidence distribution visualization...
+2025-05-10 05:02:39,763 [INFO] - Confidence distribution visualization saved to C:\Users\Gading\Downloads\Research\Results\Baseline/confidence_distribution.png
+2025-05-10 05:02:39,765 [INFO] - Generating detailed calibration visualization...
+2025-05-10 05:02:40,318 [INFO] - Detailed calibration visualization saved to C:\Users\Gading\Downloads\Research\Results\Baseline/calibration_detailed.png
+2025-05-10 05:02:40,319 [INFO] - Analyzing prediction overlap between models...
+2025-05-10 05:02:40,760 [INFO] - Prediction overlap analysis saved to C:\Users\Gading\Downloads\Research\Results\Baseline/prediction_overlap.png
+2025-05-10 05:02:40,761 [INFO] - Analyzing misclassifications...
+2025-05-10 05:02:42,805 [INFO] - Misclassification analysis saved to C:\Users\Gading\Downloads\Research\Results\Baseline/common_misclassifications.png
+2025-05-10 05:02:42,805 [INFO] - ==================================================
+2025-05-10 05:02:42,806 [INFO] - Baseline models evaluation completed successfully!
+2025-05-10 05:02:42,806 [INFO] - All results saved to 'C:\Users\Gading\Downloads\Research\Results\Baseline' directory
+2025-05-10 05:02:42,806 [INFO] - ==================================================

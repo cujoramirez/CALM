@@ -1,0 +1,26 @@
+Test Accuracy: 92.47%
+Log Loss: 0.2297
+F1 Score (Macro): 0.9245
+F1 Score (Weighted): 0.9245
+Precision (Macro): 0.9251
+Precision (Weighted): 0.9251
+Recall (Macro): 0.9247
+Recall (Weighted): 0.9247
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    airplane      0.930     0.945     0.938      1000
+  automobile      0.918     0.979     0.947      1000
+        bird      0.920     0.907     0.913      1000
+         cat      0.860     0.832     0.846      1000
+        deer      0.940     0.918     0.929      1000
+         dog      0.870     0.882     0.876      1000
+        frog      0.923     0.977     0.949      1000
+       horse      0.947     0.955     0.951      1000
+        ship      0.971     0.944     0.957      1000
+       truck      0.973     0.908     0.939      1000
+
+    accuracy                          0.925     10000
+   macro avg      0.925     0.925     0.925     10000
+weighted avg      0.925     0.925     0.925     10000

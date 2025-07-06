@@ -1,0 +1,1988 @@
+2025-04-17 22:14:25,250 [INFO] - Using device: cuda
+2025-04-17 22:14:25,273 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-04-17 22:14:25,274 [INFO] - GPU Memory: 6.00 GB
+2025-04-17 22:14:25,274 [INFO] - CUDA Version: 12.4
+2025-04-17 22:14:25,275 [INFO] - cuDNN benchmark mode enabled
+2025-04-17 22:14:25,288 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "ensemble_distillation",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 8,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "model_input_size": 224,
+    "num_workers": 4,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 1,
+    "pretrained": true,
+    "num_classes": 10,
+    "teacher_models": [
+        "vit",
+        "efficientnet",
+        "inception",
+        "mobilenet",
+        "resnet",
+        "densenet"
+    ],
+    "teacher_finetune_epochs": 5,
+    "freeze_teacher_backbones": true,
+    "teacher_model_paths": {
+        "vit": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints\\vit_b16_teacher_20250321_053628_best.pth",
+        "efficientnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EfficientNetB0\\checkpoints\\efficientnet_b0_teacher_20250325_132652_best.pth",
+        "inception": "C:\\Users\\Gading\\Downloads\\Research\\Models\\InceptionV3\\checkpoints\\inception_v3_teacher_20250321_153825_best.pth",
+        "mobilenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MobileNetV3\\checkpoints\\mobilenetv3_20250326_035725_best.pth",
+        "resnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ResNet50\\checkpoints\\resnet50_teacher_20250322_225032_best.pth",
+        "densenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\DenseNet121\\checkpoints\\densenet121_teacher_20250325_160534_best.pth"
+    },
+    "use_pretrained_teachers": true,
+    "teacher_accuracies": {
+        "densenet": 95.07,
+        "efficientnet": 94.94,
+        "inception": 74.3,
+        "mobilenet": 94.98,
+        "resnet": 94.08,
+        "vit": 93.89
+    },
+    "teacher_init_weights": {
+        "densenet": 1.0,
+        "efficientnet": 1.0,
+        "inception": 0.5,
+        "mobilenet": 1.0,
+        "resnet": 1.0,
+        "vit": 1.0
+    },
+    "use_adaptive_temperature": true,
+    "teacher_temperatures": {
+        "densenet": 4.0,
+        "efficientnet": 4.0,
+        "inception": 5.0,
+        "mobilenet": 4.0,
+        "resnet": 4.0,
+        "vit": 4.0
+    },
+    "learn_temperatures": true,
+    "use_teacher_gating": true,
+    "gating_threshold": 0.2,
+    "dynamic_weight_update": true,
+    "weighting_scheme": "adaptive",
+    "weight_update_interval": 5,
+    "soft_target_temp": 4.0,
+    "epochs": 50,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "early_stop_patience": 10,
+    "alpha": 0.7,
+    "feature_loss_weight": 0.3,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\EnsembleDistillation",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports",
+    "per_teacher_calibration": true,
+    "weight_by_calibration": true
+}
+2025-04-17 22:14:25,296 [INFO] - Random seed set to 42
+2025-04-17 22:14:25,297 [INFO] - GPU Memory: Current=0.00MB, Peak=0.00MB, Reserved=0.00MB
+2025-04-17 22:14:25,297 [INFO] - Preparing data loaders...
+2025-04-17 22:14:27,202 [INFO] - Training samples: 45000
+2025-04-17 22:14:27,209 [INFO] - Validation samples: 5000
+2025-04-17 22:14:27,209 [INFO] - Test samples: 10000
+2025-04-17 22:14:27,210 [INFO] - Loading pre-trained teacher models...
+2025-04-17 22:14:27,210 [INFO] - Loading ViT-B16 model...
+2025-04-17 22:14:45,538 [INFO] - Loading EfficientNetB0 model...
+2025-04-17 22:14:46,028 [INFO] - Loading InceptionV3 model...
+2025-04-17 22:14:46,460 [INFO] - Loading MobileNetV3 model...
+2025-04-17 22:14:46,536 [INFO] - Loading ResNet50 model...
+2025-04-17 22:14:46,764 [INFO] - Loading DenseNet121 model...
+2025-04-17 22:14:46,856 [INFO] - Loading pre-trained weights for vit from C:\Users\Gading\Downloads\Research\Models\ViT\checkpoints\vit_b16_teacher_20250321_053628_best.pth
+2025-04-17 22:14:48,217 [INFO] - Successfully loaded pre-trained weights for vit
+2025-04-17 22:14:48,218 [INFO] - Loading pre-trained weights for efficientnet from C:\Users\Gading\Downloads\Research\Models\EfficientNetB0\checkpoints\efficientnet_b0_teacher_20250325_132652_best.pth
+2025-04-17 22:14:48,491 [INFO] - Successfully loaded pre-trained weights for efficientnet
+2025-04-17 22:14:48,493 [INFO] - Loading pre-trained weights for inception from C:\Users\Gading\Downloads\Research\Models\InceptionV3\checkpoints\inception_v3_teacher_20250321_153825_best.pth
+2025-04-17 22:14:49,000 [INFO] - Successfully loaded pre-trained weights for inception
+2025-04-17 22:14:49,000 [INFO] - Loading pre-trained weights for mobilenet from C:\Users\Gading\Downloads\Research\Models\MobileNetV3\checkpoints\mobilenetv3_20250326_035725_best.pth
+2025-04-17 22:14:49,202 [INFO] - Successfully loaded pre-trained weights for mobilenet
+2025-04-17 22:14:49,202 [INFO] - Loading pre-trained weights for resnet from C:\Users\Gading\Downloads\Research\Models\ResNet50\checkpoints\resnet50_teacher_20250322_225032_best.pth
+2025-04-17 22:14:49,736 [INFO] - Successfully loaded pre-trained weights for resnet
+2025-04-17 22:14:49,741 [INFO] - Loading pre-trained weights for densenet from C:\Users\Gading\Downloads\Research\Models\DenseNet121\checkpoints\densenet121_teacher_20250325_160534_best.pth
+2025-04-17 22:14:50,383 [INFO] - Successfully loaded pre-trained weights for densenet
+2025-04-17 22:14:50,437 [INFO] - Model vit loaded and moved to cuda
+2025-04-17 22:14:50,438 [INFO] - Model vit set to evaluation mode
+2025-04-17 22:14:50,456 [INFO] - Model efficientnet loaded and moved to cuda
+2025-04-17 22:14:50,459 [INFO] - Model efficientnet set to evaluation mode
+2025-04-17 22:14:50,511 [INFO] - Model inception loaded and moved to cuda
+2025-04-17 22:14:50,514 [INFO] - Model inception set to evaluation mode
+2025-04-17 22:14:50,530 [INFO] - Model mobilenet loaded and moved to cuda
+2025-04-17 22:14:50,532 [INFO] - Model mobilenet set to evaluation mode
+2025-04-17 22:14:50,557 [INFO] - Model resnet loaded and moved to cuda
+2025-04-17 22:14:50,559 [INFO] - Model resnet set to evaluation mode
+2025-04-17 22:14:50,611 [INFO] - Model densenet loaded and moved to cuda
+2025-04-17 22:14:50,611 [INFO] - Model densenet set to evaluation mode
+2025-04-17 22:14:50,618 [INFO] - Skipping teacher fine-tuning as pre-trained models are being used
+2025-04-17 22:14:50,618 [INFO] - Creating student model...
+2025-04-17 22:14:50,618 [INFO] - Creating scaled EfficientNet-B0 student model...
+2025-04-17 22:14:50,754 [INFO] - Student model created with 4.02M parameters
+2025-04-17 22:14:50,776 [INFO] - Training student with calibration-aware ensemble distillation...
+2025-04-17 22:14:50,777 [INFO] - Training student model with ensemble distillation...
+2025-04-17 22:14:50,778 [INFO] - Teacher weighting initialized with scheme: adaptive
+2025-04-17 22:14:50,778 [INFO] - Initial teacher weights: {'vit': 0.18181818181818182, 'efficientnet': 0.18181818181818182, 'inception': 0.09090909090909091, 'mobilenet': 0.18181818181818182, 'resnet': 0.18181818181818182, 'densenet': 0.18181818181818182}
+2025-04-17 22:14:50,778 [INFO] - Initial teacher temperatures: {'vit': 4.0, 'efficientnet': 4.0, 'inception': 5.0, 'mobilenet': 4.0, 'resnet': 4.0, 'densenet': 4.0}
+2025-04-17 22:14:50,781 [INFO] - Hook registered for encoder.ln
+2025-04-17 22:14:50,781 [INFO] - Feature extractor registered for vit at layer encoder.ln
+2025-04-17 22:15:07,128 [INFO] - Feature shape for vit: torch.Size([1, 197, 768])
+2025-04-17 22:15:07,129 [INFO] - Hook registered for features.8
+2025-04-17 22:15:07,129 [INFO] - Feature extractor registered for efficientnet at layer features.8
+2025-04-17 22:15:09,408 [INFO] - Feature shape for efficientnet: torch.Size([1, 1280, 7, 7])
+2025-04-17 22:15:09,409 [INFO] - Hook registered for Mixed_7c
+2025-04-17 22:15:09,409 [INFO] - Feature extractor registered for inception at layer Mixed_7c
+2025-04-17 22:15:10,029 [INFO] - Feature shape for inception: torch.Size([1, 2048, 5, 5])
+2025-04-17 22:15:10,029 [INFO] - Hook registered for features
+2025-04-17 22:15:10,031 [INFO] - Feature extractor registered for mobilenet at layer features
+2025-04-17 22:15:10,198 [INFO] - Feature shape for mobilenet: torch.Size([1, 960, 7, 7])
+2025-04-17 22:15:10,198 [INFO] - Hook registered for layer4
+2025-04-17 22:15:10,198 [INFO] - Feature extractor registered for resnet at layer layer4
+2025-04-17 22:15:10,391 [INFO] - Feature shape for resnet: torch.Size([1, 2048, 7, 7])
+2025-04-17 22:15:10,391 [INFO] - Hook registered for features
+2025-04-17 22:15:10,391 [INFO] - Feature extractor registered for densenet at layer features
+2025-04-17 22:15:10,763 [INFO] - Feature shape for densenet: torch.Size([1, 1024, 7, 7])
+2025-04-17 22:15:10,764 [INFO] - Hook registered for features.8
+2025-04-17 22:15:10,765 [INFO] - Feature extractor registered for student model
+2025-04-17 22:15:10,821 [INFO] - Feature shape for student: torch.Size([1, 1280, 7, 7])
+2025-04-17 22:15:10,866 [INFO] - HFI module initialized with 6 teachers
+2025-04-17 22:15:10,867 [INFO] - Target student feature shape: torch.Size([1, 1280, 7, 7])
+2025-04-17 22:15:10,921 [INFO] - Adding teacher temperatures to optimizer parameters
+2025-04-17 22:15:10,923 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\ensemble_distillation_20250417_221510_config.json
+2025-04-17 22:15:10,925 [INFO] - GPU Memory: Current=646.47MB, Peak=1031.56MB, Reserved=698.00MB
+2025-04-17 22:15:10,926 [INFO] - Epoch 1/50
+2025-04-17 22:15:11,113 [INFO] - GPU cache cleared: 646.47MB → 646.47MB (freed 0.00MB)
+2025-04-17 22:15:11,115 [INFO] - Current calibration weight: 0.0033
+2025-04-17 22:15:11,115 [INFO] - Updated teacher weights: {'vit': 0.17156379052004533, 'efficientnet': 0.1734824397909586, 'inception': 0.1357672769798633, 'mobilenet': 0.1735555311917553, 'resnet': 0.17191097467382963, 'densenet': 0.17371998684354784}
+2025-04-17 22:15:11,116 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:15:11,126 [INFO] - Current teacher temperatures: {'vit': 5.0, 'efficientnet': 5.0, 'inception': 6.0, 'mobilenet': 5.0, 'resnet': 5.0, 'densenet': 5.0}
+2025-04-17 22:15:11,126 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:15:11,146 [INFO] - HFI attention weights: {'vit': 0.1666666716337204, 'efficientnet': 0.1666666716337204, 'inception': 0.1666666716337204, 'mobilenet': 0.1666666716337204, 'resnet': 0.1666666716337204, 'densenet': 0.1666666716337204}
+2025-04-17 22:23:21,797 [INFO] - Epoch 1 Results - Time: 490.87s, LR: 0.000999
+2025-04-17 22:23:21,800 [INFO] - Train - Loss: 5.0060, Acc: 83.79%
+2025-04-17 22:23:21,801 [INFO] -   CE: 0.6013, KL: 0.4145, Feat: 0.6101, Cal: 0.1044
+2025-04-17 22:23:21,802 [INFO] - Val - Loss: 0.1957, Acc: 94.86%, F1: 0.9481, ECE: 0.0291
+2025-04-17 22:23:22,394 [INFO] - New best model saved (Val Loss: 0.1957)
+2025-04-17 22:23:22,710 [INFO] - New best model saved (Val Acc: 94.86%)
+2025-04-17 22:23:22,715 [INFO] - GPU Memory: Current=841.35MB, Peak=4296.33MB, Reserved=1636.00MB
+2025-04-17 22:23:22,716 [INFO] - Epoch 2/50
+2025-04-17 22:23:23,686 [INFO] - GPU cache cleared: 841.35MB → 841.35MB (freed 0.00MB)
+2025-04-17 22:23:23,687 [INFO] - Current calibration weight: 0.0067
+2025-04-17 22:23:23,688 [INFO] - Updated teacher weights: {'vit': 0.4192149368262984, 'efficientnet': 0.13313449830171956, 'inception': 0.03151863562019519, 'mobilenet': 0.15118301290756728, 'resnet': 0.1320697443140333, 'densenet': 0.13287917203018634}
+2025-04-17 22:23:23,689 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:23:23,689 [INFO] - Current teacher temperatures: {'vit': 4.950312614440918, 'efficientnet': 4.942068099975586, 'inception': 5.979669570922852, 'mobilenet': 4.9479169845581055, 'resnet': 4.94888973236084, 'densenet': 4.94724702835083}
+2025-04-17 22:23:23,690 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:23:23,691 [INFO] - HFI attention weights: {'vit': 0.1729714274406433, 'efficientnet': 0.16518862545490265, 'inception': 0.16258357465267181, 'mobilenet': 0.16951130330562592, 'resnet': 0.161488875746727, 'densenet': 0.16825620830059052}
+2025-04-17 22:30:56,641 [INFO] - Epoch 2 Results - Time: 453.93s, LR: 0.000996
+2025-04-17 22:30:56,642 [INFO] - Train - Loss: 2.2637, Acc: 94.48%
+2025-04-17 22:30:56,643 [INFO] -   CE: 0.1960, KL: 0.1907, Feat: 0.2302, Cal: 0.0413
+2025-04-17 22:30:56,644 [INFO] - Val - Loss: 0.1368, Acc: 96.28%, F1: 0.9625, ECE: 0.0211
+2025-04-17 22:30:57,153 [INFO] - New best model saved (Val Loss: 0.1368)
+2025-04-17 22:30:57,411 [INFO] - New best model saved (Val Acc: 96.28%)
+2025-04-17 22:30:57,412 [INFO] - GPU Memory: Current=841.69MB, Peak=4296.33MB, Reserved=4726.00MB
+2025-04-17 22:30:57,412 [INFO] - Epoch 3/50
+2025-04-17 22:30:57,689 [INFO] - GPU cache cleared: 841.69MB → 841.69MB (freed 0.00MB)
+2025-04-17 22:30:57,689 [INFO] - Current calibration weight: 0.0100
+2025-04-17 22:30:57,690 [INFO] - Updated teacher weights: {'vit': 0.23639033727118205, 'efficientnet': 0.2771508481757986, 'inception': 0.017180285402043267, 'mobilenet': 0.11835967668828784, 'resnet': 0.07338850554807723, 'densenet': 0.27753034691461104}
+2025-04-17 22:30:57,691 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:30:57,693 [INFO] - Current teacher temperatures: {'vit': 4.863611221313477, 'efficientnet': 4.884550094604492, 'inception': 6.017629146575928, 'mobilenet': 4.897582054138184, 'resnet': 4.896173477172852, 'densenet': 4.896034240722656}
+2025-04-17 22:30:57,693 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:30:57,694 [INFO] - HFI attention weights: {'vit': 0.17630232870578766, 'efficientnet': 0.1659817397594452, 'inception': 0.1640816032886505, 'mobilenet': 0.16425815224647522, 'resnet': 0.1614045947790146, 'densenet': 0.16797158122062683}
+2025-04-17 22:38:12,184 [INFO] - Epoch 3 Results - Time: 434.77s, LR: 0.000991
+2025-04-17 22:38:12,185 [INFO] - Train - Loss: 1.9912, Acc: 96.28%
+2025-04-17 22:38:12,186 [INFO] -   CE: 0.1216, KL: 0.1706, Feat: 0.1461, Cal: 0.0272
+2025-04-17 22:38:12,187 [INFO] - Val - Loss: 0.1123, Acc: 96.94%, F1: 0.9692, ECE: 0.0176
+2025-04-17 22:38:12,762 [INFO] - New best model saved (Val Loss: 0.1123)
+2025-04-17 22:38:13,046 [INFO] - New best model saved (Val Acc: 96.94%)
+2025-04-17 22:38:13,048 [INFO] - GPU Memory: Current=841.72MB, Peak=4296.33MB, Reserved=4678.00MB
+2025-04-17 22:38:13,048 [INFO] - Epoch 4/50
+2025-04-17 22:38:13,255 [INFO] - GPU cache cleared: 841.72MB → 841.72MB (freed 0.00MB)
+2025-04-17 22:38:13,256 [INFO] - Current calibration weight: 0.0133
+2025-04-17 22:38:13,257 [INFO] - Updated teacher weights: {'vit': 0.10153112780519193, 'efficientnet': 0.29027511616226526, 'inception': 0.018137249386946643, 'mobilenet': 0.07471989929056183, 'resnet': 0.2876457017963547, 'densenet': 0.22769090555867968}
+2025-04-17 22:38:13,258 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:38:13,259 [INFO] - Current teacher temperatures: {'vit': 4.772839546203613, 'efficientnet': 4.820683479309082, 'inception': 6.074615478515625, 'mobilenet': 4.84004020690918, 'resnet': 4.837343215942383, 'densenet': 4.837935447692871}
+2025-04-17 22:38:13,259 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:38:13,260 [INFO] - HFI attention weights: {'vit': 0.17963702976703644, 'efficientnet': 0.16731785237789154, 'inception': 0.16448763012886047, 'mobilenet': 0.16052912175655365, 'resnet': 0.16046790778636932, 'densenet': 0.16756047308444977}
+2025-04-17 22:45:27,555 [INFO] - Epoch 4 Results - Time: 434.51s, LR: 0.000984
+2025-04-17 22:45:27,555 [INFO] - Train - Loss: 1.8417, Acc: 97.08%
+2025-04-17 22:45:27,557 [INFO] -   CE: 0.0898, KL: 0.1591, Feat: 0.1099, Cal: 0.0208
+2025-04-17 22:45:27,557 [INFO] - Val - Loss: 0.1213, Acc: 96.68%, F1: 0.9665, ECE: 0.0181
+2025-04-17 22:45:27,830 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-17 22:45:27,830 [INFO] - Epoch 5/50
+2025-04-17 22:45:28,050 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-17 22:45:28,050 [INFO] - Current calibration weight: 0.0167
+2025-04-17 22:45:28,050 [INFO] - Updated teacher weights: {'vit': 0.20073646747959592, 'efficientnet': 0.20298136353725463, 'inception': 0.018766731248487035, 'mobilenet': 0.18619252578073095, 'resnet': 0.20114268676621985, 'densenet': 0.19018022518771163}
+2025-04-17 22:45:28,050 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:45:28,050 [INFO] - Current teacher temperatures: {'vit': 4.680971145629883, 'efficientnet': 4.753368377685547, 'inception': 6.145500183105469, 'mobilenet': 4.7783613204956055, 'resnet': 4.774232864379883, 'densenet': 4.775443077087402}
+2025-04-17 22:45:28,050 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:45:28,050 [INFO] - HFI attention weights: {'vit': 0.18255461752414703, 'efficientnet': 0.16848224401474, 'inception': 0.16456671059131622, 'mobilenet': 0.15801148116588593, 'resnet': 0.1597244143486023, 'densenet': 0.16666053235530853}
+2025-04-17 22:52:18,288 [INFO] - Epoch 5 Results - Time: 410.46s, LR: 0.000976
+2025-04-17 22:52:18,289 [INFO] - Train - Loss: 1.7137, Acc: 97.80%
+2025-04-17 22:52:18,290 [INFO] -   CE: 0.0666, KL: 0.1489, Feat: 0.0869, Cal: 0.0159
+2025-04-17 22:52:18,290 [INFO] - Val - Loss: 0.1110, Acc: 96.88%, F1: 0.9686, ECE: 0.0169
+2025-04-17 22:52:18,761 [INFO] - New best model saved (Val Loss: 0.1110)
+2025-04-17 22:52:18,761 [INFO] - GPU Memory: Current=841.66MB, Peak=4296.33MB, Reserved=4676.00MB
+2025-04-17 22:52:18,761 [INFO] - Epoch 6/50
+2025-04-17 22:52:18,959 [INFO] - GPU cache cleared: 841.66MB → 841.66MB (freed 0.00MB)
+2025-04-17 22:52:18,959 [INFO] - Current calibration weight: 0.0200
+2025-04-17 22:52:18,959 [INFO] - Updated teacher weights: {'vit': 0.17701277243288127, 'efficientnet': 0.20296255267759972, 'inception': 0.012612097553449882, 'mobilenet': 0.20304806460204786, 'resnet': 0.20112404630196523, 'densenet': 0.20324046643205607}
+2025-04-17 22:52:18,959 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:52:18,959 [INFO] - Current teacher temperatures: {'vit': 4.58743143081665, 'efficientnet': 4.684953689575195, 'inception': 6.2214250564575195, 'mobilenet': 4.714205741882324, 'resnet': 4.708282947540283, 'densenet': 4.708698272705078}
+2025-04-17 22:52:18,959 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:52:18,959 [INFO] - HFI attention weights: {'vit': 0.18509696424007416, 'efficientnet': 0.16947679221630096, 'inception': 0.16485421359539032, 'mobilenet': 0.15596526861190796, 'resnet': 0.1589653640985489, 'densenet': 0.16564138233661652}
+2025-04-17 22:59:02,253 [INFO] - Epoch 6 Results - Time: 403.49s, LR: 0.000965
+2025-04-17 22:59:02,254 [INFO] - Train - Loss: 1.6346, Acc: 98.27%
+2025-04-17 22:59:02,255 [INFO] -   CE: 0.0506, KL: 0.1426, Feat: 0.0735, Cal: 0.0126
+2025-04-17 22:59:02,255 [INFO] - Val - Loss: 0.1145, Acc: 96.78%, F1: 0.9676, ECE: 0.0196
+2025-04-17 22:59:02,527 [INFO] - GPU Memory: Current=840.72MB, Peak=4296.33MB, Reserved=4642.00MB
+2025-04-17 22:59:02,527 [INFO] - Epoch 7/50
+2025-04-17 22:59:02,716 [INFO] - GPU cache cleared: 840.72MB → 840.72MB (freed 0.00MB)
+2025-04-17 22:59:02,716 [INFO] - Current calibration weight: 0.0233
+2025-04-17 22:59:02,718 [INFO] - Updated teacher weights: {'vit': 0.26026342158325266, 'efficientnet': 0.26317402540328055, 'inception': 0.027479174681923423, 'mobilenet': 0.12267430704258969, 'resnet': 0.06287468541271736, 'densenet': 0.26353438587623634}
+2025-04-17 22:59:02,718 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:59:02,718 [INFO] - Current teacher temperatures: {'vit': 4.4917426109313965, 'efficientnet': 4.614378452301025, 'inception': 6.303608417510986, 'mobilenet': 4.6489105224609375, 'resnet': 4.6392927169799805, 'densenet': 4.639979362487793}
+2025-04-17 22:59:02,718 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 22:59:02,718 [INFO] - HFI attention weights: {'vit': 0.18759207427501678, 'efficientnet': 0.1706947535276413, 'inception': 0.16467365622520447, 'mobilenet': 0.15471620857715607, 'resnet': 0.1580507457256317, 'densenet': 0.16427256166934967}
+2025-04-17 23:05:44,249 [INFO] - Epoch 7 Results - Time: 401.72s, LR: 0.000952
+2025-04-17 23:05:44,249 [INFO] - Train - Loss: 1.5715, Acc: 98.48%
+2025-04-17 23:05:44,250 [INFO] -   CE: 0.0479, KL: 0.1373, Feat: 0.0624, Cal: 0.0115
+2025-04-17 23:05:44,251 [INFO] - Val - Loss: 0.1106, Acc: 96.96%, F1: 0.9695, ECE: 0.0172
+2025-04-17 23:05:44,731 [INFO] - New best model saved (Val Loss: 0.1106)
+2025-04-17 23:05:44,963 [INFO] - New best model saved (Val Acc: 96.96%)
+2025-04-17 23:05:44,963 [INFO] - GPU Memory: Current=841.25MB, Peak=4296.33MB, Reserved=4732.00MB
+2025-04-17 23:05:44,963 [INFO] - Epoch 8/50
+2025-04-17 23:05:45,161 [INFO] - GPU cache cleared: 841.25MB → 841.25MB (freed 0.00MB)
+2025-04-17 23:05:45,162 [INFO] - Current calibration weight: 0.0267
+2025-04-17 23:05:45,162 [INFO] - Updated teacher weights: {'vit': 0.30036796976497504, 'efficientnet': 0.14146235315114075, 'inception': 0.07305630792706912, 'mobilenet': 0.21039488054887948, 'resnet': 0.15658142354348698, 'densenet': 0.11813706506444867}
+2025-04-17 23:05:45,162 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:05:45,165 [INFO] - Current teacher temperatures: {'vit': 4.395513534545898, 'efficientnet': 4.543320178985596, 'inception': 6.38742208480835, 'mobilenet': 4.579992294311523, 'resnet': 4.56995153427124, 'densenet': 4.570572853088379}
+2025-04-17 23:05:45,166 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:05:45,166 [INFO] - HFI attention weights: {'vit': 0.1895972341299057, 'efficientnet': 0.17150533199310303, 'inception': 0.1646176129579544, 'mobilenet': 0.1535443365573883, 'resnet': 0.1575596034526825, 'densenet': 0.16317586600780487}
+2025-04-17 23:12:24,385 [INFO] - Epoch 8 Results - Time: 399.42s, LR: 0.000938
+2025-04-17 23:12:24,387 [INFO] - Train - Loss: 1.5184, Acc: 98.74%
+2025-04-17 23:12:24,388 [INFO] -   CE: 0.0384, KL: 0.1330, Feat: 0.0562, Cal: 0.0094
+2025-04-17 23:12:24,389 [INFO] - Val - Loss: 0.0975, Acc: 97.26%, F1: 0.9724, ECE: 0.0144
+2025-04-17 23:12:24,917 [INFO] - New best model saved (Val Loss: 0.0975)
+2025-04-17 23:12:25,159 [INFO] - New best model saved (Val Acc: 97.26%)
+2025-04-17 23:12:25,161 [INFO] - GPU Memory: Current=840.72MB, Peak=4296.33MB, Reserved=4672.00MB
+2025-04-17 23:12:25,161 [INFO] - Epoch 9/50
+2025-04-17 23:12:25,349 [INFO] - GPU cache cleared: 840.72MB → 840.72MB (freed 0.00MB)
+2025-04-17 23:12:25,349 [INFO] - Current calibration weight: 0.0300
+2025-04-17 23:12:25,349 [INFO] - Updated teacher weights: {'vit': 0.2098447051979451, 'efficientnet': 0.233321312142315, 'inception': 0.017055590123786855, 'mobilenet': 0.07636200248488254, 'resnet': 0.22977559433409256, 'densenet': 0.23364079571697793}
+2025-04-17 23:12:25,349 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:12:25,349 [INFO] - Current teacher temperatures: {'vit': 4.298609733581543, 'efficientnet': 4.471929550170898, 'inception': 6.4753522872924805, 'mobilenet': 4.509243965148926, 'resnet': 4.501745700836182, 'densenet': 4.498885631561279}
+2025-04-17 23:12:25,349 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:12:25,349 [INFO] - HFI attention weights: {'vit': 0.1915373057126999, 'efficientnet': 0.17252813279628754, 'inception': 0.16432657837867737, 'mobilenet': 0.1527094691991806, 'resnet': 0.15699982643127441, 'densenet': 0.16189861297607422}
+2025-04-17 23:19:03,620 [INFO] - Epoch 9 Results - Time: 398.46s, LR: 0.000922
+2025-04-17 23:19:03,621 [INFO] - Train - Loss: 1.4506, Acc: 98.82%
+2025-04-17 23:19:03,621 [INFO] -   CE: 0.0357, KL: 0.1272, Feat: 0.0513, Cal: 0.0089
+2025-04-17 23:19:03,622 [INFO] - Val - Loss: 0.0946, Acc: 97.40%, F1: 0.9738, ECE: 0.0139
+2025-04-17 23:19:04,151 [INFO] - New best model saved (Val Loss: 0.0946)
+2025-04-17 23:19:04,386 [INFO] - New best model saved (Val Acc: 97.40%)
+2025-04-17 23:19:04,386 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-17 23:19:04,386 [INFO] - Epoch 10/50
+2025-04-17 23:19:04,575 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-17 23:19:04,579 [INFO] - Current calibration weight: 0.0333
+2025-04-17 23:19:04,579 [INFO] - Updated teacher weights: {'vit': 0.3367735037314556, 'efficientnet': 0.1559464601191016, 'inception': 0.0355186333736306, 'mobilenet': 0.15753472141615033, 'resnet': 0.1542570934959892, 'densenet': 0.15996958786367274}
+2025-04-17 23:19:04,579 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:19:04,579 [INFO] - Current teacher temperatures: {'vit': 4.201010704040527, 'efficientnet': 4.400570392608643, 'inception': 6.5534443855285645, 'mobilenet': 4.43840217590332, 'resnet': 4.431327819824219, 'densenet': 4.426312446594238}
+2025-04-17 23:19:04,579 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:19:04,579 [INFO] - HFI attention weights: {'vit': 0.1932663470506668, 'efficientnet': 0.17386697232723236, 'inception': 0.16360236704349518, 'mobilenet': 0.15209917724132538, 'resnet': 0.156321719288826, 'densenet': 0.16084343194961548}
+2025-04-17 23:25:42,370 [INFO] - Epoch 10 Results - Time: 397.98s, LR: 0.000905
+2025-04-17 23:25:42,371 [INFO] - Train - Loss: 1.3853, Acc: 99.06%
+2025-04-17 23:25:42,372 [INFO] -   CE: 0.0276, KL: 0.1217, Feat: 0.0473, Cal: 0.0070
+2025-04-17 23:25:42,372 [INFO] - Val - Loss: 0.0963, Acc: 97.34%, F1: 0.9733, ECE: 0.0155
+2025-04-17 23:25:42,843 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4672.00MB
+2025-04-17 23:25:42,853 [INFO] - Epoch 11/50
+2025-04-17 23:25:43,041 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-17 23:25:43,041 [INFO] - Current calibration weight: 0.0367
+2025-04-17 23:25:43,041 [INFO] - Updated teacher weights: {'vit': 0.17706179172066722, 'efficientnet': 0.21745961035494962, 'inception': 0.02866140887191665, 'mobilenet': 0.2175512301612926, 'resnet': 0.21548978451857656, 'densenet': 0.14377617437259738}
+2025-04-17 23:25:43,041 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:25:43,041 [INFO] - Current teacher temperatures: {'vit': 4.105005264282227, 'efficientnet': 4.329894065856934, 'inception': 6.631916046142578, 'mobilenet': 4.368213176727295, 'resnet': 4.362628936767578, 'densenet': 4.354061603546143}
+2025-04-17 23:25:43,041 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:25:43,047 [INFO] - HFI attention weights: {'vit': 0.19512750208377838, 'efficientnet': 0.17486009001731873, 'inception': 0.1629510074853897, 'mobilenet': 0.15180553495883942, 'resnet': 0.15547800064086914, 'densenet': 0.15977780520915985}
+2025-04-17 23:32:20,732 [INFO] - Epoch 11 Results - Time: 397.88s, LR: 0.000885
+2025-04-17 23:32:20,733 [INFO] - Train - Loss: 1.3539, Acc: 99.09%
+2025-04-17 23:32:20,734 [INFO] -   CE: 0.0264, KL: 0.1190, Feat: 0.0436, Cal: 0.0067
+2025-04-17 23:32:20,735 [INFO] - Val - Loss: 0.0929, Acc: 97.50%, F1: 0.9748, ECE: 0.0144
+2025-04-17 23:32:21,226 [INFO] - New best model saved (Val Loss: 0.0929)
+2025-04-17 23:32:21,460 [INFO] - New best model saved (Val Acc: 97.50%)
+2025-04-17 23:32:21,460 [INFO] - GPU Memory: Current=841.58MB, Peak=4296.33MB, Reserved=4678.00MB
+2025-04-17 23:32:21,460 [INFO] - Epoch 12/50
+2025-04-17 23:32:21,650 [INFO] - GPU cache cleared: 841.58MB → 841.58MB (freed 0.00MB)
+2025-04-17 23:32:21,657 [INFO] - Current calibration weight: 0.0400
+2025-04-17 23:32:21,657 [INFO] - Updated teacher weights: {'vit': 0.41507330311814467, 'efficientnet': 0.09538303994776155, 'inception': 0.02745763981580706, 'mobilenet': 0.26458100744215896, 'resnet': 0.09153254180200378, 'densenet': 0.10597246787412395}
+2025-04-17 23:32:21,657 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:32:21,657 [INFO] - Current teacher temperatures: {'vit': 4.009160041809082, 'efficientnet': 4.260684967041016, 'inception': 6.712468147277832, 'mobilenet': 4.298004150390625, 'resnet': 4.293595790863037, 'densenet': 4.280505180358887}
+2025-04-17 23:32:21,657 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:32:21,657 [INFO] - HFI attention weights: {'vit': 0.19651931524276733, 'efficientnet': 0.17600174248218536, 'inception': 0.1622128039598465, 'mobilenet': 0.15140467882156372, 'resnet': 0.15500980615615845, 'densenet': 0.15885166823863983}
+2025-04-17 23:38:58,445 [INFO] - Epoch 12 Results - Time: 396.99s, LR: 0.000864
+2025-04-17 23:38:58,448 [INFO] - Train - Loss: 1.2852, Acc: 99.18%
+2025-04-17 23:38:58,449 [INFO] -   CE: 0.0235, KL: 0.1130, Feat: 0.0407, Cal: 0.0059
+2025-04-17 23:38:58,449 [INFO] - Val - Loss: 0.1082, Acc: 97.16%, F1: 0.9713, ECE: 0.0180
+2025-04-17 23:38:58,712 [INFO] - GPU Memory: Current=840.82MB, Peak=4296.33MB, Reserved=4676.00MB
+2025-04-17 23:38:58,712 [INFO] - Epoch 13/50
+2025-04-17 23:38:58,900 [INFO] - GPU cache cleared: 840.82MB → 840.82MB (freed 0.00MB)
+2025-04-17 23:38:58,900 [INFO] - Current calibration weight: 0.0433
+2025-04-17 23:38:58,900 [INFO] - Updated teacher weights: {'vit': 0.1699654010830722, 'efficientnet': 0.21730062163944897, 'inception': 0.01634944324162505, 'mobilenet': 0.1634541297478638, 'resnet': 0.21533223597892728, 'densenet': 0.21759816830906267}
+2025-04-17 23:38:58,900 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:38:58,900 [INFO] - Current teacher temperatures: {'vit': 3.9152843952178955, 'efficientnet': 4.192223072052002, 'inception': 6.786430358886719, 'mobilenet': 4.228532314300537, 'resnet': 4.226891040802002, 'densenet': 4.208552360534668}
+2025-04-17 23:38:58,910 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:38:58,910 [INFO] - HFI attention weights: {'vit': 0.19758716225624084, 'efficientnet': 0.17694684863090515, 'inception': 0.16165201365947723, 'mobilenet': 0.15101949870586395, 'resnet': 0.15483726561069489, 'densenet': 0.15795719623565674}
+2025-04-17 23:45:35,657 [INFO] - Epoch 13 Results - Time: 396.94s, LR: 0.000842
+2025-04-17 23:45:35,658 [INFO] - Train - Loss: 1.2518, Acc: 99.27%
+2025-04-17 23:45:35,658 [INFO] -   CE: 0.0225, KL: 0.1101, Feat: 0.0374, Cal: 0.0057
+2025-04-17 23:45:35,659 [INFO] - Val - Loss: 0.0877, Acc: 97.44%, F1: 0.9742, ECE: 0.0138
+2025-04-17 23:45:36,146 [INFO] - New best model saved (Val Loss: 0.0877)
+2025-04-17 23:45:36,146 [INFO] - GPU Memory: Current=840.90MB, Peak=4296.33MB, Reserved=4678.00MB
+2025-04-17 23:45:36,156 [INFO] - Epoch 14/50
+2025-04-17 23:45:36,342 [INFO] - GPU cache cleared: 840.90MB → 840.90MB (freed 0.00MB)
+2025-04-17 23:45:36,343 [INFO] - Current calibration weight: 0.0467
+2025-04-17 23:45:36,345 [INFO] - Updated teacher weights: {'vit': 0.23521981096823905, 'efficientnet': 0.132836297195872, 'inception': 0.02407941163991258, 'mobilenet': 0.058510020599695255, 'resnet': 0.39663036341507096, 'densenet': 0.1527240961812101}
+2025-04-17 23:45:36,345 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:45:36,345 [INFO] - Current teacher temperatures: {'vit': 3.823667049407959, 'efficientnet': 4.1247758865356445, 'inception': 6.862956523895264, 'mobilenet': 4.160894393920898, 'resnet': 4.161348342895508, 'densenet': 4.137840270996094}
+2025-04-17 23:45:36,345 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:45:36,345 [INFO] - HFI attention weights: {'vit': 0.19854773581027985, 'efficientnet': 0.1776900291442871, 'inception': 0.1612025499343872, 'mobilenet': 0.15059317648410797, 'resnet': 0.15479566156864166, 'densenet': 0.1571708470582962}
+2025-04-17 23:52:12,779 [INFO] - Epoch 14 Results - Time: 396.62s, LR: 0.000819
+2025-04-17 23:52:12,780 [INFO] - Train - Loss: 1.2029, Acc: 99.32%
+2025-04-17 23:52:12,781 [INFO] -   CE: 0.0208, KL: 0.1059, Feat: 0.0357, Cal: 0.0053
+2025-04-17 23:52:12,782 [INFO] - Val - Loss: 0.0858, Acc: 97.58%, F1: 0.9756, ECE: 0.0131
+2025-04-17 23:52:13,290 [INFO] - New best model saved (Val Loss: 0.0858)
+2025-04-17 23:52:13,517 [INFO] - New best model saved (Val Acc: 97.58%)
+2025-04-17 23:52:13,517 [INFO] - GPU Memory: Current=840.72MB, Peak=4296.33MB, Reserved=4678.00MB
+2025-04-17 23:52:13,527 [INFO] - Epoch 15/50
+2025-04-17 23:52:13,716 [INFO] - GPU cache cleared: 840.72MB → 840.72MB (freed 0.00MB)
+2025-04-17 23:52:13,716 [INFO] - Current calibration weight: 0.0500
+2025-04-17 23:52:13,716 [INFO] - Updated teacher weights: {'vit': 0.2622214228683421, 'efficientnet': 0.13493053427067617, 'inception': 0.08838212182554224, 'mobilenet': 0.23487585837240088, 'resnet': 0.14623747066485623, 'densenet': 0.13335259199818245}
+2025-04-17 23:52:13,716 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:52:13,716 [INFO] - Current teacher temperatures: {'vit': 3.7337706089019775, 'efficientnet': 4.059850692749023, 'inception': 6.934475421905518, 'mobilenet': 4.093810081481934, 'resnet': 4.096569061279297, 'densenet': 4.067325592041016}
+2025-04-17 23:52:13,716 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:52:13,716 [INFO] - HFI attention weights: {'vit': 0.1993001401424408, 'efficientnet': 0.17862462997436523, 'inception': 0.1605190485715866, 'mobilenet': 0.15053033828735352, 'resnet': 0.15464237332344055, 'densenet': 0.15638349950313568}
+2025-04-17 23:58:48,815 [INFO] - Epoch 15 Results - Time: 395.29s, LR: 0.000794
+2025-04-17 23:58:48,816 [INFO] - Train - Loss: 1.1575, Acc: 99.39%
+2025-04-17 23:58:48,817 [INFO] -   CE: 0.0180, KL: 0.1020, Feat: 0.0331, Cal: 0.0045
+2025-04-17 23:58:48,817 [INFO] - Val - Loss: 0.0869, Acc: 97.54%, F1: 0.9752, ECE: 0.0137
+2025-04-17 23:58:49,081 [INFO] - GPU Memory: Current=840.72MB, Peak=4296.33MB, Reserved=4676.00MB
+2025-04-17 23:58:49,081 [INFO] - Epoch 16/50
+2025-04-17 23:58:49,278 [INFO] - GPU cache cleared: 840.72MB → 840.72MB (freed 0.00MB)
+2025-04-17 23:58:49,278 [INFO] - Current calibration weight: 0.0533
+2025-04-17 23:58:49,278 [INFO] - Updated teacher weights: {'vit': 0.5182888525722573, 'efficientnet': 0.10874111106984777, 'inception': 0.03997607816979757, 'mobilenet': 0.10982214171601286, 'resnet': 0.10785233183307556, 'densenet': 0.11531948463900893}
+2025-04-17 23:58:49,278 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:58:49,283 [INFO] - Current teacher temperatures: {'vit': 3.647338390350342, 'efficientnet': 3.9969232082366943, 'inception': 7.00446081161499, 'mobilenet': 4.027655601501465, 'resnet': 4.034214019775391, 'densenet': 3.9988553524017334}
+2025-04-17 23:58:49,283 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-17 23:58:49,283 [INFO] - HFI attention weights: {'vit': 0.1998744010925293, 'efficientnet': 0.17959216237068176, 'inception': 0.15987363457679749, 'mobilenet': 0.15022152662277222, 'resnet': 0.15475182235240936, 'densenet': 0.15568648278713226}
+2025-04-18 00:05:22,981 [INFO] - Epoch 16 Results - Time: 393.90s, LR: 0.000768
+2025-04-18 00:05:22,982 [INFO] - Train - Loss: 1.1197, Acc: 99.50%
+2025-04-18 00:05:22,982 [INFO] -   CE: 0.0162, KL: 0.0987, Feat: 0.0315, Cal: 0.0039
+2025-04-18 00:05:22,983 [INFO] - Val - Loss: 0.0867, Acc: 97.58%, F1: 0.9756, ECE: 0.0135
+2025-04-18 00:05:23,253 [INFO] - GPU Memory: Current=841.35MB, Peak=4296.33MB, Reserved=4680.00MB
+2025-04-18 00:05:23,253 [INFO] - Epoch 17/50
+2025-04-18 00:05:23,446 [INFO] - GPU cache cleared: 841.35MB → 841.35MB (freed 0.00MB)
+2025-04-18 00:05:23,447 [INFO] - Current calibration weight: 0.0567
+2025-04-18 00:05:23,448 [INFO] - Updated teacher weights: {'vit': 0.08439458938653671, 'efficientnet': 0.09592178650808451, 'inception': 0.033071974400673644, 'mobilenet': 0.3022022896224069, 'resnet': 0.2993387177055805, 'densenet': 0.18507064237671766}
+2025-04-18 00:05:23,448 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:05:23,450 [INFO] - Current teacher temperatures: {'vit': 3.5630900859832764, 'efficientnet': 3.93691349029541, 'inception': 7.0717878341674805, 'mobilenet': 3.9632408618927, 'resnet': 3.9723639488220215, 'densenet': 3.9321913719177246}
+2025-04-18 00:05:23,450 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:05:23,451 [INFO] - HFI attention weights: {'vit': 0.2005026489496231, 'efficientnet': 0.1803915798664093, 'inception': 0.15923379361629486, 'mobilenet': 0.1498507559299469, 'resnet': 0.1549024134874344, 'densenet': 0.15511883795261383}
+2025-04-18 00:11:56,917 [INFO] - Epoch 17 Results - Time: 393.66s, LR: 0.000741
+2025-04-18 00:11:56,918 [INFO] - Train - Loss: 1.1050, Acc: 99.55%
+2025-04-18 00:11:56,919 [INFO] -   CE: 0.0142, KL: 0.0975, Feat: 0.0302, Cal: 0.0035
+2025-04-18 00:11:56,921 [INFO] - Val - Loss: 0.0901, Acc: 97.60%, F1: 0.9758, ECE: 0.0140
+2025-04-18 00:11:57,420 [INFO] - New best model saved (Val Acc: 97.60%)
+2025-04-18 00:11:57,420 [INFO] - GPU Memory: Current=840.72MB, Peak=4296.33MB, Reserved=4726.00MB
+2025-04-18 00:11:57,420 [INFO] - Epoch 18/50
+2025-04-18 00:11:57,612 [INFO] - GPU cache cleared: 840.72MB → 840.72MB (freed 0.00MB)
+2025-04-18 00:11:57,612 [INFO] - Current calibration weight: 0.0600
+2025-04-18 00:11:57,612 [INFO] - Updated teacher weights: {'vit': 0.23250192574605677, 'efficientnet': 0.2351020644406287, 'inception': 0.022063290902365047, 'mobilenet': 0.07259454894610207, 'resnet': 0.20231418359060513, 'densenet': 0.23542398637424233}
+2025-04-18 00:11:57,612 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:11:57,612 [INFO] - Current teacher temperatures: {'vit': 3.483564853668213, 'efficientnet': 3.8781545162200928, 'inception': 7.141489028930664, 'mobilenet': 3.899916887283325, 'resnet': 3.912879467010498, 'densenet': 3.866224527359009}
+2025-04-18 00:11:57,612 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:11:57,612 [INFO] - HFI attention weights: {'vit': 0.2010156810283661, 'efficientnet': 0.18143802881240845, 'inception': 0.15863433480262756, 'mobilenet': 0.14960098266601562, 'resnet': 0.15508326888084412, 'densenet': 0.1542276293039322}
+2025-04-18 00:18:30,310 [INFO] - Epoch 18 Results - Time: 392.89s, LR: 0.000713
+2025-04-18 00:18:30,310 [INFO] - Train - Loss: 1.0477, Acc: 99.57%
+2025-04-18 00:18:30,312 [INFO] -   CE: 0.0139, KL: 0.0924, Feat: 0.0288, Cal: 0.0033
+2025-04-18 00:18:30,312 [INFO] - Val - Loss: 0.0982, Acc: 97.40%, F1: 0.9739, ECE: 0.0159
+2025-04-18 00:18:30,591 [INFO] - GPU Memory: Current=840.63MB, Peak=4296.33MB, Reserved=4672.00MB
+2025-04-18 00:18:30,592 [INFO] - Epoch 19/50
+2025-04-18 00:18:30,780 [INFO] - GPU cache cleared: 840.63MB → 840.63MB (freed 0.00MB)
+2025-04-18 00:18:30,780 [INFO] - Current calibration weight: 0.0633
+2025-04-18 00:18:30,780 [INFO] - Updated teacher weights: {'vit': 0.19790271138519577, 'efficientnet': 0.2174295077228206, 'inception': 0.013563203982905992, 'mobilenet': 0.21752111484636089, 'resnet': 0.13585623118839024, 'densenet': 0.21772723087432644}
+2025-04-18 00:18:30,780 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:18:30,780 [INFO] - Current teacher temperatures: {'vit': 3.4076759815216064, 'efficientnet': 3.821101665496826, 'inception': 7.204405307769775, 'mobilenet': 3.8400776386260986, 'resnet': 3.8558993339538574, 'densenet': 3.8040177822113037}
+2025-04-18 00:18:30,780 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:18:30,786 [INFO] - HFI attention weights: {'vit': 0.201186403632164, 'efficientnet': 0.18238545954227448, 'inception': 0.1578870564699173, 'mobilenet': 0.14934206008911133, 'resnet': 0.15535052120685577, 'densenet': 0.15384848415851593}
+2025-04-18 00:25:03,403 [INFO] - Epoch 19 Results - Time: 392.81s, LR: 0.000684
+2025-04-18 00:25:03,404 [INFO] - Train - Loss: 1.0095, Acc: 99.55%
+2025-04-18 00:25:03,405 [INFO] -   CE: 0.0144, KL: 0.0890, Feat: 0.0275, Cal: 0.0035
+2025-04-18 00:25:03,406 [INFO] - Val - Loss: 0.0878, Acc: 97.42%, F1: 0.9740, ECE: 0.0144
+2025-04-18 00:25:03,658 [INFO] - GPU Memory: Current=841.25MB, Peak=4296.33MB, Reserved=4680.00MB
+2025-04-18 00:25:03,658 [INFO] - Epoch 20/50
+2025-04-18 00:25:03,859 [INFO] - GPU cache cleared: 841.25MB → 841.25MB (freed 0.00MB)
+2025-04-18 00:25:03,859 [INFO] - Current calibration weight: 0.0667
+2025-04-18 00:25:03,859 [INFO] - Updated teacher weights: {'vit': 0.1928459467782511, 'efficientnet': 0.19500260077885992, 'inception': 0.028560879878137966, 'mobilenet': 0.19508475902650219, 'resnet': 0.19323619845455173, 'densenet': 0.1952696150836972}
+2025-04-18 00:25:03,859 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:25:03,859 [INFO] - Current teacher temperatures: {'vit': 3.3340911865234375, 'efficientnet': 3.766674041748047, 'inception': 7.263909816741943, 'mobilenet': 3.781352996826172, 'resnet': 3.802657127380371, 'densenet': 3.7433509826660156}
+2025-04-18 00:25:03,859 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:25:03,859 [INFO] - HFI attention weights: {'vit': 0.20147474110126495, 'efficientnet': 0.18328259885311127, 'inception': 0.15727189183235168, 'mobilenet': 0.14909560978412628, 'resnet': 0.155551478266716, 'densenet': 0.15332363545894623}
+2025-04-18 00:31:36,171 [INFO] - Epoch 20 Results - Time: 392.51s, LR: 0.000655
+2025-04-18 00:31:36,172 [INFO] - Train - Loss: 0.9760, Acc: 99.64%
+2025-04-18 00:31:36,172 [INFO] -   CE: 0.0121, KL: 0.0861, Feat: 0.0262, Cal: 0.0028
+2025-04-18 00:31:36,173 [INFO] - Val - Loss: 0.0805, Acc: 97.54%, F1: 0.9753, ECE: 0.0125
+2025-04-18 00:31:36,664 [INFO] - New best model saved (Val Loss: 0.0805)
+2025-04-18 00:31:36,923 [INFO] - GPU Memory: Current=840.95MB, Peak=4296.33MB, Reserved=4672.00MB
+2025-04-18 00:31:36,924 [INFO] - Epoch 21/50
+2025-04-18 00:31:37,116 [INFO] - GPU cache cleared: 840.95MB → 840.95MB (freed 0.00MB)
+2025-04-18 00:31:37,116 [INFO] - Current calibration weight: 0.0700
+2025-04-18 00:31:37,116 [INFO] - Updated teacher weights: {'vit': 0.1896159617534577, 'efficientnet': 0.19173649386381164, 'inception': 0.04483155532095692, 'mobilenet': 0.1918172760394442, 'resnet': 0.1899996770877122, 'densenet': 0.19199903593461734}
+2025-04-18 00:31:37,116 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:31:37,116 [INFO] - Current teacher temperatures: {'vit': 3.2643661499023438, 'efficientnet': 3.715048313140869, 'inception': 7.322025775909424, 'mobilenet': 3.727614402770996, 'resnet': 3.749971866607666, 'densenet': 3.68483304977417}
+2025-04-18 00:31:37,116 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:31:37,116 [INFO] - HFI attention weights: {'vit': 0.20170722901821136, 'efficientnet': 0.18426978588104248, 'inception': 0.15669062733650208, 'mobilenet': 0.14875848591327667, 'resnet': 0.15579283237457275, 'densenet': 0.15278102457523346}
+2025-04-18 00:38:09,222 [INFO] - Epoch 21 Results - Time: 392.30s, LR: 0.000624
+2025-04-18 00:38:09,223 [INFO] - Train - Loss: 0.9425, Acc: 99.69%
+2025-04-18 00:38:09,224 [INFO] -   CE: 0.0114, KL: 0.0832, Feat: 0.0250, Cal: 0.0026
+2025-04-18 00:38:09,225 [INFO] - Val - Loss: 0.0807, Acc: 97.52%, F1: 0.9750, ECE: 0.0132
+2025-04-18 00:38:09,485 [INFO] - GPU Memory: Current=840.72MB, Peak=4296.33MB, Reserved=4734.00MB
+2025-04-18 00:38:09,491 [INFO] - Epoch 22/50
+2025-04-18 00:38:09,679 [INFO] - GPU cache cleared: 840.72MB → 840.72MB (freed 0.00MB)
+2025-04-18 00:38:09,680 [INFO] - Current calibration weight: 0.0733
+2025-04-18 00:38:09,680 [INFO] - Updated teacher weights: {'vit': 0.1771526633293424, 'efficientnet': 0.10943325515829323, 'inception': 0.03443023093335149, 'mobilenet': 0.38681941599929015, 'resnet': 0.14589738882015857, 'densenet': 0.14626704575956415}
+2025-04-18 00:38:09,680 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:38:09,680 [INFO] - Current teacher temperatures: {'vit': 3.1984481811523438, 'efficientnet': 3.6656346321105957, 'inception': 7.376290321350098, 'mobilenet': 3.675612211227417, 'resnet': 3.7003414630889893, 'densenet': 3.6292827129364014}
+2025-04-18 00:38:09,680 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:38:09,680 [INFO] - HFI attention weights: {'vit': 0.20169135928153992, 'efficientnet': 0.18514037132263184, 'inception': 0.15604303777217865, 'mobilenet': 0.14849671721458435, 'resnet': 0.15613867342472076, 'densenet': 0.1524897962808609}
+2025-04-18 00:44:41,039 [INFO] - Epoch 22 Results - Time: 391.55s, LR: 0.000594
+2025-04-18 00:44:41,039 [INFO] - Train - Loss: 0.9194, Acc: 99.70%
+2025-04-18 00:44:41,040 [INFO] -   CE: 0.0105, KL: 0.0812, Feat: 0.0239, Cal: 0.0024
+2025-04-18 00:44:41,041 [INFO] - Val - Loss: 0.0800, Acc: 97.46%, F1: 0.9744, ECE: 0.0148
+2025-04-18 00:44:41,543 [INFO] - New best model saved (Val Loss: 0.0800)
+2025-04-18 00:44:41,545 [INFO] - GPU Memory: Current=840.69MB, Peak=4296.33MB, Reserved=4676.00MB
+2025-04-18 00:44:41,545 [INFO] - Epoch 23/50
+2025-04-18 00:44:41,734 [INFO] - GPU cache cleared: 840.69MB → 840.69MB (freed 0.00MB)
+2025-04-18 00:44:41,734 [INFO] - Current calibration weight: 0.0767
+2025-04-18 00:44:41,734 [INFO] - Updated teacher weights: {'vit': 0.20766105372445534, 'efficientnet': 0.20998338950473736, 'inception': 0.03856678076200712, 'mobilenet': 0.12543657330371205, 'resnet': 0.20808128591326827, 'densenet': 0.21027091679181986}
+2025-04-18 00:44:41,734 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:44:41,734 [INFO] - Current teacher temperatures: {'vit': 3.136962652206421, 'efficientnet': 3.6192421913146973, 'inception': 7.428650856018066, 'mobilenet': 3.6243395805358887, 'resnet': 3.652376890182495, 'densenet': 3.5769715309143066}
+2025-04-18 00:44:41,734 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:44:41,734 [INFO] - HFI attention weights: {'vit': 0.20178405940532684, 'efficientnet': 0.1861511915922165, 'inception': 0.15546590089797974, 'mobilenet': 0.14818376302719116, 'resnet': 0.15653151273727417, 'densenet': 0.1518835723400116}
+2025-04-18 00:51:13,288 [INFO] - Epoch 23 Results - Time: 391.74s, LR: 0.000563
+2025-04-18 00:51:13,289 [INFO] - Train - Loss: 0.8884, Acc: 99.74%
+2025-04-18 00:51:13,290 [INFO] -   CE: 0.0101, KL: 0.0784, Feat: 0.0229, Cal: 0.0022
+2025-04-18 00:51:13,291 [INFO] - Val - Loss: 0.0849, Acc: 97.54%, F1: 0.9752, ECE: 0.0144
+2025-04-18 00:51:13,558 [INFO] - GPU Memory: Current=841.66MB, Peak=4296.33MB, Reserved=4680.00MB
+2025-04-18 00:51:13,558 [INFO] - Epoch 24/50
+2025-04-18 00:51:13,745 [INFO] - GPU cache cleared: 841.66MB → 841.66MB (freed 0.00MB)
+2025-04-18 00:51:13,745 [INFO] - Current calibration weight: 0.0800
+2025-04-18 00:51:13,745 [INFO] - Updated teacher weights: {'vit': 0.20017683206727493, 'efficientnet': 0.20446538289653599, 'inception': 0.025032580292174398, 'mobilenet': 0.1874196195196731, 'resnet': 0.1781602307691734, 'densenet': 0.20474535445516823}
+2025-04-18 00:51:13,745 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:51:13,745 [INFO] - Current teacher temperatures: {'vit': 3.079115867614746, 'efficientnet': 3.574533224105835, 'inception': 7.478969097137451, 'mobilenet': 3.5768775939941406, 'resnet': 3.6073555946350098, 'densenet': 3.5278267860412598}
+2025-04-18 00:51:13,755 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:51:13,755 [INFO] - HFI attention weights: {'vit': 0.20171137154102325, 'efficientnet': 0.18697749078273773, 'inception': 0.15490584075450897, 'mobilenet': 0.1480201631784439, 'resnet': 0.15694773197174072, 'densenet': 0.15143735706806183}
+2025-04-18 00:57:45,333 [INFO] - Epoch 24 Results - Time: 391.78s, LR: 0.000531
+2025-04-18 00:57:45,335 [INFO] - Train - Loss: 0.8572, Acc: 99.75%
+2025-04-18 00:57:45,335 [INFO] -   CE: 0.0095, KL: 0.0757, Feat: 0.0222, Cal: 0.0021
+2025-04-18 00:57:45,336 [INFO] - Val - Loss: 0.0862, Acc: 97.62%, F1: 0.9760, ECE: 0.0149
+2025-04-18 00:57:45,824 [INFO] - New best model saved (Val Acc: 97.62%)
+2025-04-18 00:57:45,824 [INFO] - GPU Memory: Current=841.48MB, Peak=4296.33MB, Reserved=4678.00MB
+2025-04-18 00:57:45,824 [INFO] - Epoch 25/50
+2025-04-18 00:57:46,074 [INFO] - GPU cache cleared: 841.48MB → 841.48MB (freed 0.00MB)
+2025-04-18 00:57:46,075 [INFO] - Current calibration weight: 0.0833
+2025-04-18 00:57:46,075 [INFO] - Updated teacher weights: {'vit': 0.19352042057191657, 'efficientnet': 0.19568461741503632, 'inception': 0.03860271484679168, 'mobilenet': 0.18232764442711386, 'resnet': 0.1939120371435287, 'densenet': 0.195952565595613}
+2025-04-18 00:57:46,076 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:57:46,078 [INFO] - Current teacher temperatures: {'vit': 3.0252292156219482, 'efficientnet': 3.5321643352508545, 'inception': 7.526115417480469, 'mobilenet': 3.532027006149292, 'resnet': 3.565781354904175, 'densenet': 3.4805397987365723}
+2025-04-18 00:57:46,078 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 00:57:46,078 [INFO] - HFI attention weights: {'vit': 0.20157939195632935, 'efficientnet': 0.18791575729846954, 'inception': 0.15430809557437897, 'mobilenet': 0.14780376851558685, 'resnet': 0.157383531332016, 'densenet': 0.15100939571857452}
+2025-04-18 01:04:18,261 [INFO] - Epoch 25 Results - Time: 392.44s, LR: 0.000500
+2025-04-18 01:04:18,261 [INFO] - Train - Loss: 0.8415, Acc: 99.76%
+2025-04-18 01:04:18,261 [INFO] -   CE: 0.0109, KL: 0.0743, Feat: 0.0211, Cal: 0.0022
+2025-04-18 01:04:18,263 [INFO] - Val - Loss: 0.0817, Acc: 97.54%, F1: 0.9752, ECE: 0.0134
+2025-04-18 01:04:18,532 [INFO] - GPU Memory: Current=841.60MB, Peak=4296.33MB, Reserved=4678.00MB
+2025-04-18 01:04:18,532 [INFO] - Epoch 26/50
+2025-04-18 01:04:18,729 [INFO] - GPU cache cleared: 841.60MB → 841.60MB (freed 0.00MB)
+2025-04-18 01:04:18,729 [INFO] - Current calibration weight: 0.0867
+2025-04-18 01:04:18,729 [INFO] - Updated teacher weights: {'vit': 0.15243410357194, 'efficientnet': 0.22948462950730786, 'inception': 0.015941871622111345, 'mobilenet': 0.22958131567941967, 'resnet': 0.14275922005255004, 'densenet': 0.2297988595666711}
+2025-04-18 01:04:18,729 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:04:18,729 [INFO] - Current teacher temperatures: {'vit': 2.9745566844940186, 'efficientnet': 3.493314266204834, 'inception': 7.569159507751465, 'mobilenet': 3.4895761013031006, 'resnet': 3.5250892639160156, 'densenet': 3.4359734058380127}
+2025-04-18 01:04:18,729 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:04:18,729 [INFO] - HFI attention weights: {'vit': 0.20145609974861145, 'efficientnet': 0.18891318142414093, 'inception': 0.15380632877349854, 'mobilenet': 0.14752550423145294, 'resnet': 0.1578465849161148, 'densenet': 0.15045234560966492}
+2025-04-18 01:10:50,657 [INFO] - Epoch 26 Results - Time: 392.13s, LR: 0.000469
+2025-04-18 01:10:50,658 [INFO] - Train - Loss: 0.8155, Acc: 99.76%
+2025-04-18 01:10:50,659 [INFO] -   CE: 0.0091, KL: 0.0720, Feat: 0.0211, Cal: 0.0020
+2025-04-18 01:10:50,659 [INFO] - Val - Loss: 0.0784, Acc: 97.70%, F1: 0.9768, ECE: 0.0118
+2025-04-18 01:10:51,154 [INFO] - New best model saved (Val Loss: 0.0784)
+2025-04-18 01:10:51,392 [INFO] - New best model saved (Val Acc: 97.70%)
+2025-04-18 01:10:51,392 [INFO] - GPU Memory: Current=841.69MB, Peak=4296.33MB, Reserved=4680.00MB
+2025-04-18 01:10:51,392 [INFO] - Epoch 27/50
+2025-04-18 01:10:51,581 [INFO] - GPU cache cleared: 841.69MB → 841.69MB (freed 0.00MB)
+2025-04-18 01:10:51,581 [INFO] - Current calibration weight: 0.0900
+2025-04-18 01:10:51,581 [INFO] - Updated teacher weights: {'vit': 0.228538947918469, 'efficientnet': 0.11860354174592275, 'inception': 0.012754530411292835, 'mobilenet': 0.17969034813415247, 'resnet': 0.22900142954701844, 'densenet': 0.2314112022431446}
+2025-04-18 01:10:51,592 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:10:51,592 [INFO] - Current teacher temperatures: {'vit': 2.928088426589966, 'efficientnet': 3.4560248851776123, 'inception': 7.611278057098389, 'mobilenet': 3.4499988555908203, 'resnet': 3.4881675243377686, 'densenet': 3.393801212310791}
+2025-04-18 01:10:51,592 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:10:51,592 [INFO] - HFI attention weights: {'vit': 0.2013339251279831, 'efficientnet': 0.1896693855524063, 'inception': 0.15326747298240662, 'mobilenet': 0.1473790854215622, 'resnet': 0.1582300215959549, 'densenet': 0.1501201093196869}
+2025-04-18 01:17:23,032 [INFO] - Epoch 27 Results - Time: 391.64s, LR: 0.000437
+2025-04-18 01:17:23,033 [INFO] - Train - Loss: 0.7925, Acc: 99.81%
+2025-04-18 01:17:23,034 [INFO] -   CE: 0.0083, KL: 0.0700, Feat: 0.0202, Cal: 0.0016
+2025-04-18 01:17:23,035 [INFO] - Val - Loss: 0.0832, Acc: 97.64%, F1: 0.9762, ECE: 0.0133
+2025-04-18 01:17:23,285 [INFO] - GPU Memory: Current=841.01MB, Peak=4296.33MB, Reserved=4672.00MB
+2025-04-18 01:17:23,285 [INFO] - Epoch 28/50
+2025-04-18 01:17:23,477 [INFO] - GPU cache cleared: 841.01MB → 841.01MB (freed 0.00MB)
+2025-04-18 01:17:23,477 [INFO] - Current calibration weight: 0.0933
+2025-04-18 01:17:23,477 [INFO] - Updated teacher weights: {'vit': 0.48466934305095494, 'efficientnet': 0.11749221094670804, 'inception': 0.039701376416756376, 'mobilenet': 0.12012929871765622, 'resnet': 0.12006433652055844, 'densenet': 0.11794343434736601}
+2025-04-18 01:17:23,477 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:17:23,488 [INFO] - Current teacher temperatures: {'vit': 2.884784698486328, 'efficientnet': 3.4215691089630127, 'inception': 7.650013446807861, 'mobilenet': 3.412886619567871, 'resnet': 3.4531331062316895, 'densenet': 3.354592800140381}
+2025-04-18 01:17:23,488 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:17:23,488 [INFO] - HFI attention weights: {'vit': 0.20120148360729218, 'efficientnet': 0.19034802913665771, 'inception': 0.15283022820949554, 'mobilenet': 0.14705558121204376, 'resnet': 0.15864910185337067, 'densenet': 0.14991554617881775}
+2025-04-18 01:23:55,371 [INFO] - Epoch 28 Results - Time: 392.09s, LR: 0.000406
+2025-04-18 01:23:55,371 [INFO] - Train - Loss: 0.7701, Acc: 99.82%
+2025-04-18 01:23:55,371 [INFO] -   CE: 0.0076, KL: 0.0680, Feat: 0.0198, Cal: 0.0015
+2025-04-18 01:23:55,381 [INFO] - Val - Loss: 0.0796, Acc: 97.72%, F1: 0.9771, ECE: 0.0119
+2025-04-18 01:23:55,886 [INFO] - New best model saved (Val Acc: 97.72%)
+2025-04-18 01:23:55,886 [INFO] - GPU Memory: Current=841.58MB, Peak=4296.33MB, Reserved=4732.00MB
+2025-04-18 01:23:55,886 [INFO] - Epoch 29/50
+2025-04-18 01:23:56,080 [INFO] - GPU cache cleared: 841.58MB → 841.58MB (freed 0.00MB)
+2025-04-18 01:23:56,080 [INFO] - Current calibration weight: 0.0967
+2025-04-18 01:23:56,080 [INFO] - Updated teacher weights: {'vit': 0.2636469171356108, 'efficientnet': 0.2690159005252114, 'inception': 0.03565247086491135, 'mobilenet': 0.0663328383336716, 'resnet': 0.09596761294539946, 'densenet': 0.26938426019519535}
+2025-04-18 01:23:56,080 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:23:56,080 [INFO] - Current teacher temperatures: {'vit': 2.8444783687591553, 'efficientnet': 3.3889214992523193, 'inception': 7.684991836547852, 'mobilenet': 3.378549814224243, 'resnet': 3.4198310375213623, 'densenet': 3.319101095199585}
+2025-04-18 01:23:56,080 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:23:56,080 [INFO] - HFI attention weights: {'vit': 0.20101167261600494, 'efficientnet': 0.19127030670642853, 'inception': 0.1523279845714569, 'mobilenet': 0.14684052765369415, 'resnet': 0.1590871810913086, 'densenet': 0.14946229755878448}
+2025-04-18 01:30:27,286 [INFO] - Epoch 29 Results - Time: 391.40s, LR: 0.000376
+2025-04-18 01:30:27,286 [INFO] - Train - Loss: 0.7587, Acc: 99.85%
+2025-04-18 01:30:27,287 [INFO] -   CE: 0.0076, KL: 0.0670, Feat: 0.0191, Cal: 0.0015
+2025-04-18 01:30:27,288 [INFO] - Val - Loss: 0.0784, Acc: 97.78%, F1: 0.9777, ECE: 0.0115
+2025-04-18 01:30:27,785 [INFO] - New best model saved (Val Acc: 97.78%)
+2025-04-18 01:30:27,785 [INFO] - GPU Memory: Current=841.35MB, Peak=4296.33MB, Reserved=4672.00MB
+2025-04-18 01:30:27,785 [INFO] - Epoch 30/50
+2025-04-18 01:30:27,974 [INFO] - GPU cache cleared: 841.35MB → 841.35MB (freed 0.00MB)
+2025-04-18 01:30:27,974 [INFO] - Current calibration weight: 0.1000
+2025-04-18 01:30:27,974 [INFO] - Updated teacher weights: {'vit': 0.27927633577313044, 'efficientnet': 0.2823995667089254, 'inception': 0.044058558462567406, 'mobilenet': 0.05987887529864416, 'resnet': 0.05160041131289921, 'densenet': 0.2827862524438333}
+2025-04-18 01:30:27,974 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:30:27,974 [INFO] - Current teacher temperatures: {'vit': 2.8078415393829346, 'efficientnet': 3.3593692779541016, 'inception': 7.719114780426025, 'mobilenet': 3.3466529846191406, 'resnet': 3.3889236450195312, 'densenet': 3.285221815109253}
+2025-04-18 01:30:27,974 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:30:27,974 [INFO] - HFI attention weights: {'vit': 0.20078958570957184, 'efficientnet': 0.19201156497001648, 'inception': 0.15190759301185608, 'mobilenet': 0.14659413695335388, 'resnet': 0.15961267054080963, 'densenet': 0.14908447861671448}
+2025-04-18 01:37:00,006 [INFO] - Epoch 30 Results - Time: 392.22s, LR: 0.000345
+2025-04-18 01:37:00,006 [INFO] - Train - Loss: 0.7329, Acc: 99.85%
+2025-04-18 01:37:00,007 [INFO] -   CE: 0.0067, KL: 0.0647, Feat: 0.0188, Cal: 0.0013
+2025-04-18 01:37:00,008 [INFO] - Val - Loss: 0.0786, Acc: 97.68%, F1: 0.9766, ECE: 0.0122
+2025-04-18 01:37:00,477 [INFO] - GPU Memory: Current=840.82MB, Peak=4296.33MB, Reserved=4638.00MB
+2025-04-18 01:37:00,477 [INFO] - Epoch 31/50
+2025-04-18 01:37:00,674 [INFO] - GPU cache cleared: 840.82MB → 840.82MB (freed 0.00MB)
+2025-04-18 01:37:00,675 [INFO] - Current calibration weight: 0.1000
+2025-04-18 01:37:00,676 [INFO] - Updated teacher weights: {'vit': 0.2022410714217437, 'efficientnet': 0.2045027939160757, 'inception': 0.015153143830884648, 'mobilenet': 0.20458895477300265, 'resnet': 0.16873121935720511, 'densenet': 0.2047828167010882}
+2025-04-18 01:37:00,676 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:37:00,677 [INFO] - Current teacher temperatures: {'vit': 2.7747321128845215, 'efficientnet': 3.3310766220092773, 'inception': 7.750066757202148, 'mobilenet': 3.316768169403076, 'resnet': 3.3609402179718018, 'densenet': 3.254368305206299}
+2025-04-18 01:37:00,677 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:37:00,677 [INFO] - HFI attention weights: {'vit': 0.20048242807388306, 'efficientnet': 0.1927691549062729, 'inception': 0.1514635682106018, 'mobilenet': 0.14641089737415314, 'resnet': 0.1600428968667984, 'densenet': 0.1488310694694519}
+2025-04-18 01:43:32,496 [INFO] - Epoch 31 Results - Time: 392.02s, LR: 0.000316
+2025-04-18 01:43:32,499 [INFO] - Train - Loss: 0.7247, Acc: 99.87%
+2025-04-18 01:43:32,500 [INFO] -   CE: 0.0071, KL: 0.0640, Feat: 0.0180, Cal: 0.0013
+2025-04-18 01:43:32,500 [INFO] - Val - Loss: 0.0784, Acc: 97.74%, F1: 0.9773, ECE: 0.0122
+2025-04-18 01:43:32,763 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 01:43:32,763 [INFO] - Epoch 32/50
+2025-04-18 01:43:32,961 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 01:43:32,961 [INFO] - Current calibration weight: 0.1000
+2025-04-18 01:43:32,961 [INFO] - Updated teacher weights: {'vit': 0.26159087767414324, 'efficientnet': 0.26451632683334925, 'inception': 0.03210300672214157, 'mobilenet': 0.0898642429992874, 'resnet': 0.2621202446648567, 'densenet': 0.08980530110622184}
+2025-04-18 01:43:32,961 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:43:32,961 [INFO] - Current teacher temperatures: {'vit': 2.744474411010742, 'efficientnet': 3.3054959774017334, 'inception': 7.779212474822998, 'mobilenet': 3.289931535720825, 'resnet': 3.335127353668213, 'densenet': 3.225797414779663}
+2025-04-18 01:43:32,961 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:43:32,961 [INFO] - HFI attention weights: {'vit': 0.2002420872449875, 'efficientnet': 0.19352741539478302, 'inception': 0.15111039578914642, 'mobilenet': 0.146210715174675, 'resnet': 0.1604723334312439, 'densenet': 0.14843705296516418}
+2025-04-18 01:50:04,590 [INFO] - Epoch 32 Results - Time: 391.83s, LR: 0.000287
+2025-04-18 01:50:04,591 [INFO] - Train - Loss: 0.7085, Acc: 99.88%
+2025-04-18 01:50:04,592 [INFO] -   CE: 0.0065, KL: 0.0626, Feat: 0.0177, Cal: 0.0011
+2025-04-18 01:50:04,593 [INFO] - Val - Loss: 0.0748, Acc: 97.86%, F1: 0.9784, ECE: 0.0107
+2025-04-18 01:50:05,075 [INFO] - New best model saved (Val Loss: 0.0748)
+2025-04-18 01:50:05,295 [INFO] - New best model saved (Val Acc: 97.86%)
+2025-04-18 01:50:05,295 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 01:50:05,295 [INFO] - Epoch 33/50
+2025-04-18 01:50:05,492 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 01:50:05,492 [INFO] - Current calibration weight: 0.1000
+2025-04-18 01:50:05,492 [INFO] - Updated teacher weights: {'vit': 0.1386910535595028, 'efficientnet': 0.28268826518412854, 'inception': 0.023682163805150234, 'mobilenet': 0.12682948201734542, 'resnet': 0.1450336892040953, 'densenet': 0.2830753462297777}
+2025-04-18 01:50:05,492 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:50:05,492 [INFO] - Current teacher temperatures: {'vit': 2.7164230346679688, 'efficientnet': 3.2820706367492676, 'inception': 7.804623126983643, 'mobilenet': 3.2649288177490234, 'resnet': 3.311124086380005, 'densenet': 3.200137138366699}
+2025-04-18 01:50:05,492 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:50:05,492 [INFO] - HFI attention weights: {'vit': 0.19998379051685333, 'efficientnet': 0.19425395131111145, 'inception': 0.15072497725486755, 'mobilenet': 0.1460084766149521, 'resnet': 0.1609482765197754, 'densenet': 0.14808055758476257}
+2025-04-18 01:56:36,148 [INFO] - Epoch 33 Results - Time: 390.85s, LR: 0.000259
+2025-04-18 01:56:36,149 [INFO] - Train - Loss: 0.6930, Acc: 99.88%
+2025-04-18 01:56:36,149 [INFO] -   CE: 0.0066, KL: 0.0612, Feat: 0.0173, Cal: 0.0012
+2025-04-18 01:56:36,150 [INFO] - Val - Loss: 0.0751, Acc: 98.06%, F1: 0.9805, ECE: 0.0106
+2025-04-18 01:56:36,644 [INFO] - New best model saved (Val Acc: 98.06%)
+2025-04-18 01:56:36,644 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 01:56:36,644 [INFO] - Epoch 34/50
+2025-04-18 01:56:36,836 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 01:56:36,837 [INFO] - Current calibration weight: 0.1000
+2025-04-18 01:56:36,837 [INFO] - Updated teacher weights: {'vit': 0.18040230900399237, 'efficientnet': 0.200391474925101, 'inception': 0.044032814799490984, 'mobilenet': 0.20047590360634185, 'resnet': 0.17403162952594015, 'densenet': 0.20066586813913365}
+2025-04-18 01:56:36,838 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:56:36,840 [INFO] - Current teacher temperatures: {'vit': 2.69126558303833, 'efficientnet': 3.260392904281616, 'inception': 7.827913284301758, 'mobilenet': 3.24204683303833, 'resnet': 3.2898519039154053, 'densenet': 3.1769628524780273}
+2025-04-18 01:56:36,840 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 01:56:36,840 [INFO] - HFI attention weights: {'vit': 0.19969947636127472, 'efficientnet': 0.19490434229373932, 'inception': 0.1503610461950302, 'mobilenet': 0.14581456780433655, 'resnet': 0.16133877635002136, 'densenet': 0.14788176119327545}
+2025-04-18 02:03:07,762 [INFO] - Epoch 34 Results - Time: 391.12s, LR: 0.000232
+2025-04-18 02:03:07,763 [INFO] - Train - Loss: 0.6866, Acc: 99.93%
+2025-04-18 02:03:07,763 [INFO] -   CE: 0.0055, KL: 0.0607, Feat: 0.0168, Cal: 0.0008
+2025-04-18 02:03:07,764 [INFO] - Val - Loss: 0.0735, Acc: 97.92%, F1: 0.9790, ECE: 0.0117
+2025-04-18 02:03:08,267 [INFO] - New best model saved (Val Loss: 0.0735)
+2025-04-18 02:03:08,267 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:03:08,267 [INFO] - Epoch 35/50
+2025-04-18 02:03:08,453 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:03:08,453 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:03:08,453 [INFO] - Updated teacher weights: {'vit': 0.3155924615105881, 'efficientnet': 0.15937072040279496, 'inception': 0.07246030276341534, 'mobilenet': 0.15400766360621201, 'resnet': 0.12869873142900876, 'densenet': 0.16987012028798087}
+2025-04-18 02:03:08,453 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:03:08,463 [INFO] - Current teacher temperatures: {'vit': 2.6689445972442627, 'efficientnet': 3.2411906719207764, 'inception': 7.849041938781738, 'mobilenet': 3.2215332984924316, 'resnet': 3.270482301712036, 'densenet': 3.155381679534912}
+2025-04-18 02:03:08,464 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:03:08,465 [INFO] - HFI attention weights: {'vit': 0.19944778084754944, 'efficientnet': 0.1954539567232132, 'inception': 0.15007542073726654, 'mobilenet': 0.14564664661884308, 'resnet': 0.16173961758613586, 'densenet': 0.14763659238815308}
+2025-04-18 02:09:40,245 [INFO] - Epoch 35 Results - Time: 391.98s, LR: 0.000206
+2025-04-18 02:09:40,245 [INFO] - Train - Loss: 0.6785, Acc: 99.89%
+2025-04-18 02:09:40,246 [INFO] -   CE: 0.0060, KL: 0.0600, Feat: 0.0165, Cal: 0.0010
+2025-04-18 02:09:40,247 [INFO] - Val - Loss: 0.0763, Acc: 97.92%, F1: 0.9791, ECE: 0.0114
+2025-04-18 02:09:40,511 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:09:40,521 [INFO] - Epoch 36/50
+2025-04-18 02:09:40,712 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:09:40,717 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:09:40,717 [INFO] - Updated teacher weights: {'vit': 0.10825845104283807, 'efficientnet': 0.23245747467571012, 'inception': 0.025131220218875316, 'mobilenet': 0.23255541336316568, 'resnet': 0.2303517928954161, 'densenet': 0.1712456478039947}
+2025-04-18 02:09:40,717 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:09:40,717 [INFO] - Current teacher temperatures: {'vit': 2.6491682529449463, 'efficientnet': 3.2240662574768066, 'inception': 7.868402004241943, 'mobilenet': 3.202949047088623, 'resnet': 3.2526326179504395, 'densenet': 3.1362035274505615}
+2025-04-18 02:09:40,717 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:09:40,717 [INFO] - HFI attention weights: {'vit': 0.19918322563171387, 'efficientnet': 0.19612015783786774, 'inception': 0.14978137612342834, 'mobilenet': 0.1454627960920334, 'resnet': 0.16215483844280243, 'densenet': 0.147297665476799}
+2025-04-18 02:16:12,184 [INFO] - Epoch 36 Results - Time: 391.66s, LR: 0.000181
+2025-04-18 02:16:12,185 [INFO] - Train - Loss: 0.6713, Acc: 99.91%
+2025-04-18 02:16:12,186 [INFO] -   CE: 0.0058, KL: 0.0593, Feat: 0.0163, Cal: 0.0009
+2025-04-18 02:16:12,186 [INFO] - Val - Loss: 0.0725, Acc: 97.78%, F1: 0.9776, ECE: 0.0109
+2025-04-18 02:16:12,679 [INFO] - New best model saved (Val Loss: 0.0725)
+2025-04-18 02:16:12,681 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:16:12,682 [INFO] - Epoch 37/50
+2025-04-18 02:16:12,869 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:16:12,869 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:16:12,869 [INFO] - Updated teacher weights: {'vit': 0.1960846912473556, 'efficientnet': 0.1982775650977095, 'inception': 0.01224607974918184, 'mobilenet': 0.19836110314915156, 'resnet': 0.19648149699170536, 'densenet': 0.19854906376489612}
+2025-04-18 02:16:12,877 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:16:12,879 [INFO] - Current teacher temperatures: {'vit': 2.631621837615967, 'efficientnet': 3.2082765102386475, 'inception': 7.885851860046387, 'mobilenet': 3.1863887310028076, 'resnet': 3.2373976707458496, 'densenet': 3.119316577911377}
+2025-04-18 02:16:12,879 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:16:12,880 [INFO] - HFI attention weights: {'vit': 0.1989281177520752, 'efficientnet': 0.1966870129108429, 'inception': 0.14951391518115997, 'mobilenet': 0.1453585922718048, 'resnet': 0.16248780488967896, 'densenet': 0.14702461659908295}
+2025-04-18 02:22:43,722 [INFO] - Epoch 37 Results - Time: 391.04s, LR: 0.000158
+2025-04-18 02:22:43,722 [INFO] - Train - Loss: 0.6592, Acc: 99.92%
+2025-04-18 02:22:43,722 [INFO] -   CE: 0.0059, KL: 0.0583, Feat: 0.0161, Cal: 0.0010
+2025-04-18 02:22:43,724 [INFO] - Val - Loss: 0.0713, Acc: 97.92%, F1: 0.9791, ECE: 0.0098
+2025-04-18 02:22:44,207 [INFO] - New best model saved (Val Loss: 0.0713)
+2025-04-18 02:22:44,207 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:22:44,207 [INFO] - Epoch 38/50
+2025-04-18 02:22:44,406 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:22:44,406 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:22:44,406 [INFO] - Updated teacher weights: {'vit': 0.22016522799011243, 'efficientnet': 0.22262740169753195, 'inception': 0.012844631189679734, 'mobilenet': 0.10081973268610367, 'resnet': 0.2206107641847883, 'densenet': 0.22293224225178385}
+2025-04-18 02:22:44,406 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:22:44,406 [INFO] - Current teacher temperatures: {'vit': 2.6161272525787354, 'efficientnet': 3.1945459842681885, 'inception': 7.900829792022705, 'mobilenet': 3.171881675720215, 'resnet': 3.223482847213745, 'densenet': 3.1046605110168457}
+2025-04-18 02:22:44,406 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:22:44,406 [INFO] - HFI attention weights: {'vit': 0.1987295001745224, 'efficientnet': 0.19712059199810028, 'inception': 0.14930729568004608, 'mobilenet': 0.14521047472953796, 'resnet': 0.16285423934459686, 'densenet': 0.14677786827087402}
+2025-04-18 02:29:15,791 [INFO] - Epoch 38 Results - Time: 391.58s, LR: 0.000136
+2025-04-18 02:29:15,792 [INFO] - Train - Loss: 0.6530, Acc: 99.91%
+2025-04-18 02:29:15,792 [INFO] -   CE: 0.0056, KL: 0.0577, Feat: 0.0158, Cal: 0.0009
+2025-04-18 02:29:15,793 [INFO] - Val - Loss: 0.0735, Acc: 97.82%, F1: 0.9781, ECE: 0.0107
+2025-04-18 02:29:16,062 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:29:16,062 [INFO] - Epoch 39/50
+2025-04-18 02:29:16,261 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:29:16,265 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:29:16,265 [INFO] - Updated teacher weights: {'vit': 0.24006357465890457, 'efficientnet': 0.2427482775387837, 'inception': 0.01830471116086361, 'mobilenet': 0.1985756681812561, 'resnet': 0.05722709913628045, 'densenet': 0.24308066932391154}
+2025-04-18 02:29:16,265 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:29:16,265 [INFO] - Current teacher temperatures: {'vit': 2.602609634399414, 'efficientnet': 3.18257999420166, 'inception': 7.913568496704102, 'mobilenet': 3.1590209007263184, 'resnet': 3.211421489715576, 'densenet': 3.0918960571289062}
+2025-04-18 02:29:16,265 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:29:16,265 [INFO] - HFI attention weights: {'vit': 0.19852569699287415, 'efficientnet': 0.19758687913417816, 'inception': 0.1491101235151291, 'mobilenet': 0.14506183564662933, 'resnet': 0.16318099200725555, 'densenet': 0.1465345323085785}
+2025-04-18 02:35:47,417 [INFO] - Epoch 39 Results - Time: 391.35s, LR: 0.000115
+2025-04-18 02:35:47,417 [INFO] - Train - Loss: 0.6473, Acc: 99.92%
+2025-04-18 02:35:47,417 [INFO] -   CE: 0.0062, KL: 0.0572, Feat: 0.0156, Cal: 0.0010
+2025-04-18 02:35:47,424 [INFO] - Val - Loss: 0.0720, Acc: 98.00%, F1: 0.9799, ECE: 0.0106
+2025-04-18 02:35:47,682 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:35:47,689 [INFO] - Epoch 40/50
+2025-04-18 02:35:47,880 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:35:47,880 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:35:47,880 [INFO] - Updated teacher weights: {'vit': 0.1938632443372685, 'efficientnet': 0.19603127508126822, 'inception': 0.023436361255144186, 'mobilenet': 0.19611386672865871, 'resnet': 0.1942555546623732, 'densenet': 0.1962996979352872}
+2025-04-18 02:35:47,880 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:35:47,880 [INFO] - Current teacher temperatures: {'vit': 2.591071128845215, 'efficientnet': 3.1723756790161133, 'inception': 7.924449443817139, 'mobilenet': 3.1482491493225098, 'resnet': 3.20110821723938, 'densenet': 3.08093523979187}
+2025-04-18 02:35:47,880 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:35:47,890 [INFO] - HFI attention weights: {'vit': 0.19832541048526764, 'efficientnet': 0.19797885417938232, 'inception': 0.1489231437444687, 'mobilenet': 0.14496301114559174, 'resnet': 0.16347022354602814, 'densenet': 0.1463393121957779}
+2025-04-18 02:42:18,804 [INFO] - Epoch 40 Results - Time: 391.12s, LR: 0.000095
+2025-04-18 02:42:18,805 [INFO] - Train - Loss: 0.6387, Acc: 99.94%
+2025-04-18 02:42:18,806 [INFO] -   CE: 0.0055, KL: 0.0565, Feat: 0.0154, Cal: 0.0008
+2025-04-18 02:42:18,807 [INFO] - Val - Loss: 0.0714, Acc: 97.88%, F1: 0.9787, ECE: 0.0099
+2025-04-18 02:42:19,301 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:42:19,301 [INFO] - Epoch 41/50
+2025-04-18 02:42:19,492 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:42:19,498 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:42:19,498 [INFO] - Updated teacher weights: {'vit': 0.2288590182276673, 'efficientnet': 0.218457671536114, 'inception': 0.016007191507170875, 'mobilenet': 0.2315159181091047, 'resnet': 0.07342490545640779, 'densenet': 0.23173529516353528}
+2025-04-18 02:42:19,498 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:42:19,500 [INFO] - Current teacher temperatures: {'vit': 2.5813064575195312, 'efficientnet': 3.1635422706604004, 'inception': 7.933732986450195, 'mobilenet': 3.1390273571014404, 'resnet': 3.1923325061798096, 'densenet': 3.071462631225586}
+2025-04-18 02:42:19,500 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:42:19,500 [INFO] - HFI attention weights: {'vit': 0.19813115894794464, 'efficientnet': 0.19833549857139587, 'inception': 0.14875288307666779, 'mobilenet': 0.14486807584762573, 'resnet': 0.1637335568666458, 'densenet': 0.14617885649204254}
+2025-04-18 02:48:50,517 [INFO] - Epoch 41 Results - Time: 391.22s, LR: 0.000078
+2025-04-18 02:48:50,519 [INFO] - Train - Loss: 0.6340, Acc: 99.89%
+2025-04-18 02:48:50,519 [INFO] -   CE: 0.0063, KL: 0.0560, Feat: 0.0152, Cal: 0.0010
+2025-04-18 02:48:50,519 [INFO] - Val - Loss: 0.0702, Acc: 97.92%, F1: 0.9791, ECE: 0.0101
+2025-04-18 02:48:51,009 [INFO] - New best model saved (Val Loss: 0.0702)
+2025-04-18 02:48:51,009 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:48:51,009 [INFO] - Epoch 42/50
+2025-04-18 02:48:51,203 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:48:51,203 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:48:51,206 [INFO] - Updated teacher weights: {'vit': 0.17518435846650593, 'efficientnet': 0.24881931754712738, 'inception': 0.01774287010514365, 'mobilenet': 0.248924149785403, 'resnet': 0.06016928177429699, 'densenet': 0.24916002232152304}
+2025-04-18 02:48:51,206 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:48:51,206 [INFO] - Current teacher temperatures: {'vit': 2.5732908248901367, 'efficientnet': 3.1560821533203125, 'inception': 7.941520690917969, 'mobilenet': 3.131351947784424, 'resnet': 3.1850619316101074, 'densenet': 3.063584804534912}
+2025-04-18 02:48:51,206 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:48:51,206 [INFO] - HFI attention weights: {'vit': 0.19794410467147827, 'efficientnet': 0.1986626833677292, 'inception': 0.14859656989574432, 'mobilenet': 0.14478205144405365, 'resnet': 0.16395999491214752, 'densenet': 0.14605461061000824}
+2025-04-18 02:55:22,335 [INFO] - Epoch 42 Results - Time: 391.33s, LR: 0.000062
+2025-04-18 02:55:22,336 [INFO] - Train - Loss: 0.6273, Acc: 99.95%
+2025-04-18 02:55:22,337 [INFO] -   CE: 0.0051, KL: 0.0555, Feat: 0.0151, Cal: 0.0007
+2025-04-18 02:55:22,338 [INFO] - Val - Loss: 0.0690, Acc: 98.02%, F1: 0.9801, ECE: 0.0098
+2025-04-18 02:55:22,839 [INFO] - New best model saved (Val Loss: 0.0690)
+2025-04-18 02:55:22,839 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 02:55:22,849 [INFO] - Epoch 43/50
+2025-04-18 02:55:23,044 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 02:55:23,045 [INFO] - Current calibration weight: 0.1000
+2025-04-18 02:55:23,046 [INFO] - Updated teacher weights: {'vit': 0.2348352504612492, 'efficientnet': 0.05248100568068286, 'inception': 0.03551179968924138, 'mobilenet': 0.2040748345219496, 'resnet': 0.23531047356900972, 'densenet': 0.2377866360778673}
+2025-04-18 02:55:23,046 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:55:23,046 [INFO] - Current teacher temperatures: {'vit': 2.5667285919189453, 'efficientnet': 3.149959087371826, 'inception': 7.947849273681641, 'mobilenet': 3.1251609325408936, 'resnet': 3.1789824962615967, 'densenet': 3.0572080612182617}
+2025-04-18 02:55:23,046 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 02:55:23,046 [INFO] - HFI attention weights: {'vit': 0.19779494404792786, 'efficientnet': 0.19891484081745148, 'inception': 0.14847908914089203, 'mobilenet': 0.14470426738262177, 'resnet': 0.1641567349433899, 'densenet': 0.1459500789642334}
+2025-04-18 03:01:54,084 [INFO] - Epoch 43 Results - Time: 391.23s, LR: 0.000048
+2025-04-18 03:01:54,086 [INFO] - Train - Loss: 0.6291, Acc: 99.94%
+2025-04-18 03:01:54,086 [INFO] -   CE: 0.0052, KL: 0.0556, Feat: 0.0149, Cal: 0.0007
+2025-04-18 03:01:54,087 [INFO] - Val - Loss: 0.0683, Acc: 97.92%, F1: 0.9791, ECE: 0.0099
+2025-04-18 03:01:54,569 [INFO] - New best model saved (Val Loss: 0.0683)
+2025-04-18 03:01:54,569 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 03:01:54,569 [INFO] - Epoch 44/50
+2025-04-18 03:01:54,763 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 03:01:54,763 [INFO] - Current calibration weight: 0.1000
+2025-04-18 03:01:54,763 [INFO] - Updated teacher weights: {'vit': 0.1814486811126279, 'efficientnet': 0.18347787607660979, 'inception': 0.08597328555726394, 'mobilenet': 0.18355517874190436, 'resnet': 0.181815868772777, 'densenet': 0.18372910973881706}
+2025-04-18 03:01:54,763 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:01:54,774 [INFO] - Current teacher temperatures: {'vit': 2.5615267753601074, 'efficientnet': 3.145233392715454, 'inception': 7.952969551086426, 'mobilenet': 3.120157241821289, 'resnet': 3.1740338802337646, 'densenet': 3.052077293395996}
+2025-04-18 03:01:54,774 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:01:54,774 [INFO] - HFI attention weights: {'vit': 0.19768832623958588, 'efficientnet': 0.19910885393619537, 'inception': 0.14839275181293488, 'mobilenet': 0.144627183675766, 'resnet': 0.16431359946727753, 'densenet': 0.14586926996707916}
+2025-04-18 03:08:25,708 [INFO] - Epoch 44 Results - Time: 391.14s, LR: 0.000035
+2025-04-18 03:08:25,708 [INFO] - Train - Loss: 0.6217, Acc: 99.95%
+2025-04-18 03:08:25,708 [INFO] -   CE: 0.0052, KL: 0.0550, Feat: 0.0149, Cal: 0.0007
+2025-04-18 03:08:25,713 [INFO] - Val - Loss: 0.0684, Acc: 98.02%, F1: 0.9801, ECE: 0.0094
+2025-04-18 03:08:25,970 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 03:08:25,970 [INFO] - Epoch 45/50
+2025-04-18 03:08:26,157 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 03:08:26,157 [INFO] - Current calibration weight: 0.1000
+2025-04-18 03:08:26,157 [INFO] - Updated teacher weights: {'vit': 0.22167629205810568, 'efficientnet': 0.22415536444772133, 'inception': 0.018809587212228595, 'mobilenet': 0.08877157295261551, 'resnet': 0.22212488610955994, 'densenet': 0.22446229721976893}
+2025-04-18 03:08:26,167 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:08:26,167 [INFO] - Current teacher temperatures: {'vit': 2.5575995445251465, 'efficientnet': 3.141484260559082, 'inception': 7.956943035125732, 'mobilenet': 3.116288661956787, 'resnet': 3.1702721118927, 'densenet': 3.048156976699829}
+2025-04-18 03:08:26,167 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:08:26,167 [INFO] - HFI attention weights: {'vit': 0.1975814551115036, 'efficientnet': 0.19929280877113342, 'inception': 0.1483037918806076, 'mobilenet': 0.14457732439041138, 'resnet': 0.16445152461528778, 'densenet': 0.1457931250333786}
+2025-04-18 03:14:56,972 [INFO] - Epoch 45 Results - Time: 391.00s, LR: 0.000024
+2025-04-18 03:14:56,973 [INFO] - Train - Loss: 0.6240, Acc: 99.94%
+2025-04-18 03:14:56,974 [INFO] -   CE: 0.0053, KL: 0.0552, Feat: 0.0148, Cal: 0.0007
+2025-04-18 03:14:56,974 [INFO] - Val - Loss: 0.0678, Acc: 98.00%, F1: 0.9799, ECE: 0.0098
+2025-04-18 03:14:57,538 [INFO] - New best model saved (Val Loss: 0.0678)
+2025-04-18 03:14:57,538 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 03:14:57,549 [INFO] - Epoch 46/50
+2025-04-18 03:14:57,738 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 03:14:57,738 [INFO] - Current calibration weight: 0.1000
+2025-04-18 03:14:57,738 [INFO] - Updated teacher weights: {'vit': 0.23025984038294242, 'efficientnet': 0.2328349051651566, 'inception': 0.023702780985146304, 'mobilenet': 0.04932294627074282, 'resnet': 0.23072580448639068, 'densenet': 0.23315372270962118}
+2025-04-18 03:14:57,738 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:14:57,738 [INFO] - Current teacher temperatures: {'vit': 2.554654121398926, 'efficientnet': 3.1387243270874023, 'inception': 7.959887981414795, 'mobilenet': 3.1134607791900635, 'resnet': 3.1674928665161133, 'densenet': 3.045166492462158}
+2025-04-18 03:14:57,738 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:14:57,738 [INFO] - HFI attention weights: {'vit': 0.19750775396823883, 'efficientnet': 0.1994241178035736, 'inception': 0.1482469141483307, 'mobilenet': 0.14453090727329254, 'resnet': 0.16455969214439392, 'densenet': 0.14573058485984802}
+2025-04-18 03:21:28,469 [INFO] - Epoch 46 Results - Time: 390.92s, LR: 0.000016
+2025-04-18 03:21:28,470 [INFO] - Train - Loss: 0.6217, Acc: 99.94%
+2025-04-18 03:21:28,470 [INFO] -   CE: 0.0056, KL: 0.0550, Feat: 0.0147, Cal: 0.0008
+2025-04-18 03:21:28,472 [INFO] - Val - Loss: 0.0680, Acc: 97.98%, F1: 0.9797, ECE: 0.0096
+2025-04-18 03:21:28,727 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 03:21:28,727 [INFO] - Epoch 47/50
+2025-04-18 03:21:28,921 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 03:21:28,921 [INFO] - Current calibration weight: 0.1000
+2025-04-18 03:21:28,921 [INFO] - Updated teacher weights: {'vit': 0.16043712388926767, 'efficientnet': 0.18266870493046514, 'inception': 0.11442856934432563, 'mobilenet': 0.1302585571359645, 'resnet': 0.29212039085348107, 'densenet': 0.12008665384649604}
+2025-04-18 03:21:28,927 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:21:28,927 [INFO] - Current teacher temperatures: {'vit': 2.552567481994629, 'efficientnet': 3.136788845062256, 'inception': 7.961921691894531, 'mobilenet': 3.1114306449890137, 'resnet': 3.165517568588257, 'densenet': 3.0431618690490723}
+2025-04-18 03:21:28,927 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:21:28,927 [INFO] - HFI attention weights: {'vit': 0.1974576711654663, 'efficientnet': 0.1995120495557785, 'inception': 0.14820873737335205, 'mobilenet': 0.14449894428253174, 'resnet': 0.16463759541511536, 'densenet': 0.14568498730659485}
+2025-04-18 03:28:00,134 [INFO] - Epoch 47 Results - Time: 391.41s, LR: 0.000009
+2025-04-18 03:28:00,143 [INFO] - Train - Loss: 0.6293, Acc: 99.95%
+2025-04-18 03:28:00,143 [INFO] -   CE: 0.0062, KL: 0.0556, Feat: 0.0147, Cal: 0.0009
+2025-04-18 03:28:00,143 [INFO] - Val - Loss: 0.0685, Acc: 97.94%, F1: 0.9793, ECE: 0.0097
+2025-04-18 03:28:00,408 [INFO] - GPU Memory: Current=840.79MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 03:28:00,408 [INFO] - Epoch 48/50
+2025-04-18 03:28:00,594 [INFO] - GPU cache cleared: 840.79MB → 840.79MB (freed 0.00MB)
+2025-04-18 03:28:00,604 [INFO] - Current calibration weight: 0.1000
+2025-04-18 03:28:00,604 [INFO] - Updated teacher weights: {'vit': 0.2610765863096313, 'efficientnet': 0.12601862651842036, 'inception': 0.03247128797655498, 'mobilenet': 0.27433343219466827, 'resnet': 0.203886666918535, 'densenet': 0.10221340008219}
+2025-04-18 03:28:00,604 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:28:00,604 [INFO] - Current teacher temperatures: {'vit': 2.5512399673461914, 'efficientnet': 3.1355252265930176, 'inception': 7.963255882263184, 'mobilenet': 3.1101162433624268, 'resnet': 3.1642444133758545, 'densenet': 3.0418436527252197}
+2025-04-18 03:28:00,604 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:28:00,604 [INFO] - HFI attention weights: {'vit': 0.19742190837860107, 'efficientnet': 0.1995706409215927, 'inception': 0.14818255603313446, 'mobilenet': 0.1444811075925827, 'resnet': 0.16469012200832367, 'densenet': 0.14565369486808777}
+2025-04-18 03:34:30,896 [INFO] - Epoch 48 Results - Time: 390.49s, LR: 0.000004
+2025-04-18 03:34:30,896 [INFO] - Train - Loss: 0.6197, Acc: 99.97%
+2025-04-18 03:34:30,896 [INFO] -   CE: 0.0049, KL: 0.0548, Feat: 0.0146, Cal: 0.0006
+2025-04-18 03:34:30,898 [INFO] - Val - Loss: 0.0676, Acc: 98.02%, F1: 0.9801, ECE: 0.0094
+2025-04-18 03:34:31,428 [INFO] - New best model saved (Val Loss: 0.0676)
+2025-04-18 03:34:31,428 [INFO] - GPU Memory: Current=841.60MB, Peak=4296.33MB, Reserved=4674.00MB
+2025-04-18 03:34:31,430 [INFO] - Epoch 49/50
+2025-04-18 03:34:31,616 [INFO] - GPU cache cleared: 841.60MB → 841.60MB (freed 0.00MB)
+2025-04-18 03:34:31,616 [INFO] - Current calibration weight: 0.1000
+2025-04-18 03:34:31,616 [INFO] - Updated teacher weights: {'vit': 0.1920451209915752, 'efficientnet': 0.19419281911747951, 'inception': 0.0325949470212438, 'mobilenet': 0.19427463618894256, 'resnet': 0.19243375208102453, 'densenet': 0.1944587245997343}
+2025-04-18 03:34:31,626 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:34:31,626 [INFO] - Current teacher temperatures: {'vit': 2.5504884719848633, 'efficientnet': 3.1348161697387695, 'inception': 7.963999271392822, 'mobilenet': 3.109372615814209, 'resnet': 3.163522720336914, 'densenet': 3.0411038398742676}
+2025-04-18 03:34:31,626 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:34:31,626 [INFO] - HFI attention weights: {'vit': 0.19739951193332672, 'efficientnet': 0.1996089220046997, 'inception': 0.14816594123840332, 'mobilenet': 0.14447006583213806, 'resnet': 0.16472256183624268, 'densenet': 0.14563307166099548}
+2025-04-18 03:41:02,456 [INFO] - Epoch 49 Results - Time: 391.03s, LR: 0.000001
+2025-04-18 03:41:02,457 [INFO] - Train - Loss: 0.6225, Acc: 99.96%
+2025-04-18 03:41:02,457 [INFO] -   CE: 0.0053, KL: 0.0550, Feat: 0.0147, Cal: 0.0007
+2025-04-18 03:41:02,458 [INFO] - Val - Loss: 0.0679, Acc: 97.98%, F1: 0.9796, ECE: 0.0101
+2025-04-18 03:41:02,717 [INFO] - GPU Memory: Current=840.72MB, Peak=4296.33MB, Reserved=4682.00MB
+2025-04-18 03:41:02,723 [INFO] - Epoch 50/50
+2025-04-18 03:41:02,909 [INFO] - GPU cache cleared: 840.72MB → 840.72MB (freed 0.00MB)
+2025-04-18 03:41:02,920 [INFO] - Current calibration weight: 0.1000
+2025-04-18 03:41:02,920 [INFO] - Updated teacher weights: {'vit': 0.12455639018674494, 'efficientnet': 0.24338208143486245, 'inception': 0.03611104132670407, 'mobilenet': 0.2434846228637375, 'resnet': 0.24117744071404948, 'densenet': 0.11128842347390162}
+2025-04-18 03:41:02,920 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:41:02,923 [INFO] - Current teacher temperatures: {'vit': 2.5501513481140137, 'efficientnet': 3.1344988346099854, 'inception': 7.964338779449463, 'mobilenet': 3.109036684036255, 'resnet': 3.1632065773010254, 'densenet': 3.0407755374908447}
+2025-04-18 03:41:02,923 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-04-18 03:41:02,923 [INFO] - HFI attention weights: {'vit': 0.19738774001598358, 'efficientnet': 0.19962859153747559, 'inception': 0.14815714955329895, 'mobilenet': 0.14446580410003662, 'resnet': 0.16473743319511414, 'densenet': 0.1456233114004135}
+2025-04-18 03:47:33,891 [INFO] - Epoch 50 Results - Time: 391.17s, LR: 0.000000
+2025-04-18 03:47:33,891 [INFO] - Train - Loss: 0.6293, Acc: 99.95%
+2025-04-18 03:47:33,891 [INFO] -   CE: 0.0054, KL: 0.0556, Feat: 0.0146, Cal: 0.0007
+2025-04-18 03:47:33,901 [INFO] - Val - Loss: 0.0684, Acc: 98.06%, F1: 0.9805, ECE: 0.0103
+2025-04-18 03:47:34,405 [INFO] - GPU Memory: Current=841.60MB, Peak=4296.33MB, Reserved=4684.00MB
+2025-04-18 03:47:34,406 [INFO] - Training completed. Best validation accuracy: 98.06%
+2025-04-18 03:47:34,425 [INFO] - Plotting training history...
+2025-04-18 03:47:37,867 [INFO] - Enhanced training history plot saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\plots\training_history.png
+2025-04-18 03:47:39,141 [INFO] - Testing student model...
+2025-04-18 03:47:39,141 [INFO] - Testing student model on test set...
+2025-04-18 03:48:00,330 [INFO] - Test Results:
+2025-04-18 03:48:00,331 [INFO] - Loss: 0.0998
+2025-04-18 03:48:00,331 [INFO] - Accuracy: 97.17%
+2025-04-18 03:48:00,332 [INFO] - F1 Score: 0.9716
+2025-04-18 03:48:00,332 [INFO] - Precision: 0.9717
+2025-04-18 03:48:00,333 [INFO] - Recall: 0.9717
+2025-04-18 03:48:00,334 [INFO] - ECE: 0.0157
+2025-04-18 03:48:00,335 [INFO] - Plotting calibration curves for all models...
+2025-04-18 03:49:09,267 [INFO] - Teacher calibration curves saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\plots\teacher_calibration_curves.png
+2025-04-18 03:49:09,267 [INFO] - ECE values: {'student': 0.04635745345015141, 'vit': 0.04546110738101256, 'efficientnet': 0.0848824145358763, 'inception': 0.2630447937035792, 'mobilenet': 0.059094877193580156, 'resnet': 0.08162392206789962, 'densenet': 0.11343221674889838}
+2025-04-18 03:49:09,267 [INFO] - Plotting calibration curve for student...
+2025-04-18 03:49:14,942 [INFO] - Calibration curve saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\plots\calibration_curve.png
+2025-04-18 03:49:14,951 [INFO] - Exporting final model...
+2025-04-18 03:49:15,000 [INFO] - Final model exported to C:\Users\Gading\Downloads\Research\Models\EnsembleDistillation\exports\cal_aware_distilled_model.pth
+2025-04-18 03:49:15,001 [INFO] - GPU Memory: Current=647.77MB, Peak=4296.33MB, Reserved=1370.00MB
+2025-04-18 03:49:15,001 [INFO] - Calibration-aware ensemble distillation completed successfully.
+2025-05-07 15:45:34,159 [INFO] - Using device: cuda
+2025-05-07 15:45:34,385 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 15:45:34,386 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 15:45:34,387 [INFO] - CUDA Version: 11.8
+2025-05-07 15:45:34,387 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 15:45:34,397 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "ensemble_distillation",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 8,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "model_input_size": 224,
+    "num_workers": 4,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 1,
+    "pretrained": true,
+    "num_classes": 10,
+    "teacher_models": [
+        "vit",
+        "efficientnet",
+        "inception",
+        "mobilenet",
+        "resnet",
+        "densenet"
+    ],
+    "teacher_finetune_epochs": 5,
+    "freeze_teacher_backbones": true,
+    "teacher_model_paths": {
+        "vit": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints\\vit_b16_teacher_20250321_053628_best.pth",
+        "efficientnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EfficientNetB0\\checkpoints\\efficientnet_b0_teacher_20250325_132652_best.pth",
+        "inception": "C:\\Users\\Gading\\Downloads\\Research\\Models\\InceptionV3\\checkpoints\\inception_v3_teacher_20250428_140923_best.pth",
+        "mobilenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MobileNetV3\\checkpoints\\mobilenetv3_20250326_035725_best.pth",
+        "resnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ResNet50\\checkpoints\\resnet50_teacher_20250322_225032_best.pth",
+        "densenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\DenseNet121\\checkpoints\\densenet121_teacher_20250325_160534_best.pth"
+    },
+    "use_pretrained_teachers": true,
+    "teacher_accuracies": {
+        "densenet": 95.07,
+        "efficientnet": 94.94,
+        "inception": 83.17,
+        "mobilenet": 94.98,
+        "resnet": 94.08,
+        "vit": 93.89
+    },
+    "teacher_init_weights": {
+        "densenet": 1.0,
+        "efficientnet": 1.0,
+        "inception": 0.7,
+        "mobilenet": 1.0,
+        "resnet": 1.0,
+        "vit": 1.0
+    },
+    "use_adaptive_temperature": true,
+    "teacher_temperatures": {
+        "densenet": 4.0,
+        "efficientnet": 4.0,
+        "inception": 5.0,
+        "mobilenet": 4.0,
+        "resnet": 4.0,
+        "vit": 4.0
+    },
+    "learn_temperatures": true,
+    "use_teacher_gating": true,
+    "gating_threshold": 0.2,
+    "dynamic_weight_update": true,
+    "weighting_scheme": "adaptive",
+    "weight_update_interval": 5,
+    "soft_target_temp": 4.0,
+    "epochs": 50,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "early_stop_patience": 10,
+    "alpha": 0.7,
+    "feature_loss_weight": 0.3,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_start_epoch": 0,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\EnsembleDistillation",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports",
+    "per_teacher_calibration": true,
+    "weight_by_calibration": true
+}
+2025-05-07 15:45:34,451 [INFO] - Random seed set to 42
+2025-05-07 15:45:34,451 [INFO] - GPU Memory: Current=0.00MB, Peak=0.00MB, Reserved=0.00MB
+2025-05-07 15:45:34,452 [INFO] - Preparing data loaders...
+2025-05-07 15:45:36,682 [INFO] - Training samples: 45000
+2025-05-07 15:45:36,682 [INFO] - Validation samples: 5000
+2025-05-07 15:45:36,682 [INFO] - Test samples: 10000
+2025-05-07 15:45:36,689 [INFO] - Loading pre-trained teacher models...
+2025-05-07 15:45:36,689 [INFO] - Loading ViT-B16 model...
+2025-05-07 15:45:37,255 [INFO] - Loading EfficientNetB0 model...
+2025-05-07 15:45:37,321 [INFO] - Loading InceptionV3 model...
+2025-05-07 15:45:37,614 [INFO] - Loading MobileNetV3 model...
+2025-05-07 15:45:37,688 [INFO] - Loading ResNet50 model...
+2025-05-07 15:45:37,918 [INFO] - Loading DenseNet121 model...
+2025-05-07 15:45:38,008 [INFO] - Loading pre-trained weights for vit from C:\Users\Gading\Downloads\Research\Models\ViT\checkpoints\vit_b16_teacher_20250321_053628_best.pth
+2025-05-07 15:45:40,508 [INFO] - Successfully loaded pre-trained weights for vit
+2025-05-07 15:45:40,508 [INFO] - Loading pre-trained weights for efficientnet from C:\Users\Gading\Downloads\Research\Models\EfficientNetB0\checkpoints\efficientnet_b0_teacher_20250325_132652_best.pth
+2025-05-07 15:45:40,759 [INFO] - Successfully loaded pre-trained weights for efficientnet
+2025-05-07 15:45:40,759 [INFO] - Loading pre-trained weights for inception from C:\Users\Gading\Downloads\Research\Models\InceptionV3\checkpoints\inception_v3_teacher_20250428_140923_best.pth
+2025-05-07 15:45:41,908 [ERROR] - Error loading weights for inception: Error(s) in loading state_dict for Inception3:
+	Missing key(s) in state_dict: "AuxLogits.fc.weight", "AuxLogits.fc.bias", "fc.weight", "fc.bias". 
+	Unexpected key(s) in state_dict: "AuxLogits.fc.1.weight", "AuxLogits.fc.1.bias", "fc.1.weight", "fc.1.bias". 
+2025-05-07 15:45:41,908 [ERROR] - Attempting to continue with pretrained ImageNet weights
+2025-05-07 15:45:42,523 [INFO] - Loading pre-trained weights for mobilenet from C:\Users\Gading\Downloads\Research\Models\MobileNetV3\checkpoints\mobilenetv3_20250326_035725_best.pth
+2025-05-07 15:45:43,022 [INFO] - Successfully loaded pre-trained weights for mobilenet
+2025-05-07 15:45:43,022 [INFO] - Loading pre-trained weights for resnet from C:\Users\Gading\Downloads\Research\Models\ResNet50\checkpoints\resnet50_teacher_20250322_225032_best.pth
+2025-05-07 15:45:43,647 [INFO] - Successfully loaded pre-trained weights for resnet
+2025-05-07 15:45:43,731 [INFO] - Loading pre-trained weights for densenet from C:\Users\Gading\Downloads\Research\Models\DenseNet121\checkpoints\densenet121_teacher_20250325_160534_best.pth
+2025-05-07 15:45:44,420 [INFO] - Successfully loaded pre-trained weights for densenet
+2025-05-07 15:45:44,466 [INFO] - Model vit loaded and moved to cuda
+2025-05-07 15:45:44,467 [INFO] - Model vit set to evaluation mode
+2025-05-07 15:45:44,483 [INFO] - Model efficientnet loaded and moved to cuda
+2025-05-07 15:45:44,484 [INFO] - Model efficientnet set to evaluation mode
+2025-05-07 15:45:44,521 [INFO] - Model inception loaded and moved to cuda
+2025-05-07 15:45:44,522 [INFO] - Model inception set to evaluation mode
+2025-05-07 15:45:44,537 [INFO] - Model mobilenet loaded and moved to cuda
+2025-05-07 15:45:44,538 [INFO] - Model mobilenet set to evaluation mode
+2025-05-07 15:45:44,585 [INFO] - Model resnet loaded and moved to cuda
+2025-05-07 15:45:44,585 [INFO] - Model resnet set to evaluation mode
+2025-05-07 15:45:44,633 [INFO] - Model densenet loaded and moved to cuda
+2025-05-07 15:45:44,634 [INFO] - Model densenet set to evaluation mode
+2025-05-07 15:45:44,638 [INFO] - Skipping teacher fine-tuning as pre-trained models are being used
+2025-05-07 15:45:44,638 [INFO] - Creating student model...
+2025-05-07 15:45:44,639 [INFO] - Creating scaled EfficientNet-B0 student model...
+2025-05-07 15:45:44,945 [INFO] - Student model created with 4.02M parameters
+2025-05-07 15:45:44,967 [INFO] - Training student with calibration-aware ensemble distillation...
+2025-05-07 15:45:44,968 [INFO] - Training student model with ensemble distillation (ACP enabled)...
+2025-05-07 15:45:44,970 [INFO] - Teacher weighting initialized with scheme: adaptive
+2025-05-07 15:45:44,971 [INFO] - Initial teacher weights: {'vit': 0.17543859649122806, 'efficientnet': 0.17543859649122806, 'inception': 0.12280701754385964, 'mobilenet': 0.17543859649122806, 'resnet': 0.17543859649122806, 'densenet': 0.17543859649122806}
+2025-05-07 15:45:44,971 [INFO] - Initial teacher temperatures: {'vit': 4.0, 'efficientnet': 4.0, 'inception': 5.0, 'mobilenet': 4.0, 'resnet': 4.0, 'densenet': 4.0}
+2025-05-07 15:45:44,973 [INFO] - Hook registered for encoder.ln
+2025-05-07 15:45:46,017 [INFO] - Feature shape for vit: torch.Size([197, 768])
+2025-05-07 15:45:46,018 [INFO] - Hook registered for features.8
+2025-05-07 15:45:46,626 [INFO] - Feature shape for efficientnet: torch.Size([1280, 7, 7])
+2025-05-07 15:45:46,626 [INFO] - Hook registered for Mixed_7c
+2025-05-07 15:45:47,307 [INFO] - Feature shape for inception: torch.Size([2048, 5, 5])
+2025-05-07 15:45:47,313 [INFO] - Hook registered for features.15.block.2
+2025-05-07 15:45:47,459 [INFO] - Feature shape for mobilenet: torch.Size([960, 7, 7])
+2025-05-07 15:45:47,460 [INFO] - Hook registered for layer4
+2025-05-07 15:45:48,180 [INFO] - Feature shape for resnet: torch.Size([2048, 7, 7])
+2025-05-07 15:45:48,181 [INFO] - Hook registered for features.norm5
+2025-05-07 15:45:48,668 [INFO] - Feature shape for densenet: torch.Size([1024, 7, 7])
+2025-05-07 15:45:48,672 [INFO] - Hook registered for features.8
+2025-05-07 15:45:48,724 [INFO] - Feature shape for student: torch.Size([1280, 7, 7])
+2025-05-07 15:45:48,726 [INFO] - HFI module initialized with 6 teachers
+2025-05-07 15:45:48,726 [INFO] - Target student feature shape: torch.Size([1280, 7, 7])
+2025-05-07 15:45:48,726 [INFO] - HFI module initialized and its parameters added to optimizer.
+2025-05-07 15:45:48,726 [INFO] - Learnable teacher temperatures added to optimizer.
+2025-05-07 15:45:48,730 [INFO] - Config saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\ensemble_distillation_20250507_154548_config.json
+2025-05-07 15:45:48,731 [INFO] - GPU Memory: Current=606.17MB, Peak=1031.56MB, Reserved=680.00MB
+2025-05-07 15:45:48,731 [INFO] - --- Epoch 1/50 ---
+2025-05-07 15:45:48,892 [INFO] - GPU cache cleared: 606.17MB → 606.17MB (freed 0.00MB)
+2025-05-07 15:45:48,893 [INFO] - ACP Weights - Alpha(KL): 0.0233, Feature: 0.0100, Cal: 0.0033
+2025-05-07 15:45:48,894 [INFO] - Updated teacher weights: {'vit': 0.16882743243486237, 'efficientnet': 0.17071548019347993, 'inception': 0.149551363889738, 'mobilenet': 0.17078740582237967, 'resnet': 0.169169079172136, 'densenet': 0.170949238487404}
+2025-05-07 15:45:48,894 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-07 15:45:49,113 [INFO] - HFI attention weights: {'vit': 0.1666666716337204, 'efficientnet': 0.1666666716337204, 'inception': 0.1666666716337204, 'mobilenet': 0.1666666716337204, 'resnet': 0.1666666716337204, 'densenet': 0.1666666716337204}
+2025-05-07 15:46:26,327 [ERROR] - An error occurred: adaptive_avg_pool2d: output_size must be 2
+2025-05-07 15:46:26,345 [ERROR] - Traceback (most recent call last):
+  File "C:\Users\Gading\AppData\Local\Temp\ipykernel_26924\2968733938.py", line 1998, in main
+    student, history = train_student(
+                       ^^^^^^^^^^^^^^
+  File "C:\Users\Gading\AppData\Local\Temp\ipykernel_26924\2968733938.py", line 1496, in train_student
+    fused_teacher_features_hfi = hfi_module(current_teacher_features_dict) # HFI expects detached features
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\ProgramData\anaconda3\Lib\site-packages\torch\nn\modules\module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\ProgramData\anaconda3\Lib\site-packages\torch\nn\modules\module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gading\AppData\Local\Temp\ipykernel_26924\2968733938.py", line 847, in forward
+    projected = F.adaptive_avg_pool2d(
+                ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\ProgramData\anaconda3\Lib\site-packages\torch\nn\functional.py", line 1382, in adaptive_avg_pool2d
+    return torch._C._nn.adaptive_avg_pool2d(input, _output_size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: adaptive_avg_pool2d: output_size must be 2
+
+2025-05-08 21:18:56,413 [INFO] - Using device: cuda
+2025-05-08 21:18:56,418 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 21:18:56,418 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 21:18:56,418 [INFO] - CUDA Version: 11.8
+2025-05-08 21:18:56,418 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 21:18:56,419 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "ensemble_distillation",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 8,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "model_input_size": 224,
+    "num_workers": 0,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 1,
+    "pretrained": true,
+    "num_classes": 10,
+    "teacher_models": [
+        "vit",
+        "efficientnet",
+        "inception",
+        "mobilenet",
+        "resnet",
+        "densenet"
+    ],
+    "teacher_finetune_epochs": 5,
+    "freeze_teacher_backbones": true,
+    "teacher_model_paths": {
+        "vit": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints\\vit_b16_teacher_20250507_234740_best.pth",
+        "efficientnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EfficientNetB0\\checkpoints\\efficientnet_b0_teacher_20250508_103413_best.pth",
+        "inception": "C:\\Users\\Gading\\Downloads\\Research\\Models\\InceptionV3\\checkpoints\\inception_v3_teacher_20250508_072838_best.pth",
+        "mobilenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MobileNetV3\\checkpoints\\mobilenetv3_20250508_053015_best.pth",
+        "resnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ResNet50\\checkpoints\\resnet50_teacher_20250508_022222_best.pth",
+        "densenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\DenseNet121\\checkpoints\\densenet121_teacher_20250508_114100_best.pth"
+    },
+    "use_pretrained_teachers": true,
+    "teacher_accuracies": {
+        "densenet": 96.76,
+        "efficientnet": 95.23,
+        "inception": 80.64,
+        "mobilenet": 95.6,
+        "resnet": 95.35,
+        "vit": 92.47
+    },
+    "teacher_init_weights": {
+        "densenet": 1.0,
+        "efficientnet": 1.0,
+        "inception": 0.6,
+        "mobilenet": 1.0,
+        "resnet": 1.0,
+        "vit": 1.0
+    },
+    "use_adaptive_temperature": true,
+    "teacher_temperatures": {
+        "densenet": 4.0,
+        "efficientnet": 4.0,
+        "inception": 5.0,
+        "mobilenet": 4.0,
+        "resnet": 4.0,
+        "vit": 4.0
+    },
+    "learn_temperatures": true,
+    "use_teacher_gating": true,
+    "gating_threshold": 0.2,
+    "dynamic_weight_update": true,
+    "weighting_scheme": "adaptive",
+    "weight_update_interval": 5,
+    "soft_target_temp": 4.0,
+    "epochs": 50,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "early_stop_patience": 10,
+    "alpha": 0.7,
+    "feature_loss_weight": 0.3,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\EnsembleDistillation",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports",
+    "per_teacher_calibration": true,
+    "weight_by_calibration": true
+}
+2025-05-08 21:18:56,425 [INFO] - Random seed set to 42
+2025-05-08 21:18:56,426 [INFO] - GPU Memory: Current=0.00MB, Peak=0.00MB, Reserved=0.00MB
+2025-05-08 21:18:56,427 [INFO] - Preparing data loaders...
+2025-05-08 21:18:57,928 [INFO] - Training samples: 45000
+2025-05-08 21:18:57,928 [INFO] - Validation samples: 5000
+2025-05-08 21:18:57,929 [INFO] - Test samples: 10000
+2025-05-08 21:18:57,929 [INFO] - Loading pre-trained teacher models...
+2025-05-08 21:18:57,929 [INFO] - Loading ViT-B16 model...
+2025-05-08 21:18:58,461 [INFO] - Loading EfficientNetB0 model...
+2025-05-08 21:18:58,531 [INFO] - Loading InceptionV3 model...
+2025-05-08 21:18:58,789 [INFO] - Loading MobileNetV3 model...
+2025-05-08 21:18:58,857 [INFO] - Loading ResNet50 model...
+2025-05-08 21:18:59,074 [INFO] - Loading DenseNet121 model...
+2025-05-08 21:18:59,160 [INFO] - Loading pre-trained weights for vit from C:\Users\Gading\Downloads\Research\Models\ViT\checkpoints\vit_b16_teacher_20250507_234740_best.pth
+2025-05-08 21:19:00,363 [INFO] - Successfully loaded pre-trained weights for vit
+2025-05-08 21:19:00,364 [INFO] - Loading pre-trained weights for efficientnet from C:\Users\Gading\Downloads\Research\Models\EfficientNetB0\checkpoints\efficientnet_b0_teacher_20250508_103413_best.pth
+2025-05-08 21:19:00,600 [INFO] - Successfully loaded pre-trained weights for efficientnet
+2025-05-08 21:19:00,600 [INFO] - Loading pre-trained weights for inception from C:\Users\Gading\Downloads\Research\Models\InceptionV3\checkpoints\inception_v3_teacher_20250508_072838_best.pth
+2025-05-08 21:19:01,016 [ERROR] - Error loading weights for inception: Error(s) in loading state_dict for Inception3:
+	Missing key(s) in state_dict: "AuxLogits.fc.weight", "AuxLogits.fc.bias", "fc.weight", "fc.bias". 
+	Unexpected key(s) in state_dict: "AuxLogits.fc.1.weight", "AuxLogits.fc.1.bias", "fc.1.weight", "fc.1.bias". 
+2025-05-08 21:19:01,017 [ERROR] - Attempting to continue with pretrained ImageNet weights
+2025-05-08 21:19:01,390 [INFO] - Loading pre-trained weights for mobilenet from C:\Users\Gading\Downloads\Research\Models\MobileNetV3\checkpoints\mobilenetv3_20250508_053015_best.pth
+2025-05-08 21:19:01,579 [INFO] - Successfully loaded pre-trained weights for mobilenet
+2025-05-08 21:19:01,580 [INFO] - Loading pre-trained weights for resnet from C:\Users\Gading\Downloads\Research\Models\ResNet50\checkpoints\resnet50_teacher_20250508_022222_best.pth
+2025-05-08 21:19:01,914 [INFO] - Successfully loaded pre-trained weights for resnet
+2025-05-08 21:19:01,915 [INFO] - Loading pre-trained weights for densenet from C:\Users\Gading\Downloads\Research\Models\DenseNet121\checkpoints\densenet121_teacher_20250508_114100_best.pth
+2025-05-08 21:19:02,284 [INFO] - Successfully loaded pre-trained weights for densenet
+2025-05-08 21:19:02,331 [INFO] - Model vit loaded and moved to cuda
+2025-05-08 21:19:02,332 [INFO] - Model vit set to evaluation mode
+2025-05-08 21:19:02,348 [INFO] - Model efficientnet loaded and moved to cuda
+2025-05-08 21:19:02,350 [INFO] - Model efficientnet set to evaluation mode
+2025-05-08 21:19:02,390 [INFO] - Model inception loaded and moved to cuda
+2025-05-08 21:19:02,391 [INFO] - Model inception set to evaluation mode
+2025-05-08 21:19:02,405 [INFO] - Model mobilenet loaded and moved to cuda
+2025-05-08 21:19:02,406 [INFO] - Model mobilenet set to evaluation mode
+2025-05-08 21:19:02,430 [INFO] - Model resnet loaded and moved to cuda
+2025-05-08 21:19:02,431 [INFO] - Model resnet set to evaluation mode
+2025-05-08 21:19:02,468 [INFO] - Model densenet loaded and moved to cuda
+2025-05-08 21:19:02,470 [INFO] - Model densenet set to evaluation mode
+2025-05-08 21:19:02,472 [INFO] - Skipping teacher fine-tuning as pre-trained models are being used
+2025-05-08 21:19:02,472 [INFO] - Creating student model...
+2025-05-08 21:19:02,472 [INFO] - Creating scaled EfficientNet-B0 student model...
+2025-05-08 21:19:02,581 [INFO] - Student model created with 4.02M parameters
+2025-05-08 21:19:02,599 [INFO] - Training student with calibration-aware ensemble distillation...
+2025-05-08 21:19:02,600 [INFO] - Training student model with ensemble distillation...
+2025-05-08 21:19:02,600 [INFO] - Teacher weighting initialized with scheme: adaptive
+2025-05-08 21:19:02,601 [INFO] - Initial teacher weights: {'vit': 0.17857142857142858, 'efficientnet': 0.17857142857142858, 'inception': 0.10714285714285715, 'mobilenet': 0.17857142857142858, 'resnet': 0.17857142857142858, 'densenet': 0.17857142857142858}
+2025-05-08 21:19:02,601 [INFO] - Initial teacher temperatures: {'vit': 4.0, 'efficientnet': 4.0, 'inception': 5.0, 'mobilenet': 4.0, 'resnet': 4.0, 'densenet': 4.0}
+2025-05-08 21:19:02,601 [INFO] - Hook registered for encoder.ln
+2025-05-08 21:19:02,601 [INFO] - Feature extractor registered for vit at layer encoder.ln
+2025-05-08 21:19:03,053 [INFO] - Feature shape for vit: torch.Size([1, 197, 768])
+2025-05-08 21:19:03,054 [INFO] - Hook registered for features.8
+2025-05-08 21:19:03,054 [INFO] - Feature extractor registered for efficientnet at layer features.8
+2025-05-08 21:19:03,376 [INFO] - Feature shape for efficientnet: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:19:03,376 [INFO] - Hook registered for Mixed_7c
+2025-05-08 21:19:03,377 [INFO] - Feature extractor registered for inception at layer Mixed_7c
+2025-05-08 21:19:03,661 [INFO] - Feature shape for inception: torch.Size([1, 2048, 5, 5])
+2025-05-08 21:19:03,661 [INFO] - Hook registered for features
+2025-05-08 21:19:03,661 [INFO] - Feature extractor registered for mobilenet at layer features
+2025-05-08 21:19:03,800 [INFO] - Feature shape for mobilenet: torch.Size([1, 960, 7, 7])
+2025-05-08 21:19:03,801 [INFO] - Hook registered for layer4
+2025-05-08 21:19:03,801 [INFO] - Feature extractor registered for resnet at layer layer4
+2025-05-08 21:19:03,978 [INFO] - Feature shape for resnet: torch.Size([1, 2048, 7, 7])
+2025-05-08 21:19:03,978 [INFO] - Hook registered for features
+2025-05-08 21:19:03,979 [INFO] - Feature extractor registered for densenet at layer features
+2025-05-08 21:19:04,282 [INFO] - Feature shape for densenet: torch.Size([1, 1024, 7, 7])
+2025-05-08 21:19:04,283 [INFO] - Hook registered for features.8
+2025-05-08 21:19:04,283 [INFO] - Feature extractor registered for student model
+2025-05-08 21:19:04,336 [INFO] - Feature shape for student: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:19:04,373 [INFO] - HFI module initialized with 6 teachers
+2025-05-08 21:19:04,374 [INFO] - Target student feature shape: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:19:04,417 [INFO] - Adding teacher temperatures to optimizer parameters
+2025-05-08 21:19:04,418 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\ensemble_distillation_20250508_211904_config.json
+2025-05-08 21:19:04,419 [INFO] - GPU Memory: Current=646.51MB, Peak=1031.56MB, Reserved=690.00MB
+2025-05-08 21:19:04,419 [INFO] - Epoch 1/50
+2025-05-08 21:19:04,561 [INFO] - Current calibration weight: 0.0033
+2025-05-08 21:19:04,561 [INFO] - Updated teacher weights: {'vit': 0.16629799478464166, 'efficientnet': 0.1712615771962953, 'inception': 0.14502292959266255, 'mobilenet': 0.1719269849833648, 'resnet': 0.17147738512723676, 'densenet': 0.17401312831579896}
+2025-05-08 21:19:04,561 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:19:04,575 [INFO] - Current teacher temperatures: {'vit': 5.0, 'efficientnet': 5.0, 'inception': 6.0, 'mobilenet': 5.0, 'resnet': 5.0, 'densenet': 5.0}
+2025-05-08 21:19:04,580 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:19:04,594 [INFO] - HFI attention weights: {'vit': 0.1666666716337204, 'efficientnet': 0.1666666716337204, 'inception': 0.1666666716337204, 'mobilenet': 0.1666666716337204, 'resnet': 0.1666666716337204, 'densenet': 0.1666666716337204}
+2025-05-08 21:31:23,661 [INFO] - Using device: cuda
+2025-05-08 21:31:23,666 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 21:31:23,667 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 21:31:23,667 [INFO] - CUDA Version: 11.8
+2025-05-08 21:31:23,667 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 21:31:23,667 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "ensemble_distillation",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 8,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "model_input_size": 224,
+    "num_workers": 0,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 1,
+    "pretrained": true,
+    "num_classes": 10,
+    "teacher_models": [
+        "vit",
+        "efficientnet",
+        "inception",
+        "mobilenet",
+        "resnet",
+        "densenet"
+    ],
+    "teacher_finetune_epochs": 5,
+    "freeze_teacher_backbones": true,
+    "teacher_model_paths": {
+        "vit": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints\\vit_b16_teacher_20250507_234740_best.pth",
+        "efficientnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EfficientNetB0\\checkpoints\\efficientnet_b0_teacher_20250508_103413_best.pth",
+        "inception": "C:\\Users\\Gading\\Downloads\\Research\\Models\\InceptionV3\\checkpoints\\inception_v3_teacher_20250508_072838_best.pth",
+        "mobilenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MobileNetV3\\checkpoints\\mobilenetv3_20250508_053015_best.pth",
+        "resnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ResNet50\\checkpoints\\resnet50_teacher_20250508_022222_best.pth",
+        "densenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\DenseNet121\\checkpoints\\densenet121_teacher_20250508_114100_best.pth"
+    },
+    "use_pretrained_teachers": true,
+    "teacher_accuracies": {
+        "densenet": 96.76,
+        "efficientnet": 95.23,
+        "inception": 80.64,
+        "mobilenet": 95.6,
+        "resnet": 95.35,
+        "vit": 92.47
+    },
+    "teacher_init_weights": {
+        "densenet": 1.0,
+        "efficientnet": 1.0,
+        "inception": 0.6,
+        "mobilenet": 1.0,
+        "resnet": 1.0,
+        "vit": 1.0
+    },
+    "use_adaptive_temperature": true,
+    "teacher_temperatures": {
+        "densenet": 4.0,
+        "efficientnet": 4.0,
+        "inception": 5.0,
+        "mobilenet": 4.0,
+        "resnet": 4.0,
+        "vit": 4.0
+    },
+    "learn_temperatures": true,
+    "use_teacher_gating": true,
+    "gating_threshold": 0.2,
+    "dynamic_weight_update": true,
+    "weighting_scheme": "adaptive",
+    "weight_update_interval": 5,
+    "soft_target_temp": 4.0,
+    "epochs": 50,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "early_stop_patience": 10,
+    "alpha": 0.7,
+    "feature_loss_weight": 0.3,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\EnsembleDistillation",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports",
+    "per_teacher_calibration": true,
+    "weight_by_calibration": true
+}
+2025-05-08 21:31:23,675 [INFO] - Random seed set to 42
+2025-05-08 21:31:23,676 [INFO] - GPU Memory: Current=0.00MB, Peak=0.00MB, Reserved=0.00MB
+2025-05-08 21:31:23,676 [INFO] - Preparing data loaders...
+2025-05-08 21:31:25,309 [INFO] - Training samples: 45000
+2025-05-08 21:31:25,309 [INFO] - Validation samples: 5000
+2025-05-08 21:31:25,310 [INFO] - Test samples: 10000
+2025-05-08 21:31:25,310 [INFO] - Loading pre-trained teacher models...
+2025-05-08 21:31:25,310 [INFO] - Loading ViT-B16 model...
+2025-05-08 21:31:25,868 [INFO] - Loading EfficientNetB0 model...
+2025-05-08 21:31:25,936 [INFO] - Loading InceptionV3 model...
+2025-05-08 21:31:26,195 [INFO] - Loading MobileNetV3 model...
+2025-05-08 21:31:26,259 [INFO] - Loading ResNet50 model...
+2025-05-08 21:31:26,474 [INFO] - Loading DenseNet121 model...
+2025-05-08 21:31:26,559 [INFO] - Loading pre-trained weights for vit from C:\Users\Gading\Downloads\Research\Models\ViT\checkpoints\vit_b16_teacher_20250507_234740_best.pth
+2025-05-08 21:31:27,666 [INFO] - Successfully loaded pre-trained weights for vit
+2025-05-08 21:31:27,666 [INFO] - Loading pre-trained weights for efficientnet from C:\Users\Gading\Downloads\Research\Models\EfficientNetB0\checkpoints\efficientnet_b0_teacher_20250508_103413_best.pth
+2025-05-08 21:31:27,877 [INFO] - Successfully loaded pre-trained weights for efficientnet
+2025-05-08 21:31:27,877 [INFO] - Loading pre-trained weights for inception from C:\Users\Gading\Downloads\Research\Models\InceptionV3\checkpoints\inception_v3_teacher_20250508_072838_best.pth
+2025-05-08 21:31:28,284 [INFO] - Successfully loaded pre-trained weights for inception
+2025-05-08 21:31:28,284 [INFO] - Loading pre-trained weights for mobilenet from C:\Users\Gading\Downloads\Research\Models\MobileNetV3\checkpoints\mobilenetv3_20250508_053015_best.pth
+2025-05-08 21:31:28,474 [INFO] - Successfully loaded pre-trained weights for mobilenet
+2025-05-08 21:31:28,474 [INFO] - Loading pre-trained weights for resnet from C:\Users\Gading\Downloads\Research\Models\ResNet50\checkpoints\resnet50_teacher_20250508_022222_best.pth
+2025-05-08 21:31:28,779 [INFO] - Successfully loaded pre-trained weights for resnet
+2025-05-08 21:31:28,780 [INFO] - Loading pre-trained weights for densenet from C:\Users\Gading\Downloads\Research\Models\DenseNet121\checkpoints\densenet121_teacher_20250508_114100_best.pth
+2025-05-08 21:31:29,127 [INFO] - Successfully loaded pre-trained weights for densenet
+2025-05-08 21:31:29,172 [INFO] - Model vit loaded and moved to cuda
+2025-05-08 21:31:29,173 [INFO] - Model vit set to evaluation mode
+2025-05-08 21:31:29,189 [INFO] - Model efficientnet loaded and moved to cuda
+2025-05-08 21:31:29,191 [INFO] - Model efficientnet set to evaluation mode
+2025-05-08 21:31:29,223 [INFO] - Model inception loaded and moved to cuda
+2025-05-08 21:31:29,225 [INFO] - Model inception set to evaluation mode
+2025-05-08 21:31:29,242 [INFO] - Model mobilenet loaded and moved to cuda
+2025-05-08 21:31:29,244 [INFO] - Model mobilenet set to evaluation mode
+2025-05-08 21:31:29,268 [INFO] - Model resnet loaded and moved to cuda
+2025-05-08 21:31:29,269 [INFO] - Model resnet set to evaluation mode
+2025-05-08 21:31:29,303 [INFO] - Model densenet loaded and moved to cuda
+2025-05-08 21:31:29,304 [INFO] - Model densenet set to evaluation mode
+2025-05-08 21:31:29,307 [INFO] - Skipping teacher fine-tuning as pre-trained models are being used
+2025-05-08 21:31:29,307 [INFO] - Creating student model...
+2025-05-08 21:31:29,307 [INFO] - Creating scaled EfficientNet-B0 student model...
+2025-05-08 21:31:29,418 [INFO] - Student model created with 4.02M parameters
+2025-05-08 21:31:29,435 [INFO] - Training student with calibration-aware ensemble distillation...
+2025-05-08 21:31:29,435 [INFO] - Training student model with ensemble distillation...
+2025-05-08 21:31:29,436 [INFO] - Teacher weighting initialized with scheme: adaptive
+2025-05-08 21:31:29,436 [INFO] - Initial teacher weights: {'vit': 0.17857142857142858, 'efficientnet': 0.17857142857142858, 'inception': 0.10714285714285715, 'mobilenet': 0.17857142857142858, 'resnet': 0.17857142857142858, 'densenet': 0.17857142857142858}
+2025-05-08 21:31:29,437 [INFO] - Initial teacher temperatures: {'vit': 4.0, 'efficientnet': 4.0, 'inception': 5.0, 'mobilenet': 4.0, 'resnet': 4.0, 'densenet': 4.0}
+2025-05-08 21:31:29,437 [INFO] - Hook registered for encoder.ln
+2025-05-08 21:31:29,437 [INFO] - Feature extractor registered for vit at layer encoder.ln
+2025-05-08 21:31:29,927 [INFO] - Feature shape for vit: torch.Size([1, 197, 768])
+2025-05-08 21:31:29,928 [INFO] - Hook registered for features.8
+2025-05-08 21:31:29,928 [INFO] - Feature extractor registered for efficientnet at layer features.8
+2025-05-08 21:31:30,256 [INFO] - Feature shape for efficientnet: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:31:30,258 [INFO] - Hook registered for Mixed_7c
+2025-05-08 21:31:30,259 [INFO] - Feature extractor registered for inception at layer Mixed_7c
+2025-05-08 21:31:30,574 [INFO] - Feature shape for inception: torch.Size([1, 2048, 5, 5])
+2025-05-08 21:31:30,574 [INFO] - Hook registered for features
+2025-05-08 21:31:30,574 [INFO] - Feature extractor registered for mobilenet at layer features
+2025-05-08 21:31:30,706 [INFO] - Feature shape for mobilenet: torch.Size([1, 960, 7, 7])
+2025-05-08 21:31:30,706 [INFO] - Hook registered for layer4
+2025-05-08 21:31:30,707 [INFO] - Feature extractor registered for resnet at layer layer4
+2025-05-08 21:31:30,870 [INFO] - Feature shape for resnet: torch.Size([1, 2048, 7, 7])
+2025-05-08 21:31:30,870 [INFO] - Hook registered for features
+2025-05-08 21:31:30,871 [INFO] - Feature extractor registered for densenet at layer features
+2025-05-08 21:31:31,141 [INFO] - Feature shape for densenet: torch.Size([1, 1024, 7, 7])
+2025-05-08 21:31:31,142 [INFO] - Hook registered for features.8
+2025-05-08 21:31:31,142 [INFO] - Feature extractor registered for student model
+2025-05-08 21:31:31,194 [INFO] - Feature shape for student: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:31:31,230 [INFO] - HFI module initialized with 6 teachers
+2025-05-08 21:31:31,231 [INFO] - Target student feature shape: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:31:31,273 [INFO] - Adding teacher temperatures to optimizer parameters
+2025-05-08 21:31:31,276 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\ensemble_distillation_20250508_213131_config.json
+2025-05-08 21:31:31,276 [INFO] - GPU Memory: Current=643.78MB, Peak=1031.56MB, Reserved=690.00MB
+2025-05-08 21:31:31,277 [INFO] - Epoch 1/50
+2025-05-08 21:31:31,419 [INFO] - Current calibration weight: 0.0033
+2025-05-08 21:31:31,419 [INFO] - Updated teacher weights: {'vit': 0.16629799478464166, 'efficientnet': 0.1712615771962953, 'inception': 0.14502292959266255, 'mobilenet': 0.1719269849833648, 'resnet': 0.17147738512723676, 'densenet': 0.17401312831579896}
+2025-05-08 21:31:31,420 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:31:31,434 [INFO] - Current teacher temperatures: {'vit': 5.0, 'efficientnet': 5.0, 'inception': 6.0, 'mobilenet': 5.0, 'resnet': 5.0, 'densenet': 5.0}
+2025-05-08 21:31:31,434 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:31:31,448 [INFO] - HFI attention weights: {'vit': 0.1666666716337204, 'efficientnet': 0.1666666716337204, 'inception': 0.1666666716337204, 'mobilenet': 0.1666666716337204, 'resnet': 0.1666666716337204, 'densenet': 0.1666666716337204}
+2025-05-08 21:38:42,422 [INFO] - Epoch 1 Results - Time: 431.15s, LR: 0.000999
+2025-05-08 21:38:42,422 [INFO] - Train - Loss: 6.3933, Acc: 83.40%
+2025-05-08 21:38:42,422 [INFO] -   CE: 0.6565, KL: 0.5347, Feat: 0.6902, Cal: 0.1071
+2025-05-08 21:38:42,422 [INFO] - Val - Loss: 0.2373, Acc: 94.60%, F1: 0.9456, ECE: 0.0317
+2025-05-08 21:38:42,875 [INFO] - New best model saved (Val Loss: 0.2373)
+2025-05-08 21:38:43,078 [INFO] - New best model saved (Val Acc: 94.60%)
+2025-05-08 21:38:43,078 [INFO] - GPU Memory: Current=837.52MB, Peak=4290.37MB, Reserved=1606.00MB
+2025-05-08 21:38:43,080 [INFO] - Epoch 2/50
+2025-05-08 21:38:43,221 [INFO] - Current calibration weight: 0.0067
+2025-05-08 21:38:43,221 [INFO] - Updated teacher weights: {'vit': 0.11212592740284556, 'efficientnet': 0.21800564351459603, 'inception': 0.01122720577494071, 'mobilenet': 0.21885266743668363, 'resnet': 0.2182803539758136, 'densenet': 0.22150820189512038}
+2025-05-08 21:38:43,221 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:38:43,221 [INFO] - Current teacher temperatures: {'vit': 4.940003871917725, 'efficientnet': 4.950177192687988, 'inception': 5.947030067443848, 'mobilenet': 4.947935104370117, 'resnet': 4.949756622314453, 'densenet': 4.94554328918457}
+2025-05-08 21:38:43,221 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:38:43,221 [INFO] - HFI attention weights: {'vit': 0.17243559658527374, 'efficientnet': 0.1659460961818695, 'inception': 0.15960600972175598, 'mobilenet': 0.17217668890953064, 'resnet': 0.16175545752048492, 'densenet': 0.16808007657527924}
+2025-05-08 21:50:47,831 [INFO] - Using device: cuda
+2025-05-08 21:50:47,841 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 21:50:47,841 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 21:50:47,841 [INFO] - CUDA Version: 11.8
+2025-05-08 21:50:47,841 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 21:50:47,841 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "ensemble_distillation",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 8,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "model_input_size": 224,
+    "num_workers": 0,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 1,
+    "pretrained": true,
+    "num_classes": 10,
+    "teacher_models": [
+        "vit",
+        "efficientnet",
+        "inception",
+        "mobilenet",
+        "resnet",
+        "densenet"
+    ],
+    "teacher_finetune_epochs": 5,
+    "freeze_teacher_backbones": true,
+    "teacher_model_paths": {
+        "vit": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints\\vit_b16_teacher_20250507_234740_best.pth",
+        "efficientnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EfficientNetB0\\checkpoints\\efficientnet_b0_teacher_20250508_103413_best.pth",
+        "inception": "C:\\Users\\Gading\\Downloads\\Research\\Models\\InceptionV3\\checkpoints\\inception_v3_teacher_20250508_072838_best.pth",
+        "mobilenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MobileNetV3\\checkpoints\\mobilenetv3_20250508_053015_best.pth",
+        "resnet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ResNet50\\checkpoints\\resnet50_teacher_20250508_022222_best.pth",
+        "densenet": "C:\\Users\\Gading\\Downloads\\Research\\Models\\DenseNet121\\checkpoints\\densenet121_teacher_20250508_114100_best.pth"
+    },
+    "use_pretrained_teachers": true,
+    "teacher_accuracies": {
+        "densenet": 96.76,
+        "efficientnet": 95.23,
+        "inception": 80.64,
+        "mobilenet": 95.6,
+        "resnet": 95.35,
+        "vit": 92.47
+    },
+    "teacher_init_weights": {
+        "densenet": 1.0,
+        "efficientnet": 1.0,
+        "inception": 0.6,
+        "mobilenet": 1.0,
+        "resnet": 1.0,
+        "vit": 1.0
+    },
+    "use_adaptive_temperature": true,
+    "teacher_temperatures": {
+        "densenet": 4.0,
+        "efficientnet": 4.0,
+        "inception": 5.0,
+        "mobilenet": 4.0,
+        "resnet": 4.0,
+        "vit": 4.0
+    },
+    "learn_temperatures": true,
+    "use_teacher_gating": true,
+    "gating_threshold": 0.2,
+    "dynamic_weight_update": true,
+    "weighting_scheme": "adaptive",
+    "weight_update_interval": 5,
+    "soft_target_temp": 4.0,
+    "epochs": 50,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "early_stop_patience": 10,
+    "alpha": 0.7,
+    "feature_loss_weight": 0.3,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\EnsembleDistillation",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports",
+    "per_teacher_calibration": true,
+    "weight_by_calibration": true
+}
+2025-05-08 21:50:47,847 [INFO] - Random seed set to 42
+2025-05-08 21:50:47,847 [INFO] - GPU Memory: Current=0.00MB, Peak=0.00MB, Reserved=0.00MB
+2025-05-08 21:50:47,847 [INFO] - Preparing data loaders...
+2025-05-08 21:50:49,242 [INFO] - Training samples: 45000
+2025-05-08 21:50:49,242 [INFO] - Validation samples: 5000
+2025-05-08 21:50:49,242 [INFO] - Test samples: 10000
+2025-05-08 21:50:49,242 [INFO] - Loading pre-trained teacher models...
+2025-05-08 21:50:49,242 [INFO] - Loading ViT-B16 model...
+2025-05-08 21:50:49,718 [INFO] - Loading EfficientNetB0 model...
+2025-05-08 21:50:49,782 [INFO] - Loading InceptionV3 model...
+2025-05-08 21:50:50,035 [INFO] - Loading MobileNetV3 model...
+2025-05-08 21:50:50,099 [INFO] - Loading ResNet50 model...
+2025-05-08 21:50:50,305 [INFO] - Loading DenseNet121 model...
+2025-05-08 21:50:50,385 [INFO] - Loading pre-trained weights for vit from C:\Users\Gading\Downloads\Research\Models\ViT\checkpoints\vit_b16_teacher_20250507_234740_best.pth
+2025-05-08 21:50:51,209 [INFO] - Successfully loaded pre-trained weights for vit
+2025-05-08 21:50:51,209 [INFO] - Loading pre-trained weights for efficientnet from C:\Users\Gading\Downloads\Research\Models\EfficientNetB0\checkpoints\efficientnet_b0_teacher_20250508_103413_best.pth
+2025-05-08 21:50:51,364 [INFO] - Successfully loaded pre-trained weights for efficientnet
+2025-05-08 21:50:51,364 [INFO] - Loading pre-trained weights for inception from C:\Users\Gading\Downloads\Research\Models\InceptionV3\checkpoints\inception_v3_teacher_20250508_072838_best.pth
+2025-05-08 21:50:51,674 [INFO] - Successfully loaded pre-trained weights for inception
+2025-05-08 21:50:51,674 [INFO] - Loading pre-trained weights for mobilenet from C:\Users\Gading\Downloads\Research\Models\MobileNetV3\checkpoints\mobilenetv3_20250508_053015_best.pth
+2025-05-08 21:50:51,799 [INFO] - Successfully loaded pre-trained weights for mobilenet
+2025-05-08 21:50:51,799 [INFO] - Loading pre-trained weights for resnet from C:\Users\Gading\Downloads\Research\Models\ResNet50\checkpoints\resnet50_teacher_20250508_022222_best.pth
+2025-05-08 21:50:52,005 [INFO] - Successfully loaded pre-trained weights for resnet
+2025-05-08 21:50:52,005 [INFO] - Loading pre-trained weights for densenet from C:\Users\Gading\Downloads\Research\Models\DenseNet121\checkpoints\densenet121_teacher_20250508_114100_best.pth
+2025-05-08 21:50:52,312 [INFO] - Successfully loaded pre-trained weights for densenet
+2025-05-08 21:50:52,363 [INFO] - Model vit loaded and moved to cuda
+2025-05-08 21:50:52,363 [INFO] - Model vit set to evaluation mode
+2025-05-08 21:50:52,384 [INFO] - Model efficientnet loaded and moved to cuda
+2025-05-08 21:50:52,384 [INFO] - Model efficientnet set to evaluation mode
+2025-05-08 21:50:52,424 [INFO] - Model inception loaded and moved to cuda
+2025-05-08 21:50:52,425 [INFO] - Model inception set to evaluation mode
+2025-05-08 21:50:52,434 [INFO] - Model mobilenet loaded and moved to cuda
+2025-05-08 21:50:52,434 [INFO] - Model mobilenet set to evaluation mode
+2025-05-08 21:50:52,455 [INFO] - Model resnet loaded and moved to cuda
+2025-05-08 21:50:52,455 [INFO] - Model resnet set to evaluation mode
+2025-05-08 21:50:52,496 [INFO] - Model densenet loaded and moved to cuda
+2025-05-08 21:50:52,503 [INFO] - Model densenet set to evaluation mode
+2025-05-08 21:50:52,506 [INFO] - Skipping teacher fine-tuning as pre-trained models are being used
+2025-05-08 21:50:52,506 [INFO] - Creating student model...
+2025-05-08 21:50:52,506 [INFO] - Creating scaled EfficientNet-B0 student model...
+2025-05-08 21:50:52,592 [INFO] - Student model created with 4.02M parameters
+2025-05-08 21:50:52,608 [INFO] - Training student with calibration-aware ensemble distillation...
+2025-05-08 21:50:52,608 [INFO] - Training student model with ensemble distillation...
+2025-05-08 21:50:52,608 [INFO] - Teacher weighting initialized with scheme: adaptive
+2025-05-08 21:50:52,608 [INFO] - Initial teacher weights: {'vit': 0.17857142857142858, 'efficientnet': 0.17857142857142858, 'inception': 0.10714285714285715, 'mobilenet': 0.17857142857142858, 'resnet': 0.17857142857142858, 'densenet': 0.17857142857142858}
+2025-05-08 21:50:52,608 [INFO] - Initial teacher temperatures: {'vit': 4.0, 'efficientnet': 4.0, 'inception': 5.0, 'mobilenet': 4.0, 'resnet': 4.0, 'densenet': 4.0}
+2025-05-08 21:50:52,608 [INFO] - Hook registered for encoder.ln
+2025-05-08 21:50:52,608 [INFO] - Feature extractor registered for vit at layer encoder.ln
+2025-05-08 21:50:52,766 [INFO] - Feature shape for vit: torch.Size([1, 197, 768])
+2025-05-08 21:50:52,768 [INFO] - Hook registered for features.8
+2025-05-08 21:50:52,768 [INFO] - Feature extractor registered for efficientnet at layer features.8
+2025-05-08 21:50:52,943 [INFO] - Feature shape for efficientnet: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:50:52,943 [INFO] - Hook registered for Mixed_7c
+2025-05-08 21:50:52,943 [INFO] - Feature extractor registered for inception at layer Mixed_7c
+2025-05-08 21:50:53,166 [INFO] - Feature shape for inception: torch.Size([1, 2048, 5, 5])
+2025-05-08 21:50:53,166 [INFO] - Hook registered for features
+2025-05-08 21:50:53,166 [INFO] - Feature extractor registered for mobilenet at layer features
+2025-05-08 21:50:53,268 [INFO] - Feature shape for mobilenet: torch.Size([1, 960, 7, 7])
+2025-05-08 21:50:53,268 [INFO] - Hook registered for layer4
+2025-05-08 21:50:53,268 [INFO] - Feature extractor registered for resnet at layer layer4
+2025-05-08 21:50:53,392 [INFO] - Feature shape for resnet: torch.Size([1, 2048, 7, 7])
+2025-05-08 21:50:53,392 [INFO] - Hook registered for features
+2025-05-08 21:50:53,402 [INFO] - Feature extractor registered for densenet at layer features
+2025-05-08 21:50:53,636 [INFO] - Feature shape for densenet: torch.Size([1, 1024, 7, 7])
+2025-05-08 21:50:53,636 [INFO] - Hook registered for features.8
+2025-05-08 21:50:53,646 [INFO] - Feature extractor registered for student model
+2025-05-08 21:50:53,667 [INFO] - Feature shape for student: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:50:53,708 [INFO] - HFI module initialized with 6 teachers
+2025-05-08 21:50:53,708 [INFO] - Target student feature shape: torch.Size([1, 1280, 7, 7])
+2025-05-08 21:50:53,718 [INFO] - Adding teacher temperatures to optimizer parameters
+2025-05-08 21:50:53,718 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\ensemble_distillation_20250508_215053_config.json
+2025-05-08 21:50:53,718 [INFO] - GPU Memory: Current=643.78MB, Peak=1031.56MB, Reserved=690.00MB
+2025-05-08 21:50:53,718 [INFO] - Epoch 1/50
+2025-05-08 21:50:53,852 [INFO] - GPU cache cleared: 643.78MB -> 643.78MB (freed 0.00MB)
+2025-05-08 21:50:53,852 [INFO] - Current calibration weight: 0.0033
+2025-05-08 21:50:53,854 [INFO] - Updated teacher weights: {'vit': 0.16629799478464166, 'efficientnet': 0.1712615771962953, 'inception': 0.14502292959266255, 'mobilenet': 0.1719269849833648, 'resnet': 0.17147738512723676, 'densenet': 0.17401312831579896}
+2025-05-08 21:50:53,854 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:50:53,854 [INFO] - Current teacher temperatures: {'vit': 5.0, 'efficientnet': 5.0, 'inception': 6.0, 'mobilenet': 5.0, 'resnet': 5.0, 'densenet': 5.0}
+2025-05-08 21:50:53,854 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:50:53,862 [INFO] - HFI attention weights: {'vit': 0.1666666716337204, 'efficientnet': 0.1666666716337204, 'inception': 0.1666666716337204, 'mobilenet': 0.1666666716337204, 'resnet': 0.1666666716337204, 'densenet': 0.1666666716337204}
+2025-05-08 21:58:07,026 [INFO] - Epoch 1 Results - Time: 433.31s, LR: 0.000999
+2025-05-08 21:58:07,026 [INFO] - Train - Loss: 6.3457, Acc: 83.56%
+2025-05-08 21:58:07,026 [INFO] -   CE: 0.6480, KL: 0.5308, Feat: 0.6848, Cal: 0.1059
+2025-05-08 21:58:07,026 [INFO] - Val - Loss: 0.2251, Acc: 94.70%, F1: 0.9466, ECE: 0.0319
+2025-05-08 21:58:07,514 [INFO] - New best model saved (Val Loss: 0.2251)
+2025-05-08 21:58:07,748 [INFO] - New best model saved (Val Acc: 94.70%)
+2025-05-08 21:58:07,748 [INFO] - GPU Memory: Current=836.68MB, Peak=4290.37MB, Reserved=1658.00MB
+2025-05-08 21:58:07,759 [INFO] - Epoch 2/50
+2025-05-08 21:58:07,896 [INFO] - GPU cache cleared: 836.68MB -> 836.68MB (freed 0.00MB)
+2025-05-08 21:58:07,896 [INFO] - Current calibration weight: 0.0067
+2025-05-08 21:58:07,896 [INFO] - Updated teacher weights: {'vit': 0.11212558125370811, 'efficientnet': 0.21800497049928896, 'inception': 0.011230258261174608, 'mobilenet': 0.21885199180648982, 'resnet': 0.21827968011243518, 'densenet': 0.2215075180669033}
+2025-05-08 21:58:07,896 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:58:07,900 [INFO] - Current teacher temperatures: {'vit': 4.939113616943359, 'efficientnet': 4.949798583984375, 'inception': 5.9465837478637695, 'mobilenet': 4.947131156921387, 'resnet': 4.949362754821777, 'densenet': 4.945096969604492}
+2025-05-08 21:58:07,900 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 21:58:07,900 [INFO] - HFI attention weights: {'vit': 0.1724890023469925, 'efficientnet': 0.16589820384979248, 'inception': 0.1595609039068222, 'mobilenet': 0.17221525311470032, 'resnet': 0.16169875860214233, 'densenet': 0.16813789308071136}
+2025-05-08 22:05:16,203 [INFO] - Epoch 2 Results - Time: 428.44s, LR: 0.000996
+2025-05-08 22:05:16,203 [INFO] - Train - Loss: 2.9151, Acc: 94.54%
+2025-05-08 22:05:16,203 [INFO] -   CE: 0.2229, KL: 0.2468, Feat: 0.2811, Cal: 0.0426
+2025-05-08 22:05:16,203 [INFO] - Val - Loss: 0.1629, Acc: 95.98%, F1: 0.9595, ECE: 0.0245
+2025-05-08 22:05:16,645 [INFO] - New best model saved (Val Loss: 0.1629)
+2025-05-08 22:05:16,869 [INFO] - New best model saved (Val Acc: 95.98%)
+2025-05-08 22:05:16,869 [INFO] - GPU Memory: Current=835.83MB, Peak=4290.37MB, Reserved=4638.00MB
+2025-05-08 22:05:16,873 [INFO] - Epoch 3/50
+2025-05-08 22:05:17,026 [INFO] - GPU cache cleared: 835.83MB -> 835.83MB (freed 0.00MB)
+2025-05-08 22:05:17,026 [INFO] - Current calibration weight: 0.0100
+2025-05-08 22:05:17,026 [INFO] - Updated teacher weights: {'vit': 0.059332039541889335, 'efficientnet': 0.22880168055634015, 'inception': 0.02060794205797533, 'mobilenet': 0.2296906506477593, 'resnet': 0.22908999518058418, 'densenet': 0.2324776920154518}
+2025-05-08 22:05:17,026 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:05:17,026 [INFO] - Current teacher temperatures: {'vit': 4.849231719970703, 'efficientnet': 4.903141975402832, 'inception': 5.892050743103027, 'mobilenet': 4.896162986755371, 'resnet': 4.901989936828613, 'densenet': 4.893714904785156}
+2025-05-08 22:05:17,026 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:05:17,026 [INFO] - HFI attention weights: {'vit': 0.17559309303760529, 'efficientnet': 0.165946826338768, 'inception': 0.1599787473678589, 'mobilenet': 0.16791370511054993, 'resnet': 0.16211996972560883, 'densenet': 0.16844768822193146}
+2025-05-08 22:12:23,055 [INFO] - Epoch 3 Results - Time: 426.18s, LR: 0.000991
+2025-05-08 22:12:23,055 [INFO] - Train - Loss: 2.5087, Acc: 96.38%
+2025-05-08 22:12:23,055 [INFO] -   CE: 0.1405, KL: 0.2155, Feat: 0.1761, Cal: 0.0276
+2025-05-08 22:12:23,055 [INFO] - Val - Loss: 0.1651, Acc: 96.44%, F1: 0.9641, ECE: 0.0238
+2025-05-08 22:12:23,542 [INFO] - New best model saved (Val Acc: 96.44%)
+2025-05-08 22:12:23,542 [INFO] - GPU Memory: Current=835.73MB, Peak=4290.37MB, Reserved=4724.00MB
+2025-05-08 22:12:23,542 [INFO] - Epoch 4/50
+2025-05-08 22:12:23,695 [INFO] - GPU cache cleared: 835.73MB -> 835.73MB (freed 0.00MB)
+2025-05-08 22:12:23,695 [INFO] - Current calibration weight: 0.0133
+2025-05-08 22:12:23,706 [INFO] - Updated teacher weights: {'vit': 0.3847883016514259, 'efficientnet': 0.13883358094834589, 'inception': 0.054426729255448426, 'mobilenet': 0.13795567677465076, 'resnet': 0.14437730302640744, 'densenet': 0.13961840834372158}
+2025-05-08 22:12:23,706 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:12:23,706 [INFO] - Current teacher temperatures: {'vit': 4.758322715759277, 'efficientnet': 4.851900100708008, 'inception': 5.837315559387207, 'mobilenet': 4.839423656463623, 'resnet': 4.8488545417785645, 'densenet': 4.835964202880859}
+2025-05-08 22:12:23,706 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:12:23,706 [INFO] - HFI attention weights: {'vit': 0.17871473729610443, 'efficientnet': 0.16610199213027954, 'inception': 0.16041751205921173, 'mobilenet': 0.16346867382526398, 'resnet': 0.16239938139915466, 'densenet': 0.16889770328998566}
+2025-05-08 22:19:28,287 [INFO] - Epoch 4 Results - Time: 424.74s, LR: 0.000984
+2025-05-08 22:19:28,287 [INFO] - Train - Loss: 2.3095, Acc: 97.39%
+2025-05-08 22:19:28,287 [INFO] -   CE: 0.0986, KL: 0.2001, Feat: 0.1295, Cal: 0.0206
+2025-05-08 22:19:28,289 [INFO] - Val - Loss: 0.1352, Acc: 96.84%, F1: 0.9679, ECE: 0.0191
+2025-05-08 22:19:28,749 [INFO] - New best model saved (Val Loss: 0.1352)
+2025-05-08 22:19:28,953 [INFO] - New best model saved (Val Acc: 96.84%)
+2025-05-08 22:19:28,963 [INFO] - GPU Memory: Current=835.73MB, Peak=4290.37MB, Reserved=4728.00MB
+2025-05-08 22:19:28,963 [INFO] - Epoch 5/50
+2025-05-08 22:19:29,116 [INFO] - GPU cache cleared: 835.73MB -> 835.73MB (freed 0.00MB)
+2025-05-08 22:19:29,116 [INFO] - Current calibration weight: 0.0167
+2025-05-08 22:19:29,116 [INFO] - Updated teacher weights: {'vit': 0.35220470828668365, 'efficientnet': 0.10373480304562101, 'inception': 0.0650098453954268, 'mobilenet': 0.1707692089865054, 'resnet': 0.14588994118937784, 'densenet': 0.16239149309638518}
+2025-05-08 22:19:29,116 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:19:29,116 [INFO] - Current teacher temperatures: {'vit': 4.664226531982422, 'efficientnet': 4.797266006469727, 'inception': 5.777519702911377, 'mobilenet': 4.77779483795166, 'resnet': 4.79202938079834, 'densenet': 4.7742695808410645}
+2025-05-08 22:19:29,116 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:19:29,116 [INFO] - HFI attention weights: {'vit': 0.1817219853401184, 'efficientnet': 0.16662785410881042, 'inception': 0.16031140089035034, 'mobilenet': 0.1604333221912384, 'resnet': 0.16223827004432678, 'densenet': 0.16866718232631683}
+2025-05-08 22:26:33,195 [INFO] - Epoch 5 Results - Time: 424.23s, LR: 0.000976
+2025-05-08 22:26:33,195 [INFO] - Train - Loss: 2.1769, Acc: 97.89%
+2025-05-08 22:26:33,203 [INFO] -   CE: 0.0751, KL: 0.1896, Feat: 0.1019, Cal: 0.0164
+2025-05-08 22:26:33,203 [INFO] - Val - Loss: 0.1334, Acc: 96.90%, F1: 0.9688, ECE: 0.0185
+2025-05-08 22:26:33,683 [INFO] - New best model saved (Val Loss: 0.1334)
+2025-05-08 22:26:33,906 [INFO] - New best model saved (Val Acc: 96.90%)
+2025-05-08 22:26:33,906 [INFO] - GPU Memory: Current=836.61MB, Peak=4290.37MB, Reserved=4676.00MB
+2025-05-08 22:26:33,906 [INFO] - Epoch 6/50
+2025-05-08 22:26:34,059 [INFO] - GPU cache cleared: 836.61MB -> 836.61MB (freed 0.00MB)
+2025-05-08 22:26:34,059 [INFO] - Current calibration weight: 0.0200
+2025-05-08 22:26:34,059 [INFO] - Updated teacher weights: {'vit': 0.07902546422881435, 'efficientnet': 0.22520473457663276, 'inception': 0.015378598999414728, 'mobilenet': 0.22607972934501827, 'resnet': 0.22548851666367667, 'densenet': 0.2288229561864432}
+2025-05-08 22:26:34,069 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:26:34,069 [INFO] - Current teacher temperatures: {'vit': 4.569045066833496, 'efficientnet': 4.7386298179626465, 'inception': 5.712002754211426, 'mobilenet': 4.713393211364746, 'resnet': 4.73195743560791, 'densenet': 4.710508346557617}
+2025-05-08 22:26:34,069 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:26:34,069 [INFO] - HFI attention weights: {'vit': 0.1843649297952652, 'efficientnet': 0.16709518432617188, 'inception': 0.1601017266511917, 'mobilenet': 0.15803393721580505, 'resnet': 0.16193746030330658, 'densenet': 0.1684667319059372}
+2025-05-08 22:33:36,848 [INFO] - Epoch 6 Results - Time: 422.94s, LR: 0.000965
+2025-05-08 22:33:36,848 [INFO] - Train - Loss: 2.0743, Acc: 98.15%
+2025-05-08 22:33:36,848 [INFO] -   CE: 0.0612, KL: 0.1812, Feat: 0.0862, Cal: 0.0141
+2025-05-08 22:33:36,848 [INFO] - Val - Loss: 0.1304, Acc: 96.88%, F1: 0.9684, ECE: 0.0183
+2025-05-08 22:33:37,316 [INFO] - New best model saved (Val Loss: 0.1304)
+2025-05-08 22:33:37,316 [INFO] - GPU Memory: Current=835.70MB, Peak=4290.37MB, Reserved=4670.00MB
+2025-05-08 22:33:37,316 [INFO] - Epoch 7/50
+2025-05-08 22:33:37,467 [INFO] - GPU cache cleared: 835.70MB -> 835.70MB (freed 0.00MB)
+2025-05-08 22:33:37,477 [INFO] - Current calibration weight: 0.0233
+2025-05-08 22:33:37,477 [INFO] - Updated teacher weights: {'vit': 0.12677452229497765, 'efficientnet': 0.15414779807311085, 'inception': 0.027607586401756676, 'mobilenet': 0.3058822965242531, 'resnet': 0.07599395767152163, 'densenet': 0.30959383903438004}
+2025-05-08 22:33:37,477 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:33:37,477 [INFO] - Current teacher temperatures: {'vit': 4.472529411315918, 'efficientnet': 4.677239894866943, 'inception': 5.644047260284424, 'mobilenet': 4.647549152374268, 'resnet': 4.669740676879883, 'densenet': 4.644055366516113}
+2025-05-08 22:33:37,477 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:33:37,477 [INFO] - HFI attention weights: {'vit': 0.18658998608589172, 'efficientnet': 0.16770599782466888, 'inception': 0.15964923799037933, 'mobilenet': 0.15602430701255798, 'resnet': 0.16197068989276886, 'densenet': 0.16805975139141083}
+2025-05-08 22:40:40,665 [INFO] - Epoch 7 Results - Time: 423.35s, LR: 0.000952
+2025-05-08 22:40:40,665 [INFO] - Train - Loss: 1.9568, Acc: 98.49%
+2025-05-08 22:40:40,665 [INFO] -   CE: 0.0502, KL: 0.1713, Feat: 0.0746, Cal: 0.0116
+2025-05-08 22:40:40,665 [INFO] - Val - Loss: 0.1267, Acc: 97.24%, F1: 0.9721, ECE: 0.0171
+2025-05-08 22:40:41,125 [INFO] - New best model saved (Val Loss: 0.1267)
+2025-05-08 22:40:41,340 [INFO] - New best model saved (Val Acc: 97.24%)
+2025-05-08 22:40:41,340 [INFO] - GPU Memory: Current=836.73MB, Peak=4290.37MB, Reserved=4678.00MB
+2025-05-08 22:40:41,340 [INFO] - Epoch 8/50
+2025-05-08 22:40:41,506 [INFO] - GPU cache cleared: 836.73MB -> 836.73MB (freed 0.00MB)
+2025-05-08 22:40:41,506 [INFO] - Current calibration weight: 0.0267
+2025-05-08 22:40:41,506 [INFO] - Updated teacher weights: {'vit': 0.12352497450201672, 'efficientnet': 0.21394730169164422, 'inception': 0.016147610714845228, 'mobilenet': 0.2147785576154698, 'resnet': 0.2142168982074795, 'densenet': 0.21738465726854453}
+2025-05-08 22:40:41,506 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:40:41,506 [INFO] - Current teacher temperatures: {'vit': 4.374698638916016, 'efficientnet': 4.614108085632324, 'inception': 5.578559875488281, 'mobilenet': 4.580135345458984, 'resnet': 4.606223106384277, 'densenet': 4.577396392822266}
+2025-05-08 22:40:41,506 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:40:41,506 [INFO] - HFI attention weights: {'vit': 0.18870486319065094, 'efficientnet': 0.16794118285179138, 'inception': 0.15925332903862, 'mobilenet': 0.15473529696464539, 'resnet': 0.16164134442806244, 'densenet': 0.16772398352622986}
+2025-05-08 22:47:43,863 [INFO] - Epoch 8 Results - Time: 422.52s, LR: 0.000938
+2025-05-08 22:47:43,863 [INFO] - Train - Loss: 1.8899, Acc: 98.81%
+2025-05-08 22:47:43,863 [INFO] -   CE: 0.0401, KL: 0.1658, Feat: 0.0683, Cal: 0.0092
+2025-05-08 22:47:43,863 [INFO] - Val - Loss: 0.1339, Acc: 97.20%, F1: 0.9718, ECE: 0.0171
+2025-05-08 22:47:44,109 [INFO] - GPU Memory: Current=835.95MB, Peak=4290.37MB, Reserved=4674.00MB
+2025-05-08 22:47:44,109 [INFO] - Epoch 9/50
+2025-05-08 22:47:44,270 [INFO] - GPU cache cleared: 835.95MB -> 835.95MB (freed 0.00MB)
+2025-05-08 22:47:44,270 [INFO] - Current calibration weight: 0.0300
+2025-05-08 22:47:44,270 [INFO] - Updated teacher weights: {'vit': 0.17769406896591203, 'efficientnet': 0.1522300886526298, 'inception': 0.022221560264782877, 'mobilenet': 0.2502485822633697, 'resnet': 0.14432062851644728, 'densenet': 0.25328507133685835}
+2025-05-08 22:47:44,272 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:47:44,272 [INFO] - Current teacher temperatures: {'vit': 4.275999069213867, 'efficientnet': 4.549221992492676, 'inception': 5.509634971618652, 'mobilenet': 4.513740539550781, 'resnet': 4.540282249450684, 'densenet': 4.508983135223389}
+2025-05-08 22:47:44,272 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:47:44,272 [INFO] - HFI attention weights: {'vit': 0.19078898429870605, 'efficientnet': 0.1684814691543579, 'inception': 0.15822042524814606, 'mobilenet': 0.15425227582454681, 'resnet': 0.1609194129705429, 'densenet': 0.16733743250370026}
+2025-05-08 22:54:49,114 [INFO] - Epoch 9 Results - Time: 425.01s, LR: 0.000922
+2025-05-08 22:54:49,114 [INFO] - Train - Loss: 1.7978, Acc: 98.93%
+2025-05-08 22:54:49,116 [INFO] -   CE: 0.0355, KL: 0.1580, Feat: 0.0594, Cal: 0.0082
+2025-05-08 22:54:49,116 [INFO] - Val - Loss: 0.1144, Acc: 97.38%, F1: 0.9736, ECE: 0.0166
+2025-05-08 22:54:49,633 [INFO] - New best model saved (Val Loss: 0.1144)
+2025-05-08 22:54:49,864 [INFO] - New best model saved (Val Acc: 97.38%)
+2025-05-08 22:54:49,864 [INFO] - GPU Memory: Current=835.86MB, Peak=4290.37MB, Reserved=4728.00MB
+2025-05-08 22:54:49,864 [INFO] - Epoch 10/50
+2025-05-08 22:54:50,024 [INFO] - GPU cache cleared: 835.86MB -> 835.86MB (freed 0.00MB)
+2025-05-08 22:54:50,029 [INFO] - Current calibration weight: 0.0333
+2025-05-08 22:54:50,030 [INFO] - Updated teacher weights: {'vit': 0.18665154772053227, 'efficientnet': 0.19222263317212382, 'inception': 0.04038053096335844, 'mobilenet': 0.19296948158411253, 'resnet': 0.19246485427871474, 'densenet': 0.19531095228115827}
+2025-05-08 22:54:50,030 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:54:50,030 [INFO] - Current teacher temperatures: {'vit': 4.178792476654053, 'efficientnet': 4.483604907989502, 'inception': 5.440678119659424, 'mobilenet': 4.447362899780273, 'resnet': 4.472909927368164, 'densenet': 4.441108703613281}
+2025-05-08 22:54:50,030 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 22:54:50,030 [INFO] - HFI attention weights: {'vit': 0.19241121411323547, 'efficientnet': 0.1686428040266037, 'inception': 0.15760652720928192, 'mobilenet': 0.15344256162643433, 'resnet': 0.16096746921539307, 'densenet': 0.16692939400672913}
+2025-05-08 23:01:53,180 [INFO] - Epoch 10 Results - Time: 423.32s, LR: 0.000905
+2025-05-08 23:01:53,180 [INFO] - Train - Loss: 1.7516, Acc: 99.04%
+2025-05-08 23:01:53,180 [INFO] -   CE: 0.0329, KL: 0.1540, Feat: 0.0544, Cal: 0.0075
+2025-05-08 23:01:53,180 [INFO] - Val - Loss: 0.1010, Acc: 97.50%, F1: 0.9748, ECE: 0.0162
+2025-05-08 23:01:53,714 [INFO] - New best model saved (Val Loss: 0.1010)
+2025-05-08 23:01:53,969 [INFO] - New best model saved (Val Acc: 97.50%)
+2025-05-08 23:01:54,181 [INFO] - GPU Memory: Current=835.77MB, Peak=4290.37MB, Reserved=4668.00MB
+2025-05-08 23:01:54,181 [INFO] - Epoch 11/50
+2025-05-08 23:01:54,362 [INFO] - GPU cache cleared: 835.77MB -> 835.77MB (freed 0.00MB)
+2025-05-08 23:01:54,362 [INFO] - Current calibration weight: 0.0367
+2025-05-08 23:01:54,362 [INFO] - Updated teacher weights: {'vit': 0.18706308996272986, 'efficientnet': 0.19264645892885005, 'inception': 0.038264695585796454, 'mobilenet': 0.1933949540438734, 'resnet': 0.19288921410129004, 'densenet': 0.19574158737746017}
+2025-05-08 23:01:54,362 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:01:54,362 [INFO] - Current teacher temperatures: {'vit': 4.080690383911133, 'efficientnet': 4.419378280639648, 'inception': 5.368109226226807, 'mobilenet': 4.380590438842773, 'resnet': 4.406658172607422, 'densenet': 4.372119903564453}
+2025-05-08 23:01:54,362 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:01:54,362 [INFO] - HFI attention weights: {'vit': 0.1937522292137146, 'efficientnet': 0.16881902515888214, 'inception': 0.15700890123844147, 'mobilenet': 0.1525687724351883, 'resnet': 0.1612468659877777, 'densenet': 0.1666041761636734}
+2025-05-08 23:09:05,604 [INFO] - Epoch 11 Results - Time: 431.42s, LR: 0.000885
+2025-05-08 23:09:05,604 [INFO] - Train - Loss: 1.6809, Acc: 99.12%
+2025-05-08 23:09:05,606 [INFO] -   CE: 0.0277, KL: 0.1480, Feat: 0.0505, Cal: 0.0067
+2025-05-08 23:09:05,606 [INFO] - Val - Loss: 0.1142, Acc: 97.44%, F1: 0.9742, ECE: 0.0185
+2025-05-08 23:09:05,879 [INFO] - GPU Memory: Current=836.03MB, Peak=4290.37MB, Reserved=4722.00MB
+2025-05-08 23:09:05,879 [INFO] - Epoch 12/50
+2025-05-08 23:09:06,043 [INFO] - GPU cache cleared: 836.03MB -> 836.03MB (freed 0.00MB)
+2025-05-08 23:09:06,043 [INFO] - Current calibration weight: 0.0400
+2025-05-08 23:09:06,043 [INFO] - Updated teacher weights: {'vit': 0.09616107567278702, 'efficientnet': 0.20096611011807666, 'inception': 0.0957116303167512, 'mobilenet': 0.20174692982556053, 'resnet': 0.20121934894212548, 'densenet': 0.20419490512469915}
+2025-05-08 23:09:06,043 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:09:06,043 [INFO] - Current teacher temperatures: {'vit': 3.982783794403076, 'efficientnet': 4.353833198547363, 'inception': 5.294188499450684, 'mobilenet': 4.315187454223633, 'resnet': 4.340459823608398, 'densenet': 4.302900314331055}
+2025-05-08 23:09:06,043 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:09:06,043 [INFO] - HFI attention weights: {'vit': 0.19515685737133026, 'efficientnet': 0.16905947029590607, 'inception': 0.15640734136104584, 'mobilenet': 0.15198515355587006, 'resnet': 0.16139566898345947, 'densenet': 0.16599556803703308}
+2025-05-08 23:16:12,193 [INFO] - Epoch 12 Results - Time: 426.31s, LR: 0.000864
+2025-05-08 23:16:12,193 [INFO] - Train - Loss: 1.6184, Acc: 99.20%
+2025-05-08 23:16:12,193 [INFO] -   CE: 0.0251, KL: 0.1426, Feat: 0.0464, Cal: 0.0061
+2025-05-08 23:16:12,193 [INFO] - Val - Loss: 0.1262, Acc: 97.06%, F1: 0.9705, ECE: 0.0192
+2025-05-08 23:16:12,457 [INFO] - GPU Memory: Current=836.18MB, Peak=4290.37MB, Reserved=4670.00MB
+2025-05-08 23:16:12,457 [INFO] - Epoch 13/50
+2025-05-08 23:16:12,630 [INFO] - GPU cache cleared: 836.18MB -> 836.18MB (freed 0.00MB)
+2025-05-08 23:16:12,630 [INFO] - Current calibration weight: 0.0433
+2025-05-08 23:16:12,630 [INFO] - Updated teacher weights: {'vit': 0.11182682082217175, 'efficientnet': 0.21673067961528622, 'inception': 0.0166532122359223, 'mobilenet': 0.21757274988156425, 'resnet': 0.21700378348543042, 'densenet': 0.22021275395962508}
+2025-05-08 23:16:12,630 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:16:12,638 [INFO] - Current teacher temperatures: {'vit': 3.886061191558838, 'efficientnet': 4.291537284851074, 'inception': 5.223677635192871, 'mobilenet': 4.250896453857422, 'resnet': 4.2744035720825195, 'densenet': 4.235118389129639}
+2025-05-08 23:16:12,638 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:16:12,638 [INFO] - HFI attention weights: {'vit': 0.19624806940555573, 'efficientnet': 0.1693044900894165, 'inception': 0.15570057928562164, 'mobilenet': 0.1516994833946228, 'resnet': 0.16150465607643127, 'densenet': 0.16554270684719086}
+2025-05-08 23:23:24,909 [INFO] - Epoch 13 Results - Time: 432.45s, LR: 0.000842
+2025-05-08 23:23:24,909 [INFO] - Train - Loss: 1.5495, Acc: 99.38%
+2025-05-08 23:23:24,909 [INFO] -   CE: 0.0215, KL: 0.1366, Feat: 0.0441, Cal: 0.0050
+2025-05-08 23:23:24,909 [INFO] - Val - Loss: 0.1154, Acc: 97.18%, F1: 0.9716, ECE: 0.0177
+2025-05-08 23:23:25,166 [INFO] - GPU Memory: Current=835.86MB, Peak=4290.37MB, Reserved=4670.00MB
+2025-05-08 23:23:25,166 [INFO] - Epoch 14/50
+2025-05-08 23:23:25,331 [INFO] - GPU cache cleared: 835.86MB -> 835.86MB (freed 0.00MB)
+2025-05-08 23:23:25,334 [INFO] - Current calibration weight: 0.0467
+2025-05-08 23:23:25,334 [INFO] - Updated teacher weights: {'vit': 0.0749170658633072, 'efficientnet': 0.21105248650504624, 'inception': 0.13813195869328695, 'mobilenet': 0.21187249511585027, 'resnet': 0.14958266089981392, 'densenet': 0.21444333292269532}
+2025-05-08 23:23:25,334 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:23:25,337 [INFO] - Current teacher temperatures: {'vit': 3.7919018268585205, 'efficientnet': 4.229012489318848, 'inception': 5.154372215270996, 'mobilenet': 4.187776565551758, 'resnet': 4.208722114562988, 'densenet': 4.168194770812988}
+2025-05-08 23:23:25,337 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:23:25,337 [INFO] - HFI attention weights: {'vit': 0.19731441140174866, 'efficientnet': 0.16985748708248138, 'inception': 0.15481992065906525, 'mobilenet': 0.15165011584758759, 'resnet': 0.1614730954170227, 'densenet': 0.16488495469093323}
+2025-05-08 23:30:41,743 [INFO] - Epoch 14 Results - Time: 436.58s, LR: 0.000819
+2025-05-08 23:30:41,743 [INFO] - Train - Loss: 1.4894, Acc: 99.49%
+2025-05-08 23:30:41,743 [INFO] -   CE: 0.0165, KL: 0.1314, Feat: 0.0415, Cal: 0.0040
+2025-05-08 23:30:41,743 [INFO] - Val - Loss: 0.1332, Acc: 96.96%, F1: 0.9693, ECE: 0.0205
+2025-05-08 23:30:41,997 [INFO] - GPU Memory: Current=835.86MB, Peak=4290.37MB, Reserved=4662.00MB
+2025-05-08 23:30:41,997 [INFO] - Epoch 15/50
+2025-05-08 23:30:42,167 [INFO] - GPU cache cleared: 835.86MB -> 835.86MB (freed 0.00MB)
+2025-05-08 23:30:42,168 [INFO] - Current calibration weight: 0.0500
+2025-05-08 23:30:42,169 [INFO] - Updated teacher weights: {'vit': 0.20414882562949538, 'efficientnet': 0.21024216140042007, 'inception': 0.012391363797708829, 'mobilenet': 0.14909057129109143, 'resnet': 0.21050708904263415, 'densenet': 0.21361998883865008}
+2025-05-08 23:30:42,169 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:30:42,171 [INFO] - Current teacher temperatures: {'vit': 3.7001569271087646, 'efficientnet': 4.167537689208984, 'inception': 5.082920074462891, 'mobilenet': 4.126461029052734, 'resnet': 4.144648551940918, 'densenet': 4.102560043334961}
+2025-05-08 23:30:42,171 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:30:42,171 [INFO] - HFI attention weights: {'vit': 0.19857436418533325, 'efficientnet': 0.17023301124572754, 'inception': 0.1540251076221466, 'mobilenet': 0.15142293274402618, 'resnet': 0.16134823858737946, 'densenet': 0.16439633071422577}
+2025-05-08 23:37:56,771 [INFO] - Epoch 15 Results - Time: 434.77s, LR: 0.000794
+2025-05-08 23:37:56,771 [INFO] - Train - Loss: 1.4457, Acc: 99.44%
+2025-05-08 23:37:56,771 [INFO] -   CE: 0.0186, KL: 0.1275, Feat: 0.0389, Cal: 0.0044
+2025-05-08 23:37:56,771 [INFO] - Val - Loss: 0.1250, Acc: 97.32%, F1: 0.9730, ECE: 0.0193
+2025-05-08 23:37:57,018 [INFO] - GPU Memory: Current=836.01MB, Peak=4290.37MB, Reserved=4674.00MB
+2025-05-08 23:37:57,019 [INFO] - Epoch 16/50
+2025-05-08 23:37:57,182 [INFO] - GPU cache cleared: 836.01MB -> 836.01MB (freed 0.00MB)
+2025-05-08 23:37:57,184 [INFO] - Current calibration weight: 0.0533
+2025-05-08 23:37:57,185 [INFO] - Updated teacher weights: {'vit': 0.23207881226569907, 'efficientnet': 0.17893416626365796, 'inception': 0.049804733299136796, 'mobilenet': 0.17904564617573504, 'resnet': 0.17891540197101424, 'densenet': 0.18122124002475684}
+2025-05-08 23:37:57,185 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:37:57,185 [INFO] - Current teacher temperatures: {'vit': 3.6107213497161865, 'efficientnet': 4.107706069946289, 'inception': 5.0147385597229, 'mobilenet': 4.06712532043457, 'resnet': 4.082233428955078, 'densenet': 4.037814140319824}
+2025-05-08 23:37:57,185 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:37:57,185 [INFO] - HFI attention weights: {'vit': 0.19929687678813934, 'efficientnet': 0.1707335114479065, 'inception': 0.15328313410282135, 'mobilenet': 0.15146981179714203, 'resnet': 0.1613757610321045, 'densenet': 0.1638408750295639}
+2025-05-08 23:45:35,786 [INFO] - Epoch 16 Results - Time: 458.77s, LR: 0.000768
+2025-05-08 23:45:35,787 [INFO] - Train - Loss: 1.3762, Acc: 99.52%
+2025-05-08 23:45:35,787 [INFO] -   CE: 0.0158, KL: 0.1214, Feat: 0.0369, Cal: 0.0037
+2025-05-08 23:45:35,787 [INFO] - Val - Loss: 0.1252, Acc: 97.26%, F1: 0.9725, ECE: 0.0191
+2025-05-08 23:45:36,049 [INFO] - GPU Memory: Current=836.73MB, Peak=4290.37MB, Reserved=4676.00MB
+2025-05-08 23:45:36,049 [INFO] - Epoch 17/50
+2025-05-08 23:45:36,224 [INFO] - GPU cache cleared: 836.73MB -> 836.73MB (freed 0.00MB)
+2025-05-08 23:45:36,224 [INFO] - Current calibration weight: 0.0567
+2025-05-08 23:45:36,225 [INFO] - Updated teacher weights: {'vit': 0.20321093816124464, 'efficientnet': 0.1505524593084472, 'inception': 0.09163583142036902, 'mobilenet': 0.1510610177287798, 'resnet': 0.25059688767394006, 'densenet': 0.15294286570721935}
+2025-05-08 23:45:36,225 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:45:36,226 [INFO] - Current teacher temperatures: {'vit': 3.525416374206543, 'efficientnet': 4.048913478851318, 'inception': 4.950412750244141, 'mobilenet': 4.0091872215271, 'resnet': 4.021579742431641, 'densenet': 3.975877046585083}
+2025-05-08 23:45:36,226 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:45:36,226 [INFO] - HFI attention weights: {'vit': 0.1999489665031433, 'efficientnet': 0.1711338609457016, 'inception': 0.152684286236763, 'mobilenet': 0.15109141170978546, 'resnet': 0.16183798015117645, 'densenet': 0.1633034348487854}
+2025-05-08 23:53:20,458 [INFO] - Epoch 17 Results - Time: 464.41s, LR: 0.000741
+2025-05-08 23:53:20,458 [INFO] - Train - Loss: 1.3359, Acc: 99.53%
+2025-05-08 23:53:20,458 [INFO] -   CE: 0.0159, KL: 0.1179, Feat: 0.0352, Cal: 0.0038
+2025-05-08 23:53:20,458 [INFO] - Val - Loss: 0.1165, Acc: 97.46%, F1: 0.9744, ECE: 0.0160
+2025-05-08 23:53:20,722 [INFO] - GPU Memory: Current=836.39MB, Peak=4290.37MB, Reserved=4722.00MB
+2025-05-08 23:53:20,722 [INFO] - Epoch 18/50
+2025-05-08 23:53:20,888 [INFO] - GPU cache cleared: 836.39MB -> 836.39MB (freed 0.00MB)
+2025-05-08 23:53:20,888 [INFO] - Current calibration weight: 0.0600
+2025-05-08 23:53:20,895 [INFO] - Updated teacher weights: {'vit': 0.20722101669256257, 'efficientnet': 0.21340604974189178, 'inception': 0.0192075976172274, 'mobilenet': 0.21423520272314245, 'resnet': 0.12909542385811235, 'densenet': 0.21683470936706342}
+2025-05-08 23:53:20,895 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:53:20,897 [INFO] - Current teacher temperatures: {'vit': 3.443557024002075, 'efficientnet': 3.9921724796295166, 'inception': 4.883619785308838, 'mobilenet': 3.9543466567993164, 'resnet': 3.9616332054138184, 'densenet': 3.915149211883545}
+2025-05-08 23:53:20,897 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-08 23:53:20,897 [INFO] - HFI attention weights: {'vit': 0.20068252086639404, 'efficientnet': 0.1715126633644104, 'inception': 0.15199361741542816, 'mobilenet': 0.15080145001411438, 'resnet': 0.16219356656074524, 'densenet': 0.162816122174263}
+2025-05-09 00:00:59,204 [INFO] - Epoch 18 Results - Time: 458.48s, LR: 0.000713
+2025-05-09 00:00:59,204 [INFO] - Train - Loss: 1.2745, Acc: 99.55%
+2025-05-09 00:00:59,205 [INFO] -   CE: 0.0133, KL: 0.1125, Feat: 0.0333, Cal: 0.0033
+2025-05-09 00:00:59,205 [INFO] - Val - Loss: 0.0991, Acc: 97.82%, F1: 0.9780, ECE: 0.0141
+2025-05-09 00:00:59,696 [INFO] - New best model saved (Val Loss: 0.0991)
+2025-05-09 00:00:59,923 [INFO] - New best model saved (Val Acc: 97.82%)
+2025-05-09 00:00:59,927 [INFO] - GPU Memory: Current=835.94MB, Peak=4290.37MB, Reserved=4672.00MB
+2025-05-09 00:00:59,927 [INFO] - Epoch 19/50
+2025-05-09 00:01:00,097 [INFO] - GPU cache cleared: 835.94MB -> 835.94MB (freed 0.00MB)
+2025-05-09 00:01:00,097 [INFO] - Current calibration weight: 0.0633
+2025-05-09 00:01:00,097 [INFO] - Updated teacher weights: {'vit': 0.1986227626082351, 'efficientnet': 0.20455115911303373, 'inception': 0.020896186674511173, 'mobilenet': 0.20534590791983645, 'resnet': 0.16274643085673315, 'densenet': 0.20783755282765037}
+2025-05-09 00:01:00,097 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:01:00,097 [INFO] - Current teacher temperatures: {'vit': 3.364816904067993, 'efficientnet': 3.936108350753784, 'inception': 4.822762966156006, 'mobilenet': 3.9018325805664062, 'resnet': 3.9056854248046875, 'densenet': 3.8563709259033203}
+2025-05-09 00:01:00,097 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:01:00,097 [INFO] - HFI attention weights: {'vit': 0.20121774077415466, 'efficientnet': 0.17210759222507477, 'inception': 0.15132424235343933, 'mobilenet': 0.15076735615730286, 'resnet': 0.1623147577047348, 'densenet': 0.16226826608181}
+2025-05-09 00:08:26,564 [INFO] - Epoch 19 Results - Time: 446.64s, LR: 0.000684
+2025-05-09 00:08:26,564 [INFO] - Train - Loss: 1.2393, Acc: 99.60%
+2025-05-09 00:08:26,564 [INFO] -   CE: 0.0124, KL: 0.1095, Feat: 0.0314, Cal: 0.0031
+2025-05-09 00:08:26,564 [INFO] - Val - Loss: 0.1089, Acc: 97.56%, F1: 0.9754, ECE: 0.0166
+2025-05-09 00:08:26,810 [INFO] - GPU Memory: Current=836.09MB, Peak=4290.37MB, Reserved=4734.00MB
+2025-05-09 00:08:26,814 [INFO] - Epoch 20/50
+2025-05-09 00:08:26,982 [INFO] - GPU cache cleared: 836.09MB -> 836.09MB (freed 0.00MB)
+2025-05-09 00:08:26,982 [INFO] - Current calibration weight: 0.0667
+2025-05-09 00:08:26,982 [INFO] - Updated teacher weights: {'vit': 0.1683095310321912, 'efficientnet': 0.11426110942677317, 'inception': 0.01944919515186563, 'mobilenet': 0.30694676841688084, 'resnet': 0.08036216885913657, 'densenet': 0.31067122711315265}
+2025-05-09 00:08:26,982 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:08:26,982 [INFO] - Current teacher temperatures: {'vit': 3.290170669555664, 'efficientnet': 3.8822615146636963, 'inception': 4.761417388916016, 'mobilenet': 3.8509247303009033, 'resnet': 3.8513505458831787, 'densenet': 3.7999203205108643}
+2025-05-09 00:08:26,982 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:08:26,987 [INFO] - HFI attention weights: {'vit': 0.2014748603105545, 'efficientnet': 0.17256300151348114, 'inception': 0.15073981881141663, 'mobilenet': 0.15043050050735474, 'resnet': 0.16282649338245392, 'densenet': 0.16196531057357788}
+2025-05-09 00:16:04,044 [INFO] - Epoch 20 Results - Time: 457.23s, LR: 0.000655
+2025-05-09 00:16:04,044 [INFO] - Train - Loss: 1.1952, Acc: 99.61%
+2025-05-09 00:16:04,044 [INFO] -   CE: 0.0111, KL: 0.1056, Feat: 0.0303, Cal: 0.0029
+2025-05-09 00:16:04,044 [INFO] - Val - Loss: 0.1013, Acc: 97.70%, F1: 0.9768, ECE: 0.0151
+2025-05-09 00:16:04,501 [INFO] - GPU Memory: Current=835.77MB, Peak=4290.37MB, Reserved=4672.00MB
+2025-05-09 00:16:04,501 [INFO] - Epoch 21/50
+2025-05-09 00:16:04,666 [INFO] - GPU cache cleared: 835.77MB -> 835.77MB (freed 0.00MB)
+2025-05-09 00:16:04,666 [INFO] - Current calibration weight: 0.0700
+2025-05-09 00:16:04,666 [INFO] - Updated teacher weights: {'vit': 0.18697881905564404, 'efficientnet': 0.17900750390023504, 'inception': 0.05225012096648113, 'mobilenet': 0.19330783066637364, 'resnet': 0.19280231855689042, 'densenet': 0.19565340685437568}
+2025-05-09 00:16:04,666 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:16:04,676 [INFO] - Current teacher temperatures: {'vit': 3.2190864086151123, 'efficientnet': 3.831657648086548, 'inception': 4.7034077644348145, 'mobilenet': 3.8019042015075684, 'resnet': 3.7989301681518555, 'densenet': 3.7460460662841797}
+2025-05-09 00:16:04,676 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:16:04,676 [INFO] - HFI attention weights: {'vit': 0.20190644264221191, 'efficientnet': 0.1730247288942337, 'inception': 0.15017159283161163, 'mobilenet': 0.1503121703863144, 'resnet': 0.16294988989830017, 'densenet': 0.16163517534732819}
+2025-05-09 00:23:49,467 [INFO] - Epoch 21 Results - Time: 464.97s, LR: 0.000624
+2025-05-09 00:23:49,467 [INFO] - Train - Loss: 1.1485, Acc: 99.70%
+2025-05-09 00:23:49,469 [INFO] -   CE: 0.0094, KL: 0.1015, Feat: 0.0290, Cal: 0.0024
+2025-05-09 00:23:49,469 [INFO] - Val - Loss: 0.1112, Acc: 97.46%, F1: 0.9744, ECE: 0.0172
+2025-05-09 00:23:49,701 [INFO] - GPU Memory: Current=835.86MB, Peak=4290.37MB, Reserved=4720.00MB
+2025-05-09 00:23:49,701 [INFO] - Epoch 22/50
+2025-05-09 00:23:49,877 [INFO] - GPU cache cleared: 835.86MB -> 835.86MB (freed 0.00MB)
+2025-05-09 00:23:49,877 [INFO] - Current calibration weight: 0.0733
+2025-05-09 00:23:49,877 [INFO] - Updated teacher weights: {'vit': 0.21126951995892249, 'efficientnet': 0.05124580609239003, 'inception': 0.03175028287600134, 'mobilenet': 0.23450073958690623, 'resnet': 0.23388750543526682, 'densenet': 0.23734614605051307}
+2025-05-09 00:23:49,879 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:23:49,879 [INFO] - Current teacher temperatures: {'vit': 3.151643753051758, 'efficientnet': 3.7834506034851074, 'inception': 4.647454261779785, 'mobilenet': 3.7553553581237793, 'resnet': 3.7472922801971436, 'densenet': 3.6952993869781494}
+2025-05-09 00:23:49,879 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:23:49,879 [INFO] - HFI attention weights: {'vit': 0.20203137397766113, 'efficientnet': 0.17357005178928375, 'inception': 0.14956845343112946, 'mobilenet': 0.15012972056865692, 'resnet': 0.16347560286521912, 'densenet': 0.161224827170372}
+2025-05-09 00:31:09,818 [INFO] - Epoch 22 Results - Time: 440.12s, LR: 0.000594
+2025-05-09 00:31:09,819 [INFO] - Train - Loss: 1.1243, Acc: 99.72%
+2025-05-09 00:31:09,819 [INFO] -   CE: 0.0082, KL: 0.0994, Feat: 0.0279, Cal: 0.0021
+2025-05-09 00:31:09,819 [INFO] - Val - Loss: 0.1133, Acc: 97.46%, F1: 0.9744, ECE: 0.0181
+2025-05-09 00:31:10,097 [INFO] - GPU Memory: Current=835.77MB, Peak=4290.37MB, Reserved=4662.00MB
+2025-05-09 00:31:10,097 [INFO] - Epoch 23/50
+2025-05-09 00:31:10,280 [INFO] - GPU cache cleared: 835.77MB -> 835.77MB (freed 0.00MB)
+2025-05-09 00:31:10,281 [INFO] - Current calibration weight: 0.0767
+2025-05-09 00:31:10,282 [INFO] - Updated teacher weights: {'vit': 0.14889579055354607, 'efficientnet': 0.2076025967330292, 'inception': 0.01629019712947191, 'mobilenet': 0.20840920138273222, 'resnet': 0.20786419824104094, 'densenet': 0.2109380159601796}
+2025-05-09 00:31:10,282 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:31:10,284 [INFO] - Current teacher temperatures: {'vit': 3.0872929096221924, 'efficientnet': 3.7359566688537598, 'inception': 4.591779708862305, 'mobilenet': 3.7105984687805176, 'resnet': 3.6984169483184814, 'densenet': 3.6465935707092285}
+2025-05-09 00:31:10,284 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:31:10,284 [INFO] - HFI attention weights: {'vit': 0.20232878625392914, 'efficientnet': 0.17405276000499725, 'inception': 0.14908990263938904, 'mobilenet': 0.14992888271808624, 'resnet': 0.16399389505386353, 'densenet': 0.16060583293437958}
+2025-05-09 00:38:30,837 [INFO] - Epoch 23 Results - Time: 440.74s, LR: 0.000563
+2025-05-09 00:38:30,839 [INFO] - Train - Loss: 1.0695, Acc: 99.79%
+2025-05-09 00:38:30,840 [INFO] -   CE: 0.0068, KL: 0.0946, Feat: 0.0267, Cal: 0.0016
+2025-05-09 00:38:30,840 [INFO] - Val - Loss: 0.1101, Acc: 97.58%, F1: 0.9756, ECE: 0.0158
+2025-05-09 00:38:31,083 [INFO] - GPU Memory: Current=835.86MB, Peak=4290.37MB, Reserved=4674.00MB
+2025-05-09 00:38:31,083 [INFO] - Epoch 24/50
+2025-05-09 00:38:31,247 [INFO] - GPU cache cleared: 835.86MB -> 835.86MB (freed 0.00MB)
+2025-05-09 00:38:31,251 [INFO] - Current calibration weight: 0.0800
+2025-05-09 00:38:31,251 [INFO] - Updated teacher weights: {'vit': 0.22421855265107576, 'efficientnet': 0.06898681416192164, 'inception': 0.014587611813181432, 'mobilenet': 0.22638430968572595, 'resnet': 0.2312018924546347, 'densenet': 0.23462081923346048}
+2025-05-09 00:38:31,251 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:38:31,251 [INFO] - Current teacher temperatures: {'vit': 3.0282492637634277, 'efficientnet': 3.691215991973877, 'inception': 4.54121208190918, 'mobilenet': 3.6694135665893555, 'resnet': 3.651463508605957, 'densenet': 3.6002590656280518}
+2025-05-09 00:38:31,251 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:38:31,251 [INFO] - HFI attention weights: {'vit': 0.20234927535057068, 'efficientnet': 0.17460712790489197, 'inception': 0.1484431028366089, 'mobilenet': 0.14982248842716217, 'resnet': 0.1645248830318451, 'densenet': 0.1602531373500824}
+2025-05-09 00:45:43,337 [INFO] - Epoch 24 Results - Time: 432.25s, LR: 0.000531
+2025-05-09 00:45:43,337 [INFO] - Train - Loss: 1.0405, Acc: 99.78%
+2025-05-09 00:45:43,338 [INFO] -   CE: 0.0075, KL: 0.0920, Feat: 0.0260, Cal: 0.0018
+2025-05-09 00:45:43,339 [INFO] - Val - Loss: 0.1029, Acc: 97.46%, F1: 0.9744, ECE: 0.0179
+2025-05-09 00:45:43,591 [INFO] - GPU Memory: Current=835.95MB, Peak=4290.37MB, Reserved=4700.00MB
+2025-05-09 00:45:43,591 [INFO] - Epoch 25/50
+2025-05-09 00:45:43,755 [INFO] - GPU cache cleared: 835.95MB -> 835.95MB (freed 0.00MB)
+2025-05-09 00:45:43,755 [INFO] - Current calibration weight: 0.0833
+2025-05-09 00:45:43,755 [INFO] - Updated teacher weights: {'vit': 0.13582718572732275, 'efficientnet': 0.20638139332069194, 'inception': 0.0342695195312536, 'mobilenet': 0.2071832531918319, 'resnet': 0.20664145598160216, 'densenet': 0.20969719224729763}
+2025-05-09 00:45:43,755 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:45:43,765 [INFO] - Current teacher temperatures: {'vit': 2.972531795501709, 'efficientnet': 3.649833917617798, 'inception': 4.493877410888672, 'mobilenet': 3.63022780418396, 'resnet': 3.6080877780914307, 'densenet': 3.5564627647399902}
+2025-05-09 00:45:43,765 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:45:43,765 [INFO] - HFI attention weights: {'vit': 0.20231027901172638, 'efficientnet': 0.1751040816307068, 'inception': 0.14795802533626556, 'mobilenet': 0.14964163303375244, 'resnet': 0.1652703583240509, 'densenet': 0.1597156673669815}
+2025-05-09 00:52:52,412 [INFO] - Epoch 25 Results - Time: 428.82s, LR: 0.000500
+2025-05-09 00:52:52,412 [INFO] - Train - Loss: 0.9947, Acc: 99.81%
+2025-05-09 00:52:52,412 [INFO] -   CE: 0.0063, KL: 0.0880, Feat: 0.0250, Cal: 0.0016
+2025-05-09 00:52:52,412 [INFO] - Val - Loss: 0.1037, Acc: 97.62%, F1: 0.9760, ECE: 0.0177
+2025-05-09 00:52:52,662 [INFO] - GPU Memory: Current=836.00MB, Peak=4290.37MB, Reserved=4672.00MB
+2025-05-09 00:52:52,669 [INFO] - Epoch 26/50
+2025-05-09 00:52:52,836 [INFO] - GPU cache cleared: 836.00MB -> 836.00MB (freed 0.00MB)
+2025-05-09 00:52:52,840 [INFO] - Current calibration weight: 0.0867
+2025-05-09 00:52:52,840 [INFO] - Updated teacher weights: {'vit': 0.19761339966251396, 'efficientnet': 0.19192808207269038, 'inception': 0.012674373793434711, 'mobilenet': 0.23671157469010748, 'resnet': 0.12148876259490626, 'densenet': 0.23958380718634728}
+2025-05-09 00:52:52,840 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:52:52,843 [INFO] - Current teacher temperatures: {'vit': 2.9202139377593994, 'efficientnet': 3.610532283782959, 'inception': 4.450137138366699, 'mobilenet': 3.593095302581787, 'resnet': 3.5672194957733154, 'densenet': 3.5154824256896973}
+2025-05-09 00:52:52,845 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 00:52:52,845 [INFO] - HFI attention weights: {'vit': 0.20234215259552002, 'efficientnet': 0.1756163090467453, 'inception': 0.14751377701759338, 'mobilenet': 0.14948341250419617, 'resnet': 0.16577929258346558, 'densenet': 0.15926504135131836}
+2025-05-09 01:00:03,286 [INFO] - Epoch 26 Results - Time: 430.62s, LR: 0.000469
+2025-05-09 01:00:03,286 [INFO] - Train - Loss: 0.9839, Acc: 99.80%
+2025-05-09 01:00:03,286 [INFO] -   CE: 0.0069, KL: 0.0870, Feat: 0.0239, Cal: 0.0016
+2025-05-09 01:00:03,286 [INFO] - Val - Loss: 0.0996, Acc: 97.64%, F1: 0.9762, ECE: 0.0159
+2025-05-09 01:00:03,528 [INFO] - GPU Memory: Current=835.83MB, Peak=4290.37MB, Reserved=4672.00MB
+2025-05-09 01:00:03,528 [INFO] - Epoch 27/50
+2025-05-09 01:00:03,693 [INFO] - GPU cache cleared: 835.83MB -> 835.83MB (freed 0.00MB)
+2025-05-09 01:00:03,693 [INFO] - Current calibration weight: 0.0900
+2025-05-09 01:00:03,693 [INFO] - Updated teacher weights: {'vit': 0.1564151106416797, 'efficientnet': 0.20592226855905132, 'inception': 0.015527832527456981, 'mobilenet': 0.20672234457886493, 'resnet': 0.20618175267358543, 'densenet': 0.20923069101936162}
+2025-05-09 01:00:03,693 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 01:00:03,693 [INFO] - Current teacher temperatures: {'vit': 2.8721678256988525, 'efficientnet': 3.5740702152252197, 'inception': 4.407468795776367, 'mobilenet': 3.5577569007873535, 'resnet': 3.528669595718384, 'densenet': 3.476985454559326}
+2025-05-09 01:00:03,703 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 01:00:03,703 [INFO] - HFI attention weights: {'vit': 0.20233866572380066, 'efficientnet': 0.1760915070772171, 'inception': 0.14715389907360077, 'mobilenet': 0.14921574294567108, 'resnet': 0.16645927727222443, 'densenet': 0.15874092280864716}
+2025-05-09 01:07:21,186 [INFO] - Epoch 27 Results - Time: 437.66s, LR: 0.000437
+2025-05-09 01:07:21,186 [INFO] - Train - Loss: 0.9460, Acc: 99.82%
+2025-05-09 01:07:21,186 [INFO] -   CE: 0.0051, KL: 0.0837, Feat: 0.0232, Cal: 0.0013
+2025-05-09 01:07:21,186 [INFO] - Val - Loss: 0.1001, Acc: 97.60%, F1: 0.9758, ECE: 0.0176
+2025-05-09 01:07:21,438 [INFO] - GPU Memory: Current=835.77MB, Peak=4290.37MB, Reserved=4668.00MB
+2025-05-09 01:07:21,438 [INFO] - Epoch 28/50
+2025-05-09 01:07:21,611 [INFO] - GPU cache cleared: 835.77MB -> 835.77MB (freed 0.00MB)
+2025-05-09 01:07:21,611 [INFO] - Current calibration weight: 0.0933
+2025-05-09 01:07:21,611 [INFO] - Updated teacher weights: {'vit': 0.38825134116073234, 'efficientnet': 0.13210255220711029, 'inception': 0.08131136123086424, 'mobilenet': 0.13238247173004686, 'resnet': 0.1320022366872692, 'densenet': 0.1339500369839771}
+2025-05-09 01:07:21,611 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 01:07:21,611 [INFO] - Current teacher temperatures: {'vit': 2.8279638290405273, 'efficientnet': 3.539057493209839, 'inception': 4.367103576660156, 'mobilenet': 3.524693489074707, 'resnet': 3.4917454719543457, 'densenet': 3.4410717487335205}
+2025-05-09 01:07:21,611 [INFO] - Teacher gating status: {'vit': 1.0, 'efficientnet': 1.0, 'inception': 1.0, 'mobilenet': 1.0, 'resnet': 1.0, 'densenet': 1.0}
+2025-05-09 01:07:21,611 [INFO] - HFI attention weights: {'vit': 0.20223388075828552, 'efficientnet': 0.17658938467502594, 'inception': 0.14674733579158783, 'mobilenet': 0.14901715517044067, 'resnet': 0.16710372269153595, 'densenet': 0.15830852091312408}
+2025-05-09 01:14:42,581 [INFO] - Epoch 28 Results - Time: 441.14s, LR: 0.000406
+2025-05-09 01:14:42,581 [INFO] - Train - Loss: 0.9379, Acc: 99.84%
+2025-05-09 01:14:42,581 [INFO] -   CE: 0.0055, KL: 0.0830, Feat: 0.0223, Cal: 0.0013
+2025-05-09 01:14:42,581 [INFO] - Val - Loss: 0.1000, Acc: 97.58%, F1: 0.9756, ECE: 0.0169
+2025-05-09 01:14:42,832 [INFO] - Early stopping triggered after 28 epochs
+2025-05-09 01:14:42,832 [INFO] - Training completed. Best validation accuracy: 97.82%
+2025-05-09 01:14:42,840 [INFO] - Plotting training history...
+2025-05-09 01:14:46,362 [INFO] - Enhanced training history plot saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\plots\training_history.png
+2025-05-09 01:14:47,373 [INFO] - Testing student model...
+2025-05-09 01:14:47,373 [INFO] - Testing student model on test set...
+2025-05-09 01:14:59,459 [INFO] - Test Results:
+2025-05-09 01:14:59,459 [INFO] - Loss: 0.1289
+2025-05-09 01:14:59,459 [INFO] - Accuracy: 97.30%
+2025-05-09 01:14:59,459 [INFO] - F1 Score: 0.9730
+2025-05-09 01:14:59,459 [INFO] - Precision: 0.9730
+2025-05-09 01:14:59,459 [INFO] - Recall: 0.9730
+2025-05-09 01:14:59,459 [INFO] - ECE: 0.0187
+2025-05-09 01:14:59,459 [INFO] - Plotting calibration curves for all models...
+2025-05-09 01:16:48,692 [INFO] - Teacher calibration curves saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\plots\teacher_calibration_curves.png
+2025-05-09 01:16:48,692 [INFO] - ECE values: {'student': 0.09115047753589453, 'vit': 0.0356936056621271, 'efficientnet': 0.07024297542497401, 'inception': 0.33984923447922677, 'mobilenet': 0.12253011715554762, 'resnet': 0.08384518229808563, 'densenet': 0.13344069511000223}
+2025-05-09 01:16:48,692 [INFO] - Plotting calibration curve for student...
+2025-05-09 01:16:59,493 [INFO] - Calibration curve saved to C:\Users\Gading\Downloads\Research\Results\EnsembleDistillation\plots\calibration_curve.png
+2025-05-09 01:16:59,493 [INFO] - Exporting final model...
+2025-05-09 01:16:59,542 [INFO] - Final model exported to C:\Users\Gading\Downloads\Research\Models\EnsembleDistillation\exports\cal_aware_distilled_model.pth
+2025-05-09 01:16:59,544 [INFO] - GPU Memory: Current=646.03MB, Peak=4290.37MB, Reserved=1284.00MB
+2025-05-09 01:16:59,544 [INFO] - Calibration-aware ensemble distillation completed successfully.

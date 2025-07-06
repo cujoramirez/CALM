@@ -1,0 +1,1116 @@
+"""
+Ensemble Distillation Training Script for Six Teacher Models on CIFAR-10
+- Teachers: ViT-B16, EfficientNetB0, InceptionV3, MobileNetV3, ResNet50, DenseNet121
+- Student: Scaled EfficientNetB0
+
+Part of the research:
+"Comparative Analysis of Ensemble Distillation and Mutual Learning:
+A Unified Framework for Uncertainty-Calibrated Vision Systems"
+
+
+Target Hardware: RTX 3060 Laptop (6GB VRAM)
+Optimizations: AMP, gradient accumulation, memory-efficient techniques, GPU cache clearing
+"""
+
+import os
+import sys
+import random
+import time
+import json
+import logging
+import numpy as np
+import matplotlib.pyplot as plt
+from tqdm import tqdm
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+from torch.amp import autocast, GradScaler
+from torch.optim.lr_scheduler import CosineAnnealingLR
+from torch.utils.data import DataLoader
+from torchvision import datasets, transforms
+import torchvision.transforms.functional as TF
+from tensorboardX import SummaryWriter
+# Replace broad imports with specific model imports
+from torchvision.models import (
+    vit_b_16, ViT_B_16_Weights,
+    efficientnet_b0, EfficientNet_B0_Weights,
+    inception_v3, Inception_V3_Weights,
+    mobilenet_v3_large, MobileNet_V3_Large_Weights,
+    resnet50, ResNet50_Weights,
+    densenet121, DenseNet121_Weights
+)
+# import timm # Not used in this version, can be removed if not needed elsewhere
+from datetime import datetime
+import gc  # For explicit garbage collection
+from sklearn.metrics import f1_score, precision_score, recall_score
+
+# Define base paths
+BASE_PATH = "C:\\Users\\Gading\\Downloads\\Research"
+DATASET_PATH = os.path.join(BASE_PATH, "Dataset")
+RESULTS_PATH = os.path.join(BASE_PATH, "Results")
+MODELS_PATH = os.path.join(BASE_PATH, "Models")
+SCRIPTS_PATH = os.path.join(BASE_PATH, "Scripts")
+
+# Create model-specific paths
+MODEL_NAME = "EnsembleDistillation"
+MODEL_RESULTS_PATH = os.path.join(RESULTS_PATH, MODEL_NAME)
+MODEL_CHECKPOINT_PATH = os.path.join(MODELS_PATH, MODEL_NAME, "checkpoints")
+MODEL_EXPORT_PATH = os.path.join(MODELS_PATH, MODEL_NAME, "exports")
+
+# Create necessary directories
+os.makedirs(DATASET_PATH, exist_ok=True)
+os.makedirs(MODEL_RESULTS_PATH, exist_ok=True)
+os.makedirs(MODEL_CHECKPOINT_PATH, exist_ok=True)
+os.makedirs(MODEL_EXPORT_PATH, exist_ok=True)
+os.makedirs(SCRIPTS_PATH, exist_ok=True)
+os.makedirs(os.path.join(MODEL_RESULTS_PATH, "logs"), exist_ok=True)
+os.makedirs(os.path.join(MODEL_RESULTS_PATH, "plots"), exist_ok=True)
+
+# Setup logging
+log_file = os.path.join(MODEL_RESULTS_PATH, "logs", "ensemble_distillation.log")
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] - %(message)s',
+    handlers=[
+        logging.FileHandler(log_file),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger()
+
+# Set up tensorboard writer
+writer = SummaryWriter(log_dir=os.path.join(MODEL_RESULTS_PATH, "logs"))
+
+# Set device
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+logger.info(f"Using device: {device}")
+if torch.cuda.is_available():
+    logger.info(f"GPU: {torch.cuda.get_device_name(0)}")
+    logger.info(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.2f} GB")
+    logger.info(f"CUDA Version: {torch.version.cuda}")
+    # Enable cuDNN benchmark for optimal performance
+    torch.backends.cudnn.benchmark = True
+    logger.info("cuDNN benchmark mode enabled")
+
+# Set seeds for reproducibility
+def set_seed(seed=42):
+    """Set all random seeds for reproducibility"""
+    random.seed(seed)
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = False  # Slightly faster with False
+    logger.info(f"Random seed set to {seed}")
+
+# Hyperparameters and configuration
+class Config:
+    def __init__(self):
+        # General settings
+        self.seed = 42
+        self.model_name = "ensemble_distillation"
+        self.dataset = "CIFAR-10"
+
+        # Hardware-specific optimizations - FIXED VALUES for RTX 3060 Laptop (6GB)
+        self.use_amp = True  # Automatic Mixed Precision
+        self.memory_efficient_attention = True  # Memory-efficient attention (for ViT if used)
+        self.prefetch_factor = 2  # DataLoader prefetch factor
+        self.pin_memory = True  # Pin memory for faster CPU->GPU transfers
+        self.persistent_workers = True  # Keep workers alive between epochs
+
+        # RTX 3060 Laptop specific fixes
+        self.batch_size = 64  # Safe value based on testing
+        self.gradient_accumulation_steps = 8  # Accumulate for effective batch of 512
+        self.find_batch_size = False  # Disable auto-finding (using known values)
+        self.gpu_memory_fraction = 0.75  # More conservative memory usage
+
+        # Data settings
+        self.input_size = 32  # Original CIFAR-10 image size
+        self.model_input_size = 224  # Required size for pretrained models
+        self.num_workers = 4  # For data loading
+        self.val_split = 0.1  # 10% validation split
+        self.dataset_path = DATASET_PATH
+
+        # GPU cache clearing settings
+        self.clear_cache_every_n_epochs = 1  # Clear cache every epoch
+
+        # Model settings
+        self.pretrained = True  # Use pretrained models
+        self.num_classes = 10  # CIFAR-10 has 10 classes
+
+        # Teacher models
+        self.teacher_models = ['vit', 'efficientnet', 'inception', 'mobilenet', 'resnet', 'densenet']
+        self.teacher_finetune_epochs = 5  # Number of epochs to fine-tune each teacher
+        self.freeze_teacher_backbones = True  # Freeze teacher backbones during fine-tuning
+
+        # Pre-trained teacher model paths
+        self.teacher_model_paths = {
+            'vit': r"C:\Users\Gading\Downloads\Research\Models\ViT\checkpoints\vit_b16_teacher_20250321_053628_best.pth",
+            'efficientnet': r"C:\Users\Gading\Downloads\Research\Models\EfficientNetB0\checkpoints\efficientnet_b0_teacher_20250325_132652_best.pth",
+            'inception': r"C:\Users\Gading\Downloads\Research\Models\InceptionV3\checkpoints\inception_v3_teacher_20250428_140923_best.pth",
+            'mobilenet': r"C:\Users\Gading\Downloads\Research\Models\MobileNetV3\checkpoints\mobilenetv3_20250326_035725_best.pth",
+            'resnet': r"C:\Users\Gading\Downloads\Research\Models\ResNet50\checkpoints\resnet50_teacher_20250322_225032_best.pth",
+            'densenet': r"C:\Users\Gading\Downloads\Research\Models\DenseNet121\checkpoints\densenet121_teacher_20250325_160534_best.pth"
+        }
+        self.use_pretrained_teachers = True  # Flag to use pre-trained teacher models
+
+        # Teacher calibration and accuracy metrics
+        self.teacher_accuracies = {
+            'densenet': 95.07,
+            'efficientnet': 94.94,
+            'inception': 83.17,
+            'mobilenet': 94.98,
+            'resnet': 94.08,
+            'vit': 93.89
+        }
+
+        # Initial teacher weights (will be dynamically adjusted during training)
+        self.teacher_init_weights = {
+            'densenet': 1.0,
+            'efficientnet': 1.0,
+            'inception': 0.7,  # Lower initial weight due to lower accuracy
+            'mobilenet': 1.0,
+            'resnet': 1.0,
+            'vit': 1.0
+        }
+
+        # Teacher temperature scaling
+        self.use_adaptive_temperature = True  # Use teacher-specific temperatures
+        self.teacher_temperatures = {
+            'densenet': 4.0,
+            'efficientnet': 4.0,
+            'inception': 5.0,  # Higher temperature for less confident predictions
+            'mobilenet': 4.0,
+            'resnet': 4.0,
+            'vit': 4.0
+        }
+        self.learn_temperatures = True  # Whether to learn temperatures during training
+
+        # Teacher gating settings
+        self.use_teacher_gating = True  # Use dynamic teacher gating/pruning
+        self.gating_threshold = 0.2  # Minimum weight for teacher contribution
+        self.dynamic_weight_update = True  # Update weights during training
+
+        # Weighting scheme options
+        self.weighting_scheme = 'adaptive'  # Options: 'fixed', 'accuracy', 'calibration', 'adaptive', 'learned'
+        self.weight_update_interval = 5  # Update weights every N batches
+
+        # Temperature settings
+        self.soft_target_temp = 4.0  # Temperature for soft targets
+
+        # Training settings
+        self.epochs = 50  # Total training epochs
+        self.lr = 1e-3  # Learning rate
+        self.weight_decay = 1e-5  # Weight decay
+        self.early_stop_patience = 10  # Early stopping patience
+
+        # Loss weights (target values for ACP)
+        self.alpha = 0.7  # Target weight of distillation loss (KL) vs hard-label loss (CE)
+        self.feature_loss_weight = 0.3  # Target feature loss weight
+        self.cal_weight = 0.1  # Target maximum calibration weight
+
+        # Curriculum scheduling settings
+        self.use_curriculum = True  # Whether to use curriculum scheduling
+        self.curriculum_start_epoch = 0 # Start ramp from epoch 0 (can be >0 if warmup is used)
+        self.curriculum_ramp_epochs = 30  # Epochs for ramping up loss component weights
+
+        # Output settings
+        self.checkpoint_dir = MODEL_CHECKPOINT_PATH
+        self.results_dir = MODEL_RESULTS_PATH
+        self.export_dir = MODEL_EXPORT_PATH
+
+        # Enhanced calibration settings
+        self.per_teacher_calibration = True  # Use per-teacher calibration loss
+        self.weight_by_calibration = True  # Weight losses by teacher calibration quality
+
+    def __str__(self):
+        """String representation of the configuration"""
+        return json.dumps(self.__dict__, indent=4)
+
+    def save(self, path):
+        """Save configuration to a JSON file"""
+        with open(path, 'w') as f:
+            json.dump(self.__dict__, f, indent=4)
+
+    def _get_ramped_weight(self, epoch, target_weight, start_epoch, ramp_epochs):
+        if not self.use_curriculum or epoch < start_epoch:
+            return 0.0 if target_weight > 0 else target_weight # Return 0 if ramping, else base
+        ramp_epoch = epoch - start_epoch
+        if ramp_epoch < ramp_epochs:
+            ramp_duration = max(1, ramp_epochs)
+            return target_weight * (ramp_epoch + 1) / ramp_duration
+        return target_weight
+
+    def get_calibration_weight(self, epoch):
+        return self._get_ramped_weight(epoch, self.cal_weight, self.curriculum_start_epoch, self.curriculum_ramp_epochs)
+
+    def get_alpha_weight(self, epoch): # For KL loss component
+        # Alpha is the weight for KL, (1-alpha) for CE.
+        # We ramp up the KL component's influence.
+        return self._get_ramped_weight(epoch, self.alpha, self.curriculum_start_epoch, self.curriculum_ramp_epochs)
+
+    def get_feature_loss_weight(self, epoch):
+        return self._get_ramped_weight(epoch, self.feature_loss_weight, self.curriculum_start_epoch, self.curriculum_ramp_epochs)
+
+
+# Memory utilities
+def print_gpu_memory_stats():
+    """Print GPU memory usage statistics"""
+    if torch.cuda.is_available():
+        current_mem = torch.cuda.memory_allocated() / 1024**2
+        max_mem = torch.cuda.max_memory_allocated() / 1024**2
+        reserved_mem = torch.cuda.memory_reserved() / 1024**2
+        logger.info(f"GPU Memory: Current={current_mem:.2f}MB, Peak={max_mem:.2f}MB, Reserved={reserved_mem:.2f}MB")
+
+def clear_gpu_cache():
+    """Clear GPU cache to free up memory"""
+    if torch.cuda.is_available():
+        before_mem = torch.cuda.memory_allocated() / 1024**2
+        torch.cuda.empty_cache()
+        gc.collect()  # Explicit garbage collection
+        after_mem = torch.cuda.memory_allocated() / 1024**2
+        logger.info(f"GPU cache cleared: {before_mem:.2f}MB → {after_mem:.2f}MB (freed {before_mem-after_mem:.2f}MB)")
+
+# Calibration Metrics
+class CalibrationMetrics:
+    @staticmethod
+    def compute_ece(probs, targets, n_bins=15):
+        """Compute Expected Calibration Error (ECE)"""
+        confidences, predictions = torch.max(probs, dim=1)
+        accuracies = (predictions == targets).float()
+        sorted_indices = torch.argsort(confidences)
+        sorted_confidences = confidences[sorted_indices]
+        sorted_accuracies = accuracies[sorted_indices]
+        bin_size = 1.0 / n_bins
+        bins = torch.linspace(0, 1.0, n_bins + 1)
+        ece = 0.0
+        for i in range(n_bins):
+            bin_start = bins[i]
+            bin_end = bins[i+1]
+            in_bin = (sorted_confidences >= bin_start) & (sorted_confidences < bin_end)
+            bin_count = in_bin.sum()
+            if bin_count > 0:
+                bin_conf = sorted_confidences[in_bin].mean()
+                bin_acc = sorted_accuracies[in_bin].mean()
+                ece += (bin_count / len(confidences)) * torch.abs(bin_acc - bin_conf)
+        return ece
+
+    @staticmethod
+    def calibration_loss(logits, targets):
+        """Compute a loss term that encourages better calibration (MSE-based)"""
+        probs = F.softmax(logits, dim=1)
+        confidences, predictions = torch.max(probs, dim=1)
+        accuracies = (predictions == targets).float()
+        return torch.mean((confidences - accuracies) ** 2)
+
+# Data Preparation
+def get_cifar10_loaders(config):
+    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    train_transform = transforms.Compose([
+        transforms.RandomCrop(32, padding=4),
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        normalize,
+        transforms.Resize(config.model_input_size, antialias=True)
+    ])
+    test_transform = transforms.Compose([
+        transforms.ToTensor(),
+        normalize,
+        transforms.Resize(config.model_input_size, antialias=True)
+    ])
+    cifar10_path = os.path.join(config.dataset_path, "CIFAR-10")
+    full_train_dataset = datasets.CIFAR10(root=cifar10_path, train=True, download=True, transform=train_transform)
+    test_dataset = datasets.CIFAR10(root=cifar10_path, train=False, download=True, transform=test_transform)
+    val_size = int(len(full_train_dataset) * config.val_split)
+    train_size = len(full_train_dataset) - val_size
+    train_dataset, val_dataset_orig = random_split(full_train_dataset, [train_size, val_size], generator=torch.Generator().manual_seed(config.seed))
+    val_dataset_with_transform = torch.utils.data.Subset(
+        datasets.CIFAR10(root=cifar10_path, train=True, download=False, transform=test_transform),
+        val_dataset_orig.indices
+    )
+    train_loader = DataLoader(train_dataset, batch_size=config.batch_size, shuffle=True, num_workers=config.num_workers, pin_memory=config.pin_memory, persistent_workers=config.persistent_workers if config.num_workers > 0 else False, prefetch_factor=config.prefetch_factor if config.num_workers > 0 else None)
+    val_loader = DataLoader(val_dataset_with_transform, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers, pin_memory=config.pin_memory, persistent_workers=config.persistent_workers if config.num_workers > 0 else False, prefetch_factor=config.prefetch_factor if config.num_workers > 0 else None)
+    test_loader = DataLoader(test_dataset, batch_size=config.batch_size, shuffle=False, num_workers=config.num_workers, pin_memory=config.pin_memory, persistent_workers=config.persistent_workers if config.num_workers > 0 else False, prefetch_factor=config.prefetch_factor if config.num_workers > 0 else None)
+    logger.info(f"Training samples: {len(train_dataset)}")
+    logger.info(f"Validation samples: {len(val_dataset_with_transform)}")
+    logger.info(f"Test samples: {len(test_dataset)}")
+    return train_loader, val_loader, test_loader
+
+# Teacher Models
+def load_teacher_models(config):
+    teachers = {}
+    logger.info("Loading ViT-B16 model...")
+    teachers['vit'] = vit_b_16(weights=None)
+    if hasattr(teachers['vit'], 'heads') and hasattr(teachers['vit'].heads, 'head'): teachers['vit'].heads.head = nn.Linear(teachers['vit'].heads.head.in_features, config.num_classes)
+    elif hasattr(teachers['vit'], 'head'): teachers['vit'].head = nn.Linear(teachers['vit'].head.in_features, config.num_classes)
+    else: logger.error("Could not adapt ViT head")
+
+    logger.info("Loading EfficientNetB0 model...")
+    teachers['efficientnet'] = efficientnet_b0(weights=None)
+    if hasattr(teachers['efficientnet'], 'classifier'): teachers['efficientnet'].classifier[1] = nn.Linear(teachers['efficientnet'].classifier[1].in_features, config.num_classes)
+
+    logger.info("Loading InceptionV3 model...")
+    teachers['inception'] = inception_v3(weights=None, aux_logits=False) # aux_logits=False for simplicity during inference
+    teachers['inception'].fc = nn.Linear(teachers['inception'].fc.in_features, config.num_classes)
+
+    logger.info("Loading MobileNetV3 model...")
+    teachers['mobilenet'] = mobilenet_v3_large(weights=None)
+    teachers['mobilenet'].classifier[-1] = nn.Linear(teachers['mobilenet'].classifier[-1].in_features, config.num_classes)
+
+    logger.info("Loading ResNet50 model...")
+    teachers['resnet'] = resnet50(weights=None)
+    teachers['resnet'].fc = nn.Linear(teachers['resnet'].fc.in_features, config.num_classes)
+
+    logger.info("Loading DenseNet121 model...")
+    teachers['densenet'] = densenet121(weights=None)
+    teachers['densenet'].classifier = nn.Linear(teachers['densenet'].classifier.in_features, config.num_classes)
+
+    if config.use_pretrained_teachers:
+        for name, model in teachers.items():
+            if name in config.teacher_model_paths:
+                checkpoint_path = config.teacher_model_paths[name]
+                if os.path.exists(checkpoint_path):
+                    logger.info(f"Loading pre-trained weights for {name} from {checkpoint_path}")
+                    try:
+                        checkpoint = torch.load(checkpoint_path, map_location=device)
+                        state_dict_key = 'model_state_dict' if 'model_state_dict' in checkpoint else 'state_dict' if 'state_dict' in checkpoint else None
+                        if state_dict_key: model.load_state_dict(checkpoint[state_dict_key])
+                        else: model.load_state_dict(checkpoint)
+                        logger.info(f"Successfully loaded pre-trained weights for {name}")
+                    except Exception as e:
+                        logger.error(f"Error loading weights for {name} from {checkpoint_path}: {str(e)}. Using ImageNet weights as fallback.")
+                        # Fallback to ImageNet
+                        if name == 'vit': model = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1); model.heads.head = nn.Linear(model.heads.head.in_features, config.num_classes)
+                        elif name == 'efficientnet': model = efficientnet_b0(weights=EfficientNet_B0_Weights.IMAGENET1K_V1); model.classifier[1] = nn.Linear(model.classifier[1].in_features, config.num_classes)
+                        elif name == 'inception': model = inception_v3(weights=Inception_V3_Weights.IMAGENET1K_V1, aux_logits=False); model.fc = nn.Linear(model.fc.in_features, config.num_classes)
+                        elif name == 'mobilenet': model = mobilenet_v3_large(weights=MobileNet_V3_Large_Weights.IMAGENET1K_V1); model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, config.num_classes)
+                        elif name == 'resnet': model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1); model.fc = nn.Linear(model.fc.in_features, config.num_classes)
+                        elif name == 'densenet': model = densenet121(weights=DenseNet121_Weights.IMAGENET1K_V1); model.classifier = nn.Linear(model.classifier.in_features, config.num_classes)
+                        teachers[name] = model # Update model in dict
+                else:
+                    logger.warning(f"Checkpoint file for {name} not found at {checkpoint_path}. Using ImageNet weights.")
+                    # Load ImageNet if path not found
+                    if name == 'vit': model = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1); model.heads.head = nn.Linear(model.heads.head.in_features, config.num_classes)
+                    elif name == 'efficientnet': model = efficientnet_b0(weights=EfficientNet_B0_Weights.IMAGENET1K_V1); model.classifier[1] = nn.Linear(model.classifier[1].in_features, config.num_classes)
+                    # ... add for other models
+                    teachers[name] = model
+            else: # No path specified, use ImageNet
+                logger.info(f"No specific path for {name}, loading ImageNet weights.")
+                if name == 'vit': model = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1); model.heads.head = nn.Linear(model.heads.head.in_features, config.num_classes)
+                # ... add for other models
+                teachers[name] = model
+
+
+    for name, model in teachers.items():
+        teachers[name] = model.to(device)
+        logger.info(f"Model {name} loaded and moved to {device}")
+        if config.use_pretrained_teachers:
+            teachers[name].eval()
+            logger.info(f"Model {name} set to evaluation mode")
+    return teachers
+
+def freeze_teacher_backbone(teacher, model_name):
+    for param in teacher.parameters(): param.requires_grad = False
+    if model_name == 'vit':
+        if hasattr(teacher, 'heads') and hasattr(teacher.heads, 'head'):
+            for param in teacher.heads.head.parameters(): param.requires_grad = True
+        elif hasattr(teacher, 'head'):
+            for param in teacher.head.parameters(): param.requires_grad = True
+    elif model_name == 'efficientnet':
+        for param in teacher.classifier.parameters(): param.requires_grad = True
+    elif model_name == 'inception':
+        for param in teacher.fc.parameters(): param.requires_grad = True
+    elif model_name == 'mobilenet':
+        for param in teacher.classifier.parameters(): param.requires_grad = True
+    elif model_name == 'resnet':
+        for param in teacher.fc.parameters(): param.requires_grad = True
+    elif model_name == 'densenet':
+        for param in teacher.classifier.parameters(): param.requires_grad = True
+    return teacher
+
+# Student Model
+def create_student_model(config):
+    logger.info(f"Creating scaled EfficientNet-B0 student model...")
+    model = efficientnet_b0(weights=EfficientNet_B0_Weights.IMAGENET1K_V1 if config.pretrained else None)
+    if hasattr(model, 'classifier'):
+        in_features = model.classifier[1].in_features
+        model.classifier = nn.Sequential( # Ensure classifier is a Sequential for consistent access
+            nn.Dropout(p=0.2, inplace=True),
+            nn.Linear(in_features, config.num_classes)
+        )
+    total_params = sum(p.numel() for p in model.parameters())
+    logger.info(f"Student model created with {total_params/1e6:.2f}M parameters")
+    return model.to(device)
+
+# Loss Functions
+class DistillationLoss(nn.Module):
+    def __init__(self, temperature=2.0): # Alpha removed from init
+        super(DistillationLoss, self).__init__()
+        self.temperature = temperature
+        self.ce_loss = nn.CrossEntropyLoss()
+
+    def forward(self, student_logits, teacher_ensemble_logits, labels, alpha_weight): # alpha_weight passed in
+        ce_loss = self.ce_loss(student_logits, labels)
+        soft_targets = F.softmax(teacher_ensemble_logits / self.temperature, dim=1)
+        soft_prob = F.log_softmax(student_logits / self.temperature, dim=1)
+        kl_loss = F.kl_div(soft_prob, soft_targets.detach(), reduction='batchmean') * (self.temperature ** 2) # Detach soft_targets
+        loss = (1 - alpha_weight) * ce_loss + alpha_weight * kl_loss # Use dynamic alpha_weight
+        return loss, ce_loss, kl_loss
+
+class FeatureAlignmentLoss(nn.Module): # Kept as is, HFI handles alignment before this loss
+    def __init__(self):
+        super(FeatureAlignmentLoss, self).__init__()
+        self.mse_loss = nn.MSELoss()
+        # Projections are not strictly needed here if HFI output is already aligned to student
+        # self.projections = {}
+
+    def forward(self, student_features, target_features):
+        # Assuming target_features (from HFI) are already projected and adapted to student's feature space
+        # If shapes still mismatch, it indicates an issue upstream (HFI or feature extraction)
+        if student_features.shape != target_features.shape:
+            logger.warning(f"FeatureAlignmentLoss: Shape mismatch! Student: {student_features.shape}, Target: {target_features.shape}. This might lead to errors or suboptimal learning.")
+            # Attempt a simple adaptive pool as a last resort, though HFI should handle this.
+            if len(student_features.shape) == 4 and len(target_features.shape) == 4: # CNN features
+                student_features = F.adaptive_avg_pool2d(student_features, target_features.shape[2:])
+            elif len(student_features.shape) == 3 and len(target_features.shape) == 3: # Sequence features
+                 # (B, L, D) -> (B, D, L) for pool1d
+                student_features_t = student_features.transpose(1,2)
+                student_features_t = F.adaptive_avg_pool1d(student_features_t, target_features.shape[1])
+                student_features = student_features_t.transpose(1,2)
+
+
+            # If still not matching after simple adaptation, log error and return zero loss to prevent crash
+            if student_features.shape != target_features.shape:
+                logger.error("FeatureAlignmentLoss: Could not resolve shape mismatch. Returning zero loss.")
+                return torch.tensor(0.0, device=student_features.device, requires_grad=True)
+
+        return self.mse_loss(student_features, target_features.detach()) # Detach target
+
+
+# Feature extraction
+class FeatureExtractor:
+    def __init__(self, model, layer_name):
+        self.model = model
+        self.features = None
+        self.hook_registered = False
+        for name, module in model.named_modules():
+            if layer_name == name: # Exact match for simplicity, can be made more flexible
+                module.register_forward_hook(self.hook)
+                self.hook_registered = True
+                logger.debug(f"Hook registered for {name} in {model.__class__.__name__}")
+                break
+        if not self.hook_registered:
+            logger.warning(f"Could not find layer {layer_name} in model {model.__class__.__name__}")
+
+    def hook(self, module, input, output):
+        self.features = output
+
+    def get_features(self, x): # Call model to trigger hook
+        with torch.no_grad(): # Ensure no grads during feature extraction pass
+             _ = self.model(x)
+        return self.features
+
+# Heterogeneous Feature Integration (HFI)
+class HeterogeneousFeatureIntegrator(nn.Module):
+    def __init__(self, teacher_feature_shapes, student_feature_shape):
+        super(HeterogeneousFeatureIntegrator, self).__init__()
+        self.teacher_names = list(teacher_feature_shapes.keys())
+        self.K = len(self.teacher_names)
+        self.student_target_shape_spatial = student_feature_shape[2:] # H, W for CNNs
+        self.student_target_channels = student_feature_shape[1] # C for CNNs
+        self.student_target_seq_len = student_feature_shape[1] if len(student_feature_shape) == 3 else None # L for ViT
+        self.student_target_embed_dim = student_feature_shape[2] if len(student_feature_shape) == 3 else None # D for ViT
+
+        self.projections = nn.ModuleDict()
+        for teacher_name, feat_shape_no_batch in teacher_feature_shapes.items():
+            # feat_shape_no_batch is (C,H,W) or (L,D)
+            if len(feat_shape_no_batch) == 3: # CNN-like (C, H, W)
+                in_channels = feat_shape_no_batch[0]
+                # Project to student's channel dimension
+                self.projections[teacher_name] = nn.Conv2d(in_channels, self.student_target_channels, kernel_size=1, bias=False)
+            elif len(feat_shape_no_batch) == 2: # ViT-like (L, D)
+                in_dim = feat_shape_no_batch[1]
+                # Project to student's embedding dimension (if student is ViT) or channel dim (if student is CNN)
+                target_dim_proj = self.student_target_embed_dim if self.student_target_embed_dim else self.student_target_channels
+                self.projections[teacher_name] = nn.Linear(in_dim, target_dim_proj, bias=False)
+        self.attention_weights = nn.Parameter(torch.zeros(self.K))
+        logger.info(f"HFI: Student target spatial {self.student_target_shape_spatial}, channels {self.student_target_channels}, seq_len {self.student_target_seq_len}, embed_dim {self.student_target_embed_dim}")
+
+    def forward(self, teacher_features_dict): # Expects dict: name -> feature_tensor_with_batch
+        alpha = F.softmax(self.attention_weights, dim=0)
+        fused_features_sum = None
+
+        for i, teacher_name in enumerate(self.teacher_names):
+            if teacher_name not in teacher_features_dict or teacher_features_dict[teacher_name] is None:
+                continue
+            
+            feat = teacher_features_dict[teacher_name].detach() # Detach teacher features
+            projected_feat = self.projections[teacher_name](feat)
+            
+            # Adapt shape to student's feature map shape
+            # Assuming student is CNN-like (B, C_stud, H_stud, W_stud) for now
+            # and HFI output should match this.
+            if len(projected_feat.shape) == 4: # Teacher was CNN-like
+                adapted_feat = F.adaptive_avg_pool2d(projected_feat, self.student_target_shape_spatial)
+            elif len(projected_feat.shape) == 3: # Teacher was ViT-like (B, L, D_proj)
+                # Need to convert (B, L, D_proj) to (B, C_stud, H_stud, W_stud)
+                # D_proj should match C_stud due to projection
+                # Reshape L into H_stud * W_stud
+                # (B, L, C_stud) -> (B, C_stud, L)
+                adapted_feat_t = projected_feat.transpose(1, 2)
+                # Pool L to H_stud * W_stud
+                adapted_feat_t = F.adaptive_avg_pool1d(adapted_feat_t, self.student_target_shape_spatial[0] * self.student_target_shape_spatial[1])
+                # Reshape to (B, C_stud, H_stud, W_stud)
+                try:
+                    adapted_feat = adapted_feat_t.view(feat.size(0), self.student_target_channels, self.student_target_shape_spatial[0], self.student_target_shape_spatial[1])
+                except RuntimeError as e:
+                    logger.error(f"HFI: Error reshaping ViT-like features for {teacher_name} to student CNN shape. Feat shape: {projected_feat.shape}, Target spatial: {self.student_target_shape_spatial}. Error: {e}")
+                    continue # Skip this teacher if reshape fails
+            else: # Should not happen if projections are set up correctly
+                logger.warning(f"HFI: Unexpected feature shape for {teacher_name}: {projected_feat.shape}")
+                continue
+
+            if fused_features_sum is None:
+                fused_features_sum = alpha[i] * adapted_feat
+            else:
+                if fused_features_sum.shape != adapted_feat.shape:
+                    logger.warning(f"HFI: Shape mismatch during fusion for {teacher_name}. Fused: {fused_features_sum.shape}, Current: {adapted_feat.shape}. Skipping.")
+                    continue
+                fused_features_sum = fused_features_sum + alpha[i] * adapted_feat
+        
+        if fused_features_sum is None: # Handle case where no teachers contributed
+            # Create a zero tensor of the student's expected feature shape
+            # Assuming the first feature in teacher_features_dict gives batch size
+            batch_size = list(teacher_features_dict.values())[0].size(0) if teacher_features_dict else 1
+            student_full_shape = (batch_size, self.student_target_channels) + self.student_target_shape_spatial
+            logger.warning("HFI: No teacher features were fused. Returning zeros.")
+            return torch.zeros(student_full_shape, device=self.attention_weights.device)
+
+        return fused_features_sum
+
+
+# Training and evaluation functions (fine_tune_teacher, TeacherWeighting, get_ensemble_predictions, EnhancedDistillationLoss, validate remain largely the same)
+# ... (Keep these helper classes/functions as they are, they are mostly compatible) ...
+# Make sure EnhancedDistillationLoss uses the dynamic alpha from config
+class EnhancedDistillationLoss(nn.Module):
+    def __init__(self, config, teacher_weighting=None): # Removed alpha from init
+        super(EnhancedDistillationLoss, self).__init__()
+        self.config = config
+        # self.alpha = config.alpha # Alpha will be passed dynamically
+        self.ce_loss = nn.CrossEntropyLoss()
+        self.teacher_weighting = teacher_weighting
+
+    def forward(self, student_logits, teacher_ensemble_logits, teacher_individual_logits,
+                teacher_names, labels, current_alpha_weight): # Added current_alpha_weight
+        ce_loss = self.ce_loss(student_logits, labels)
+        kl_loss_val = 0.0 # Initialize
+
+        if self.teacher_weighting is None or not self.config.use_adaptive_temperature:
+            temp = self.config.soft_target_temp
+            soft_targets = F.softmax(teacher_ensemble_logits.detach() / temp, dim=1) # Detach teacher logits
+            soft_prob = F.log_softmax(student_logits / temp, dim=1)
+            kl_loss_val = F.kl_div(soft_prob, soft_targets, reduction='batchmean') * (temp ** 2)
+        else:
+            kl_losses = []
+            active_teacher_weights_sum = 0.0
+            for i, name in enumerate(teacher_names):
+                if self.teacher_weighting.gating_status.get(name, 0.0) == 0.0: # Skip gated teachers
+                    continue
+                temp = self.teacher_weighting.get_temperature(name)
+                weight = self.teacher_weighting.normalized_weights[name]
+                teacher_logits = teacher_individual_logits[i].detach() # Detach individual teacher logits
+                soft_targets = F.softmax(teacher_logits / temp, dim=1)
+                soft_prob = F.log_softmax(student_logits / temp, dim=1)
+                teacher_kl = F.kl_div(soft_prob, soft_targets, reduction='batchmean') * (temp ** 2)
+                kl_losses.append(teacher_kl * weight) # Weight KL by teacher's contribution weight
+                active_teacher_weights_sum += weight
+            
+            if kl_losses: # Ensure there was at least one active teacher
+                kl_loss_val = sum(kl_losses) / max(1e-6, active_teacher_weights_sum) # Normalize by sum of active weights
+            else:
+                kl_loss_val = torch.tensor(0.0, device=student_logits.device)
+
+
+        # Calibration loss for the student
+        student_cal_loss = CalibrationMetrics.calibration_loss(student_logits, labels)
+
+        # Combine losses using DYNAMIC alpha_weight
+        # The (1-alpha) part applies to CE, alpha part to KL.
+        # Calibration and Feature losses are additive with their own weights.
+        loss = (1 - current_alpha_weight) * ce_loss + current_alpha_weight * kl_loss_val
+        
+        return loss, ce_loss, kl_loss_val, student_cal_loss # Return student_cal_loss
+
+def train_student(student, teachers, train_loader, val_loader, config):
+    logger.info("Training student model with ensemble distillation...")
+    teacher_weighting = TeacherWeighting(config, device)
+    distil_loss_fn = EnhancedDistillationLoss(config, teacher_weighting) # Pass config
+    # feature_loss_fn = FeatureAlignmentLoss() # Already defined
+    # calibration_loss_fn = CalibrationMetrics.calibration_loss # This is a static method
+
+    teacher_feature_extractors = {}
+    teacher_feature_layers = {
+        'vit': 'encoder.ln', 'efficientnet': 'features.8', 'inception': 'Mixed_7c',
+        'mobilenet': 'features.15.block.2', # Example, might need adjustment
+        'resnet': 'layer4', 'densenet': 'features.norm5'
+    }
+    teacher_feature_shapes = {}
+    student_feature_shape_no_batch = None # Shape without batch dimension
+
+    # Determine student feature shape first
+    student_feature_extractor = FeatureExtractor(student, 'features.8') # Assuming student is EffNet-like
+    if student_feature_extractor.hook_registered:
+        with torch.no_grad():
+            dummy_input_stud = torch.randn(1, 3, config.model_input_size, config.model_input_size).to(device)
+            _ = student(dummy_input_stud) # Forward pass to populate features
+            if student_feature_extractor.features is not None:
+                student_feature_shape_no_batch = student_feature_extractor.features.shape[1:] # Exclude batch
+                logger.info(f"Student feature shape (no batch): {student_feature_shape_no_batch}")
+            else:
+                logger.error("Could not get student features for HFI setup. Disabling feature loss.")
+                config.feature_loss_weight = 0 # Disable feature loss
+    else:
+        logger.error("Student feature extractor not registered. Disabling feature loss.")
+        config.feature_loss_weight = 0
+
+    # Setup teacher feature extractors and get their shapes
+    if student_feature_shape_no_batch: # Only proceed if student shape is known
+        for name, model in teachers.items():
+            layer_name = teacher_feature_layers.get(name)
+            if layer_name:
+                extractor = FeatureExtractor(model, layer_name)
+                teacher_feature_extractors[name] = extractor
+                if extractor.hook_registered:
+                    with torch.no_grad():
+                        # Create dummy input specific to this teacher's expected input size if different
+                        # For simplicity, assuming all use config.model_input_size for now
+                        dummy_input_teacher = torch.randn(1, 3, config.model_input_size, config.model_input_size).to(device)
+                        _ = model(dummy_input_teacher) # Forward pass
+                        if extractor.features is not None:
+                            teacher_feature_shapes[name] = extractor.features.shape[1:] # Exclude batch
+                            logger.info(f"Teacher {name} feature shape (no batch): {teacher_feature_shapes[name]}")
+                        else: logger.warning(f"Could not get features for teacher {name}")
+                else: logger.warning(f"Feature extractor failed for teacher {name}")
+    else: # If student shape unknown, cannot init HFI
+        logger.error("Cannot initialize HFI as student feature shape is unknown. Disabling feature loss.")
+        config.feature_loss_weight = 0
+
+
+    hfi_module = None
+    if config.feature_loss_weight > 0 and teacher_feature_shapes and student_feature_shape_no_batch:
+        try:
+            hfi_module = HeterogeneousFeatureIntegrator(
+                teacher_feature_shapes=teacher_feature_shapes,
+                student_feature_shape=student_feature_shape_no_batch # Pass shape without batch
+            ).to(device)
+            logger.info("HFI module initialized successfully.")
+        except Exception as e:
+            logger.error(f"Failed to initialize HFI module: {e}. Disabling feature loss.")
+            config.feature_loss_weight = 0
+            hfi_module = None
+    else:
+        logger.info("Feature loss is disabled or HFI prerequisites not met.")
+        config.feature_loss_weight = 0 # Ensure it's zero if HFI not used
+
+
+    optimizer_params = list(student.parameters())
+    if hfi_module: optimizer_params += list(hfi_module.parameters())
+    if config.learn_temperatures and teacher_weighting.learnable_temps:
+        optimizer_params += list(teacher_weighting.learnable_temps.parameters())
+
+    optimizer = optim.AdamW(optimizer_params, lr=config.lr, weight_decay=config.weight_decay)
+    scheduler = CosineAnnealingLR(optimizer, T_max=config.epochs)
+    scaler = GradScaler(enabled=config.use_amp)
+
+    best_val_loss = float('inf')
+    best_val_acc = 0.0
+    early_stop_counter = 0
+    history = {
+        'train_loss': [], 'train_acc': [], 'val_loss': [], 'val_acc': [], 'val_ece': [], 'val_f1': [],
+        'ce_loss': [], 'kl_loss': [], 'feature_loss': [], 'cal_loss': [],
+        'alpha_weights': [], 'feature_loss_weights': [], 'calibration_weights': [], # ACP weights
+        'teacher_weights': [], 'teacher_temperatures': [], 'teacher_gating': [],
+        'hfi_attention_weights': [], 'best_epoch': 0
+    }
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    model_name_ts = f"{config.model_name}_{timestamp}" # Use a timestamped name for saving files
+    config_path = os.path.join(config.results_dir, f"{model_name_ts}_config.json")
+    config.save(config_path)
+    logger.info(f"Configuration saved to {config_path}")
+    print_gpu_memory_stats()
+
+    for epoch in range(config.epochs):
+        epoch_start_time = time.time()
+        logger.info(f"Epoch {epoch+1}/{config.epochs}")
+        clear_gpu_cache()
+
+        # Get dynamic weights from ACP
+        current_alpha_weight = config.get_alpha_weight(epoch) # For KL vs CE
+        current_feature_loss_weight = config.get_feature_loss_weight(epoch)
+        current_cal_weight = config.get_calibration_weight(epoch) # For student's calibration loss
+
+        history['alpha_weights'].append(current_alpha_weight)
+        history['feature_loss_weights'].append(current_feature_loss_weight)
+        history['calibration_weights'].append(current_cal_weight)
+        logger.info(f"Current Alpha (KL) Weight: {current_alpha_weight:.4f}, Feature Loss Weight: {current_feature_loss_weight:.4f}, Cal Weight: {current_cal_weight:.4f}")
+
+        teacher_weighting.update_weights(validation=True) # Update teacher weights based on their metrics (if dynamic)
+        history['teacher_weights'].append(dict(teacher_weighting.normalized_weights))
+        if config.learn_temperatures and teacher_weighting.learnable_temps:
+            current_temps = {name: teacher_weighting.get_temperature(name).item() for name in config.teacher_models}
+            history['teacher_temperatures'].append(current_temps)
+        history['teacher_gating'].append(dict(teacher_weighting.gating_status))
+        
+        if hfi_module:
+            hfi_att_weights = F.softmax(hfi_module.attention_weights, dim=0).detach().cpu().numpy()
+            hfi_att_dict = {name: float(hfi_att_weights[i]) for i, name in enumerate(hfi_module.teacher_names)}
+            history['hfi_attention_weights'].append(hfi_att_dict)
+            logger.info(f"HFI attention weights: {hfi_att_dict}")
+
+
+        student.train()
+        if hfi_module: hfi_module.train()
+        for teacher in teachers.values(): teacher.eval()
+
+        train_loss_epoch, train_ce_epoch, train_kl_epoch, train_feat_epoch, train_cal_epoch = 0.0, 0.0, 0.0, 0.0, 0.0
+        correct_epoch, total_epoch = 0, 0
+        steps_since_update = 0
+
+        pbar = tqdm(train_loader, desc=f"Training E{epoch+1}")
+        for batch_idx, (inputs, labels) in enumerate(pbar):
+            inputs, labels = inputs.to(device), labels.to(device)
+            if config.gradient_accumulation_steps <= 1 or steps_since_update == 0:
+                optimizer.zero_grad(set_to_none=True)
+
+            with autocast(device_type='cuda', enabled=config.use_amp):
+                # Get teacher ensemble predictions
+                # teacher_outputs_ensemble is the weighted average of scaled teacher logits
+                # teacher_outputs_individual is a list of raw logits from each teacher
+                teacher_outputs_ensemble, teacher_outputs_individual, teacher_names_in_batch = get_ensemble_predictions(
+                    teachers, inputs, config, teacher_weighting
+                )
+                student_outputs = student(inputs) # Student forward pass
+
+                # Feature extraction for student
+                current_student_features = None
+                if student_feature_extractor.hook_registered:
+                    # The hook automatically populates student_feature_extractor.features
+                    # No need to call get_features explicitly if model(inputs) was just called
+                    current_student_features = student_feature_extractor.features
+
+
+                # Feature extraction for teachers (already done by get_ensemble_predictions if hooks are set)
+                # And HFI fusion
+                current_batch_teacher_features = {}
+                if hfi_module and current_feature_loss_weight > 0:
+                    for t_name, t_extractor in teacher_feature_extractors.items():
+                        # Features should have been captured during get_ensemble_predictions
+                        if t_extractor.features is not None:
+                             current_batch_teacher_features[t_name] = t_extractor.features
+                        # else:
+                        #     logger.warning(f"No features from teacher {t_name} in batch {batch_idx}")
+
+
+                fused_teacher_features_hfi = None
+                if hfi_module and current_feature_loss_weight > 0 and current_batch_teacher_features:
+                    fused_teacher_features_hfi = hfi_module(current_batch_teacher_features)
+
+                # Calculate feature alignment loss
+                feat_loss_val = torch.tensor(0.0, device=device)
+                if current_feature_loss_weight > 0 and current_student_features is not None and fused_teacher_features_hfi is not None:
+                    feat_loss_val = FeatureAlignmentLoss()(current_student_features, fused_teacher_features_hfi)
+
+
+                # Calculate distillation loss (includes CE and KL)
+                # Pass the dynamic alpha_weight to the distillation loss function
+                distill_loss_val, ce_loss_val, kl_loss_val, student_cal_loss_val = distil_loss_fn(
+                    student_outputs, teacher_outputs_ensemble, teacher_outputs_individual,
+                    teacher_names_in_batch, labels, current_alpha_weight # Pass dynamic alpha
+                )
+                
+                # Total loss
+                # Note: distil_loss_val already incorporates (1-alpha)*CE + alpha*KL
+                # We add feature loss and student's own calibration loss
+                total_loss_batch = distill_loss_val + \
+                                   current_feature_loss_weight * feat_loss_val + \
+                                   current_cal_weight * student_cal_loss_val
+                
+                if config.gradient_accumulation_steps > 1:
+                    total_loss_batch = total_loss_batch / config.gradient_accumulation_steps
+
+            scaler.scale(total_loss_batch).backward()
+            steps_since_update += 1
+
+            if config.gradient_accumulation_steps <= 1 or steps_since_update == config.gradient_accumulation_steps:
+                scaler.unscale_(optimizer)
+                torch.nn.utils.clip_grad_norm_(student.parameters(), max_norm=1.0)
+                if hfi_module: torch.nn.utils.clip_grad_norm_(hfi_module.parameters(), max_norm=1.0)
+                if config.learn_temperatures and teacher_weighting.learnable_temps:
+                    torch.nn.utils.clip_grad_norm_(teacher_weighting.learnable_temps.parameters(), max_norm=1.0) # Clip temps if learnable
+                scaler.step(optimizer)
+                scaler.update()
+                steps_since_update = 0
+
+            train_loss_epoch += total_loss_batch.item() * (config.gradient_accumulation_steps if config.gradient_accumulation_steps > 1 else 1)
+            train_ce_epoch += ce_loss_val.item()
+            train_kl_epoch += kl_loss_val.item() # Already scaled by temp^2 in loss fn
+            train_feat_epoch += feat_loss_val.item()
+            train_cal_epoch += student_cal_loss_val.item()
+
+            _, predicted = student_outputs.max(1)
+            total_epoch += labels.size(0)
+            correct_epoch += predicted.eq(labels).sum().item()
+            
+            pbar.set_postfix({
+                'L': f"{train_loss_epoch/(batch_idx+1):.2f}", 'Acc': f"{100.*correct_epoch/total_epoch:.1f}%",
+                'CE': f"{train_ce_epoch/(batch_idx+1):.2f}", 'KL': f"{train_kl_epoch/(batch_idx+1):.2f}",
+                'Feat': f"{train_feat_epoch/(batch_idx+1):.2f}", 'Cal': f"{train_cal_epoch/(batch_idx+1):.2f}"
+            })
+            
+            if config.dynamic_weight_update and (batch_idx + 1) % config.weight_update_interval == 0:
+                teacher_weighting.update_weights() # Update teacher weights based on batch metrics
+
+        # Epoch averages
+        history['train_loss'].append(train_loss_epoch / len(train_loader))
+        history['train_acc'].append(100. * correct_epoch / total_epoch)
+        history['ce_loss'].append(train_ce_epoch / len(train_loader))
+        history['kl_loss'].append(train_kl_epoch / len(train_loader))
+        history['feature_loss'].append(train_feat_epoch / len(train_loader))
+        history['cal_loss'].append(train_cal_epoch / len(train_loader))
+
+        # Validation
+        student.eval()
+        if hfi_module: hfi_module.eval()
+        val_metrics = validate(student, val_loader, nn.CrossEntropyLoss(), config) # Simple CE for validation
+        history['val_loss'].append(val_metrics['loss'])
+        history['val_acc'].append(val_metrics['accuracy'])
+        history['val_f1'].append(val_metrics['f1_score'])
+        history['val_ece'].append(val_metrics['ece'])
+
+        scheduler.step()
+        current_lr = scheduler.get_last_lr()[0]
+        epoch_time = time.time() - epoch_start_time
+
+        logger.info(f"Epoch {epoch+1} Summary - Time: {epoch_time:.2f}s, LR: {current_lr:.6f}")
+        logger.info(f"  Train: Loss={history['train_loss'][-1]:.4f}, Acc={history['train_acc'][-1]:.2f}%")
+        logger.info(f"    CE={history['ce_loss'][-1]:.4f}, KL={history['kl_loss'][-1]:.4f}, Feat={history['feature_loss'][-1]:.4f}, Cal={history['cal_loss'][-1]:.4f}")
+        logger.info(f"  Val: Loss={val_metrics['loss']:.4f}, Acc={val_metrics['accuracy']:.2f}%, F1={val_metrics['f1_score']:.4f}, ECE={val_metrics['ece']:.4f}")
+
+        # TensorBoard Logging
+        writer.add_scalar('student/train_loss_total', history['train_loss'][-1], epoch)
+        writer.add_scalar('student/train_acc', history['train_acc'][-1], epoch)
+        writer.add_scalar('student/val_loss', val_metrics['loss'], epoch)
+        writer.add_scalar('student/val_acc', val_metrics['accuracy'], epoch)
+        writer.add_scalar('student/val_f1', val_metrics['f1_score'], epoch)
+        writer.add_scalar('student/val_ece', val_metrics['ece'], epoch)
+        writer.add_scalar('loss_weights/alpha_kl', current_alpha_weight, epoch)
+        writer.add_scalar('loss_weights/feature', current_feature_loss_weight, epoch)
+        writer.add_scalar('loss_weights/calibration', current_cal_weight, epoch)
+        writer.add_scalar('student/learning_rate', current_lr, epoch)
+        # ... (add other detailed loss components to tensorboard if desired)
+
+        # Checkpointing
+        checkpoint = {
+            'epoch': epoch + 1, 'model_state_dict': student.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(), 'scheduler_state_dict': scheduler.state_dict(),
+            'history': history, 'config': config.__dict__,
+            'teacher_weights': teacher_weighting.normalized_weights,
+            'teacher_gating': teacher_weighting.gating_status
+        }
+        if hfi_module: checkpoint['hfi_state_dict'] = hfi_module.state_dict()
+        if hfi_module: checkpoint['hfi_attention_weights'] = hfi_att_dict
+        if config.learn_temperatures and teacher_weighting.learnable_temps:
+            checkpoint['teacher_temperatures'] = {name: teacher_weighting.get_temperature(name).item() for name in config.teacher_models}
+
+        torch.save(checkpoint, os.path.join(config.checkpoint_dir, f"{model_name_ts}_latest.pth"))
+        if val_metrics['loss'] < best_val_loss:
+            best_val_loss = val_metrics['loss']
+            torch.save(checkpoint, os.path.join(config.checkpoint_dir, f"{model_name_ts}_best_loss.pth"))
+            logger.info(f"New best model (loss) saved: {best_val_loss:.4f}")
+            early_stop_counter = 0
+        else:
+            early_stop_counter +=1
+
+        if val_metrics['accuracy'] > best_val_acc:
+            best_val_acc = val_metrics['accuracy']
+            history['best_epoch'] = epoch + 1
+            torch.save(checkpoint, os.path.join(config.checkpoint_dir, f"{model_name_ts}_best_acc.pth"))
+            logger.info(f"New best model (accuracy) saved: {best_val_acc:.2f}%")
+
+        if (epoch + 1) % 10 == 0:
+            torch.save(checkpoint, os.path.join(config.checkpoint_dir, f"{model_name_ts}_epoch_{epoch+1}.pth"))
+
+        if early_stop_counter >= config.early_stop_patience:
+            logger.info(f"Early stopping at epoch {epoch+1}.")
+            break
+        print_gpu_memory_stats()
+
+    logger.info(f"Training completed. Best validation accuracy: {best_val_acc:.2f}% at epoch {history['best_epoch']}")
+    return student, history
+
+
+# Visualization Functions (plot_training_history, plot_calibration_curve, plot_teacher_calibration_curves)
+# ... (Keep these as they are, they are mostly compatible) ...
+# Ensure plot_training_history can handle the new ACP weights in history
+def plot_training_history(history, config):
+    plt.figure(figsize=(20, 28)) # Increased height for more plots
+    plt.style.use('seaborn-v0_8-darkgrid')
+    main_colors = ['#2077B4', '#FF7F0E', '#2CA02C', '#D62728', '#9467BD'] # Added one more color
+    teacher_colors = plt.cm.tab10(np.linspace(0, 1, len(config.teacher_models)))
+
+    # Plot training & validation loss
+    ax1 = plt.subplot(6, 2, 1) # Changed to 6 rows
+    ax1.plot(history['train_loss'], label='Train Total Loss', color=main_colors[0], linewidth=2)
+    ax1.plot(history['val_loss'], label='Validation Loss', color=main_colors[1], linewidth=2)
+    if history.get('best_epoch', 0) > 0: ax1.axvline(x=history['best_epoch']-1, color='r', linestyle='--', label='Best Acc Epoch')
+    ax1.set_title('Overall Loss', fontsize=14, fontweight='bold'); ax1.set_xlabel('Epoch'); ax1.set_ylabel('Loss'); ax1.legend(); ax1.grid(True, alpha=0.3)
+
+    # Plot training & validation accuracy
+    ax2 = plt.subplot(6, 2, 2)
+    ax2.plot(history['train_acc'], label='Train Accuracy', color=main_colors[0], linewidth=2)
+    ax2.plot(history['val_acc'], label='Validation Accuracy', color=main_colors[1], linewidth=2)
+    if history.get('best_epoch', 0) > 0: ax2.axvline(x=history['best_epoch']-1, color='r', linestyle='--', label='Best Acc Epoch')
+    ax2.set_title('Accuracy', fontsize=14, fontweight='bold'); ax2.set_xlabel('Epoch'); ax2.set_ylabel('Accuracy (%)'); ax2.legend(); ax2.grid(True, alpha=0.3)
+
+    # Plot loss components (CE, KL, Feature, Calibration)
+    ax3 = plt.subplot(6, 2, 3)
+    ax3.plot(history['ce_loss'], label='CE Loss (Train)', linewidth=2, color=main_colors[0])
+    ax3.plot(history['kl_loss'], label='KL Loss (Train)', linewidth=2, color=main_colors[1])
+    ax3.set_title('CE & KL Loss Components (Train)', fontsize=14, fontweight='bold'); ax3.set_xlabel('Epoch'); ax3.set_ylabel('Loss'); ax3.legend(); ax3.grid(True, alpha=0.3)
+
+    ax4 = plt.subplot(6, 2, 4)
+    ax4.plot(history['feature_loss'], label='Feature Loss (Train)', linewidth=2, color=main_colors[2])
+    ax4.plot(history['cal_loss'], label='Calibration Loss (Train)', linewidth=2, color=main_colors[3])
+    ax4.set_title('Feature & Calibration Loss (Train)', fontsize=14, fontweight='bold'); ax4.set_xlabel('Epoch'); ax4.set_ylabel('Loss'); ax4.legend(); ax4.grid(True, alpha=0.3)
+
+    # Plot ACP Weights
+    ax5 = plt.subplot(6, 2, 5)
+    if 'alpha_weights' in history: ax5.plot(history['alpha_weights'], label='Alpha (KL) Weight', linewidth=2, color=main_colors[0])
+    if 'feature_loss_weights' in history: ax5.plot(history['feature_loss_weights'], label='Feature Loss Weight', linewidth=2, color=main_colors[1])
+    if 'calibration_weights' in history: ax5.plot(history['calibration_weights'], label='Calibration Weight', linewidth=2, color=main_colors[2])
+    ax5.set_title('ACP Loss Weights Schedule', fontsize=14, fontweight='bold'); ax5.set_xlabel('Epoch'); ax5.set_ylabel('Weight'); ax5.legend(); ax5.grid(True, alpha=0.3)
+
+    # Plot ECE and F1
+    ax6 = plt.subplot(6, 2, 6)
+    ax6.plot(history['val_ece'], label='Val ECE', linewidth=2, color=main_colors[0])
+    ax6.plot(history['val_f1'], label='Val F1-Score', linewidth=2, color=main_colors[1])
+    if history.get('best_epoch', 0) > 0: ax6.axvline(x=history['best_epoch']-1, color='r', linestyle='--')
+    ax6.set_title('Validation ECE & F1-Score', fontsize=14, fontweight='bold'); ax6.set_xlabel('Epoch'); ax6.set_ylabel('Metric Value'); ax6.legend(); ax6.grid(True, alpha=0.3)
+
+    # Plot teacher adaptive weights
+    ax7 = plt.subplot(6, 2, 7)
+    if 'teacher_weights' in history and history['teacher_weights']:
+        for i, teacher_name in enumerate(config.teacher_models):
+            weights = [epoch_weights.get(teacher_name, 0) for epoch_weights in history['teacher_weights']]
+            ax7.plot(weights, label=teacher_name, linewidth=2, color=teacher_colors[i % len(teacher_colors)])
+        ax7.set_title('Adaptive Teacher Weights', fontsize=14, fontweight='bold'); ax7.set_xlabel('Epoch'); ax7.set_ylabel('Weight'); ax7.legend(fontsize=8); ax7.grid(True, alpha=0.3)
+
+    # Plot teacher temperatures
+    ax8 = plt.subplot(6, 2, 8)
+    if 'teacher_temperatures' in history and history['teacher_temperatures']:
+        for i, teacher_name in enumerate(config.teacher_models):
+            temps = [epoch_temps.get(teacher_name, config.soft_target_temp) for epoch_temps in history['teacher_temperatures']]
+            ax8.plot(temps, label=teacher_name, linewidth=2, color=teacher_colors[i % len(teacher_colors)])
+        ax8.set_title('Adaptive Teacher Temperatures', fontsize=14, fontweight='bold'); ax8.set_xlabel('Epoch'); ax8.set_ylabel('Temperature'); ax8.legend(fontsize=8); ax8.grid(True, alpha=0.3)
+
+    # Plot HFI attention weights
+    ax9 = plt.subplot(6, 2, 9)
+    if 'hfi_attention_weights' in history and history['hfi_attention_weights'] and history['hfi_attention_weights'][0]: # Check if not empty
+        # Get teacher names from the first HFI weight entry if available
+        hfi_teacher_names_plot = list(history['hfi_attention_weights'][0].keys())
+        for i, teacher_name in enumerate(hfi_teacher_names_plot):
+            weights = [epoch_weights.get(teacher_name, 0) for epoch_weights in history['hfi_attention_weights']]
+            ax9.plot(weights, label=f"HFI: {teacher_name}", linewidth=2, color=teacher_colors[i % len(teacher_colors)])
+        ax9.set_title('HFI Attention Weights', fontsize=14, fontweight='bold'); ax9.set_xlabel('Epoch'); ax9.set_ylabel('Weight'); ax9.legend(fontsize=8); ax9.grid(True, alpha=0.3)
+    else:
+        ax9.text(0.5, 0.5, 'HFI Weights N/A', horizontalalignment='center', verticalalignment='center', transform=ax9.transAxes)
+        ax9.set_title('HFI Attention Weights (N/A)', fontsize=14, fontweight='bold')
+
+
+    # Plot teacher gating status
+    ax10 = plt.subplot(6, 2, 10)
+    if 'teacher_gating' in history and history['teacher_gating']:
+        for i, teacher_name in enumerate(config.teacher_models):
+            status = [epoch_gating.get(teacher_name, 0) for epoch_gating in history['teacher_gating']]
+            ax10.plot(status, label=f"Gate: {teacher_name}", linewidth=2, color=teacher_colors[i % len(teacher_colors)], marker='.', markersize=4, linestyle='--')
+        ax10.set_title('Teacher Gating Status (1=Active)', fontsize=14, fontweight='bold'); ax10.set_xlabel('Epoch'); ax10.set_ylabel('Status'); ax10.set_yticks([0, 1]); ax10.set_yticklabels(['Pruned', 'Active']); ax10.legend(fontsize=8); ax10.grid(True, alpha=0.3)
+
+    plt.tight_layout(rect=[0, 0.03, 1, 0.97]) # Adjust layout to make space for suptitle
+    plt.suptitle('Ensemble Distillation Training Analytics (CALM)', fontsize=18, fontweight='bold')
+    
+    # Save figure
+    plot_path = os.path.join(config.results_dir, 'plots', 'ensemble_distillation_history.png')
+    os.makedirs(os.path.dirname(plot_path), exist_ok=True)
+    plt.savefig(plot_path, dpi=300)
+    logger.info(f"Training history plot saved to {plot_path}")
+    plt.close()
+
+
+def test_student_model(student, test_loader, config):
+    logger.info("Testing student model on test set...")
+    criterion = nn.CrossEntropyLoss() # Standard CE for final testing
+    metrics = validate(student, test_loader, criterion, config) # Re-use validate function
+    logger.info(f"Test Results: Loss={metrics['loss']:.4f}, Acc={metrics['accuracy']:.2f}%, F1={metrics['f1_score']:.4f}, ECE={metrics['ece']:.4f}, Precision={metrics['precision']:.4f}, Recall={metrics['recall']:.4f}")
+    metrics_path = os.path.join(config.results_dir, 'distilled_student_test_metrics.json')
+    with open(metrics_path, 'w') as f: json.dump(metrics, f, indent=4)
+    return metrics
+
+# Main function
+def main():
+    try:
+        config = Config()
+        logger.info(f"Configuration: {config}")
+        set_seed(config.seed)
+        print_gpu_memory_stats()
+        train_loader, val_loader, test_loader = get_cifar10_loaders(config)
+        
+        logger.info("Loading/Verifying pre-trained teacher models...")
+        teachers = load_teacher_models(config) # This now handles loading from paths or ImageNet
+
+        # The fine_tune_teacher function is available if needed, but current config skips it.
+        # if not config.use_pretrained_teachers:
+        #     for name in config.teacher_models:
+        #         logger.info(f"Fine-tuning {name} model...")
+        #         teachers[name] = fine_tune_teacher(teachers[name], name, train_loader, val_loader, config)
+        #         clear_gpu_cache()
+        # else:
+        #     logger.info("Skipping teacher fine-tuning as pre-trained models are being used/verified.")
+
+        student = create_student_model(config)
+        student, history = train_student(student, teachers, train_loader, val_loader, config)
+        
+        plot_training_history(history, config) # Pass config for teacher names if needed by plot
+        test_metrics = test_student_model(student, test_loader, config)
+        
+        # Assuming plot_teacher_calibration_curves and plot_calibration_curve are defined elsewhere or added
+        # For now, skipping them as they were not in the provided ED script snippet
+        # plot_teacher_calibration_curves(teachers, test_loader, student, config)
+        # plot_calibration_curve(student, test_loader, config) # This one was in the original
+
+        logger.info("Exporting final distilled student model...")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        final_model_path = os.path.join(config.export_dir, f"ensemble_distilled_student_{timestamp}.pth")
+        # Save more comprehensive info
+        torch.save({
+            'model_state_dict': student.state_dict(),
+            'test_metrics': test_metrics,
+            'config': config.__dict__,
+            'training_history_summary': {
+                'best_val_acc': history['val_acc'][history['best_epoch']-1] if history['best_epoch'] > 0 else None,
+                'best_val_ece': history['val_ece'][history['best_epoch']-1] if history['best_epoch'] > 0 else None,
+                'best_epoch': history['best_epoch']
+            }
+        }, final_model_path)
+        logger.info(f"Final distilled student model exported to {final_model_path}")
+        print_gpu_memory_stats()
+        logger.info("Ensemble distillation script completed successfully.")
+
+    except Exception as e:
+        logger.error(f"An error occurred: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
+
+if __name__ == "__main__":
+    main()

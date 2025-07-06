@@ -1,0 +1,10 @@
+{
+    "MetaStudent_Smeta_Recalibrated_STL10": {
+        "accuracy": 81.9125,
+        "ece": 0.13821630859375,
+        "loss": 0.6781906085014343,
+        "f1_score": 0.8194580120318257,
+        "precision": 0.8206613351382023,
+        "recall": 0.819125
+    }
+}

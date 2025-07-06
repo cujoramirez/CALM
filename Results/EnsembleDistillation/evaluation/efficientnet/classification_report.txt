@@ -1,0 +1,26 @@
+Model: efficientnet
+Test Accuracy: 95.23%
+F1 Score (macro): 95.24%
+Precision (macro): 95.29%
+Recall (macro): 95.23%
+Expected Calibration Error: 0.0223
+Maximum Calibration Error: 0.2143
+Average Calibration Error: 0.1083
+Root Mean Squared Cal. Error: 0.0484
+
+              precision    recall  f1-score   support
+
+    airplane      0.940     0.979     0.959      1000
+  automobile      0.964     0.977     0.970      1000
+        bird      0.961     0.927     0.944      1000
+         cat      0.876     0.927     0.901      1000
+        deer      0.975     0.945     0.960      1000
+         dog      0.933     0.903     0.918      1000
+        frog      0.963     0.981     0.972      1000
+       horse      0.971     0.976     0.974      1000
+        ship      0.977     0.946     0.961      1000
+       truck      0.970     0.962     0.966      1000
+
+    accuracy                          0.952     10000
+   macro avg      0.953     0.952     0.952     10000
+weighted avg      0.953     0.952     0.952     10000

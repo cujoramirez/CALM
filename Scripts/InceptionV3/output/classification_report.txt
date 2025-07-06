@@ -1,0 +1,19 @@
+Test Accuracy: 80.64%
+Test Loss (Cross-Entropy): 0.7114
+
+              precision    recall  f1-score   support
+
+    airplane      0.625     0.941     0.751      1000
+  automobile      0.946     0.758     0.842      1000
+        bird      0.892     0.777     0.831      1000
+         cat      0.591     0.835     0.692      1000
+        deer      0.917     0.762     0.832      1000
+         dog      0.939     0.636     0.758      1000
+        frog      0.849     0.809     0.828      1000
+       horse      0.849     0.803     0.825      1000
+        ship      0.847     0.891     0.868      1000
+       truck      0.898     0.852     0.874      1000
+
+    accuracy                          0.806     10000
+   macro avg      0.835     0.806     0.810     10000
+weighted avg      0.835     0.806     0.810     10000

@@ -1,0 +1,833 @@
+2025-05-10 00:47:17,472 [INFO] - Random seed set to 42
+2025-05-10 00:47:17,474 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 00:47:17,474 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_recalibrated_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration\\meta_student_recalibrated_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "Dataset",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 00:47:17,474 [INFO] - Initial GPU Memory: 0.00 MB
+2025-05-10 00:47:17,476 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 03:44:26,868 [INFO] - Random seed set to 42
+2025-05-10 03:44:26,870 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 03:44:26,870 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\exports\\MetaStudent_AKTP_20250509_131233_S_meta_final.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "Dataset",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 03:44:26,871 [INFO] - Initial GPU Memory: 0.00 MB
+2025-05-10 03:44:26,872 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 03:49:41,228 [INFO] - Random seed set to 42
+2025-05-10 03:49:41,229 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 03:49:41,230 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_recalibrated_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration\\meta_student_recalibrated_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 03:49:41,231 [INFO] - Initial GPU Memory: 0.00 MB
+2025-05-10 03:49:41,231 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 03:49:41,232 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 03:49:45,587 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 03:49:45,587 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\recalibration\meta_student_recalibrated_best.pth
+2025-05-10 03:49:46,119 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 03:49:46,120 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 03:49:46,325 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 03:49:53,665 [INFO] - Results for MetaStudent_Smeta_Recalibrated_STL10 on STL-10: Acc=8.25%, ECE=0.1387, Loss=2.7644, F1=0.0351
+2025-05-10 03:49:53,667 [INFO] - GPU Memory: Current=33.37MB, Peak=140.43MB, Reserved=138.00MB
+2025-05-10 03:49:53,669 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_034953.json
+2025-05-10 03:49:53,670 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 03:49:53,736 [INFO] - Random seed set to 42
+2025-05-10 03:49:53,737 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 03:49:53,738 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\exports\\MetaStudent_AKTP_20250509_131233_S_meta_final.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 03:49:53,739 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 03:49:53,739 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 03:49:53,740 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 03:49:58,146 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 03:50:16,886 [INFO] - Random seed set to 42
+2025-05-10 03:50:16,887 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 03:50:16,887 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\exports\\MetaStudent_AKTP_20250509_131233_S_meta_final.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 03:50:16,888 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 03:50:16,888 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 03:50:16,889 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 03:50:21,000 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 03:50:49,053 [INFO] - Random seed set to 42
+2025-05-10 03:50:49,054 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 03:50:49,055 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\exports\\MetaStudent_AKTP_20250509_131233_S_meta_final.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 03:50:49,055 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 03:50:49,056 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 03:50:49,056 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 03:50:53,289 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 03:51:15,945 [INFO] - Random seed set to 42
+2025-05-10 03:51:15,946 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 03:51:15,947 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\exports\\MetaStudent_AKTP_20250509_131233_S_meta_final.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 03:51:15,947 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 03:51:15,948 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 03:51:15,949 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 03:51:20,112 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 03:51:20,113 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\exports\MetaStudent_AKTP_20250509_131233_S_meta_final.pth
+2025-05-10 03:51:20,269 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 03:51:20,271 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 03:51:20,341 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 03:51:26,556 [INFO] - Results for MetaStudent_Smeta_STL10 on STL-10: Acc=10.05%, ECE=0.0540, Loss=2.3416, F1=0.0385
+2025-05-10 03:51:26,558 [INFO] - GPU Memory: Current=33.37MB, Peak=140.43MB, Reserved=138.00MB
+2025-05-10 03:51:26,559 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_035126.json
+2025-05-10 03:51:26,559 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 03:51:29,467 [INFO] - Random seed set to 42
+2025-05-10 03:51:29,467 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 03:51:29,468 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_recalibrated_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration_stl10\\meta_student_recalibrated_stl10_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 03:51:29,469 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 03:51:29,470 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 03:51:29,470 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 03:51:33,638 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 03:51:33,639 [INFO] - Loading and adapting Baseline (S_b) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 03:51:33,755 [INFO] - Successfully loaded weights for Baseline (S_b) with 10-class head.
+2025-05-10 03:51:33,756 [INFO] - Replaced classifier of Baseline (S_b) for 10 classes (for STL-10).
+2025-05-10 03:51:33,816 [INFO] - Baseline (S_b) adapted, frozen, and moved to device.
+2025-05-10 03:51:33,817 [INFO] - Loading and adapting Distilled (S_d) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\EnsembleDistillation\exports\cal_aware_distilled_model.pth
+2025-05-10 03:51:33,946 [INFO] - Successfully loaded weights for Distilled (S_d) with 10-class head.
+2025-05-10 03:51:33,947 [INFO] - Replaced classifier of Distilled (S_d) for 10 classes (for STL-10).
+2025-05-10 03:51:33,999 [INFO] - Distilled (S_d) adapted, frozen, and moved to device.
+2025-05-10 03:51:34,001 [INFO] - Loading and adapting Mutual (S_m) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\MutualLearning\exports\mutual_learning_20250503_234230_final_student.pth
+2025-05-10 03:51:34,126 [INFO] - Successfully loaded weights for Mutual (S_m) with 10-class head.
+2025-05-10 03:51:34,128 [INFO] - Replaced classifier of Mutual (S_m) for 10 classes (for STL-10).
+2025-05-10 03:51:34,169 [INFO] - Mutual (S_m) adapted, frozen, and moved to device.
+2025-05-10 03:51:34,171 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\recalibration_stl10\meta_student_recalibrated_stl10_best.pth
+2025-05-10 03:51:34,354 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 03:51:34,355 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 03:51:34,413 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 03:51:39,962 [INFO] - Results for Baseline_Sb_STL10 on STL-10: Acc=14.11%, ECE=0.0068, Loss=2.2835, F1=0.0738
+2025-05-10 03:51:39,964 [INFO] - GPU Memory: Current=80.09MB, Peak=147.34MB, Reserved=196.00MB
+2025-05-10 03:51:45,401 [INFO] - Results for Distilled_Sd_STL10 on STL-10: Acc=8.00%, ECE=0.0275, Loss=2.3065, F1=0.0315
+2025-05-10 03:51:45,403 [INFO] - GPU Memory: Current=80.09MB, Peak=147.34MB, Reserved=196.00MB
+2025-05-10 03:51:50,808 [INFO] - Results for Mutual_Sm_STL10 on STL-10: Acc=12.90%, ECE=0.0095, Loss=2.3122, F1=0.0623
+2025-05-10 03:51:50,810 [INFO] - GPU Memory: Current=80.09MB, Peak=147.34MB, Reserved=196.00MB
+2025-05-10 03:51:56,766 [INFO] - Results for MetaStudent_Smeta_Recalibrated_STL10 on STL-10: Acc=8.89%, ECE=0.0566, Loss=2.3511, F1=0.0781
+2025-05-10 03:51:56,768 [INFO] - GPU Memory: Current=80.09MB, Peak=147.34MB, Reserved=196.00MB
+2025-05-10 03:51:56,769 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_035156.json
+2025-05-10 03:51:56,770 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 18:48:01,573 [INFO] - Random seed set to 42
+2025-05-10 18:48:01,573 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 18:48:01,573 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_recalibrated_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration_stl10\\meta_student_recalibrated_stl10_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 18:48:01,573 [INFO] - Initial GPU Memory: 0.00 MB
+2025-05-10 18:48:01,573 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 18:48:01,573 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 18:48:05,737 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 18:48:05,737 [INFO] - Loading and adapting Baseline (S_b) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 18:48:05,990 [INFO] - Successfully loaded weights for Baseline (S_b) with 10-class head.
+2025-05-10 18:48:05,991 [INFO] - Replaced classifier of Baseline (S_b) for 10 classes (for STL-10).
+2025-05-10 18:48:06,115 [INFO] - Baseline (S_b) adapted, frozen, and moved to device.
+2025-05-10 18:48:06,117 [INFO] - Loading and adapting Distilled (S_d) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\EnsembleDistillation\exports\cal_aware_distilled_model.pth
+2025-05-10 18:48:06,244 [INFO] - Successfully loaded weights for Distilled (S_d) with 10-class head.
+2025-05-10 18:48:06,244 [INFO] - Replaced classifier of Distilled (S_d) for 10 classes (for STL-10).
+2025-05-10 18:48:06,269 [INFO] - Distilled (S_d) adapted, frozen, and moved to device.
+2025-05-10 18:48:06,270 [INFO] - Loading and adapting Mutual (S_m) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\MutualLearning\exports\mutual_learning_20250503_234230_final_student.pth
+2025-05-10 18:48:06,392 [INFO] - Successfully loaded weights for Mutual (S_m) with 10-class head.
+2025-05-10 18:48:06,394 [INFO] - Replaced classifier of Mutual (S_m) for 10 classes (for STL-10).
+2025-05-10 18:48:06,415 [INFO] - Mutual (S_m) adapted, frozen, and moved to device.
+2025-05-10 18:48:06,417 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\recalibration_stl10\meta_student_recalibrated_stl10_best.pth
+2025-05-10 18:48:06,562 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 18:48:06,562 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 18:48:06,601 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 18:48:12,595 [INFO] - Results for Baseline_Sb_STL10 on STL-10: Acc=14.11%, ECE=0.0068, Loss=2.2835, F1=0.0739
+2025-05-10 18:48:12,602 [INFO] - GPU Memory: Current=80.09MB, Peak=187.21MB, Reserved=196.00MB
+2025-05-10 18:48:17,932 [INFO] - Results for Distilled_Sd_STL10 on STL-10: Acc=8.00%, ECE=0.0275, Loss=2.3065, F1=0.0315
+2025-05-10 18:48:17,934 [INFO] - GPU Memory: Current=80.09MB, Peak=187.21MB, Reserved=196.00MB
+2025-05-10 18:48:23,392 [INFO] - Results for Mutual_Sm_STL10 on STL-10: Acc=12.90%, ECE=0.0095, Loss=2.3122, F1=0.0623
+2025-05-10 18:48:23,392 [INFO] - GPU Memory: Current=80.09MB, Peak=187.21MB, Reserved=196.00MB
+2025-05-10 18:48:29,482 [INFO] - Results for MetaStudent_Smeta_Recalibrated_STL10 on STL-10: Acc=6.53%, ECE=0.1046, Loss=2.3843, F1=0.0621
+2025-05-10 18:48:29,489 [INFO] - GPU Memory: Current=80.09MB, Peak=187.21MB, Reserved=196.00MB
+2025-05-10 18:48:29,491 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_184829.json
+2025-05-10 18:48:29,491 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 18:50:17,132 [INFO] - Random seed set to 42
+2025-05-10 18:50:17,133 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 18:50:17,133 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_recalibrated_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration_stl10\\meta_student_recalibrated_stl10_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 18:50:17,134 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 18:50:17,134 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 18:50:17,135 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 18:50:21,401 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 18:50:21,401 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\recalibration_stl10\meta_student_recalibrated_stl10_best.pth
+2025-05-10 18:50:21,532 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 18:50:21,533 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 18:50:21,601 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 18:50:27,754 [INFO] - Results for MetaStudent_Smeta_Recalibrated_STL10 on STL-10: Acc=81.91%, ECE=0.1382, Loss=0.6782, F1=0.8195
+2025-05-10 18:50:27,766 [INFO] - GPU Memory: Current=33.37MB, Peak=187.21MB, Reserved=138.00MB
+2025-05-10 18:50:27,767 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_185027.json
+2025-05-10 18:50:27,767 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 18:55:17,466 [INFO] - Random seed set to 42
+2025-05-10 18:55:17,466 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 18:55:17,468 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_recalibrated_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration_stl10\\meta_student_recalibrated_stl10_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 224,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 18:55:17,469 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 18:55:17,469 [INFO] - Preparing STL-10 test dataloader, input size 224x224
+2025-05-10 18:55:17,470 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 18:55:23,730 [INFO] - Random seed set to 42
+2025-05-10 18:55:23,731 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 18:55:23,731 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_recalibrated_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration_stl10\\meta_student_recalibrated_stl10_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 224,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 18:55:23,732 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 18:55:23,733 [INFO] - Preparing STL-10 test dataloader, input size 224x224
+2025-05-10 18:55:23,734 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 18:55:28,022 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 18:55:28,023 [INFO] - Loading and adapting Baseline (S_b) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 18:55:28,115 [INFO] - Successfully loaded weights for Baseline (S_b) with 10-class head.
+2025-05-10 18:55:28,117 [INFO] - Replaced classifier of Baseline (S_b) for 10 classes (for STL-10).
+2025-05-10 18:55:28,183 [INFO] - Baseline (S_b) adapted, frozen, and moved to device.
+2025-05-10 18:55:28,183 [INFO] - Loading and adapting Distilled (S_d) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\EnsembleDistillation\exports\cal_aware_distilled_model.pth
+2025-05-10 18:55:28,283 [INFO] - Successfully loaded weights for Distilled (S_d) with 10-class head.
+2025-05-10 18:55:28,283 [INFO] - Replaced classifier of Distilled (S_d) for 10 classes (for STL-10).
+2025-05-10 18:55:28,351 [INFO] - Distilled (S_d) adapted, frozen, and moved to device.
+2025-05-10 18:55:28,351 [INFO] - Loading and adapting Mutual (S_m) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\MutualLearning\exports\mutual_learning_20250503_234230_final_student.pth
+2025-05-10 18:55:28,434 [INFO] - Successfully loaded weights for Mutual (S_m) with 10-class head.
+2025-05-10 18:55:28,450 [INFO] - Replaced classifier of Mutual (S_m) for 10 classes (for STL-10).
+2025-05-10 18:55:28,498 [INFO] - Mutual (S_m) adapted, frozen, and moved to device.
+2025-05-10 18:55:28,498 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\recalibration_stl10\meta_student_recalibrated_stl10_best.pth
+2025-05-10 18:55:28,775 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 18:55:28,775 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 18:55:28,833 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 18:55:42,305 [INFO] - Results for Baseline_Sb_STL10 on STL-10: Acc=12.41%, ECE=0.0045, Loss=2.2923, F1=0.0720
+2025-05-10 18:55:42,306 [INFO] - GPU Memory: Current=81.65MB, Peak=705.34MB, Reserved=620.00MB
+2025-05-10 18:55:54,045 [INFO] - Results for Distilled_Sd_STL10 on STL-10: Acc=4.42%, ECE=0.0690, Loss=2.3348, F1=0.0231
+2025-05-10 18:55:54,056 [INFO] - GPU Memory: Current=81.65MB, Peak=705.34MB, Reserved=620.00MB
+2025-05-10 18:56:05,917 [INFO] - Results for Mutual_Sm_STL10 on STL-10: Acc=13.56%, ECE=0.0177, Loss=2.3206, F1=0.1263
+2025-05-10 18:56:05,920 [INFO] - GPU Memory: Current=81.65MB, Peak=705.34MB, Reserved=620.00MB
+2025-05-10 18:56:19,686 [INFO] - Results for MetaStudent_Smeta_Recalibrated_STL10 on STL-10: Acc=9.71%, ECE=0.0594, Loss=2.3319, F1=0.0794
+2025-05-10 18:56:19,687 [INFO] - GPU Memory: Current=81.65MB, Peak=705.34MB, Reserved=600.00MB
+2025-05-10 18:56:19,688 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_185619.json
+2025-05-10 18:56:19,688 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 20:04:36,986 [INFO] - Random seed set to 42
+2025-05-10 20:04:36,986 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 20:04:36,986 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_recalibrated_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration\\meta_student_recalibrated_final.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 20:04:36,989 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 20:04:36,989 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 20:04:36,991 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 20:04:41,206 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 20:04:41,206 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\recalibration\meta_student_recalibrated_final.pth
+2025-05-10 20:04:41,393 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 20:04:41,395 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 20:04:41,476 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 20:04:47,558 [INFO] - Results for MetaStudent_Smeta_Recalibrated_STL10 on STL-10: Acc=8.00%, ECE=0.1217, Loss=2.6155, F1=0.0307
+2025-05-10 20:04:47,560 [INFO] - GPU Memory: Current=33.37MB, Peak=705.34MB, Reserved=138.00MB
+2025-05-10 20:04:47,562 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_200447.json
+2025-05-10 20:04:47,562 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 21:13:30,777 [INFO] - Random seed set to 42
+2025-05-10 21:13:30,781 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 21:13:30,782 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\finetune\\MetaStudent_Smeta_Recalibrated_stl10_finetuned_best_20250510_185927.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 96,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 21:13:30,782 [INFO] - Initial GPU Memory: 0.00 MB
+2025-05-10 21:13:30,783 [INFO] - Preparing STL-10 test dataloader, input size 96x96
+2025-05-10 21:13:30,783 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 21:13:35,083 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 21:13:35,083 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\finetune\MetaStudent_Smeta_Recalibrated_stl10_finetuned_best_20250510_185927.pth
+2025-05-10 21:13:35,409 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 21:13:35,409 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 21:13:35,571 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 21:13:42,884 [INFO] - Results for MetaStudent_Smeta_STL10 on STL-10: Acc=38.59%, ECE=0.1869, Loss=1.9669, F1=0.4072
+2025-05-10 21:13:42,887 [INFO] - GPU Memory: Current=33.37MB, Peak=140.43MB, Reserved=138.00MB
+2025-05-10 21:13:42,887 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_211342.json
+2025-05-10 21:13:42,888 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 21:13:57,468 [INFO] - Random seed set to 42
+2025-05-10 21:13:57,469 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 21:13:57,470 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\finetune\\MetaStudent_Smeta_Recalibrated_stl10_finetuned_best_20250510_185927.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 224,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 21:13:57,471 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 21:13:57,471 [INFO] - Preparing STL-10 test dataloader, input size 224x224
+2025-05-10 21:13:57,472 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 21:14:01,797 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 21:14:01,797 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\finetune\MetaStudent_Smeta_Recalibrated_stl10_finetuned_best_20250510_185927.pth
+2025-05-10 21:14:02,006 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 21:14:02,008 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 21:14:02,082 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 21:14:17,435 [INFO] - Results for MetaStudent_Smeta_STL10 on STL-10: Acc=94.59%, ECE=0.0964, Loss=0.2727, F1=0.9460
+2025-05-10 21:14:17,437 [INFO] - GPU Memory: Current=33.37MB, Peak=657.06MB, Reserved=558.00MB
+2025-05-10 21:14:17,437 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_211417.json
+2025-05-10 21:14:17,439 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 21:53:29,734 [INFO] - Random seed set to 42
+2025-05-10 21:53:29,734 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 21:53:29,734 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\exports\\MetaStudent_AKTP_20250509_131233_S_meta_final.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 224,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 21:53:29,734 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 21:53:29,734 [INFO] - Preparing STL-10 test dataloader, input size 224x224
+2025-05-10 21:53:29,734 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 21:53:33,996 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 21:53:33,997 [INFO] - Loading and adapting Baseline (S_b) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 21:53:34,123 [INFO] - Successfully loaded weights for Baseline (S_b) with 10-class head.
+2025-05-10 21:53:34,124 [INFO] - Replaced classifier of Baseline (S_b) for 10 classes (for STL-10).
+2025-05-10 21:53:34,191 [INFO] - Baseline (S_b) adapted, frozen, and moved to device.
+2025-05-10 21:53:34,193 [INFO] - Loading and adapting Distilled (S_d) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\EnsembleDistillation\exports\cal_aware_distilled_model.pth
+2025-05-10 21:53:34,324 [INFO] - Successfully loaded weights for Distilled (S_d) with 10-class head.
+2025-05-10 21:53:34,325 [INFO] - Replaced classifier of Distilled (S_d) for 10 classes (for STL-10).
+2025-05-10 21:53:34,380 [INFO] - Distilled (S_d) adapted, frozen, and moved to device.
+2025-05-10 21:53:34,380 [INFO] - Loading and adapting Mutual (S_m) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\MutualLearning\exports\mutual_learning_20250503_234230_final_student.pth
+2025-05-10 21:53:34,519 [INFO] - Successfully loaded weights for Mutual (S_m) with 10-class head.
+2025-05-10 21:53:34,519 [INFO] - Replaced classifier of Mutual (S_m) for 10 classes (for STL-10).
+2025-05-10 21:53:34,603 [INFO] - Mutual (S_m) adapted, frozen, and moved to device.
+2025-05-10 21:53:34,605 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\exports\MetaStudent_AKTP_20250509_131233_S_meta_final.pth
+2025-05-10 21:53:34,769 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 21:53:34,772 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 21:53:34,852 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 21:53:47,790 [INFO] - Results for Baseline_Sb_STL10 on STL-10: Acc=12.41%, ECE=0.0046, Loss=2.2923, F1=0.0720
+2025-05-10 21:53:47,792 [INFO] - GPU Memory: Current=80.09MB, Peak=657.06MB, Reserved=596.00MB
+2025-05-10 21:53:59,673 [INFO] - Results for Distilled_Sd_STL10 on STL-10: Acc=4.41%, ECE=0.0692, Loss=2.3348, F1=0.0230
+2025-05-10 21:53:59,675 [INFO] - GPU Memory: Current=80.09MB, Peak=657.06MB, Reserved=596.00MB
+2025-05-10 21:54:11,272 [INFO] - Results for Mutual_Sm_STL10 on STL-10: Acc=13.56%, ECE=0.0178, Loss=2.3206, F1=0.1262
+2025-05-10 21:54:11,275 [INFO] - GPU Memory: Current=80.09MB, Peak=657.06MB, Reserved=596.00MB
+2025-05-10 21:54:24,422 [INFO] - Results for MetaStudent_Smeta_STL10 on STL-10: Acc=3.84%, ECE=0.0837, Loss=2.3309, F1=0.0427
+2025-05-10 21:54:24,424 [INFO] - GPU Memory: Current=80.09MB, Peak=657.06MB, Reserved=596.00MB
+2025-05-10 21:54:24,425 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_215424.json
+2025-05-10 21:54:24,425 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 22:04:26,061 [INFO] - Random seed set to 42
+2025-05-10 22:04:26,061 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 22:04:26,062 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration\\meta_student_recalibrated_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 224,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 22:04:26,063 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 22:04:26,063 [INFO] - Preparing STL-10 test dataloader, input size 224x224
+2025-05-10 22:04:26,064 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 22:04:30,171 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 22:04:30,171 [INFO] - Loading and adapting Baseline (S_b) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 22:04:30,261 [INFO] - Successfully loaded weights for Baseline (S_b) with 10-class head.
+2025-05-10 22:04:30,261 [INFO] - Replaced classifier of Baseline (S_b) for 10 classes (for STL-10).
+2025-05-10 22:04:30,322 [INFO] - Baseline (S_b) adapted, frozen, and moved to device.
+2025-05-10 22:04:30,322 [INFO] - Loading and adapting Distilled (S_d) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\EnsembleDistillation\exports\cal_aware_distilled_model.pth
+2025-05-10 22:04:30,420 [INFO] - Successfully loaded weights for Distilled (S_d) with 10-class head.
+2025-05-10 22:04:30,420 [INFO] - Replaced classifier of Distilled (S_d) for 10 classes (for STL-10).
+2025-05-10 22:04:30,475 [INFO] - Distilled (S_d) adapted, frozen, and moved to device.
+2025-05-10 22:04:30,482 [INFO] - Loading and adapting Mutual (S_m) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\MutualLearning\exports\mutual_learning_20250503_234230_final_student.pth
+2025-05-10 22:04:30,573 [INFO] - Successfully loaded weights for Mutual (S_m) with 10-class head.
+2025-05-10 22:04:30,580 [INFO] - Replaced classifier of Mutual (S_m) for 10 classes (for STL-10).
+2025-05-10 22:04:30,628 [INFO] - Mutual (S_m) adapted, frozen, and moved to device.
+2025-05-10 22:04:30,635 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\recalibration\meta_student_recalibrated_best.pth
+2025-05-10 22:04:30,788 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 22:04:30,788 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 22:04:30,871 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 22:04:44,381 [INFO] - Results for MetaStudent_Smeta_STL10 on STL-10: Acc=5.97%, ECE=0.0630, Loss=2.3148, F1=0.0561
+2025-05-10 22:04:44,381 [INFO] - GPU Memory: Current=80.09MB, Peak=657.06MB, Reserved=596.00MB
+2025-05-10 22:04:44,381 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_220444.json
+2025-05-10 22:04:44,390 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---
+2025-05-10 22:36:59,069 [INFO] - Random seed set to 42
+2025-05-10 22:36:59,070 [INFO] - --- Starting CALM Stage 3: Minimal Adaptation & Benchmarking on STL-10 ---
+2025-05-10 22:36:59,071 [INFO] - Configuration:
+{
+    "sb_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\Baseline\\exports\\mutual_learning\\20250419_174414\\baseline_student_mutual_learning.pth",
+    "sd_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\EnsembleDistillation\\exports\\cal_aware_distilled_model.pth",
+    "sm_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MutualLearning\\exports\\mutual_learning_20250503_234230_final_student.pth",
+    "smeta_path": "C:\\Users\\Gading\\Downloads\\Research\\Models\\MetaStudent_AKTP\\recalibration\\meta_student_recalibrated_best.pth",
+    "base_student_arch": "efficientnet_b0",
+    "meta_student_arch": "efficientnet_b1",
+    "num_classes_stl10": 10,
+    "input_size_stl10": 224,
+    "batch_size": 64,
+    "num_workers": 0,
+    "pin_memory": true,
+    "use_amp": true,
+    "seed": 42,
+    "dataset_base_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "stl10_data_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset\\stl10_binary",
+    "output_dir": "Results\\CALM_Stage3_STL10_Benchmark",
+    "mean_stl10": [
+        0.485,
+        0.456,
+        0.406
+    ],
+    "std_stl10": [
+        0.229,
+        0.224,
+        0.225
+    ],
+    "device": "cuda"
+}
+2025-05-10 22:36:59,072 [INFO] - Initial GPU Memory: 8.12 MB
+2025-05-10 22:36:59,074 [INFO] - Preparing STL-10 test dataloader, input size 224x224
+2025-05-10 22:36:59,074 [INFO] - Using STL-10 dataset from: C:\Users\Gading\Downloads\Research\Dataset\stl10_binary
+2025-05-10 22:37:04,684 [INFO] - STL-10 Test Dataset Size: 8000
+2025-05-10 22:37:04,684 [INFO] - Loading and adapting Baseline (S_b) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\Baseline\exports\mutual_learning\20250419_174414\baseline_student_mutual_learning.pth
+2025-05-10 22:37:04,826 [INFO] - Successfully loaded weights for Baseline (S_b) with 10-class head.
+2025-05-10 22:37:04,830 [INFO] - Replaced classifier of Baseline (S_b) for 10 classes (for STL-10).
+2025-05-10 22:37:04,862 [INFO] - Baseline (S_b) adapted, frozen, and moved to device.
+2025-05-10 22:37:04,866 [INFO] - Loading and adapting Distilled (S_d) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\EnsembleDistillation\exports\cal_aware_distilled_model.pth
+2025-05-10 22:37:05,044 [INFO] - Successfully loaded weights for Distilled (S_d) with 10-class head.
+2025-05-10 22:37:05,045 [INFO] - Replaced classifier of Distilled (S_d) for 10 classes (for STL-10).
+2025-05-10 22:37:05,101 [INFO] - Distilled (S_d) adapted, frozen, and moved to device.
+2025-05-10 22:37:05,103 [INFO] - Loading and adapting Mutual (S_m) (efficientnet_b0) from: C:\Users\Gading\Downloads\Research\Models\MutualLearning\exports\mutual_learning_20250503_234230_final_student.pth
+2025-05-10 22:37:05,265 [INFO] - Successfully loaded weights for Mutual (S_m) with 10-class head.
+2025-05-10 22:37:05,265 [INFO] - Replaced classifier of Mutual (S_m) for 10 classes (for STL-10).
+2025-05-10 22:37:05,332 [INFO] - Mutual (S_m) adapted, frozen, and moved to device.
+2025-05-10 22:37:05,334 [INFO] - Loading and adapting MetaStudent (S_meta Recalibrated) (efficientnet_b1) from: C:\Users\Gading\Downloads\Research\Models\MetaStudent_AKTP\recalibration\meta_student_recalibrated_best.pth
+2025-05-10 22:37:05,575 [INFO] - Successfully loaded weights for MetaStudent (S_meta Recalibrated) with 10-class head.
+2025-05-10 22:37:05,577 [INFO] - Replaced classifier of MetaStudent (S_meta Recalibrated) for 10 classes (for STL-10).
+2025-05-10 22:37:05,645 [INFO] - MetaStudent (S_meta Recalibrated) adapted, frozen, and moved to device.
+2025-05-10 22:37:28,011 [INFO] - Results for MetaStudent_Smeta_STL10 on STL-10: Acc=6.97%, ECE=0.0515, Loss=2.3299, F1=0.0524
+2025-05-10 22:37:28,014 [INFO] - GPU Memory: Current=80.09MB, Peak=657.06MB, Reserved=596.00MB
+2025-05-10 22:37:28,016 [INFO] - Final benchmark results saved to Results\CALM_Stage3_STL10_Benchmark\stage3_stl10_benchmark_results_20250510_223728.json
+2025-05-10 22:37:28,017 [INFO] - --- CALM Stage 3 Benchmarking on STL-10 Completed ---

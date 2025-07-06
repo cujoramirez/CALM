@@ -1,0 +1,22 @@
+Test Accuracy: 96.74%
+F1 Score (macro): 96.75%
+Precision (macro): 96.80%
+Recall (macro): 96.74%
+Expected Calibration Error: 0.0190
+
+              precision    recall  f1-score   support
+
+    airplane      0.972     0.981     0.977      1000
+  automobile      0.965     0.993     0.979      1000
+        bird      0.980     0.962     0.971      1000
+         cat      0.891     0.953     0.921      1000
+        deer      0.982     0.961     0.971      1000
+         dog      0.967     0.918     0.942      1000
+        frog      0.971     0.991     0.981      1000
+       horse      0.982     0.976     0.979      1000
+        ship      0.983     0.980     0.981      1000
+       truck      0.988     0.959     0.973      1000
+
+    accuracy                          0.967     10000
+   macro avg      0.968     0.967     0.967     10000
+weighted avg      0.968     0.967     0.967     10000

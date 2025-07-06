@@ -1,0 +1,26 @@
+Model: student
+Test Accuracy: 94.77%
+F1 Score (macro): 94.76%
+Precision (macro): 94.79%
+Recall (macro): 94.77%
+Expected Calibration Error: 0.0138
+Maximum Calibration Error: 0.0942
+Average Calibration Error: 0.0472
+Root Mean Square Calibration Error: 0.0568
+
+              precision    recall  f1-score   support
+
+    airplane      0.938     0.967     0.952      1000
+  automobile      0.950     0.981     0.965      1000
+        bird      0.919     0.955     0.937      1000
+         cat      0.901     0.887     0.894      1000
+        deer      0.959     0.968     0.964      1000
+         dog      0.929     0.892     0.910      1000
+        frog      0.958     0.967     0.963      1000
+       horse      0.971     0.969     0.970      1000
+        ship      0.974     0.960     0.967      1000
+       truck      0.979     0.931     0.954      1000
+
+    accuracy                          0.948     10000
+   macro avg      0.948     0.948     0.948     10000
+weighted avg      0.948     0.948     0.948     10000

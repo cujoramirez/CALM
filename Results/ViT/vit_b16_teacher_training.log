@@ -1,0 +1,1281 @@
+2025-03-21 05:28:43,607 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250321_052843.py
+2025-03-21 05:28:43,610 [INFO] - Random seed set to 42
+2025-03-21 05:28:43,880 [INFO] - GPU cache cleared: 1369.46MB → 1369.46MB (freed 0.00MB)
+2025-03-21 05:28:43,897 [INFO] - Random seed set to 42
+2025-03-21 05:28:43,897 [INFO] - Using zero padding with pad_size=96 pixels on each side
+2025-03-21 05:28:45,754 [INFO] - Training samples: 45000
+2025-03-21 05:28:45,754 [INFO] - Validation samples: 5000
+2025-03-21 05:28:45,754 [INFO] - Test samples: 10000
+2025-03-21 05:28:45,754 [INFO] - Loading pretrained ViT-B16 model...
+2025-03-21 05:28:46,879 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-03-21 05:28:46,880 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-03-21 05:28:47,167 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250321_052847_config.json
+2025-03-21 05:28:47,168 [INFO] - Batch size: 64 with gradient accumulation steps: 2
+2025-03-21 05:28:47,168 [INFO] - Effective batch size: 128
+2025-03-21 05:28:47,168 [INFO] - GPU Memory: Current=1697.73MB, Peak=5957.66MB, Reserved=1882.00MB
+2025-03-21 05:28:47,168 [INFO] - Starting training...
+2025-03-21 05:28:47,168 [INFO] - Epoch 1/50
+2025-03-21 05:28:47,350 [INFO] - GPU cache cleared: 1697.73MB → 1697.73MB (freed 0.00MB)
+2025-03-21 05:36:25,959 [INFO] - Using device: cuda
+2025-03-21 05:36:25,968 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-03-21 05:36:25,970 [INFO] - GPU Memory: 6.00 GB
+2025-03-21 05:36:25,970 [INFO] - CUDA Version: 12.4
+2025-03-21 05:36:25,970 [INFO] - cuDNN benchmark mode enabled
+2025-03-21 05:36:25,975 [INFO] - CPU: 16 cores available
+2025-03-21 05:36:25,977 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-03-21 05:36:25,977 [INFO] - RTX 3060 detected - using optimized settings
+2025-03-21 05:36:25,977 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-03-21 05:36:25,977 [INFO] - PyTorch version: 2.5.1
+2025-03-21 05:36:25,977 [INFO] - Torchvision version: 0.20.1
+2025-03-21 05:36:25,977 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 4,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": false,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-03-21 05:36:25,977 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250321_053625.py
+2025-03-21 05:36:25,986 [INFO] - Random seed set to 42
+2025-03-21 05:36:26,119 [INFO] - GPU cache cleared: 0.00MB → 0.00MB (freed 0.00MB)
+2025-03-21 05:36:26,127 [INFO] - Random seed set to 42
+2025-03-21 05:36:26,127 [INFO] - Using resize from 32x32 to 224x224
+2025-03-21 05:36:27,697 [INFO] - Training samples: 45000
+2025-03-21 05:36:27,697 [INFO] - Validation samples: 5000
+2025-03-21 05:36:27,697 [INFO] - Test samples: 10000
+2025-03-21 05:36:27,697 [INFO] - Loading pretrained ViT-B16 model...
+2025-03-21 05:36:28,621 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-03-21 05:36:28,621 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-03-21 05:36:28,787 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250321_053628_config.json
+2025-03-21 05:36:28,787 [INFO] - Batch size: 64 with gradient accumulation steps: 2
+2025-03-21 05:36:28,789 [INFO] - Effective batch size: 128
+2025-03-21 05:36:28,789 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-03-21 05:36:28,791 [INFO] - Starting training...
+2025-03-21 05:36:28,791 [INFO] - Epoch 1/50
+2025-03-21 05:36:28,947 [INFO] - GPU cache cleared: 327.33MB → 327.33MB (freed 0.00MB)
+2025-03-21 06:05:11,944 [INFO] - GPU cache cleared: 1329.74MB → 1329.74MB (freed 0.00MB)
+2025-03-21 06:05:40,439 [INFO] - Train Loss: 0.4335, Train Acc: 85.36%
+2025-03-21 06:05:40,439 [INFO] - Val Loss: 0.3207, Val Acc: 89.04%, Val F1: 0.8891, Val ECE: 0.0051
+2025-03-21 06:05:40,440 [INFO] - Epoch time: 1751.65s
+2025-03-21 06:05:40,585 [INFO] - GPU cache cleared: 1329.74MB → 1329.74MB (freed 0.00MB)
+2025-03-21 06:05:42,649 [INFO] - Best model saved with Val Loss: 0.3207
+2025-03-21 06:05:42,649 [INFO] - GPU Memory: Current=1329.74MB, Peak=5957.66MB, Reserved=1808.00MB
+2025-03-21 06:05:42,650 [INFO] - Epoch 2/50
+2025-03-21 06:05:42,786 [INFO] - GPU cache cleared: 1329.74MB → 1329.74MB (freed 0.00MB)
+2025-03-21 06:23:05,693 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 06:23:18,929 [INFO] - Train Loss: 0.2560, Train Acc: 91.31%
+2025-03-21 06:23:18,929 [INFO] - Val Loss: 0.2612, Val Acc: 91.38%, Val F1: 0.9135, Val ECE: 0.0086
+2025-03-21 06:23:18,930 [INFO] - Epoch time: 1056.28s
+2025-03-21 06:23:19,071 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 06:23:21,591 [INFO] - Best model saved with Val Loss: 0.2612
+2025-03-21 06:23:21,591 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 06:23:21,591 [INFO] - Epoch 3/50
+2025-03-21 06:23:21,731 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 06:49:40,343 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 06:49:52,689 [INFO] - Train Loss: 0.2071, Train Acc: 92.98%
+2025-03-21 06:49:52,689 [INFO] - Val Loss: 0.2789, Val Acc: 90.40%, Val F1: 0.9008, Val ECE: 0.0323
+2025-03-21 06:49:52,690 [INFO] - Epoch time: 1591.10s
+2025-03-21 06:49:52,853 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 06:49:53,935 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 06:49:53,936 [INFO] - Epoch 4/50
+2025-03-21 06:49:54,084 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 07:04:44,863 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:04:57,900 [INFO] - Train Loss: 0.1786, Train Acc: 93.98%
+2025-03-21 07:04:57,901 [INFO] - Val Loss: 0.2139, Val Acc: 92.74%, Val F1: 0.9271, Val ECE: 0.0182
+2025-03-21 07:04:57,901 [INFO] - Epoch time: 903.96s
+2025-03-21 07:04:58,051 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:05:00,323 [INFO] - Best model saved with Val Loss: 0.2139
+2025-03-21 07:05:00,323 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 07:05:00,323 [INFO] - Epoch 5/50
+2025-03-21 07:05:00,465 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:21:45,119 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:21:56,755 [INFO] - Train Loss: 0.1563, Train Acc: 94.57%
+2025-03-21 07:21:56,756 [INFO] - Val Loss: 0.1930, Val Acc: 93.38%, Val F1: 0.9337, Val ECE: 0.0187
+2025-03-21 07:21:56,756 [INFO] - Epoch time: 1016.43s
+2025-03-21 07:21:56,906 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:21:59,122 [INFO] - Best model saved with Val Loss: 0.1930
+2025-03-21 07:21:59,122 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 07:21:59,122 [INFO] - Epoch 6/50
+2025-03-21 07:21:59,281 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:37:29,072 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 07:37:43,655 [INFO] - Train Loss: 0.1328, Train Acc: 95.41%
+2025-03-21 07:37:43,655 [INFO] - Val Loss: 0.2073, Val Acc: 93.42%, Val F1: 0.9340, Val ECE: 0.0215
+2025-03-21 07:37:43,658 [INFO] - Epoch time: 944.53s
+2025-03-21 07:37:43,820 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 07:37:44,880 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 07:37:44,880 [INFO] - Epoch 7/50
+2025-03-21 07:37:45,012 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 07:53:44,953 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:53:56,639 [INFO] - Train Loss: 0.1194, Train Acc: 95.94%
+2025-03-21 07:53:56,640 [INFO] - Val Loss: 0.2619, Val Acc: 91.76%, Val F1: 0.9178, Val ECE: 0.0345
+2025-03-21 07:53:56,640 [INFO] - Epoch time: 971.76s
+2025-03-21 07:53:56,800 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 07:53:57,861 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 07:53:57,861 [INFO] - Epoch 8/50
+2025-03-21 07:53:58,021 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:07:40,968 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:07:54,673 [INFO] - Train Loss: 0.1082, Train Acc: 96.34%
+2025-03-21 08:07:54,675 [INFO] - Val Loss: 0.2664, Val Acc: 91.94%, Val F1: 0.9187, Val ECE: 0.0380
+2025-03-21 08:07:54,675 [INFO] - Epoch time: 836.81s
+2025-03-21 08:07:54,832 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:07:55,884 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 08:07:55,885 [INFO] - Epoch 9/50
+2025-03-21 08:07:56,023 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:21:42,883 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:21:54,704 [INFO] - Train Loss: 0.0908, Train Acc: 96.99%
+2025-03-21 08:21:54,704 [INFO] - Val Loss: 0.1908, Val Acc: 94.02%, Val F1: 0.9399, Val ECE: 0.0259
+2025-03-21 08:21:54,705 [INFO] - Epoch time: 838.82s
+2025-03-21 08:21:54,872 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:21:56,968 [INFO] - Best model saved with Val Loss: 0.1908
+2025-03-21 08:21:56,970 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 08:21:56,970 [INFO] - Epoch 10/50
+2025-03-21 08:21:57,109 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:34:18,801 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:34:32,033 [INFO] - Train Loss: 0.0810, Train Acc: 97.26%
+2025-03-21 08:34:32,033 [INFO] - Val Loss: 0.2304, Val Acc: 92.98%, Val F1: 0.9291, Val ECE: 0.0341
+2025-03-21 08:34:32,034 [INFO] - Epoch time: 755.06s
+2025-03-21 08:34:32,188 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:34:33,521 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1642.00MB
+2025-03-21 08:34:33,521 [INFO] - Epoch 11/50
+2025-03-21 08:34:33,664 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:50:56,632 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:51:08,294 [INFO] - Train Loss: 0.0759, Train Acc: 97.47%
+2025-03-21 08:51:08,295 [INFO] - Val Loss: 0.1924, Val Acc: 93.90%, Val F1: 0.9380, Val ECE: 0.0304
+2025-03-21 08:51:08,295 [INFO] - Epoch time: 994.77s
+2025-03-21 08:51:08,467 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 08:51:09,513 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 08:51:09,513 [INFO] - Epoch 12/50
+2025-03-21 08:51:09,652 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 09:03:56,204 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:04:10,668 [INFO] - Train Loss: 0.0654, Train Acc: 97.77%
+2025-03-21 09:04:10,668 [INFO] - Val Loss: 0.2219, Val Acc: 93.44%, Val F1: 0.9342, Val ECE: 0.0316
+2025-03-21 09:04:10,669 [INFO] - Epoch time: 781.16s
+2025-03-21 09:04:10,851 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:04:12,109 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 09:04:12,109 [INFO] - Epoch 13/50
+2025-03-21 09:04:12,249 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:26:58,482 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 09:27:10,676 [INFO] - Train Loss: 0.0631, Train Acc: 97.90%
+2025-03-21 09:27:10,677 [INFO] - Val Loss: 0.2032, Val Acc: 93.80%, Val F1: 0.9379, Val ECE: 0.0305
+2025-03-21 09:27:10,677 [INFO] - Epoch time: 1378.57s
+2025-03-21 09:27:10,847 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 09:27:11,847 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1642.00MB
+2025-03-21 09:27:11,848 [INFO] - Epoch 14/50
+2025-03-21 09:27:11,987 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 09:48:07,615 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:48:21,038 [INFO] - Train Loss: 0.0547, Train Acc: 98.15%
+2025-03-21 09:48:21,038 [INFO] - Val Loss: 0.2320, Val Acc: 93.38%, Val F1: 0.9338, Val ECE: 0.0334
+2025-03-21 09:48:21,038 [INFO] - Epoch time: 1269.19s
+2025-03-21 09:48:21,184 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 09:48:22,224 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1642.00MB
+2025-03-21 09:48:22,226 [INFO] - Epoch 15/50
+2025-03-21 09:48:22,364 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:08:35,844 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 10:08:47,341 [INFO] - Train Loss: 0.0470, Train Acc: 98.50%
+2025-03-21 10:08:47,341 [INFO] - Val Loss: 0.2091, Val Acc: 94.38%, Val F1: 0.9435, Val ECE: 0.0329
+2025-03-21 10:08:47,348 [INFO] - Epoch time: 1225.12s
+2025-03-21 10:08:47,503 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 10:08:48,496 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 10:08:48,496 [INFO] - Epoch 16/50
+2025-03-21 10:08:48,642 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 10:31:12,929 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:31:25,325 [INFO] - Train Loss: 0.0450, Train Acc: 98.50%
+2025-03-21 10:31:25,325 [INFO] - Val Loss: 0.2041, Val Acc: 94.42%, Val F1: 0.9440, Val ECE: 0.0314
+2025-03-21 10:31:25,327 [INFO] - Epoch time: 1356.83s
+2025-03-21 10:31:25,484 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:31:26,499 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 10:31:26,505 [INFO] - Epoch 17/50
+2025-03-21 10:31:26,642 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:55:42,408 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:55:53,947 [INFO] - Train Loss: 0.0371, Train Acc: 98.74%
+2025-03-21 10:55:53,949 [INFO] - Val Loss: 0.2136, Val Acc: 94.34%, Val F1: 0.9430, Val ECE: 0.0311
+2025-03-21 10:55:53,949 [INFO] - Epoch time: 1467.44s
+2025-03-21 10:55:54,105 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 10:55:55,146 [INFO] - GPU Memory: Current=1332.52MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 10:55:55,146 [INFO] - Epoch 18/50
+2025-03-21 10:55:55,286 [INFO] - GPU cache cleared: 1332.52MB → 1332.52MB (freed 0.00MB)
+2025-03-21 11:11:15,370 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:11:29,080 [INFO] - Train Loss: 0.0364, Train Acc: 98.81%
+2025-03-21 11:11:29,082 [INFO] - Val Loss: 0.2079, Val Acc: 94.26%, Val F1: 0.9421, Val ECE: 0.0346
+2025-03-21 11:11:29,083 [INFO] - Epoch time: 933.93s
+2025-03-21 11:11:29,228 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:11:30,241 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 11:11:30,244 [INFO] - Epoch 19/50
+2025-03-21 11:11:30,377 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:30:26,551 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:30:39,515 [INFO] - Train Loss: 0.0337, Train Acc: 98.86%
+2025-03-21 11:30:39,516 [INFO] - Val Loss: 0.1972, Val Acc: 94.58%, Val F1: 0.9453, Val ECE: 0.0273
+2025-03-21 11:30:39,516 [INFO] - Epoch time: 1149.27s
+2025-03-21 11:30:39,674 [INFO] - GPU cache cleared: 1331.99MB → 1331.99MB (freed 0.00MB)
+2025-03-21 11:30:40,697 [INFO] - GPU Memory: Current=1331.99MB, Peak=5957.66MB, Reserved=1640.00MB
+2025-03-21 11:30:40,697 [INFO] - Early stopping after 19 epochs
+2025-03-21 11:30:40,697 [INFO] - Loading best model for final evaluation...
+2025-03-21 11:30:41,825 [INFO] - GPU cache cleared: 2317.25MB → 2317.25MB (freed 0.00MB)
+2025-03-21 11:31:20,052 [INFO] - Test Metrics: {'loss': 0.19578017924384328, 'accuracy': 93.89, 'f1_score': 0.939046874810345, 'precision': 0.9398775426939313, 'recall': 0.9389000000000001, 'ece': 0.026867039501667023}
+2025-03-21 11:31:20,055 [INFO] - GPU Memory: Current=2317.25MB, Peak=5957.66MB, Reserved=2788.00MB
+2025-03-21 11:31:20,056 [INFO] - Training completed!
+2025-03-21 11:31:24,586 [INFO] - Plot saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250321_113123_training_plot.png
+2025-03-21 11:31:25,162 [INFO] - GPU cache cleared: 676.00MB → 676.00MB (freed 0.00MB)
+2025-03-21 11:31:25,173 [INFO] - Using resize from 32x32 to 224x224
+2025-03-21 11:31:26,769 [INFO] - Training samples: 45000
+2025-03-21 11:31:26,776 [INFO] - Validation samples: 5000
+2025-03-21 11:31:26,776 [INFO] - Test samples: 10000
+2025-03-21 11:32:03,701 [INFO] - Calibration curve saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250321_113123_calibration_curve.png
+2025-03-21 11:32:04,283 [INFO] - Script completed successfully
+2025-05-07 15:57:01,921 [INFO] - Using device: cuda
+2025-05-07 15:57:01,924 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 15:57:01,924 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 15:57:01,924 [INFO] - CUDA Version: 11.8
+2025-05-07 15:57:01,924 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 15:57:01,928 [INFO] - CPU: 16 cores available
+2025-05-07 15:57:01,928 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-07 15:57:01,928 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-07 15:57:01,928 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-07 15:57:01,928 [INFO] - PyTorch version: 2.5.1
+2025-05-07 15:57:01,935 [INFO] - Torchvision version: 0.20.1
+2025-05-07 15:57:01,936 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 4,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": true,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-05-07 15:57:01,937 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250507_155701.py
+2025-05-07 15:57:01,942 [INFO] - Random seed set to 42
+2025-05-07 15:57:02,079 [INFO] - GPU cache cleared: 0.00MB → 0.00MB (freed 0.00MB)
+2025-05-07 15:57:02,081 [INFO] - Random seed set to 42
+2025-05-07 15:57:02,081 [INFO] - Using zero padding with pad_size=96 pixels on each side
+2025-05-07 15:57:03,756 [INFO] - Training samples: 45000
+2025-05-07 15:57:03,756 [INFO] - Validation samples: 5000
+2025-05-07 15:57:03,756 [INFO] - Test samples: 10000
+2025-05-07 15:57:03,756 [INFO] - Loading pretrained ViT-B16 model...
+2025-05-07 15:57:04,758 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-05-07 15:57:04,758 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-05-07 15:57:05,519 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250507_155705_config.json
+2025-05-07 15:57:05,526 [INFO] - Batch size: 64 with gradient accumulation steps: 2
+2025-05-07 15:57:05,526 [INFO] - Effective batch size: 128
+2025-05-07 15:57:05,526 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-05-07 15:57:05,526 [INFO] - Starting training...
+2025-05-07 15:57:05,526 [INFO] - Epoch 1/50
+2025-05-07 15:57:05,672 [INFO] - GPU cache cleared: 327.33MB → 327.33MB (freed 0.00MB)
+2025-05-07 15:58:05,856 [ERROR] - Error in training batch 2: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+2025-05-07 15:58:46,049 [INFO] - Using device: cuda
+2025-05-07 15:58:46,064 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 15:58:46,064 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 15:58:46,064 [INFO] - CUDA Version: 11.8
+2025-05-07 15:58:46,064 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 15:58:46,064 [INFO] - CPU: 16 cores available
+2025-05-07 15:58:46,064 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-07 15:58:46,064 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-07 15:58:46,064 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-07 15:58:46,064 [INFO] - PyTorch version: 2.5.1
+2025-05-07 15:58:46,064 [INFO] - Torchvision version: 0.20.1
+2025-05-07 15:58:46,064 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 4,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": true,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-05-07 15:58:46,080 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250507_155846.py
+2025-05-07 15:58:46,086 [INFO] - Random seed set to 42
+2025-05-07 15:58:46,219 [INFO] - GPU cache cleared: 0.00MB → 0.00MB (freed 0.00MB)
+2025-05-07 15:58:46,219 [INFO] - Random seed set to 42
+2025-05-07 15:58:46,219 [INFO] - Using zero padding with pad_size=96 pixels on each side
+2025-05-07 15:58:47,878 [INFO] - Training samples: 45000
+2025-05-07 15:58:47,878 [INFO] - Validation samples: 5000
+2025-05-07 15:58:47,878 [INFO] - Test samples: 10000
+2025-05-07 15:58:47,878 [INFO] - Loading pretrained ViT-B16 model...
+2025-05-07 15:58:49,255 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-05-07 15:58:49,256 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-05-07 15:58:49,481 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250507_155849_config.json
+2025-05-07 15:58:49,497 [INFO] - Batch size: 64 with gradient accumulation steps: 2
+2025-05-07 15:58:49,497 [INFO] - Effective batch size: 128
+2025-05-07 15:58:49,497 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-05-07 15:58:49,497 [INFO] - Starting training...
+2025-05-07 15:58:49,497 [INFO] - Epoch 1/50
+2025-05-07 15:58:49,633 [INFO] - GPU cache cleared: 327.33MB → 327.33MB (freed 0.00MB)
+2025-05-07 15:59:28,975 [ERROR] - Error in training batch 0: CUDA out of memory. Tried to allocate 74.00 MiB. GPU 0 has a total capacity of 6.00 GiB of which 2.00 GiB is free. Of the allocated memory 2.89 GiB is allocated by PyTorch, and 86.98 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-07 15:59:29,213 [INFO] - GPU cache cleared: 2958.93MB → 2958.93MB (freed 0.00MB)
+2025-05-07 16:01:19,056 [INFO] - Using device: cuda
+2025-05-07 16:01:19,059 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:01:19,059 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:01:19,059 [INFO] - CUDA Version: 11.8
+2025-05-07 16:01:19,059 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:01:19,059 [INFO] - CPU: 16 cores available
+2025-05-07 16:01:19,059 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-07 16:01:19,059 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-07 16:01:19,059 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-07 16:01:19,059 [INFO] - PyTorch version: 2.5.1
+2025-05-07 16:01:19,059 [INFO] - Torchvision version: 0.20.1
+2025-05-07 16:01:19,059 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 64,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 4,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": true,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-05-07 16:01:19,059 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250507_160119.py
+2025-05-07 16:01:19,059 [INFO] - Random seed set to 42
+2025-05-07 16:01:19,162 [INFO] - Random seed set to 42
+2025-05-07 16:01:19,162 [INFO] - Using zero padding with pad_size=96 pixels on each side
+2025-05-07 16:01:20,670 [INFO] - Training samples: 45000
+2025-05-07 16:01:20,670 [INFO] - Validation samples: 5000
+2025-05-07 16:01:20,670 [INFO] - Test samples: 10000
+2025-05-07 16:01:20,670 [INFO] - Loading pretrained ViT-B16 model...
+2025-05-07 16:01:21,314 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-05-07 16:01:21,314 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-05-07 16:01:21,433 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250507_160121_config.json
+2025-05-07 16:01:21,433 [INFO] - Batch size: 64 with gradient accumulation steps: 2
+2025-05-07 16:01:21,433 [INFO] - Effective batch size: 128
+2025-05-07 16:01:21,433 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-05-07 16:01:21,433 [INFO] - Starting training...
+2025-05-07 16:01:21,433 [INFO] - Epoch 1/50
+2025-05-07 16:01:26,659 [INFO] - Using device: cuda
+2025-05-07 16:01:26,659 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:01:26,659 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:01:26,659 [INFO] - CUDA Version: 11.8
+2025-05-07 16:01:26,659 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:01:31,726 [INFO] - Using device: cuda
+2025-05-07 16:01:31,738 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:01:31,738 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:01:31,738 [INFO] - CUDA Version: 11.8
+2025-05-07 16:01:31,738 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:01:36,810 [INFO] - Using device: cuda
+2025-05-07 16:01:36,810 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:01:36,810 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:01:36,810 [INFO] - CUDA Version: 11.8
+2025-05-07 16:01:36,810 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:01:41,796 [INFO] - Using device: cuda
+2025-05-07 16:01:41,796 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:01:41,796 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:01:41,796 [INFO] - CUDA Version: 11.8
+2025-05-07 16:01:41,796 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:36:09,512 [INFO] - Using device: cuda
+2025-05-07 16:36:09,512 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:36:09,512 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:36:09,512 [INFO] - CUDA Version: 11.8
+2025-05-07 16:36:09,512 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:36:09,512 [INFO] - CPU: 16 cores available
+2025-05-07 16:36:09,512 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-07 16:36:09,512 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-07 16:36:09,512 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-07 16:36:09,512 [INFO] - PyTorch version: 2.5.1
+2025-05-07 16:36:09,512 [INFO] - Torchvision version: 0.20.1
+2025-05-07 16:36:09,512 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 32,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 6,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": false,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-05-07 16:36:09,520 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250507_163609.py
+2025-05-07 16:36:09,520 [INFO] - Random seed set to 42
+2025-05-07 16:36:09,638 [INFO] - Random seed set to 42
+2025-05-07 16:36:09,638 [INFO] - Using resize from 32x32 to 224x224
+2025-05-07 16:36:11,087 [INFO] - Training samples: 45000
+2025-05-07 16:36:11,087 [INFO] - Validation samples: 5000
+2025-05-07 16:36:11,087 [INFO] - Test samples: 10000
+2025-05-07 16:36:11,087 [INFO] - Loading pretrained ViT-B16 model...
+2025-05-07 16:36:11,709 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-05-07 16:36:11,709 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-05-07 16:36:12,561 [ERROR] - An error occurred: checkpoint_sequential() missing 1 required positional argument: 'input'
+2025-05-07 16:36:12,562 [ERROR] - Traceback (most recent call last):
+  File "C:\Users\Gading\Downloads\Research\Scripts\ViT\ViT.py", line 1038, in <module>
+    model, history = train_model(config)
+                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Gading\Downloads\Research\Scripts\ViT\ViT.py", line 553, in train_model
+    model.encoder.layers = checkpoint_sequential(model.encoder.layers, segments=3)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: checkpoint_sequential() missing 1 required positional argument: 'input'
+
+2025-05-07 16:36:12,696 [INFO] - GPU memory cleared after error
+2025-05-07 16:38:29,775 [INFO] - Using device: cuda
+2025-05-07 16:38:29,775 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:38:29,775 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:38:29,775 [INFO] - CUDA Version: 11.8
+2025-05-07 16:38:29,775 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:38:29,775 [INFO] - CPU: 16 cores available
+2025-05-07 16:38:29,775 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-07 16:38:29,775 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-07 16:38:29,775 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-07 16:38:29,775 [INFO] - PyTorch version: 2.5.1
+2025-05-07 16:38:29,775 [INFO] - Torchvision version: 0.20.1
+2025-05-07 16:38:29,775 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 32,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 6,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": false,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-05-07 16:38:29,795 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250507_163829.py
+2025-05-07 16:38:29,795 [INFO] - Random seed set to 42
+2025-05-07 16:38:29,902 [INFO] - Random seed set to 42
+2025-05-07 16:38:29,902 [INFO] - Using resize from 32x32 to 224x224
+2025-05-07 16:38:31,386 [INFO] - Training samples: 45000
+2025-05-07 16:38:31,386 [INFO] - Validation samples: 5000
+2025-05-07 16:38:31,386 [INFO] - Test samples: 10000
+2025-05-07 16:38:31,386 [INFO] - Loading pretrained ViT-B16 model...
+2025-05-07 16:38:32,027 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-05-07 16:38:32,028 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-05-07 16:38:32,815 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250507_163832_config.json
+2025-05-07 16:38:32,826 [INFO] - Batch size: 32 with gradient accumulation steps: 2
+2025-05-07 16:38:32,826 [INFO] - Effective batch size: 64
+2025-05-07 16:38:32,826 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-05-07 16:38:32,826 [INFO] - Starting training...
+2025-05-07 16:38:32,826 [INFO] - Epoch 1/50
+2025-05-07 16:38:38,096 [INFO] - Using device: cuda
+2025-05-07 16:38:38,096 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:38:38,096 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:38:38,096 [INFO] - CUDA Version: 11.8
+2025-05-07 16:38:38,096 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:38:43,128 [INFO] - Using device: cuda
+2025-05-07 16:38:43,128 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:38:43,128 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:38:43,128 [INFO] - CUDA Version: 11.8
+2025-05-07 16:38:43,128 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:38:48,127 [INFO] - Using device: cuda
+2025-05-07 16:38:48,127 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:38:48,127 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:38:48,127 [INFO] - CUDA Version: 11.8
+2025-05-07 16:38:48,127 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:38:53,156 [INFO] - Using device: cuda
+2025-05-07 16:38:53,156 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:38:53,156 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:38:53,156 [INFO] - CUDA Version: 11.8
+2025-05-07 16:38:53,156 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:38:58,210 [INFO] - Using device: cuda
+2025-05-07 16:38:58,210 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:38:58,210 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:38:58,210 [INFO] - CUDA Version: 11.8
+2025-05-07 16:38:58,210 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:39:03,231 [INFO] - Using device: cuda
+2025-05-07 16:39:03,231 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:39:03,231 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:39:03,231 [INFO] - CUDA Version: 11.8
+2025-05-07 16:39:03,231 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:39:12,783 [ERROR] - Error in training batch 0: backend='inductor' raised:
+RuntimeError: Cannot find a working triton installation. Either the package is not installed or it is too old. More information on installing Triton can be found at https://github.com/openai/triton
+
+Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+
+
+You can suppress this exception and fall back to eager by setting:
+    import torch._dynamo
+    torch._dynamo.config.suppress_errors = True
+
+2025-05-07 16:39:19,840 [ERROR] - Error in training batch 1: backend='inductor' raised:
+RuntimeError: Cannot find a working triton installation. Either the package is not installed or it is too old. More information on installing Triton can be found at https://github.com/openai/triton
+
+Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+
+
+You can suppress this exception and fall back to eager by setting:
+    import torch._dynamo
+    torch._dynamo.config.suppress_errors = True
+
+2025-05-07 16:39:26,914 [ERROR] - Error in training batch 2: backend='inductor' raised:
+RuntimeError: Cannot find a working triton installation. Either the package is not installed or it is too old. More information on installing Triton can be found at https://github.com/openai/triton
+
+Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+
+
+You can suppress this exception and fall back to eager by setting:
+    import torch._dynamo
+    torch._dynamo.config.suppress_errors = True
+
+2025-05-07 16:39:33,976 [ERROR] - Error in training batch 3: backend='inductor' raised:
+RuntimeError: Cannot find a working triton installation. Either the package is not installed or it is too old. More information on installing Triton can be found at https://github.com/openai/triton
+
+Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+
+
+You can suppress this exception and fall back to eager by setting:
+    import torch._dynamo
+    torch._dynamo.config.suppress_errors = True
+
+2025-05-07 16:39:41,081 [ERROR] - Error in training batch 4: backend='inductor' raised:
+RuntimeError: Cannot find a working triton installation. Either the package is not installed or it is too old. More information on installing Triton can be found at https://github.com/openai/triton
+
+Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+
+
+You can suppress this exception and fall back to eager by setting:
+    import torch._dynamo
+    torch._dynamo.config.suppress_errors = True
+
+2025-05-07 16:39:48,228 [ERROR] - Error in training batch 5: backend='inductor' raised:
+RuntimeError: Cannot find a working triton installation. Either the package is not installed or it is too old. More information on installing Triton can be found at https://github.com/openai/triton
+
+Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+
+
+You can suppress this exception and fall back to eager by setting:
+    import torch._dynamo
+    torch._dynamo.config.suppress_errors = True
+
+2025-05-07 16:39:55,485 [ERROR] - Error in training batch 6: backend='inductor' raised:
+RuntimeError: Cannot find a working triton installation. Either the package is not installed or it is too old. More information on installing Triton can be found at https://github.com/openai/triton
+
+Set TORCH_LOGS="+dynamo" and TORCHDYNAMO_VERBOSE=1 for more information
+
+
+You can suppress this exception and fall back to eager by setting:
+    import torch._dynamo
+    torch._dynamo.config.suppress_errors = True
+
+2025-05-07 16:40:44,557 [INFO] - Using device: cuda
+2025-05-07 16:40:44,563 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:40:44,563 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:40:44,563 [INFO] - CUDA Version: 11.8
+2025-05-07 16:40:44,563 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:40:44,563 [INFO] - CPU: 16 cores available
+2025-05-07 16:40:44,563 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-07 16:40:44,563 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-07 16:40:44,563 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-07 16:40:44,563 [INFO] - PyTorch version: 2.5.1
+2025-05-07 16:40:44,563 [INFO] - Torchvision version: 0.20.1
+2025-05-07 16:40:44,563 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 32,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 6,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": false,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-05-07 16:40:44,567 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250507_164044.py
+2025-05-07 16:40:44,567 [INFO] - Random seed set to 42
+2025-05-07 16:40:44,677 [INFO] - Random seed set to 42
+2025-05-07 16:40:44,677 [INFO] - Using resize from 32x32 to 224x224
+2025-05-07 16:40:46,189 [INFO] - Training samples: 45000
+2025-05-07 16:40:46,189 [INFO] - Validation samples: 5000
+2025-05-07 16:40:46,189 [INFO] - Test samples: 10000
+2025-05-07 16:40:46,189 [INFO] - Loading pretrained ViT-B16 model...
+2025-05-07 16:40:46,842 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-05-07 16:40:46,842 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-05-07 16:40:46,982 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250507_164046_config.json
+2025-05-07 16:40:46,982 [INFO] - Batch size: 32 with gradient accumulation steps: 2
+2025-05-07 16:40:46,982 [INFO] - Effective batch size: 64
+2025-05-07 16:40:46,982 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-05-07 16:40:46,982 [INFO] - Starting training...
+2025-05-07 16:40:46,982 [INFO] - Epoch 1/50
+2025-05-07 16:40:52,132 [INFO] - Using device: cuda
+2025-05-07 16:40:52,142 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:40:52,142 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:40:52,142 [INFO] - CUDA Version: 11.8
+2025-05-07 16:40:52,142 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:40:57,221 [INFO] - Using device: cuda
+2025-05-07 16:40:57,221 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:40:57,221 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:40:57,221 [INFO] - CUDA Version: 11.8
+2025-05-07 16:40:57,221 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:41:02,282 [INFO] - Using device: cuda
+2025-05-07 16:41:02,282 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:41:02,282 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:41:02,282 [INFO] - CUDA Version: 11.8
+2025-05-07 16:41:02,282 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:41:07,365 [INFO] - Using device: cuda
+2025-05-07 16:41:07,365 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:41:07,365 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:41:07,365 [INFO] - CUDA Version: 11.8
+2025-05-07 16:41:07,365 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:41:12,417 [INFO] - Using device: cuda
+2025-05-07 16:41:12,417 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:41:12,417 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:41:12,417 [INFO] - CUDA Version: 11.8
+2025-05-07 16:41:12,417 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 16:41:17,525 [INFO] - Using device: cuda
+2025-05-07 16:41:17,525 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 16:41:17,525 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 16:41:17,525 [INFO] - CUDA Version: 11.8
+2025-05-07 16:41:17,525 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:37:36,674 [INFO] - Using device: cuda
+2025-05-07 23:37:36,680 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:37:36,680 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:37:36,680 [INFO] - CUDA Version: 11.8
+2025-05-07 23:37:36,680 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:37:36,680 [INFO] - CPU: 16 cores available
+2025-05-07 23:37:36,680 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-07 23:37:36,680 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-07 23:37:36,680 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-07 23:37:36,680 [INFO] - PyTorch version: 2.5.1
+2025-05-07 23:37:36,680 [INFO] - Torchvision version: 0.20.1
+2025-05-07 23:37:36,680 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 32,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 6,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": false,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-05-07 23:37:36,680 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250507_233736.py
+2025-05-07 23:37:36,680 [INFO] - Random seed set to 42
+2025-05-07 23:37:36,800 [INFO] - Random seed set to 42
+2025-05-07 23:37:36,800 [INFO] - Using resize from 32x32 to 224x224
+2025-05-07 23:37:38,343 [INFO] - Training samples: 45000
+2025-05-07 23:37:38,343 [INFO] - Validation samples: 5000
+2025-05-07 23:37:38,343 [INFO] - Test samples: 10000
+2025-05-07 23:37:38,343 [INFO] - Loading pretrained ViT-B16 model...
+2025-05-07 23:37:39,258 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-05-07 23:37:39,258 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-05-07 23:37:39,374 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250507_233739_config.json
+2025-05-07 23:37:39,374 [INFO] - Batch size: 32 with gradient accumulation steps: 2
+2025-05-07 23:37:39,374 [INFO] - Effective batch size: 64
+2025-05-07 23:37:39,374 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-05-07 23:37:39,374 [INFO] - Starting training...
+2025-05-07 23:37:39,374 [INFO] - Epoch 1/50
+2025-05-07 23:37:44,652 [INFO] - Using device: cuda
+2025-05-07 23:37:44,652 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:37:44,652 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:37:44,652 [INFO] - CUDA Version: 11.8
+2025-05-07 23:37:44,652 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:37:49,659 [INFO] - Using device: cuda
+2025-05-07 23:37:49,659 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:37:49,659 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:37:49,659 [INFO] - CUDA Version: 11.8
+2025-05-07 23:37:49,659 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:37:54,641 [INFO] - Using device: cuda
+2025-05-07 23:37:54,641 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:37:54,641 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:37:54,641 [INFO] - CUDA Version: 11.8
+2025-05-07 23:37:54,641 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:37:59,653 [INFO] - Using device: cuda
+2025-05-07 23:37:59,653 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:37:59,653 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:37:59,653 [INFO] - CUDA Version: 11.8
+2025-05-07 23:37:59,653 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:38:04,838 [INFO] - Using device: cuda
+2025-05-07 23:38:04,841 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:38:04,841 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:38:04,841 [INFO] - CUDA Version: 11.8
+2025-05-07 23:38:04,841 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:38:10,257 [INFO] - Using device: cuda
+2025-05-07 23:38:10,257 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:38:10,257 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:38:10,257 [INFO] - CUDA Version: 11.8
+2025-05-07 23:38:10,257 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:44:12,868 [INFO] - Using device: cuda
+2025-05-07 23:44:12,871 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:44:12,871 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:44:12,871 [INFO] - CUDA Version: 11.8
+2025-05-07 23:44:12,871 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:44:18,100 [INFO] - Using device: cuda
+2025-05-07 23:44:18,100 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:44:18,100 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:44:18,100 [INFO] - CUDA Version: 11.8
+2025-05-07 23:44:18,100 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:44:23,292 [INFO] - Using device: cuda
+2025-05-07 23:44:23,292 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:44:23,292 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:44:23,292 [INFO] - CUDA Version: 11.8
+2025-05-07 23:44:23,292 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:44:28,484 [INFO] - Using device: cuda
+2025-05-07 23:44:28,499 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:44:28,499 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:44:28,499 [INFO] - CUDA Version: 11.8
+2025-05-07 23:44:28,499 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:44:33,652 [INFO] - Using device: cuda
+2025-05-07 23:44:33,652 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:44:33,652 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:44:33,652 [INFO] - CUDA Version: 11.8
+2025-05-07 23:44:33,652 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:44:38,814 [INFO] - Using device: cuda
+2025-05-07 23:44:39,568 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:44:39,568 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:44:39,568 [INFO] - CUDA Version: 11.8
+2025-05-07 23:44:39,568 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:44:54,213 [INFO] - Train Loss: 0.5617, Train Acc: 80.69%
+2025-05-07 23:44:54,214 [INFO] - Val Loss: 0.3351, Val Acc: 88.42%, Val F1: 0.8825, Val ECE: 0.0137
+2025-05-07 23:44:54,214 [INFO] - Epoch time: 434.84s
+2025-05-07 23:45:01,554 [INFO] - Best model saved with Val Loss: 0.3351
+2025-05-07 23:45:01,554 [INFO] - GPU Memory: Current=1328.60MB, Peak=3740.92MB, Reserved=1566.00MB
+2025-05-07 23:45:01,554 [INFO] - Epoch 2/50
+2025-05-07 23:47:37,920 [INFO] - Using device: cuda
+2025-05-07 23:47:37,927 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:47:37,927 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:47:37,927 [INFO] - CUDA Version: 11.8
+2025-05-07 23:47:37,927 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:47:37,927 [INFO] - CPU: 16 cores available
+2025-05-07 23:47:37,927 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU with 6.00GB memory
+2025-05-07 23:47:37,929 [INFO] - RTX 3060 detected - using optimized settings
+2025-05-07 23:47:37,929 [INFO] - Python version: 3.12.3 | packaged by conda-forge | (main, Apr 15 2024, 18:20:11) [MSC v.1938 64 bit (AMD64)]
+2025-05-07 23:47:37,929 [INFO] - PyTorch version: 2.5.1
+2025-05-07 23:47:37,929 [INFO] - Torchvision version: 0.20.1
+2025-05-07 23:47:37,929 [INFO] - Configuration: {
+    "seed": 42,
+    "model_name": "vit_b16_teacher",
+    "dataset": "CIFAR-10",
+    "use_amp": true,
+    "memory_efficient_attention": true,
+    "prefetch_factor": 2,
+    "pin_memory": true,
+    "persistent_workers": true,
+    "batch_size": 32,
+    "gradient_accumulation_steps": 2,
+    "find_batch_size": false,
+    "gpu_memory_fraction": 0.75,
+    "input_size": 32,
+    "vit_input_size": 224,
+    "num_workers": 6,
+    "val_split": 0.1,
+    "dataset_path": "C:\\Users\\Gading\\Downloads\\Research\\Dataset",
+    "clear_cache_every_n_epochs": 2,
+    "pretrained": true,
+    "temperature": 1.0,
+    "num_classes": 10,
+    "use_zero_padding": false,
+    "epochs": 50,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "early_stop_patience": 10,
+    "scheduler_T_max": 50,
+    "ce_weight": 1.0,
+    "cal_weight": 0.1,
+    "use_curriculum": true,
+    "curriculum_ramp_epochs": 30,
+    "checkpoint_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\checkpoints",
+    "results_dir": "C:\\Users\\Gading\\Downloads\\Research\\Results\\ViT",
+    "export_dir": "C:\\Users\\Gading\\Downloads\\Research\\Models\\ViT\\exports"
+}
+2025-05-07 23:47:37,929 [INFO] - Script saved to C:\Users\Gading\Downloads\Research\Scripts\vit_b16_teacher_20250507_234737.py
+2025-05-07 23:47:37,929 [INFO] - Random seed set to 42
+2025-05-07 23:47:38,032 [INFO] - GPU cache cleared: 0.00MB → 0.00MB (freed 0.00MB)
+2025-05-07 23:47:38,048 [INFO] - Random seed set to 42
+2025-05-07 23:47:38,048 [INFO] - Using resize from 32x32 to 224x224
+2025-05-07 23:47:39,491 [INFO] - Training samples: 45000
+2025-05-07 23:47:39,491 [INFO] - Validation samples: 5000
+2025-05-07 23:47:39,491 [INFO] - Test samples: 10000
+2025-05-07 23:47:39,491 [INFO] - Loading pretrained ViT-B16 model...
+2025-05-07 23:47:40,370 [INFO] - Enabling memory-efficient attention for transformer blocks
+2025-05-07 23:47:40,370 [INFO] - Model created: ViT-B16 adapted for CIFAR-10 with 10 classes
+2025-05-07 23:47:40,516 [INFO] - Configuration saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250507_234740_config.json
+2025-05-07 23:47:40,516 [INFO] - Batch size: 32 with gradient accumulation steps: 2
+2025-05-07 23:47:40,518 [INFO] - Effective batch size: 64
+2025-05-07 23:47:40,518 [INFO] - GPU Memory: Current=327.33MB, Peak=327.33MB, Reserved=382.00MB
+2025-05-07 23:47:40,518 [INFO] - Starting training...
+2025-05-07 23:47:40,518 [INFO] - Epoch 1/50
+2025-05-07 23:47:40,636 [INFO] - GPU cache cleared: 327.33MB → 327.33MB (freed 0.00MB)
+2025-05-07 23:47:46,157 [INFO] - Using device: cuda
+2025-05-07 23:47:46,157 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:47:46,167 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:47:46,167 [INFO] - CUDA Version: 11.8
+2025-05-07 23:47:46,167 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:47:51,339 [INFO] - Using device: cuda
+2025-05-07 23:47:51,339 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:47:51,339 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:47:51,339 [INFO] - CUDA Version: 11.8
+2025-05-07 23:47:51,339 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:47:56,402 [INFO] - Using device: cuda
+2025-05-07 23:47:56,402 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:47:56,402 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:47:56,402 [INFO] - CUDA Version: 11.8
+2025-05-07 23:47:56,402 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:48:01,371 [INFO] - Using device: cuda
+2025-05-07 23:48:01,371 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:48:01,371 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:48:01,371 [INFO] - CUDA Version: 11.8
+2025-05-07 23:48:01,371 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:48:06,374 [INFO] - Using device: cuda
+2025-05-07 23:48:06,379 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:48:06,379 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:48:06,379 [INFO] - CUDA Version: 11.8
+2025-05-07 23:48:06,379 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:48:11,317 [INFO] - Using device: cuda
+2025-05-07 23:48:11,317 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:48:11,317 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:48:11,317 [INFO] - CUDA Version: 11.8
+2025-05-07 23:48:11,317 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:54:12,093 [INFO] - GPU cache cleared: 1328.60MB → 1328.60MB (freed 0.00MB)
+2025-05-07 23:54:17,947 [INFO] - Using device: cuda
+2025-05-07 23:54:17,956 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:54:17,956 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:54:17,956 [INFO] - CUDA Version: 11.8
+2025-05-07 23:54:17,956 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:54:23,410 [INFO] - Using device: cuda
+2025-05-07 23:54:23,410 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:54:23,410 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:54:23,410 [INFO] - CUDA Version: 11.8
+2025-05-07 23:54:23,410 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:54:28,617 [INFO] - Using device: cuda
+2025-05-07 23:54:28,617 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:54:28,617 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:54:28,617 [INFO] - CUDA Version: 11.8
+2025-05-07 23:54:28,617 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:54:33,778 [INFO] - Using device: cuda
+2025-05-07 23:54:33,790 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:54:33,790 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:54:33,790 [INFO] - CUDA Version: 11.8
+2025-05-07 23:54:33,790 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:54:38,934 [INFO] - Using device: cuda
+2025-05-07 23:54:38,949 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:54:38,949 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:54:38,949 [INFO] - CUDA Version: 11.8
+2025-05-07 23:54:38,949 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:54:44,060 [INFO] - Using device: cuda
+2025-05-07 23:54:44,060 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-07 23:54:44,060 [INFO] - GPU Memory: 6.00 GB
+2025-05-07 23:54:44,060 [INFO] - CUDA Version: 11.8
+2025-05-07 23:54:44,060 [INFO] - cuDNN benchmark mode enabled
+2025-05-07 23:54:58,660 [INFO] - Train Loss: 0.5617, Train Acc: 80.69%
+2025-05-07 23:54:58,660 [INFO] - Val Loss: 0.3351, Val Acc: 88.42%, Val F1: 0.8825, Val ECE: 0.0137
+2025-05-07 23:54:58,660 [INFO] - Epoch time: 438.14s
+2025-05-07 23:54:58,782 [INFO] - GPU cache cleared: 1328.60MB → 1328.60MB (freed 0.00MB)
+2025-05-07 23:55:18,258 [INFO] - Best model saved with Val Loss: 0.3351
+2025-05-07 23:55:18,258 [INFO] - GPU Memory: Current=1328.60MB, Peak=3740.92MB, Reserved=1566.00MB
+2025-05-07 23:55:18,260 [INFO] - Epoch 2/50
+2025-05-07 23:55:18,379 [INFO] - GPU cache cleared: 1328.60MB → 1328.60MB (freed 0.00MB)
+2025-05-08 00:01:24,328 [INFO] - GPU cache cleared: 1327.08MB → 1327.08MB (freed 0.00MB)
+2025-05-08 00:01:39,424 [INFO] - Train Loss: 0.3386, Train Acc: 88.57%
+2025-05-08 00:01:39,424 [INFO] - Val Loss: 0.3124, Val Acc: 89.66%, Val F1: 0.8951, Val ECE: 0.0185
+2025-05-08 00:01:39,424 [INFO] - Epoch time: 381.16s
+2025-05-08 00:01:39,541 [INFO] - GPU cache cleared: 1327.08MB → 1327.08MB (freed 0.00MB)
+2025-05-08 00:01:41,718 [INFO] - Best model saved with Val Loss: 0.3124
+2025-05-08 00:01:41,727 [INFO] - GPU Memory: Current=1327.08MB, Peak=3740.92MB, Reserved=1546.00MB
+2025-05-08 00:01:41,727 [INFO] - Epoch 3/50
+2025-05-08 00:01:41,830 [INFO] - GPU cache cleared: 1327.08MB → 1327.08MB (freed 0.00MB)
+2025-05-08 00:07:51,976 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:08:07,200 [INFO] - Train Loss: 0.2866, Train Acc: 90.12%
+2025-05-08 00:08:07,200 [INFO] - Val Loss: 0.2833, Val Acc: 90.36%, Val F1: 0.9029, Val ECE: 0.0180
+2025-05-08 00:08:07,200 [INFO] - Epoch time: 385.47s
+2025-05-08 00:08:07,313 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:08:09,538 [INFO] - Best model saved with Val Loss: 0.2833
+2025-05-08 00:08:09,538 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 00:08:09,538 [INFO] - Epoch 4/50
+2025-05-08 00:08:09,660 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:14:18,563 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:14:33,650 [INFO] - Train Loss: 0.2422, Train Acc: 91.72%
+2025-05-08 00:14:33,650 [INFO] - Val Loss: 0.2467, Val Acc: 91.88%, Val F1: 0.9185, Val ECE: 0.0164
+2025-05-08 00:14:33,650 [INFO] - Epoch time: 384.11s
+2025-05-08 00:14:33,772 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:14:35,880 [INFO] - Best model saved with Val Loss: 0.2467
+2025-05-08 00:14:35,880 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 00:14:35,885 [INFO] - Epoch 5/50
+2025-05-08 00:14:35,994 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:20:43,818 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:20:58,947 [INFO] - Train Loss: 0.2115, Train Acc: 92.63%
+2025-05-08 00:20:58,947 [INFO] - Val Loss: 0.2295, Val Acc: 92.04%, Val F1: 0.9199, Val ECE: 0.0122
+2025-05-08 00:20:58,947 [INFO] - Epoch time: 383.06s
+2025-05-08 00:20:59,091 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:21:01,285 [INFO] - Best model saved with Val Loss: 0.2295
+2025-05-08 00:21:01,285 [INFO] - GPU Memory: Current=1327.02MB, Peak=3740.92MB, Reserved=1546.00MB
+2025-05-08 00:21:01,285 [INFO] - Epoch 6/50
+2025-05-08 00:21:01,398 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:27:12,614 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:27:27,609 [INFO] - Train Loss: 0.1830, Train Acc: 93.68%
+2025-05-08 00:27:27,609 [INFO] - Val Loss: 0.2590, Val Acc: 91.24%, Val F1: 0.9115, Val ECE: 0.0255
+2025-05-08 00:27:27,609 [INFO] - Epoch time: 386.32s
+2025-05-08 00:27:27,723 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:27:28,737 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 00:27:28,737 [INFO] - Epoch 7/50
+2025-05-08 00:27:28,847 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:33:37,763 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:33:53,367 [INFO] - Train Loss: 0.1585, Train Acc: 94.60%
+2025-05-08 00:33:53,367 [INFO] - Val Loss: 0.2192, Val Acc: 93.04%, Val F1: 0.9301, Val ECE: 0.0199
+2025-05-08 00:33:53,367 [INFO] - Epoch time: 384.63s
+2025-05-08 00:33:53,485 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:33:55,636 [INFO] - Best model saved with Val Loss: 0.2192
+2025-05-08 00:33:55,638 [INFO] - GPU Memory: Current=1327.02MB, Peak=3740.92MB, Reserved=1546.00MB
+2025-05-08 00:33:55,638 [INFO] - Epoch 8/50
+2025-05-08 00:33:55,749 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:40:12,878 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:40:28,384 [INFO] - Train Loss: 0.1408, Train Acc: 95.18%
+2025-05-08 00:40:28,384 [INFO] - Val Loss: 0.2801, Val Acc: 91.44%, Val F1: 0.9146, Val ECE: 0.0340
+2025-05-08 00:40:28,384 [INFO] - Epoch time: 392.75s
+2025-05-08 00:40:28,507 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:40:29,635 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 00:40:29,635 [INFO] - Epoch 9/50
+2025-05-08 00:40:29,745 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:46:44,408 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:46:59,768 [INFO] - Train Loss: 0.1263, Train Acc: 95.62%
+2025-05-08 00:46:59,768 [INFO] - Val Loss: 0.2151, Val Acc: 92.82%, Val F1: 0.9276, Val ECE: 0.0225
+2025-05-08 00:46:59,769 [INFO] - Epoch time: 390.13s
+2025-05-08 00:46:59,885 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:47:02,106 [INFO] - Best model saved with Val Loss: 0.2151
+2025-05-08 00:47:02,107 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 00:47:02,108 [INFO] - Epoch 10/50
+2025-05-08 00:47:02,214 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:53:11,571 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:53:26,741 [INFO] - Train Loss: 0.1126, Train Acc: 96.10%
+2025-05-08 00:53:26,741 [INFO] - Val Loss: 0.2345, Val Acc: 92.48%, Val F1: 0.9245, Val ECE: 0.0328
+2025-05-08 00:53:26,741 [INFO] - Epoch time: 384.63s
+2025-05-08 00:53:26,866 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:53:27,912 [INFO] - GPU Memory: Current=1327.02MB, Peak=3740.92MB, Reserved=1546.00MB
+2025-05-08 00:53:27,914 [INFO] - Epoch 11/50
+2025-05-08 00:53:28,025 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 00:59:39,557 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:59:54,782 [INFO] - Train Loss: 0.0984, Train Acc: 96.69%
+2025-05-08 00:59:54,783 [INFO] - Val Loss: 0.2233, Val Acc: 93.08%, Val F1: 0.9303, Val ECE: 0.0302
+2025-05-08 00:59:54,783 [INFO] - Epoch time: 386.87s
+2025-05-08 00:59:54,910 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 00:59:56,025 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 00:59:56,025 [INFO] - Epoch 12/50
+2025-05-08 00:59:56,144 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:06:06,251 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:06:21,603 [INFO] - Train Loss: 0.0903, Train Acc: 96.89%
+2025-05-08 01:06:21,603 [INFO] - Val Loss: 0.2311, Val Acc: 93.04%, Val F1: 0.9298, Val ECE: 0.0317
+2025-05-08 01:06:21,603 [INFO] - Epoch time: 385.58s
+2025-05-08 01:06:21,719 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:06:22,824 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 01:06:22,824 [INFO] - Epoch 13/50
+2025-05-08 01:06:22,942 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:12:32,386 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:12:47,520 [INFO] - Train Loss: 0.0804, Train Acc: 97.24%
+2025-05-08 01:12:47,520 [INFO] - Val Loss: 0.2427, Val Acc: 93.10%, Val F1: 0.9308, Val ECE: 0.0328
+2025-05-08 01:12:47,520 [INFO] - Epoch time: 384.70s
+2025-05-08 01:12:47,634 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:12:48,720 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 01:12:48,720 [INFO] - Epoch 14/50
+2025-05-08 01:12:48,835 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:18:56,571 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:19:11,899 [INFO] - Train Loss: 0.0718, Train Acc: 97.53%
+2025-05-08 01:19:11,903 [INFO] - Val Loss: 0.2252, Val Acc: 93.80%, Val F1: 0.9377, Val ECE: 0.0306
+2025-05-08 01:19:11,903 [INFO] - Epoch time: 383.18s
+2025-05-08 01:19:12,017 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:19:13,081 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 01:19:13,081 [INFO] - Epoch 15/50
+2025-05-08 01:19:13,193 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:25:34,478 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:25:50,137 [INFO] - Train Loss: 0.0640, Train Acc: 97.88%
+2025-05-08 01:25:50,137 [INFO] - Val Loss: 0.2509, Val Acc: 92.74%, Val F1: 0.9271, Val ECE: 0.0393
+2025-05-08 01:25:50,137 [INFO] - Epoch time: 397.06s
+2025-05-08 01:25:50,256 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:25:51,360 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 01:25:51,360 [INFO] - Epoch 16/50
+2025-05-08 01:25:51,476 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:32:11,982 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 01:32:27,732 [INFO] - Train Loss: 0.0584, Train Acc: 98.02%
+2025-05-08 01:32:27,732 [INFO] - Val Loss: 0.2343, Val Acc: 93.44%, Val F1: 0.9335, Val ECE: 0.0348
+2025-05-08 01:32:27,732 [INFO] - Epoch time: 396.37s
+2025-05-08 01:32:27,851 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 01:32:28,975 [INFO] - GPU Memory: Current=1327.02MB, Peak=3740.92MB, Reserved=1546.00MB
+2025-05-08 01:32:28,975 [INFO] - Epoch 17/50
+2025-05-08 01:32:29,087 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 01:38:48,885 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:39:04,366 [INFO] - Train Loss: 0.0525, Train Acc: 98.28%
+2025-05-08 01:39:04,366 [INFO] - Val Loss: 0.2527, Val Acc: 93.40%, Val F1: 0.9337, Val ECE: 0.0378
+2025-05-08 01:39:04,370 [INFO] - Epoch time: 395.39s
+2025-05-08 01:39:04,486 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:39:05,541 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 01:39:05,541 [INFO] - Epoch 18/50
+2025-05-08 01:39:05,653 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:45:27,904 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 01:45:44,027 [INFO] - Train Loss: 0.0481, Train Acc: 98.38%
+2025-05-08 01:45:44,027 [INFO] - Val Loss: 0.2321, Val Acc: 93.72%, Val F1: 0.9369, Val ECE: 0.0336
+2025-05-08 01:45:44,027 [INFO] - Epoch time: 398.49s
+2025-05-08 01:45:44,153 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 01:45:45,230 [INFO] - GPU Memory: Current=1327.02MB, Peak=3740.92MB, Reserved=1546.00MB
+2025-05-08 01:45:45,230 [INFO] - Epoch 19/50
+2025-05-08 01:45:45,342 [INFO] - GPU cache cleared: 1327.02MB → 1327.02MB (freed 0.00MB)
+2025-05-08 01:52:12,410 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:52:28,380 [INFO] - Train Loss: 0.0417, Train Acc: 98.66%
+2025-05-08 01:52:28,380 [INFO] - Val Loss: 0.2579, Val Acc: 93.24%, Val F1: 0.9323, Val ECE: 0.0390
+2025-05-08 01:52:28,380 [INFO] - Epoch time: 403.15s
+2025-05-08 01:52:28,503 [INFO] - GPU cache cleared: 1329.64MB → 1329.64MB (freed 0.00MB)
+2025-05-08 01:52:29,613 [INFO] - GPU Memory: Current=1329.64MB, Peak=3740.92MB, Reserved=1574.00MB
+2025-05-08 01:52:29,613 [INFO] - Early stopping after 19 epochs
+2025-05-08 01:52:29,613 [INFO] - Loading best model for final evaluation...
+2025-05-08 01:52:30,181 [INFO] - GPU cache cleared: 2312.61MB → 2312.61MB (freed 0.00MB)
+2025-05-08 01:52:37,377 [INFO] - Using device: cuda
+2025-05-08 01:52:37,380 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:52:37,381 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:52:37,381 [INFO] - CUDA Version: 11.8
+2025-05-08 01:52:37,381 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:52:42,461 [INFO] - Using device: cuda
+2025-05-08 01:52:42,464 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:52:42,464 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:52:42,464 [INFO] - CUDA Version: 11.8
+2025-05-08 01:52:42,464 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:52:47,264 [INFO] - Using device: cuda
+2025-05-08 01:52:47,264 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:52:47,264 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:52:47,264 [INFO] - CUDA Version: 11.8
+2025-05-08 01:52:47,264 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:52:52,085 [INFO] - Using device: cuda
+2025-05-08 01:52:52,085 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:52:52,085 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:52:52,085 [INFO] - CUDA Version: 11.8
+2025-05-08 01:52:52,085 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:52:56,911 [INFO] - Using device: cuda
+2025-05-08 01:52:56,911 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:52:56,911 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:52:56,911 [INFO] - CUDA Version: 11.8
+2025-05-08 01:52:56,911 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:53:01,652 [INFO] - Using device: cuda
+2025-05-08 01:53:01,652 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:53:01,652 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:53:01,652 [INFO] - CUDA Version: 11.8
+2025-05-08 01:53:01,652 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:53:30,914 [INFO] - Test Metrics: {'loss': 0.23249937279727131, 'accuracy': 92.47, 'f1_score': 0.9245313081076884, 'precision': 0.9250847078604915, 'recall': 0.9246999999999999, 'ece': 0.024264216423034668}
+2025-05-08 01:53:30,917 [INFO] - GPU Memory: Current=2312.61MB, Peak=3740.92MB, Reserved=2844.00MB
+2025-05-08 01:53:30,917 [INFO] - Training completed!
+2025-05-08 01:53:37,453 [INFO] - Plot saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250508_015335_training_plot.png
+2025-05-08 01:54:36,131 [INFO] - GPU cache cleared: 674.75MB → 674.75MB (freed 0.00MB)
+2025-05-08 01:54:36,131 [INFO] - Using resize from 32x32 to 224x224
+2025-05-08 01:54:37,626 [INFO] - Training samples: 45000
+2025-05-08 01:54:37,626 [INFO] - Validation samples: 5000
+2025-05-08 01:54:37,626 [INFO] - Test samples: 10000
+2025-05-08 01:54:42,260 [INFO] - Using device: cuda
+2025-05-08 01:54:42,264 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:54:42,264 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:54:42,264 [INFO] - CUDA Version: 11.8
+2025-05-08 01:54:42,264 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:54:46,850 [INFO] - Using device: cuda
+2025-05-08 01:54:46,864 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:54:46,864 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:54:46,864 [INFO] - CUDA Version: 11.8
+2025-05-08 01:54:46,864 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:54:51,449 [INFO] - Using device: cuda
+2025-05-08 01:54:51,453 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:54:51,453 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:54:51,453 [INFO] - CUDA Version: 11.8
+2025-05-08 01:54:51,453 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:54:56,044 [INFO] - Using device: cuda
+2025-05-08 01:54:56,044 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:54:56,044 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:54:56,044 [INFO] - CUDA Version: 11.8
+2025-05-08 01:54:56,044 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:55:00,691 [INFO] - Using device: cuda
+2025-05-08 01:55:00,696 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:55:00,696 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:55:00,696 [INFO] - CUDA Version: 11.8
+2025-05-08 01:55:00,696 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:55:05,308 [INFO] - Using device: cuda
+2025-05-08 01:55:05,314 [INFO] - GPU: NVIDIA GeForce RTX 3060 Laptop GPU
+2025-05-08 01:55:05,314 [INFO] - GPU Memory: 6.00 GB
+2025-05-08 01:55:05,314 [INFO] - CUDA Version: 11.8
+2025-05-08 01:55:05,314 [INFO] - cuDNN benchmark mode enabled
+2025-05-08 01:55:33,991 [INFO] - Calibration curve saved to C:\Users\Gading\Downloads\Research\Results\ViT\vit_b16_teacher_20250508_015335_calibration_curve.png
+2025-05-08 01:56:23,387 [INFO] - Script completed successfully
