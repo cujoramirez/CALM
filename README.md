@@ -85,46 +85,7 @@ Our research introduces **CALM** (Comparative Analysis of Learning Methods), a u
 | ViT-B16 | 93.89% | 86.6M | Very High |
 | Inception-V3 | 83.17% | 23.8M | High |
 
-## 🚀 Quick Start
-
-### Prerequisites
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-pip install timm tensorboardX sklearn matplotlib seaborn tqdm
-```
-
-### 1. Train Teacher Models
-```bash
-# Train individual teacher models
-python Scripts/ViT/vit_teacher.py
-python Scripts/EfficientNetB0/efficientnet_teacher.py
-python Scripts/DenseNet121/densenet_teacher.py
-python Scripts/ResNet50/resnet_teacher.py
-python Scripts/MobileNetV3/mobilenet_teacher.py
-python Scripts/InceptionV3/inception_teacher.py
-```
-
-### 2. Ensemble Distillation
-```bash
-python Scripts/EnsembleDistillation/distillation.py
-```
-
-### 3. Mutual Learning
-```bash
-python Scripts/MutualLearning/mutualLearning.py
-```
-
-### 4. Meta-Student Training
-```bash
-# Stage 2: Meta-student learning on CIFAR-10
-python Scripts/MetaStudent/metaStudent.py
-```
-
-### 5. Baseline Comparison
-```bash
-python Scripts/Baseline/baseline_student.py
-```
-Repository Structure
+### Repository Structure
 
 ```
 ├── Models/                          # Trained model checkpoints and exports
@@ -150,7 +111,7 @@ Repository Structure
 │   └── [Method Results]/            # Results per method
 └── temp/                           # Temporary files and logs
 ```
-Configuration
+## Configuration
 
 ### Key Hyperparameters
 ```python
