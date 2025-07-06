@@ -185,9 +185,10 @@ disagreement_weight = 0.7
 If you use CALM in your work, please cite:
 ```bibtex
 @inproceedings{Perdana2025CALM,
-  title        = {CALM:Calibrated Adaptive Learning via Mutual‐Ensemble Fusion},
-  author       = {G. A. Perdana, M. A. Ghazali, I. A. Iswanto, S. Joddy},
-  booktitle    = {10th ICCSCI},
+  title        = {CALM: Calibrated Adaptive Learning via Mutual-Ensemble Fusion},
+  author       = {G. A. Perdana and M. A. Ghazali and I. A. Iswanto and S. Joddy},
+  booktitle    = {Proceedings of the 10th International Conference on Computer Science and Computational Intelligence (ICCSCI 2025)},
+  series       = {Procedia Computer Science},
   year         = {2025},
   doi          = {...},
   url          = {https://github.com/cujoramirez/CALM}
