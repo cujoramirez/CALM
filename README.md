@@ -183,7 +183,7 @@ disagreement_weight = 0.7
 
 
 If you use CALM in your work, please cite:
-
+```bibtex
 @inproceedings{Perdana2025CALM,
   title        = {CALM:Calibrated Adaptive Learning via Mutual‐Ensemble Fusion},
   author       = {G. A. Perdana, M. A. Ghazali, I. A. Iswanto, S. Joddy},
@@ -192,6 +192,7 @@ If you use CALM in your work, please cite:
   doi          = {...},
   url          = {https://github.com/cujoramirez/CALM}
 }
+```
 Contributing & License
 
 Contributions welcome via issues and PRs.
