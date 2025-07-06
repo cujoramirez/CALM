@@ -16,7 +16,7 @@ Our research introduces **CALM** (Comparative Analysis of Learning Methods), a u
 - **Meta-Student Learning**: Advanced knowledge fusion using adaptive protocols
 - **Uncertainty Calibration**: Focus on both accuracy and prediction reliability
 
-CALM Key Methodologies
+## CALM Key Methodologies
 
 ### 1. Ensemble Distillation
 - **Six Teacher Models**: ViT-B16, EfficientNet-B0, Inception-V3, MobileNet-V3, ResNet-50, DenseNet-121
@@ -46,7 +46,7 @@ CALM Key Methodologies
 - **Temperature Scaling**: Post-hoc calibration refinement
 - **Reliability Diagrams**: Visual calibration assessment
 
-## 🛠️ Technical Implementation
+## Technical Implementation
 
 ### Hardware Requirements
 - **Target Hardware**: RTX 3060 Laptop (6GB VRAM) + Ryzen 7 6800H
@@ -63,7 +63,7 @@ CALM Key Methodologies
 - **Comprehensive Logging**: TensorBoard integration
 - **Robust Checkpointing**: Resume training from interruptions
 
-## 📊 Key Results
+## Key Results
 
 ### CIFAR-10 Performance
 
@@ -194,7 +194,7 @@ If you use CALM in your work, please cite:
   url          = {https://github.com/cujoramirez/CALM}
 }
 ```
-Contributing & License
+# Contributing & License
 
 Contributions welcome via issues and PRs.
 Released under the MIT License.
