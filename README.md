@@ -7,7 +7,7 @@ Comparative Analysis of Ensemble Distillation and Mutual Learning:A Unified Fram
 
 This repository contains the complete implementation of **"Comparative Analysis of Ensemble Distillation and Mutual Learning: A Unified Framework for Uncertainty-Calibrated Vision Systems"**, a comprehensive research study investigating advanced knowledge transfer techniques for computer vision tasks.
 
-Research Overview
+# Research Overview
 
 Our research introduces **CALM** (Comparative Analysis of Learning Methods), a unified framework that systematically compares and evaluates multiple knowledge transfer paradigms:
 
